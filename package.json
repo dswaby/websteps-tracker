@@ -22,6 +22,7 @@
     "grunt-contrib-jshint": "~0.3.0",
     "grunt-contrib-requirejs": "~0.4.0",
     "grunt-express": "^1.4.1",
+    "grunt-express-server": "^0.4.19",
     "grunt-hashres2": "~0.3.2",
     "mocha": "~1.10.0",
     "request": "~2.21.0",

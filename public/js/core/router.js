@@ -8,7 +8,8 @@ define(function(require) {
 			'inbox': 'inbox',
 			'inbox/compose': 'inboxCompose',
 			'contacts': 'contacts',
-			'tasks': 'tasks'
+			'tasks': 'tasks',
+      'fitbit': 'fitbit'
 		},
 
 		home: function () {
@@ -29,7 +30,12 @@ define(function(require) {
 
 		tasks: function () {
 			require('./../apps/tasks/app').run(viewManager);
-		}
+		},
+    
+    fitbit: function () {
+      require('./../apps/fitbit/app').run(viewManager);
+    }
+
 	});
 
 	return Router;

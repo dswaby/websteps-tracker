@@ -2,9 +2,9 @@ var fs = require("fs"),
     path = require("path"),
     util = require("util");
 
-var tasks = function (app) {
-  app.get('/api/imgs', function (req, res) {
-    var p = "./public/img/";
+var pictures = function (app) {
+
+  var p = "./public/img/";
     var images = [];
     fs.readdir(p, function (err, files) {
       if (err) {
@@ -22,11 +22,12 @@ var tasks = function (app) {
             "created": (fs.statSync(file).ctime).getTime()
           });
         }
-      });
-
-      res.json(images);
     });
+  });
+
+  app.get('/api/fitbit', function (req, res) {
+      res.json(images);
   });
 };
 
-module.exports = tasks;
+module.exports = pictures;

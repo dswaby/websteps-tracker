@@ -1,19 +1,65 @@
 @import url('../components/animate.css/animate.css');
 @import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Open+Sans:400,800,300);
 
-@primary: #00fff0;
+
+@headerHeight: 60;
+
+@primaryColor: #4AD5D7;
+@primaryTextColor: #fff;
+@primaryTextHoverColor: #F54786;
+
+
+
 
 .body {
-  height: 100%;
-  width: 100%;
+
+}
+//header styles
+.static-header {
+  position:absolute;
+  top:0;
+  width:100%;
+  left:0;
+  right:0;
+  margin:auto;
+  min-height: unit(@headerHeight, px);
+  background-color: @primaryColor;
+  overflow: hidden;
+  .nav{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size:20px;
+    list-style: none;
+    li {
+      float: left;
+      width: 20%;
+      color: @primaryTextColor;
+    }
+    a, a &:visited {
+      text-decoration: none;
+      color: @primaryTextColor;
+      &:hover {
+        color: @primaryTextHoverColor;
+      }
+    }
+    &.disabled {
+      opacity:.4;
+      &:hover {
+        color: @primaryTextHoverColor;
+        cursor:default;
+        border:4px solid #fff;
+      }
+    }
+    &:hover {
+      color: @primaryTextHoverColor;
+      cursor:pointer;
+    }
+  }
 }
 
-.static-header {
-  position: fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:60px;
-  background-color:@primary;
-  z-index:100;
+// main container styles
+.container {
+  margin-top: unit(@headerHeight, px);
 }

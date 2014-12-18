@@ -1,15 +1,50 @@
 @import url('../components/animate.css/animate.css');
 @import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Open+Sans:400,800,300);
-.body {
+.static-header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  min-height: 60px;
+  background-color: #4ad5d7;
+  overflow: hidden;
+}
+.static-header .nav {
   height: 100%;
   width: 100%;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+  list-style: none;
 }
-.static-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 60px;
-  background-color: #00fff0;
-  z-index: 100;
+.static-header .nav li {
+  float: left;
+  width: 20%;
+  color: #ffffff;
+}
+.static-header .nav a,
+a .static-header .nav:visited {
+  text-decoration: none;
+  color: #ffffff;
+}
+.static-header .nav a:hover,
+a .static-header .nav:visited:hover {
+  color: #f54786;
+}
+.static-header .nav.disabled {
+  opacity: .4;
+}
+.static-header .nav.disabled:hover {
+  color: #f54786;
+  cursor: default;
+  border: 4px solid #fff;
+}
+.static-header .nav:hover {
+  color: #f54786;
+  cursor: pointer;
+}
+.container {
+  margin-top: 60px;
 }

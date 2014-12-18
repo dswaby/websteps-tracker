@@ -32,7 +32,7 @@ module.exports = function(grunt) {
       },
       scripts: {
         files: ['public/js/**/*.js'],
-        tasks:  [ 'express:dev' ],
+        tasks:  [ 'express:dev'],
         options: {
           spawn: false,
           livereload: true
@@ -40,7 +40,7 @@ module.exports = function(grunt) {
       },
       less: {
         files: ['public/less/**/*.less'],
-        tasks:  [ 'less' ],
+        tasks:  [ 'less', 'hashres' ],
         options: {
           spawn: false,
           livereload: true
@@ -128,7 +128,7 @@ module.exports = function(grunt) {
         options: {
         },
         files: {
-          "public/css/style.css": "public/less/index.less"
+          "public/css/main.css": "public/less/index.less"
         }
       }
     }

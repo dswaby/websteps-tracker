@@ -1,9 +1,9 @@
 var crypto = require('crypto');
 var fs = require('fs');
 
-var mountFolder = function(connect, dir) {
-    return connect.static(require('path').resolve(dir));
-};
+// var mountFolder = function(connect, dir) {
+//     return connect.static(require('path').resolve(dir));
+// };
 
 function createFileSha(filenane) {
 	var sha = crypto.createHash('sha1');
@@ -15,7 +15,38 @@ module.exports = function(grunt) {
 		meta: {
 			version: '0.0.5'
 		},
-
+    express: {
+      options: {
+        // Override defaults here
+        port:8080
+      },
+      dev: {
+        options: {
+          script: './app.js'
+        }
+      }
+    },
+    watch: {
+      options: {
+        livereload: true
+      },
+      scripts: {
+        files: ['public/js/**/*.js'],
+        tasks:  [ 'express:dev' ],
+        options: {
+          spawn: false,
+          livereload: true
+        }
+      },
+      less: {
+        files: ['public/less/**/*.less'],
+        tasks:  [ 'less' ],
+        options: {
+          spawn: false,
+          livereload: true
+        }
+      }
+    },
 		jshint: {
 			options: {
 				"asi" : false,
@@ -76,6 +107,9 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+    clean: {
+      dev: './public/build/' 
+    },
 
 		hashres: {
 			options: {
@@ -88,16 +122,33 @@ module.exports = function(grunt) {
 				],
 				dest: { src: 'tools/client/index.js', out: 'source/client/index.js' }
 			}
-		}
-
+		},
+    less: {
+      development: {
+        options: {
+        },
+        files: {
+          "public/css/style.css": "public/less/index.less"
+        }
+      }
+    }
 	});
 
 	// Laoded tasks
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-requirejs');
 	grunt.loadNpmTasks('grunt-hashres2');
+  grunt.loadNpmTasks('grunt-express-server');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-coffee');
+  grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+
 
 
 	// Default task.
 	grunt.registerTask('default', ['jshint', 'requirejs', 'hashres']);
+  grunt.registerTask('dev', ['jshint','clean', 'requirejs', 'less','hashres', 'express', 'watch']);
+
+
 };

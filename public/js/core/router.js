@@ -31,7 +31,7 @@ define(function(require) {
 		tasks: function () {
 			require('./../apps/tasks/app').run(viewManager);
 		},
-    
+
     fitbit: function () {
       require('./../apps/fitbit/app').run(viewManager);
     }

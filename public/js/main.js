@@ -26,7 +26,11 @@ require.config({
 
 		'ApplicationRouter': {
 			deps: ['jQuery', 'Underscore', 'Backbone']
-		}
+		},
+
+    'jQueryForm': {
+      deps: ['jQuery']
+    }
 	},
 
 	paths: {
@@ -37,7 +41,8 @@ require.config({
 		handlebars: './../components/require-handlebars-plugin/Handlebars',
 		hbs: './../components/require-handlebars-plugin/hbs',
 		i18nprecompile : './../components/require-handlebars-plugin/hbs/i18nprecompile',
-		json2 : './../components/require-handlebars-plugin/hbs/json2'
+		json2 : './../components/require-handlebars-plugin/hbs/json2',
+    jQueryForm: './../components/jquery-form/jquery.form'
 	}
 });
 

@@ -9,10 +9,9 @@ var admin = function (app) {
    
     var serverPath = '/images/' + req.files.userPhoto.name;
 
-    require('fs').rename(
-    req.files.userPhoto.path,
-    '/Users/mark/code/examples/file-upload/upload-example-app/public' + serverPath,
-    function(error) {
+    require('fs').rename(req.files.userPhoto.path,
+      '/Users/mark/code/examples/file-upload/upload-example-app/public' + serverPath, 
+      function(error) {
       if(error) {
         res.send({ error: 'Ah crap! Something bad happened'});
         return;

@@ -1,6 +1,6 @@
-<div class="admin-form">
   <div class="form-title">Upload your fitness evidence</div>
-  <form>
-    <input type="file" name="userPhoto" />
+  <form id="uploadForm" enctype="multipart/form-data" action="/api/photos" method="post">
+    <input type="file" id="userPhotoInput" name="userPhoto" />
   </form>
-</div>
+  <span id="status"></span>
+  <img id="uploadedImage" />

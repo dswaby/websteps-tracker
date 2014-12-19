@@ -34,7 +34,11 @@ define(function(require) {
 
     fitbit: function () {
       require('./../apps/fitbit/app').run(viewManager);
-    }
+    }//,
+
+    // admin: function () {
+    //   require('./../apps/admin/app').run(viewManager);
+    // }
 
 	});
 

@@ -94,8 +94,8 @@ module.exports = function(grunt) {
 		// 			define: true
 		// 		}
 		// 	},
-			js: ['public/js/**/*.js', 'source/**/*.js']
-		},
+			// js: ['public/js/**/*.js', 'source/**/*.js']
+		// },
 
 		requirejs: {
 			js: {
@@ -158,6 +158,5 @@ module.exports = function(grunt) {
 	// Default task.
 	grunt.registerTask('default', [ 'requirejs', 'hashres']);
   grunt.registerTask('dev', ['clean', 'requirejs', 'less','hashres', 'express', 'watch']);
-
 
 };

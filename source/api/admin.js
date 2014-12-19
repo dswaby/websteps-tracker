@@ -5,14 +5,15 @@ var fs = require("fs"),
 
 var admin = function (app) {
 
-  app.post('/api/photos', function(req, res) {
+  app.post('/api/admin', function(req, res) {
    
-    var serverPath = '/images/' + req.files.userPhoto.name;
+    var serverPath = './public/img/' + req.files.userPhoto.name;
 
     require('fs').rename(req.files.userPhoto.path,
-      '/Users/mark/code/examples/file-upload/upload-example-app/public' + serverPath, 
+      serverPath, 
       function(error) {
       if(error) {
+        console.log(error);
         res.send({ error: 'Ah crap! Something bad happened'});
         return;
       }

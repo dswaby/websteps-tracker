@@ -9,7 +9,9 @@
 @primaryTextHoverColor: #F54786;
 
 
-
+html {
+    font-family: 'Open Sans', sans-serif;
+}
 
 .body {
 
@@ -23,19 +25,34 @@
   right:0;
   margin:auto;
   min-height: unit(@headerHeight, px);
+  max-height: unit(@headerHeight, px);
   background-color: @primaryColor;
   overflow: hidden;
-  .nav{
+
+  ul.nav{
     height: 100%;
+    max-height: unit(@headerHeight, px);
     width: 100%;
     text-align: center;
     font-family: 'Open Sans', sans-serif;
-    font-size:20px;
+    font-size:24px;
     list-style: none;
+    margin-top:15px;
+
     li {
       float: left;
-      width: 20%;
+      width: 18%;
       color: @primaryTextColor;
+      &:after {
+        content: "|";
+        cursor:initial;
+        float: right;
+      }
+    }
+    li:last-of-type {
+      &:after{
+        content: "";
+      }
     }
     a, a &:visited {
       text-decoration: none;
@@ -59,7 +76,18 @@
   }
 }
 
+.page {
+  position: absolute;
+  top:unit(@headerHeight, px);
+  padding-top: 5px;
+  width:100%;
+  min-height: 500px;
+}
+
 // main container styles
 .container {
-  margin-top: unit(@headerHeight, px);
+  position: absolute;
+  min-height: 100%;
+  width:95%;
+  left:2.5%;
 }

@@ -47,15 +47,15 @@ module.exports = function(grunt) {
         }
       }
     },
-    glob_to_multiple: {
-      expand: true,
-      // flatten: true,
-      bare:true,
-      cwd: 'public',
-      src: ['coffee/**/*.coffee'],
-      dest: 'js/',
-      ext: '.js'
-    },
+    // glob_to_multiple: {
+    //   expand: true,
+    //   // flatten: true,
+    //   bare:true,
+    //   cwd: 'public',
+    //   src: ['coffee/**/*.coffee'],
+    //   dest: 'js/',
+    //   ext: '.js'
+    // },
 		// jshint: {
 		// 	options: {
 		// 		"asi" : false,
@@ -149,7 +149,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-hashres2');
   grunt.loadNpmTasks('grunt-express-server');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-coffee');
+  // grunt.loadNpmTasks('grunt-contrib-coffee');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-clean');
 

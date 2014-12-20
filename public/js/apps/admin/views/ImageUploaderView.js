@@ -1,7 +1,9 @@
 define(function (require) {
   var Backbone = require('Backbone');
+  
 
   var ImageUploaderView = Backbone.View.extend({
+    
 
     template: require('hbs!./../templates/ImageUploaderView'),
     className: 'admin-form',
@@ -9,24 +11,29 @@ define(function (require) {
 
     },
     render: function () {
-      this.$el.html(this.template());
       require('jQueryForm');
+
+      var $el = this.$el;
+
+      this.$ = function (sel) {
+        return this.$el.find(sel);
+      };
+      
+      $el.html(this.template());
+
       var timerId = setInterval(function() {
-        console.log(timerId);
         if($('#userPhotoInput').val() !== '') {
           clearInterval(timerId);
           $('#uploadForm').submit();
         }
       }, 500);
-      $('#uploadForm').submit(function() {
-        status('uploading the file ...');
- 
-        $(this).ajaxSubmit({                                                                                                                 
 
+      $el.find('#uploadForm').submit(function() {
+        status('uploading the file ...');
+        $(this).ajaxSubmit({                                                                                                                 
           error: function(xhr) {
             status('Error: ' + xhr.status);
           },
-
           success: function(response) {
             if(response.error) {
               status('Opps, something bad happened');
@@ -34,15 +41,21 @@ define(function (require) {
             }
             var imageUrlOnServer = response.path;
             status('Success, file uploaded to:' + imageUrlOnServer);
-            $('<img/>').attr('src', imageUrlOnServer).appendTo($('body'));
+            $('#uploadedImage').attr('src', imageUrlOnServer);
           }
         });
-
         return false;
+      });
+      
+      $el.find('form').on('submit', function(e) {
+          e.preventDefault(); // prevent native submit
+          $(this).ajaxSubmit({
+            target: '#uploadForm'
+          });
       });
 
       function status(message) {
-        $('#status').text(message);
+        $el.find('#admin-status').text(message);
       }
 
       return this;

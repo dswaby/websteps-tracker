@@ -1,5 +1,29 @@
 @import url('../components/animate.css/animate.css');
 @import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Open+Sans:400,800,300);
+.admin-form {
+  position: absolute;
+  width: 100%;
+  height: 300px;
+  margin: 0 auto;
+  border: 1px solid #5ECBE7;
+  border-radius: 5px;
+  text-align: center;
+}
+.admin-form .page-title {
+  font-size: 28px;
+  font-weight: bold;
+}
+.admin-form .form-title {
+  font-size: 24px;
+  font-weight: 300;
+  padding-bottom: 30px;
+}
+.admin-form img {
+  max-height: 500px;
+  max-width: 100%;
+  height: auto;
+  width: auto;
+}
 html {
   font-family: 'Open Sans', sans-serif;
 }

@@ -10,7 +10,7 @@
   text-align: center;
 }
 .admin-form .page-title {
-  font-size: 28px;
+  font-size: 48px;
   font-weight: bold;
 }
 .admin-form .form-title {
@@ -23,6 +23,30 @@
   max-width: 100%;
   height: auto;
   width: auto;
+}
+.admin-form .user-photo::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.admin-form .user-photo::before {
+  content: 'Select some files';
+  display: inline-block;
+  background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 20px 10px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 11pt;
+}
+.admin-form .user-photo:hover::before {
+  border-color: black;
+}
+.admin-form .user-photo:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
 }
 html {
   font-family: 'Open Sans', sans-serif;

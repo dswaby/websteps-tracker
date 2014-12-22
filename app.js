@@ -26,6 +26,8 @@ app.configure('development', function(){
 
 app.configure('production', function(){
 	app.use(express.compress());
+  app.use(express.json({limit: '50mb'}));
+  app.use(express.urlencoded({limit: '50mb'}));
 	app.use(express.static(path.join(__dirname, 'public'), { maxAge: oneMonth }));
 	app.use(middleware.serveMaster.production());
 });

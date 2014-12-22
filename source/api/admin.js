@@ -6,7 +6,7 @@ var maxSize = 800000000;
 
 var admin = function (app) {
 
-  app.post('/api/admin', function(req, res) {
+  app.post('/api/admin/pics', function(req, res) {
     var serverPath = './public/img/' + req.files.userPhoto.name;
     var publicPath = './img/' + req.files.userPhoto.name;
     

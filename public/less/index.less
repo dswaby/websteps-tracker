@@ -2,14 +2,14 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Open+Sans:400,800,300);
 @import url('./admin.less');
 
-@headerHeight: 80;
-@headerHeightMobile:80;
+@headerHeight: 60;
+@headerHeightMobile:150;
 
 @primaryColor: #4AD5D7;
 @primaryTextColor: #fff;
 @primaryTextHoverColor: #F54786;
 
-@mobile: ~"only screen and (min-device-width : 375px) and (max-device-width : 736px)";
+@mobile: ~"only screen and (max-device-width : 736px)";
 
 html {
     font-family: 'Open Sans', sans-serif;
@@ -38,7 +38,7 @@ html {
     height: 100%;
     max-height: unit(@headerHeight, px);
 
-    width: 100%;
+    max-width: 100%;
     text-align: center;
     font-family: 'Open Sans', sans-serif;
     font-size:24px;
@@ -47,21 +47,22 @@ html {
     @media @mobile {
       height: unit(@headerHeightMobile, px);
       font-size:36px;
+      padding-top: 30px;
     }
 
     li {
       float: left;
       width: 23%;
       color: @primaryTextColor;
-       white-space: nowrap;
+      white-space: nowrap;
       &:after {
         content: "|";
         cursor:initial;
         float: right;
         white-space: nowrap;
         @media @mobile {
-        display:none;
-      }
+          display:none;
+        }
       }
     }
     li:last-of-type {

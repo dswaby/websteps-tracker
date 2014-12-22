@@ -157,6 +157,7 @@ module.exports = function(grunt) {
 
 	// Default task.
 	grunt.registerTask('default', [ 'requirejs', 'hashres']);
-  grunt.registerTask('dev', ['clean', 'requirejs', 'less','hashres', 'express', 'watch']);
+  grunt.registerTask('dev', ['clean', 'requirejs', 'less','hashres:prod', 'express', 'watch']);
+  grunt.registerTask('build', [ 'clean', 'requirejs', 'less','hashres']);
 
 };

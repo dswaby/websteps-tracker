@@ -42,7 +42,8 @@ require.config({
 		hbs: './../components/require-handlebars-plugin/hbs',
 		i18nprecompile : './../components/require-handlebars-plugin/hbs/i18nprecompile',
 		json2 : './../components/require-handlebars-plugin/hbs/json2',
-    jQueryForm: './../components/jquery-form/jquery.form'
+    jQueryForm: './../components/jquery-form/jquery.form',
+    velocity: './../components/velocity/velocity'
 	}
 });
 

@@ -15,6 +15,7 @@ var pictures = function (app) {
     }).filter(function (file) {
       return fs.statSync(file).isFile();
     }).forEach(function (file) {
+      console.log(file)
         if (path.extname(file).toString().toUpperCase() === '.JPG'|| path.extname(file).toString().toUpperCase() === '.PNG' || path.extname(file).toString().toUpperCase() === '.jpeg') {
           images.push({
             "path": "./img/"+ path.basename(file),

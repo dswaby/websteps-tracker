@@ -16,7 +16,6 @@ var pictures = function (app) {
           return fs.statSync(file).isFile();
       }).forEach(function (file) {
         if (path.extname(file).toString().toUpperCase() === '.JPG'|| path.extname(file).toString().toUpperCase() === '.PNG' || path.extname(file).toString().toUpperCase() === '.jpeg') {
-          console.log(fs.statSync(file));
           images.push({
             "path": file,
             "created": (fs.statSync(file).ctime).getTime()

@@ -22,7 +22,7 @@ var admin = function (app) {
 
     require('fs').rename(req.files.userPhoto.path, serverPath, function(error) {
       if (error) {
-        res.send({ error: 'Ah crap! Something bad happened'});
+        res.send({ error: 'Something bad happened'});
         return;
       }
 

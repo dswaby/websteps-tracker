@@ -39,6 +39,13 @@ module.exports = function(grunt) {
           livereload: true
         }
       },
+      api: {
+        files: ['source/api/*'],
+        task: [ 'express:dev'],
+        options: {
+          spawn: false
+        }
+      },
       less: {
         files: ['public/less/**/*.less'],
         tasks:  [ 'less', 'hashres' ],

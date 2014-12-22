@@ -4,11 +4,15 @@ var fs = require("fs"),
 
 var pictures = function (app) {
 
+  app.get('/api/fitbit',
+    getImages,
+    returnImages
+  );
 
-
-  app.get('/api/fitbit', function (req, res) {
+  function getImages(req, res, next) {
     var p = "./public/img/";
-    var images = [];
+
+    imageCollection = [];
     fs.readdir(p, function (err, files) {
       if (err) {
         throw err;
@@ -18,17 +22,25 @@ var pictures = function (app) {
       }).filter(function (file) {
         return fs.statSync(file).isFile();
       }).forEach(function (file) {
-        console.log(file)
-          if (path.extname(file).toString().toUpperCase() === '.JPG'|| path.extname(file).toString().toUpperCase() === '.PNG' || path.extname(file).toString().toUpperCase() === '.jpeg') {
-            images.push({
-              "path": "./img/"+ path.basename(file),
-              "created": (fs.statSync(file).ctime).getTime()
-            });
-          }
+        if (path.extname(file).toString().toUpperCase() === '.JPG'|| path.extname(file).toString().toUpperCase() === '.PNG' || path.extname(file).toString().toUpperCase() === '.jpeg') {
+          console.log(imageCollection)
+          imageCollection.push({
+            "path": "./img/"+ path.basename(file),
+            "created": (fs.statSync(file).ctime).getTime()
+          });
+        }
       });
     });
-      res.json(images);
-  });
+
+    return next (null, imageCollection);
+  }
+
+  function returnImages(req, res, next) {
+    console.log(req)
+    var imageCollection = req.body;
+    res.json(imageCollection);
+  }
 };
+
 
 module.exports = pictures;

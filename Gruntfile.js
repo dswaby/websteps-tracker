@@ -19,7 +19,7 @@ module.exports = function(grunt) {
       options: {
         // Override defaults here
         port:8000,
-        environment: "development"
+        node_env: 'development'
       },
       dev: {
         options: {

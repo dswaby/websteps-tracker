@@ -39,7 +39,7 @@ require('./source/api/fitbit')(app);
 require('./source/api/admin')(app);
 
 http.createServer(app).listen(app.get('port'), function(){
-	var environment = process.env.NODE_ENV || 'production';
+	var environment = process.env.NODE_ENV;
 	console.log('SPA boilerplate started: ' + app.get('port') + ' (' + environment + ')');
 });
  

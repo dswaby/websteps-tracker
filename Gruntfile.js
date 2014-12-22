@@ -18,7 +18,8 @@ module.exports = function(grunt) {
     express: {
       options: {
         // Override defaults here
-        port:8080
+        port:8080,
+        environment: "development"
       },
       dev: {
         options: {

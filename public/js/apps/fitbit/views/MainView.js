@@ -25,7 +25,7 @@ define(function(require) {
         window.audio.play();
       }
 
-      window.on("click", function(e){
+      $(window).on("click", function(e){
         window.audio.pause();
         
       })

@@ -21,7 +21,7 @@ define(function(require) {
       //Audio 
       var audio = new Audio();
       audio.src = "./../../../mp3/saxguy.mp3";
-      // audio.play();
+      audio.play();
 
       return this;
     }

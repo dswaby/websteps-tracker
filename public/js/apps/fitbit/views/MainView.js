@@ -19,9 +19,12 @@ define(function(require) {
       this.subviews.push(picturesView);
 
       //Audio 
-      var audio = new Audio();
-      audio.src = "./../../../mp3/saxguy.mp3";
-      audio.play();
+      if (!window.audio) {
+        window.audio = new Audio();
+        window.audio.src = "./../../../mp3/saxguy.mp3";
+        window.audio.play();
+      }
+      
 
       return this;
     }

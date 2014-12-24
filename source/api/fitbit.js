@@ -1,21 +1,15 @@
 var fs = require("fs"),
     path = require("path"),
     util = require("util");
-
-var pictures = function (app) {
-
-  app.get('/api/fitbit',
-    getImages,
-    returnImages
-  );
-
-  function getImages(req, res, next) {
+var FitbitModel = require("./models/fitbit.js");
+var pictures = function (router) {
+  router.route('/api/fitbit').get(function(req, res) {
     var p = "./public/img/";
 
     imageCollection = [];
     fs.readdir(p, function (err, files) {
       if (err) {
-        throw err;
+        return next(err);x
       }
       files.map(function (file) {
         return path.join(p, file);
@@ -23,23 +17,26 @@ var pictures = function (app) {
         return fs.statSync(file).isFile();
       }).forEach(function (file) {
         if (path.extname(file).toString().toUpperCase() === '.JPG'|| path.extname(file).toString().toUpperCase() === '.PNG' || path.extname(file).toString().toUpperCase() === '.jpeg') {
-          console.log(imageCollection)
           imageCollection.push({
             "path": "./img/"+ path.basename(file),
             "created": (fs.statSync(file).ctime).getTime()
           });
         }
       });
+      return res.json(imageCollection);
+
     });
+  });
 
-    return next (null, imageCollection);
-  }
+  // function getImages(req, res, next) {
+    
 
-  function returnImages(req, res, next) {
-    console.log(req)
-    var imageCollection = req.body;
-    res.json(imageCollection);
-  }
+  // }
+
+  // function returnImages(req, res, imageCollection) {
+  //   console.log(imageCollection)
+    
+  // }
 };
 
 

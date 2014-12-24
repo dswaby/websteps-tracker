@@ -1,19 +1,15 @@
 var fs = require("fs"),
     path = require("path"),
-    util = require("util");
-var maxSize = 800000000;
-
+    util = require("util"),
+    multipart = require('connect-multiparty');
 
 var admin = function (app) {
+  var multipartMiddleware = multipart();
 
-  app.post('/api/admin/pics', function(req, res) {
+  app.post('/api/admin/pics', multipartMiddleware, function(req, res) {
     var serverPath = './public/img/' + req.files.userPhoto.name;
     var publicPath = './img/' + req.files.userPhoto.name;
     
-    if (req.files.userPhoto.size > maxSize) {
-      res.send({error : 'file size exeeded maximum, file size was '+ req.files.userPhoto.size +' and max is 7.6M'});
-      return;
-    }
     if (req.files.userPhoto.type !== "image/jpeg" && req.files.userPhoto.type !== 'image/gif' && req.files.userPhoto.type !== 'image/png') {
       res.send({error : 'not photo'});
       return;

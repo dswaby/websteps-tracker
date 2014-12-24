@@ -24,6 +24,11 @@ define(function(require) {
         window.audio.src = "./../../../mp3/saxguy.mp3";
         window.audio.play();
       }
+
+      window.on("click", function(e){
+        window.audio.pause();
+        
+      })
       
 
       return this;

@@ -19,16 +19,25 @@ define(function(require) {
       this.subviews.push(picturesView);
 
       //Audio 
+      var mp3s = ["./../../../mp3/saxguy.mp3", "./../../../mp3/smash_sumthin.mp3", "./../../../mp3/real_bass.mp3"];
+
       if (!window.audio) {
         window.audio = new Audio();
-        window.audio.src = "./../../../mp3/saxguy.mp3";
+        window.audio.src = mp3s[ _.random(0, mp3s.length - 1)];
         window.audio.play();
+        window.audio.state = "playing";
       }
 
       $(window).on("click", function(e){
-        window.audio.pause();
-        
-      })
+        if (window.audio.state === "playing") {
+          window.audio.pause();
+          window.audio.state = "paused";
+        }
+        else if (window.audio.state === "paused") {
+          window.audio.play();
+          window.audio.state = "playing";
+        }
+      });
       
 
       return this;

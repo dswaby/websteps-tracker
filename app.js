@@ -23,8 +23,6 @@ var oneMonth = 2678400000;
   app.use(favicon(__dirname + '/public/favicon.ico'));
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
-	//app.use(express.favicon());
-	// app.use(express.logger('dev'));
 	app.use(methodOverride());
 
 if (process.env.NODE_ENV === 'development') {

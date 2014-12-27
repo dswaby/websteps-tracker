@@ -17,6 +17,7 @@ var favicon = require('serve-favicon');
 var oneMonth = 2678400000;
 
 	app.set('port', process.env.PORT || 8080);
+  console.log(app.get('port'))
 	app.set('views', __dirname + '/views');
 	app.set('view engine', 'ejs');
 	app.use(middleware.cors());

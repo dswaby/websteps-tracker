@@ -10,7 +10,7 @@ var app = express();
 var logger = require('express-logger');
 var compression = require('compression');
 var errorHandler = require('errorhandler');
-var favicon = require('serve-favicon');
+// var favicon = require('serve-favicon');
 // var router = express.Router();
 
 
@@ -20,7 +20,7 @@ var oneMonth = 2678400000;
 	app.set('views', __dirname + '/views');
 	app.set('view engine', 'ejs');
 	app.use(middleware.cors());
-  app.use(favicon(__dirname + '/public/favicon.ico'));
+  // app.use(favicon(__dirname + '/public/favicon.ico'));
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
 	app.use(methodOverride());
@@ -50,7 +50,10 @@ require('./source/api/fitbit')(app);
 require('./source/api/admin')(app);
 
 
-app.listen(app.get('port'))
+app.listen(app.get('port'), function() {
+  var environment = process.env.NODE_ENV || 'development';
+  console.log('SPA boilerplate started: ' + app.get('port') + ' (' + environment + ')');
+});
 // http.createServer(app).listen(app.get('port'), function(){
 // 	var environment = process.env.NODE_ENV;
 // 	console.log('SPA boilerplate started: ' + app.get('port') + ' (' + environment + ')');

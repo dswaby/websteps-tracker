@@ -55,16 +55,18 @@
   top: 0;
   bottom: 0;
   margin: auto;
+  display: block;
   height: 200px;
   width: 400px;
   border: 1px solid gray;
 }
-.audio-toggle {
+#audio-toggle {
   height: 50px;
   width: 150px;
   background-color: #e6e6e6;
   color: #fff;
   font-size: 18px;
+  border-radius: 4px;
 }
 html {
   font-family: 'Open Sans', sans-serif;

@@ -17,7 +17,6 @@ var favicon = require('serve-favicon');
 var oneMonth = 2678400000;
 
 	app.set('port', process.env.PORT || 8080);
-  console.log(app.get('port'))
 	app.set('views', __dirname + '/views');
 	app.set('view engine', 'ejs');
 	app.use(middleware.cors());
@@ -34,8 +33,10 @@ if (process.env.NODE_ENV === 'development') {
 
 if (process.env.NODE_ENV === 'production') {
 	app.use(compression);
-  app.use(express.json({limit: '50mb'}));
-  app.use(express.urlencoded({limit: '50mb'}));
+  app.use(bodyParser.json());
+  
+  app.use(bodyParser.urlencoded({ extended: false }));
+
 	app.use(express.static(path.join(__dirname, 'public'), { maxAge: oneMonth }));
 	app.use(middleware.serveMaster.production());
 };

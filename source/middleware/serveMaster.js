@@ -23,6 +23,7 @@ module.exports = {
 	},
 
 	production: function () {
+    console.log(client.js);
 		return hander('SPA Boilerplate | Production', client.js, client.css);
 	}
 };

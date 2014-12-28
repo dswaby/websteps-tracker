@@ -14,16 +14,16 @@ var favicon = require('serve-favicon');
 // var router = express.Router();
 
 
-var oneMonth = 2678400000;
+// var oneMonth = 2678400000;
 
-	app.set('port', process.env.PORT || 8080);
-	app.set('views', __dirname + '/views');
-	app.set('view engine', 'ejs');
-	app.use(middleware.cors());
-  // app.use(favicon(__dirname + '/public/favicon.ico'));
-  app.use(bodyParser.urlencoded({ extended: false }));
-  app.use(bodyParser.json());
-	app.use(methodOverride());
+app.set('port', process.env.PORT || 8080);
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+app.use(middleware.cors());
+// app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(methodOverride());
 
 if (process.env.NODE_ENV === 'development') {
   app.use(errorHandler());
@@ -32,12 +32,10 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 if (process.env.NODE_ENV === 'production') {
-	app.use(compression);
-  app.use(bodyParser.json());
-  
-  app.use(bodyParser.urlencoded({ extended: false }));
+	// app.use(compression);
+  app.use(errorHandler());
 
-	app.use(express.static(path.join(__dirname, 'public'), { maxAge: oneMonth }));
+	app.use(express.static(path.join(__dirname, 'public')));
 	app.use(middleware.serveMaster.production());
 };
 

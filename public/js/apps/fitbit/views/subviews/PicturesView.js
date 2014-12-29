@@ -4,7 +4,7 @@ define(function(require) {
 
   var FitBitVizView = Backbone.View.extend({
     template: require('hbs!./../../templates/PicturesView'),
-
+    className: "pictures-view",
     initialize: function () {
       this.subviews = [];
     },

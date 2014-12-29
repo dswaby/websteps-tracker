@@ -5,9 +5,12 @@ define(function(require) {
   var RunningManView = require('./subviews/RunningManView');
 
   var MainView = Backbone.View.extend({
+    className: "dannys-unit",
+    
     initialize: function () {
       this.subviews = [];
     },
+
 
     render: function () {
       var runningManView = new RunningManView();
@@ -29,6 +32,7 @@ define(function(require) {
       }
 
       $(window).on("click", function(e){
+        console.log($(this))
         if (window.audio.state === "playing") {
           window.audio.pause();
           window.audio.state = "paused";

@@ -19,11 +19,11 @@ function hander(title, mainJs, mainCss) {
 
 module.exports = {
 	development: function () {
-		return hander('SPA Boilerplate | Development', '/js/main.js', '/css/main.css');
+		return hander('Fitbit Evidence | Development', '/js/main.js', '/css/main.css');
 	},
 
 	production: function () {
     console.log(client.js);
-		return hander('SPA Boilerplate | Production', client.js, client.css);
+		return hander('Fitbit Evidence | Production', client.js, client.css);
 	}
 };

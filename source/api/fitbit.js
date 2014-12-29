@@ -27,16 +27,6 @@ var pictures = function (router) {
 
     });
   });
-
-  // function getImages(req, res, next) {
-    
-
-  // }
-
-  // function returnImages(req, res, imageCollection) {
-  //   console.log(imageCollection)
-    
-  // }
 };
 
 

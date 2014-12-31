@@ -5,7 +5,7 @@ define(function (require) {
 		template: require('hbs!./../templates/HeaderView'),
 
 		render: function () {
-			this.$el.html(this.template({title: 'TheMailer'}));
+			this.$el.html(this.template({title: 'Picture logs of fitness activity', subtitle: '... since a wearing a device that tracks each of your steps isn\'t always enough'}));
 			return this;
 		}
 	});

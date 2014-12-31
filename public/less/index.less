@@ -5,13 +5,15 @@
 
 
 @headerHeight: 60;
-@headerHeightMobile:150;
+@headerHeightMobile:100;
+@headerHeightSmallerMobile:150;
+
 
 @primaryColor: #4AD5D7;
 @primaryTextColor: #fff;
 @primaryTextHoverColor: #F54786;
 @smallerMobile: ~"only screen and (max-width : 449px)";
-@mobile: ~"only screen and (min-device-width : 450px) and (max-device-width : 736px)";
+@mobile: ~"only screen and (min-width : 450px) and (max-width : 736px)";
 
 @import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Open+Sans:400,800,300);
 
@@ -41,7 +43,7 @@ html {
   }
 
   @media @smallerMobile {
-    height: unit(@headerHeightMobile, px);
+    height: unit(@headerHeightSmallerMobile, px);
   }
 
   ul.nav{
@@ -56,11 +58,11 @@ html {
     margin-top:15px;
     @media @mobile {
       height: unit(@headerHeightMobile, px);
-      font-size:36px;
+      font-size:24px;
       padding-top: 15px;
     }
     @media @smallerMobile {
-      height: unit(@headerHeightMobile, px);
+      height: unit(@headerHeightSmallerMobile, px);
       font-size:36px;
       padding-top: 15px;
       padding-left: 0;
@@ -127,7 +129,7 @@ html {
     top: unit(@headerHeightMobile, px);
   }
   @media @smallerMobile {
-    top: unit(@headerHeightMobile, px);
+    top: unit(@headerHeightSmallerMobile, px);
   }
 
   overflow-x: none;

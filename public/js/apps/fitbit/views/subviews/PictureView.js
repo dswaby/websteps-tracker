@@ -3,7 +3,7 @@ define(function (require) {
 
   var PictureView = Backbone.View.extend({
     tagName: 'div',
-    className: 'fitbit-item-view',
+    className: 'picture-view picture-item',
 
     template: require('hbs!./../../templates/PictureView'),
 

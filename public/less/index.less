@@ -10,8 +10,8 @@
 @primaryColor: #4AD5D7;
 @primaryTextColor: #fff;
 @primaryTextHoverColor: #F54786;
-
-@mobile: ~"only screen and (max-device-width : 736px)";
+@smallerMobile: ~"only screen and (max-width : 449px)";
+@mobile: ~"only screen and (min-device-width : 450px) and (max-device-width : 736px)";
 
 @import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Open+Sans:400,800,300);
 
@@ -31,11 +31,16 @@ html {
   left:0;
   right:0;
   margin:auto;
-  min-width: 616px;
+  // min-width: 616px;
   height: unit(@headerHeight, px);
   background-color: @primaryColor;
   overflow: hidden;
+  z-index:1000;
   @media @mobile {
+    height: unit(@headerHeightMobile, px);
+  }
+
+  @media @smallerMobile {
     height: unit(@headerHeightMobile, px);
   }
 
@@ -52,12 +57,23 @@ html {
     @media @mobile {
       height: unit(@headerHeightMobile, px);
       font-size:36px;
-      padding-top: 30px;
+      padding-top: 15px;
+    }
+    @media @smallerMobile {
+      height: unit(@headerHeightMobile, px);
+      font-size:36px;
+      padding-top: 15px;
+      padding-left: 0;
     }
 
     li {
       float: left;
       width: 23%;
+      min-width: 100px;
+      @media @smallerMobile {
+        width: 23%;
+        min-width: 155px;
+      }
       color: @primaryTextColor;
       white-space: nowrap;
       &:after {
@@ -66,6 +82,9 @@ html {
         float: right;
         white-space: nowrap;
         @media @mobile {
+          display:none;
+        }
+        @media @smallerMobile {
           display:none;
         }
       }
@@ -99,21 +118,30 @@ html {
 
 .page {
   position: absolute;
+  left:0;
   top:unit(@headerHeight, px);
-  padding-top: 5px;
   width:100%;
+  height: 100%;
   min-height: 500px;
   @media @mobile {
     top: unit(@headerHeightMobile, px);
   }
+  @media @smallerMobile {
+    top: unit(@headerHeightMobile, px);
+  }
+
+  overflow-x: none;
+  overflow-y: none;
 }
 
 // main container styles
 .container {
   position: absolute;
-  min-height: 100%;
-  width:95%;
-  left:2.5%;
+  top:0;
+
+  height: 100%;
+  width:100%;
+  left:0;
 }
 
 

@@ -4,7 +4,7 @@ define(function(require) {
 
   var PicturesView = Backbone.View.extend({
     template: require('hbs!./../../templates/PicturesView'),
-    className: "pictures-view",
+    className: "pictures-view picture-grid",
     initialize: function () {
       this.subviews = [];
     },

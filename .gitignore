@@ -4,3 +4,4 @@ public/components
 *.log
 source/api/data/
 public/img/
+public/build/

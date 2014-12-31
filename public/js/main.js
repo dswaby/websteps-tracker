@@ -30,6 +30,9 @@ require.config({
 
     'jQueryForm': {
       deps: ['jQuery']
+    },
+    'c3': {
+      deps: ['d3']
     }
 	},
 
@@ -43,7 +46,9 @@ require.config({
 		i18nprecompile : './../components/require-handlebars-plugin/hbs/i18nprecompile',
 		json2 : './../components/require-handlebars-plugin/hbs/json2',
     jQueryForm: './../components/jquery-form/jquery.form',
-    velocity: './../components/velocity/velocity'
+    velocity: './../components/velocity/velocity',
+    c3: './../components/c3/c3',
+    d3: './../components/d3/d3'
 	}
 });
 

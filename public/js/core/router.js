@@ -7,7 +7,7 @@ define(function(require) {
 			'': 'home',
 			'inbox': 'inbox',
 			'inbox/compose': 'inboxCompose',
-			'contacts': 'contacts',
+			'charts': 'charts',
 			'tasks': 'tasks',
       'fitbit': 'fitbit',
       'admin': 'admin'
@@ -25,8 +25,8 @@ define(function(require) {
 			require('./../apps/inbox/subapps/compose/app').run(viewManager);
 		},
 
-		contacts: function () {
-			require('./../apps/contacts/app').run(viewManager);
+		charts: function () {
+			require('./../apps/charts/app').run(viewManager);
 		},
 
 		tasks: function () {

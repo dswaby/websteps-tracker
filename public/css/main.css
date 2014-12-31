@@ -66,12 +66,12 @@
   max-height: 100%;
   overflow: auto;
 }
-.picture {
+.pictures .picture {
   width: 100px;
   height: 100px;
   float: left;
 }
-.picture img {
+.pictures .picture img {
   width: 100px;
   height: 100px;
 }

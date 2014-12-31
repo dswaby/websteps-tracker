@@ -2,7 +2,7 @@ define(function(require) {
   var Backbone = require('Backbone');
   var PictureView = require('./PictureView');
 
-  var FitBitVizView = Backbone.View.extend({
+  var PicturesView = Backbone.View.extend({
     template: require('hbs!./../../templates/PicturesView'),
     className: "pictures-view",
     initialize: function () {
@@ -13,7 +13,7 @@ define(function(require) {
       this.$el.html(this.template());
 
       var pictures = this.$('.pictures');
-      console.log(this);
+
       this.collection.forEach(function (picture) {
         var view = new PictureView({model: picture});
         pictures.append(view.render().el);
@@ -24,5 +24,5 @@ define(function(require) {
     }
   });
 
-  return FitBitVizView;
+  return PicturesView;
 });

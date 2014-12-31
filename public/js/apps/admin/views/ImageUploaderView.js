@@ -1,6 +1,7 @@
 define(function (require) {
   var Backbone = require('Backbone');
   
+  require('jQueryForm');
 
   var ImageUploaderView = Backbone.View.extend({
     
@@ -11,7 +12,6 @@ define(function (require) {
 
     },
     render: function () {
-      require('jQueryForm');
 
       var $el = this.$el;
 

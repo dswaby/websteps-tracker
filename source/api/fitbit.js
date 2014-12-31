@@ -9,14 +9,14 @@ var pictures = function (router) {
     imageCollection = [];
     fs.readdir(p, function (err, files) {
       if (err) {
-        return next(err);x
+        return next(err);
       }
       files.map(function (file) {
         return path.join(p, file);
       }).filter(function (file) {
         return fs.statSync(file).isFile();
       }).forEach(function (file) {
-        if (path.extname(file).toString().toUpperCase() === '.JPG'|| path.extname(file).toString().toUpperCase() === '.PNG' || path.extname(file).toString().toUpperCase() === '.jpeg') {
+        if (path.extname(file).toString().toUpperCase() === '.JPG'|| path.extname(file).toString().toUpperCase() === '.PNG' || path.extname(file).toString().toUpperCase() === '.JPEG') {
           imageCollection.push({
             "path": "./img/"+ path.basename(file),
             "created": (fs.statSync(file).ctime).getTime()

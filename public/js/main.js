@@ -30,9 +30,6 @@ require.config({
 
     'jQueryForm': {
       deps: ['jQuery']
-    },
-    'c3': {
-      deps: ['d3']
     }
 	},
 

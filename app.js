@@ -12,7 +12,7 @@ var compression = require('compression');
 var errorHandler = require('errorhandler');
 var favicon = require('serve-favicon');
 // var router = express.Router();
-
+bodyParser({limit: '100mb'});
 
 // var oneMonth = 2678400000;
 
@@ -21,9 +21,9 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(middleware.cors());
 // app.use(favicon(__dirname + '/public/favicon.ico'));
-app.use(bodyParser.json({limit: '50mb'}));
+// app.use(bodyParser.json({limit: '50mb'}));
 
-app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+// app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(methodOverride());
 
 if (process.env.NODE_ENV === 'development') {

@@ -12,7 +12,7 @@ var compression = require('compression');
 var errorHandler = require('errorhandler');
 var favicon = require('serve-favicon');
 // var router = express.Router();
-bodyParser({limit: '100mb'});
+// bodyParser({limit: '100mb'});
 
 // var oneMonth = 2678400000;
 

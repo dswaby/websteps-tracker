@@ -28,6 +28,10 @@ var admin = function (app) {
         imagePath: publicPath,
         comments: req.body.optionalPhotoComments
       });
+      photoLog.save(function(err){
+        if(err)
+            res.send(err);
+      });
 
       res.send({
         path: publicPath

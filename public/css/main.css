@@ -4,7 +4,7 @@
 .admin-form {
   position: absolute;
   width: 100%;
-  height: 300px;
+  height: 100%;
   margin: 0 auto;
   border: 1px solid #5ECBE7;
   border-radius: 5px;
@@ -25,12 +25,16 @@
   height: auto;
   width: auto;
 }
+.admin-form .user-photo {
+  margin-bottom: 50px;
+  padding: 70px 0;
+}
 .admin-form .user-photo::-webkit-file-upload-button {
   visibility: hidden;
 }
 .admin-form .user-photo::before {
   content: 'Select some files';
-  display: inline-block;
+  display: block;
   background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
   border: 1px solid #999;
   border-radius: 3px;
@@ -49,6 +53,47 @@
 .admin-form .user-photo:active::before {
   background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
 }
+.admin-form input {
+  height: 40px;
+  line-height: 40px;
+  width: 74%;
+  margin-top: 15px;
+  margin-left: 20px;
+}
+.admin-form ::-webkit-input-placeholder {
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  color: #666;
+  font-size: 24px;
+}
+.admin-form :-moz-placeholder {
+  /* Firefox 18- */
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  color: #666;
+  font-size: 24px;
+}
+.admin-form ::-moz-placeholder {
+  /* Firefox 19+ */
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  color: #666;
+  font-size: 24px;
+}
+.admin-form :-ms-input-placeholder {
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  color: #666;
+  font-size: 24px;
+}
+.admin-form button {
+  height: 40px;
+  line-height: 40px;
+  width: 74%;
+  margin-top: 15px;
+  margin-left: 20px;
+  background-color: #5ECBE7;
+}
 .dannys-unit {
   position: absolute;
   left: 0;
@@ -66,13 +111,13 @@
   overflow: auto;
 }
 .pictures .picture {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   float: left;
 }
 .pictures .picture img {
-  width: 100px;
-  height: 100px;
+  width: 145px;
+  height: 120px;
 }
 #audio-toggle {
   height: 50px;

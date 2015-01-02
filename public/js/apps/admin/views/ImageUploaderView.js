@@ -21,12 +21,9 @@ define(function (require) {
       
       $el.html(this.template());
 
-      var timerId = setInterval(function() {
-        if($('#userPhotoInput').val() !== '') {
-          clearInterval(timerId);
-          $('#uploadForm').submit();
-        }
-      }, 500);
+      $el.find('#submit-button').submit(function() {
+        $('#uploadForm').submit();
+      });
 
       $el.find('#uploadForm').submit(function() {
         status('uploading the file ...');
@@ -50,7 +47,7 @@ define(function (require) {
       $el.find('form').on('submit', function(e) {
           e.preventDefault(); // prevent native submit
           $(this).ajaxSubmit({
-            target: '#uploadForm'
+            target: '#uploadForm #photoComments'
           });
       });
 

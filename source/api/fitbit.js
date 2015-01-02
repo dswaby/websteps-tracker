@@ -1,7 +1,7 @@
 var fs = require("fs"),
     path = require("path"),
     util = require("util");
-var FitbitModel = require("./models/fitbit.js");
+var PhotoLog = require("./models/photoLog.js");
 var pictures = function (router) {
   router.route('/api/fitbit').get(function(req, res) {
     var p = "./public/img/";

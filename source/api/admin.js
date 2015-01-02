@@ -3,6 +3,8 @@ var fs = require("fs"),
     util = require("util"),
     multipart = require('connect-multiparty');
 
+var PhotoLog = require("./models/photoLog.js");
+
 var admin = function (app) {
   var multipartMiddleware = multipart();
   var date = new Date();
@@ -16,12 +18,17 @@ var admin = function (app) {
       return;
     }
 
-
     require('fs').rename(req.files.userPhoto.path, serverPath, function(error) {
       if (error) {
-        res.send({ error: 'Something bad happened'});
+        res.send({ error: 'Something bad happened' });
         return;
       }
+
+      var photoLog = new PhotoLog({
+        imagePath: publicPath,
+        comments: req.body.optionalPhotoComments
+      });
+      console.log(photoLog)
 
       res.send({
         path: publicPath

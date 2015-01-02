@@ -3,6 +3,13 @@
   
   <form id="uploadForm" enctype="multipart/form-data" action="/api/admin/pics" method="post">
     <input type="file" id="userPhotoInput" name="userPhoto" class="user-photo" />
+    <br />
+    <label for="photoComments">Optional Comments</label>
+    <br/>
+    <input type="text" id="photoComments" name="optionalPhotoComments" placeholder="ex. 1 more min to go till a 7 min mile" class="user-photo-text-input" />
+    <br />
+    <button id="submit-button" type="submit">Submit</button>
+
   </form>
  
   <span id="admin-status">  </span>

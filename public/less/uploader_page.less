@@ -1,7 +1,7 @@
 .admin-form {
   position: absolute;
   width: 100%;
-  height: 300px;
+  height: 100%;
   margin: 0 auto;
   border: 1px solid #5ECBE7;
   border-radius: 5px;
@@ -23,12 +23,16 @@
     height: auto;
     width: auto;
   }
+  .user-photo {
+    margin-bottom:50px;
+    padding:70px 0;
+  }
   .user-photo::-webkit-file-upload-button {
     visibility: hidden;
   }
   .user-photo::before {
     content: 'Select some files';
-    display: inline-block;
+    display: block;
     background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
     border: 1px solid #999;
     border-radius: 3px;
@@ -47,4 +51,50 @@
   .user-photo:active::before {
     background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
   }
+
+  input {
+    height: 40px;
+    line-height:40px;
+    width:74%;
+    margin-top:15px;
+    margin-left:20px;
+  }
+
+::-webkit-input-placeholder {
+   font-family: 'Open Sans', sans-serif;
+  text-align:center;
+  color:#666;
+  font-size:24px;
+}
+
+  :-moz-placeholder { /* Firefox 18- */
+     font-family: 'Open Sans', sans-serif;
+    text-align:center;
+    color:#666;
+    font-size:24px;  
+  }
+
+  ::-moz-placeholder {  /* Firefox 19+ */
+     font-family: 'Open Sans', sans-serif;
+    text-align:center;
+    color:#666;
+    font-size:24px;  
+  }
+
+  :-ms-input-placeholder {  
+     font-family: 'Open Sans', sans-serif;
+    text-align:center;
+    color:#666;
+    font-size:24px;  
+  }
+
+  button {
+    height: 40px;
+    line-height:40px;
+    width:74%;
+    margin-top:15px;
+    margin-left:20px;
+    background-color: #5ECBE7;
+  }
+
 }

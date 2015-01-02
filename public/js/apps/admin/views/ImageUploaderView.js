@@ -46,15 +46,11 @@ define(function (require) {
       
       $el.find('form').on('submit', function(e) {
           e.preventDefault(); // prevent native submit
-          $(this).ajaxSubmit({
-            target: '#uploadForm #photoComments'
-          });
       });
 
       function status(message) {
         $el.find('#admin-status').text(message);
       }
-
       return this;
     }
   });

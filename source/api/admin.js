@@ -28,7 +28,6 @@ var admin = function (app) {
         imagePath: publicPath,
         comments: req.body.optionalPhotoComments
       });
-      console.log(photoLog)
 
       res.send({
         path: publicPath

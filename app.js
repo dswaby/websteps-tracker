@@ -6,11 +6,12 @@ var middleware = require('./source/middleware');
 var bodyParser = require('body-parser');
 var favicon = require('serve-favicon');
 var methodOverride  = require("method-override");
-var app = express();
-// var logger = require('express-logger');
+var mongoose = require('mongoose');
 var compression = require('compression');
 var errorHandler = require('errorhandler');
 var favicon = require('serve-favicon');
+var app = express();
+
 bodyParser({limit: '100mb'});
 
 
@@ -23,6 +24,13 @@ app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(methodOverride());
+
+// mongoose connection
+var dbName='fitpicDB';
+
+var connectionString='mongodb://localhost:27017/'+dbName;
+
+mongoose.connect(connectionString);
 
 if (process.env.NODE_ENV === 'development') {
   app.use(errorHandler());

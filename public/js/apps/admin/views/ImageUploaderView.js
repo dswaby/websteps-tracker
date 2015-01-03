@@ -1,6 +1,6 @@
 define(function (require) {
   var Backbone = require('Backbone');
-  
+  var dispatcher = _.clone(Backbone.Events);
   require('jQueryForm');
 
   var ImageUploaderView = Backbone.View.extend({

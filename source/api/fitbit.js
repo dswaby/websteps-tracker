@@ -1,15 +1,16 @@
 var fs = require("fs"),
     path = require("path"),
-    util = require("util");
-var PhotoLog = require("./models/photoLog.js");
+    util = require("util"),
+    PhotoLog = require("./models/photoLog.js");
+
 var pictures = function (router) {
-  router.route('/api/fitbit').get(function(req, res) {
+  router.route('/api/pics').get(function(req, res) {
     var p = "./public/img/";
 
     imageCollection = [];
     fs.readdir(p, function (err, files) {
       if (err) {
-        return next(err);
+        return err;
       }
       files.map(function (file) {
         return path.join(p, file);
@@ -23,8 +24,10 @@ var pictures = function (router) {
           });
         }
       });
+      if (err) {
+        return err;
+      }
       return res.json(imageCollection);
-
     });
   });
 };

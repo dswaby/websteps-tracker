@@ -532,36 +532,3 @@ Even for such small application as 'TheMailer', the benefits are obvious:
 * Requests: 55 / 4 ~ 14 times fewer.
 * Payload: 756Kb / 43.4Kb ~ 17 times smaller.
 * Load time: 898ms / 153ms ~ 6 times faster.
-
-<a name="deployment"/>
-## Deployment
-
-TODO.
-
-
-<a name="generator"/>
-## Yeoman generator
-
-TODO.
-
-# Legal Info (MIT License)
-
-Copyright (c) 2013 Alexander Beletsky
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.

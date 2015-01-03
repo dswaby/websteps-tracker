@@ -1,9 +1,8 @@
 var fs = require("fs"),
     path = require("path"),
     util = require("util"),
-    multipart = require('connect-multiparty');
-
-var PhotoLog = require("./models/photoLog.js");
+    multipart = require('connect-multiparty'),
+    PhotoLog = require("./models/photoLog.js");
 
 var admin = function (app) {
   var multipartMiddleware = multipart();
@@ -12,13 +11,17 @@ var admin = function (app) {
   app.post('/api/admin/pics', multipartMiddleware, function(req, res) {
     var serverPath = './public/img/' + date.toISOString() + req.files.userPhoto.name;
     var publicPath = './img/' + date.toISOString() + req.files.userPhoto.name;
-    
+    console.log("publicPath", publicPath);
+    console.log("serverPath:", serverPath);
+    console.log("req.files.userPhoto.path:", req.files.userPhoto.path);
+
     if (req.files.userPhoto.type !== "image/jpeg" && req.files.userPhoto.type !== 'image/gif' && req.files.userPhoto.type !== 'image/png') {
       res.send({error : 'not photo'});
       return;
     }
-
+    
     require('fs').rename(req.files.userPhoto.path, serverPath, function(error) {
+
       if (error) {
         res.send({ error: 'Something bad happened' });
         return;

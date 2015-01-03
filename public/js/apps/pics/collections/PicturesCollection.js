@@ -5,7 +5,7 @@ define(function (require) {
   var PicturesCollection = Backbone.Collection.extend({
     model: Picture,
 
-    url: '/api/fitbit'
+    url: '/api/pics'
   });
 
   return PicturesCollection;

@@ -9,7 +9,7 @@ define(function(require) {
 			'inbox/compose': 'inboxCompose',
 			'charts': 'charts',
 			'tasks': 'tasks',
-      'fitbit': 'fitbit',
+      'pics': 'pics',
       'admin': 'admin'
 		},
 
@@ -33,8 +33,8 @@ define(function(require) {
 			require('./../apps/tasks/app').run(viewManager);
 		},
 
-    fitbit: function () {
-      require('./../apps/fitbit/app').run(viewManager);
+    pics: function () {
+      require('./../apps/pics/app').run(viewManager);
     },
 
     admin: function () {

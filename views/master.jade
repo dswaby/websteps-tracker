@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    title
+    link(rel='stylesheet', type='text/css', href="#{mainCss}")
+    script(type='text/javascript', src='/components/requirejs/require.js', data-main="#{mainJs}" )
+  body
+    .static-header
+      ul.nav
+        li
+          a(href='/pics') FitPics
+        li
+          a(href='/inbox') Recent
+        li
+          a(href='/charts') Data
+        li
+          a(href='/tasks') Visualized
+        li(style='display:none')
+          a(href='/trex') Visualized
+    .page
+      #app.container(data-transition='fadeOutLeft')
+    .static-footer

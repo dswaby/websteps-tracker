@@ -62,7 +62,7 @@ require('./source/api/auth')(app);
 require('./source/api/emails')(app);
 require('./source/api/contacts')(app);
 require('./source/api/tasks')(app);
-require('./source/api/fitbit')(app);
+require('./source/api/pics')(app);
 require('./source/api/admin')(app);
 
 

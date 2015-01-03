@@ -7,5 +7,4 @@ var photoLog =  new Schema({
   comments: String
 });
 
-
 module.exports = mongoose.model('PhotoLog', photoLog);

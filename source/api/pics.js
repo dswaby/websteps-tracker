@@ -4,7 +4,8 @@ var fs = require("fs"),
     PhotoLog = require("./models/photoLog.js");
 
 var pictures = function (router) {
-  router.route('/api/pics').get(function(req, res) {
+
+  router.route('/api/pics').get(function (req, res) {
     var p = "./public/img/";
     PhotoLog.find(function(err, pics) {
       if (err) {
@@ -13,6 +14,50 @@ var pictures = function (router) {
  
       return res.json(pics);
     });
+  });
+
+  router.route('/api/pics/:id').put(function (req, res) {
+    PhotoLog.findOne({ _id: req.params.id }, function(err, pic) {
+      if (err) {
+        return res.send(err);
+      }
+
+      for (prop in req.body) {
+        pic[prop] = req.body[prop];
+      }
+
+      // save the pic
+      pic.save(function(err) {
+        if (err) {
+          return res.send(err);
+        }
+
+        res.json({ message: 'Picture Log updated!' });
+      });
+    });
+  });
+
+  router.route('/pics/:id').get(function(req, res) {
+    PhotoLog.findOne({ _id: req.params.id}, function(err, pic) {
+      if (err) {
+        return res.send(err);
+      }
+   
+      res.json(pic);
+    });
+  });
+
+  router.route('/pics/:id').delete(function(req, res) {
+    PhotoLog.remove({
+      _id: req.params.id
+    }, function(err, pic) {
+      if (err) {
+        return res.send(err);
+      }
+      res.json({ message: 'Successfully deleted' });
+    });
+  });
+
     // imageCollection = [];
     // fs.readdir(p, function (err, files) {
     //   if (err) {
@@ -35,7 +80,6 @@ var pictures = function (router) {
     //   }
     //   return res.json(imageCollection);
     // });
-  });
 };
 
 

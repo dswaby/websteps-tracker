@@ -1,6 +1,7 @@
 var fs = require("fs"),
     path = require("path"),
     util = require("util"),
+    crypto = require('crypto'),
     multipart = require('connect-multiparty'),
     PhotoLog = require("./models/photoLog.js");
 
@@ -16,18 +17,29 @@ var admin = function (app) {
       res.send({error : 'not photo'});
       return;
     }
-    
-    require('fs').rename(req.files.userPhoto.path, serverPath, function(error) {
 
+    require('fs').rename(req.files.userPhoto.path, serverPath, function(error) {
+    var fingerprint;
+    // var shasum = crypto.createHash('sha1');
+
+    // var s = require('fs').ReadStream(req.files.userPhoto.path);
+    // s.on('data', function(d) {
+    //   shasum.update(d);
+    // });
+
+    // s.on('end', function() {
+    //   fingerprint = shasum.digest('hex');
+    //   console.log(fingerprint)
+    // });
       if (error) {
         res.send({ error: 'Something bad happened' });
         return;
       }
-
       var photoLog = new PhotoLog({
         imagePath: publicPath,
         comments: req.body.optionalPhotoComments
       });
+      
       photoLog.save(function(err){
         if(err)
             res.send(err);
@@ -38,6 +50,13 @@ var admin = function (app) {
       });
 
     });
+  });
+
+  app.post('/api/admin/glucose', function(req, res) {
+      if (error) {
+        res.send({ error: 'Something bad happened' });
+        return;
+      }
   });
 };
 

@@ -2,7 +2,7 @@ require.config({
 	hbs: {
 		templateExtension: 'html',
 		disableI18n: true,
-		disableHelpers: true
+    helpers: true
 	},
 
 	shim: {
@@ -44,6 +44,7 @@ require.config({
 		json2 : './../components/require-handlebars-plugin/hbs/json2',
     jQueryForm: './../components/jquery-form/jquery.form',
     velocity: './../components/velocity/velocity',
+    moment: './../components/moment/moment',
     c3: './../components/c3/c3',
     d3: './../components/d3/d3'
 	}

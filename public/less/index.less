@@ -2,6 +2,7 @@
 @import url('../components/c3/c3.css');
 @import url('uploader_page.less');
 @import url('pictures.less');
+@import url('charts.less');
 
 
 
@@ -19,7 +20,11 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Open+Sans:400,800,300);
 
 html {
-    font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 200;
+  @media @smallerMobile {
+    min-width: 300px;
+  }
 }
 
 .body {
@@ -29,16 +34,19 @@ html {
 //header styles
 .static-header {
   position:absolute;
+
   top:0;
   width:100%;
   left:0;
   right:0;
   margin:auto;
-  // min-width: 616px;
   height: unit(@headerHeight, px);
   background-color: @primaryColor;
   overflow: hidden;
   z-index:1000;
+  -webkit-box-shadow: 0px 4px 77px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 4px 77px 0px rgba(0,0,0,0.75);
+box-shadow: 0px 4px 77px 0px rgba(0,0,0,0.75);
   @media @mobile {
     height: unit(@headerHeightMobile, px);
   }
@@ -49,6 +57,7 @@ html {
 
   ul.nav{
     height: 100%;
+    min-width: 300px;
     max-height: unit(@headerHeight, px);
 
     max-width: 100%;
@@ -135,13 +144,22 @@ html {
 
   overflow-x: none;
   overflow-y: none;
+  background: url('./../img/Long_Distance_Running.jpg') no-repeat;
+  background-size: cover;
+
+  @media @mobile {
+    background-size: cover;
+  }
+  @media @smallerMobile {
+    background-size: cover;
+  }
+
 }
 
 // main container styles
 .container {
   position: absolute;
   top:0;
-
   height: 100%;
   width:100%;
   left:0;
@@ -152,5 +170,21 @@ html {
   position: relative;
   width: 95%;
   left: 2.5%;
+
+  h1 {
+    font-size: 56px;
+    color: white;
+    text-shadow: -2px -2px 8px rgba(150, 150, 150, 1);
+    @media @mobile {
+      font-size: 56px;
+    }
+    @media @smallerMobile {
+      font-size: 3;
+    }
+
+  }
+  h3 {
+
+  }
 }
 

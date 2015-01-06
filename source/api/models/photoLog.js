@@ -3,8 +3,9 @@ var Schema=mongoose.Schema;
 
 var photoLog =  new Schema({
   imagePath: String,
-  dateCreated: String,
-  comments: String
+  dateCreated: { type: Date, default: Date.now },
+  comments: String, 
+  fingerprint: String
 });
 
 module.exports = mongoose.model('PhotoLog', photoLog);

@@ -42,7 +42,7 @@ app.use(methodOverride());
 
 // setup/config for mongoose connection
 var dbName='fitpicDB';
-var connectionString='mongodb://localhost:27017/'+dbName;
+var connectionString="mongodb://lance_armstrong:XE9DkMptkN2D7tq@ds039007.mongolab.com:39007/swaby" ||'mongodb://localhost:27017/'+dbName;
 mongoose.connect(connectionString);
 
 if (process.env.NODE_ENV === 'development') {

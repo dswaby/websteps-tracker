@@ -1,10 +1,14 @@
-  <div class="page-title">Secret Page</div>
-  <div class="form-title">Upload your fitness evidence</div>
+  <div class="page-title">Insecure Admin Area</div>
+  <div class="form-title">Upload </div>
   
   <form id="uploadForm" enctype="multipart/form-data" action="/api/admin/pics" method="post">
     <input type="file" id="userPhotoInput" name="userPhoto" class="user-photo" />
     <br />
     <label for="photoComments">Optional Comments</label>
+    <br />
+    <span class="user-photo-checkbox">Mile Shot</span> <input type="checkbox" id="mileCheckBox" name="isMile" />
+    <br/>
+    <span class="user-photo-checkbox">5k Shot</span> <input type="checkbox" id="5kCheckbox" name="is5k" />
     <br/>
     <input type="text" id="photoComments" name="optionalPhotoComments" placeholder="ex. 1 more min to go till a 7 min mile" class="user-photo-text-input" />
     <br />

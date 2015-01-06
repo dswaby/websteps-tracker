@@ -128,8 +128,28 @@
   border-radius: 4px;
   margin: 10px;
 }
+.charts-main-view {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+}
+.glucose-chart-view {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 15px;
+}
 html {
   font-family: 'Open Sans', sans-serif;
+  font-weight: 200;
+}
+@media only screen and (max-width : 449px) {
+  html {
+    min-width: 300px;
+  }
 }
 .body {
   width: 100%;
@@ -146,6 +166,9 @@ html {
   background-color: #4ad5d7;
   overflow: hidden;
   z-index: 1000;
+  -webkit-box-shadow: 0px 4px 77px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 4px 77px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 4px 77px 0px rgba(0, 0, 0, 0.75);
 }
 @media only screen and (min-width : 450px) and (max-width : 736px) {
   .static-header {
@@ -159,6 +182,7 @@ html {
 }
 .static-header ul.nav {
   height: 100%;
+  min-width: 300px;
   max-height: 60px;
   max-width: 100%;
   text-align: center;
@@ -244,6 +268,8 @@ a .static-header ul.nav:visited:hover {
   min-height: 500px;
   overflow-x: none;
   overflow-y: none;
+  background: url('../img/Long_Distance_Running.jpg') no-repeat;
+  background-size: cover;
 }
 @media only screen and (min-width : 450px) and (max-width : 736px) {
   .page {
@@ -253,6 +279,16 @@ a .static-header ul.nav:visited:hover {
 @media only screen and (max-width : 449px) {
   .page {
     top: 150px;
+  }
+}
+@media only screen and (min-width : 450px) and (max-width : 736px) {
+  .page {
+    background-size: cover;
+  }
+}
+@media only screen and (max-width : 449px) {
+  .page {
+    background-size: cover;
   }
 }
 .container {
@@ -266,4 +302,19 @@ a .static-header ul.nav:visited:hover {
   position: relative;
   width: 95%;
   left: 2.5%;
+}
+.hero-unit h1 {
+  font-size: 56px;
+  color: white;
+  text-shadow: -2px -2px 8px #969696;
+}
+@media only screen and (min-width : 450px) and (max-width : 736px) {
+  .hero-unit h1 {
+    font-size: 56px;
+  }
+}
+@media only screen and (max-width : 449px) {
+  .hero-unit h1 {
+    font-size: 3;
+  }
 }

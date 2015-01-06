@@ -10,7 +10,7 @@ define(function(require) {
       this.subviews = [];
     },
     render: function () {
-      var imageUploaderView = new ImageUploaderView();
+      var entrySelectorView = new ImageUploaderView();
       this.subviews.push(imageUploaderView);
       this.$el.append(imageUploaderView.render().el);
 

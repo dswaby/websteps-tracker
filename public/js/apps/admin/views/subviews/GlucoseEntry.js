@@ -3,10 +3,10 @@ define(function (require) {
   var dispatcher = _.clone(Backbone.Events);
   require('jQueryForm');
 
-  var ImageUploaderView = Backbone.View.extend({
+  var GluscoseEntryView = Backbone.View.extend({
     
 
-    template: require('hbs!./../templates/ImageUploaderView'),
+    template: require('hbs!./../../templates/GluscoseEntryView'),
     className: 'admin-form',
     events: function () {
 
@@ -45,7 +45,7 @@ define(function (require) {
       });
       
       $el.find('form').on('submit', function(e) {
-          e.preventDefault(); // prevent native submit
+          e.preventDefault();
       });
 
       function status(message) {
@@ -55,5 +55,5 @@ define(function (require) {
     }
   });
 
-  return ImageUploaderView;
+  return GluscoseEntryView;
 });

@@ -10,8 +10,8 @@ var admin = function (app) {
   var date = new Date();
 
   app.post('/api/admin/pics', multipartMiddleware, function(req, res) {
-    var serverPath = './public/img/' + date.toISOString() + req.files.userPhoto.name;
-    var publicPath = './img/' + date.toISOString() + req.files.userPhoto.name;
+    var serverPath = './public/pics/' + date.toISOString() + req.files.userPhoto.name;
+    var publicPath = './pics/' + date.toISOString() + req.files.userPhoto.name;
 
     if (req.files.userPhoto.type !== "image/jpeg" && req.files.userPhoto.type !== 'image/gif' && req.files.userPhoto.type !== 'image/png') {
       res.send({error : 'not photo'});

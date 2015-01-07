@@ -6,7 +6,7 @@ var fs = require("fs"),
 var pictures = function (router) {
 
   router.route('/api/pics').get(function (req, res) {
-    var p = "./public/img/";
+    var p = "./public/pics/";
     PhotoLog.find(function(err, pics) {
       if (err) {
         return res.send(err);
@@ -70,7 +70,7 @@ var pictures = function (router) {
     //   }).forEach(function (file) {
     //     if (path.extname(file).toString().toUpperCase() === '.JPG'|| path.extname(file).toString().toUpperCase() === '.PNG' || path.extname(file).toString().toUpperCase() === '.JPEG') {
     //       imageCollection.push({
-    //         "path": "./img/"+ path.basename(file),
+    //         "path": "./pics/"+ path.basename(file),
     //         "created": (fs.statSync(file).ctime).getTime()
     //       });
     //     }

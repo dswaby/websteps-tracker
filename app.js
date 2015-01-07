@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 app.use(favicon(__dirname + '/public/favicon.ico'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
-app.set('port', process.env.PORT || 8080);
+app.set('port', process.env.PORT || 8121);
 bodyParser({limit: '100mb'});
 //cors middleware and body parser for 
 

@@ -4,7 +4,7 @@ define(function(require) {
   var ImageUploaderView = require('./subviews/ImageUploaderView');
 
   var MainView = Backbone.View.extend({
-    className: "main-view",
+    className: "admin-view",
 
     initialize: function () {
       this.subviews = [];

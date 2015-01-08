@@ -1,20 +1,22 @@
   <div class="page-title">Insecure Admin Area</div>
   <div class="form-title">Upload </div>
-  
-  <form id="uploadForm" enctype="multipart/form-data" action="/api/admin/pics" method="post">
-    <input type="file" id="userPhotoInput" name="userPhoto" class="user-photo" />
-    <br />
-    <label for="photoComments">Optional Comments</label>
-    <br />
-    <span class="user-photo-checkbox">Mile Shot</span> <input type="checkbox" id="mileCheckBox" name="isMile" />
-    <br/>
-    <span class="user-photo-checkbox">5k Shot</span> <input type="checkbox" id="5kCheckbox" name="is5k" />
-    <br/>
-    <input type="text" id="photoComments" name="optionalPhotoComments" placeholder="ex. 1 more min to go till a 7 min mile" class="user-photo-text-input" />
-    <br />
-    <button id="submit-button" type="submit">Submit</button>
+  <div class="form-wrap">
+    <form id="uploadForm" enctype="multipart/form-data" action="/api/admin/pics" method="post">
+      <input type="file" id="userPhotoInput" name="userPhoto" class="user-photo" />
+      <br />
+      <label for="photoComments" class="form-label">Optional Comments</label>
+      <br/>
+      <input type="text" id="photoComments" name="optionalPhotoComments" placeholder="ex. 1 more min to go till a 7 min mile" class="user-photo-text-input" />
+      <br />
+       <input type="checkbox" id="mileCheckBox" name="isMile" class="checkbox" /><label class="user-photo-checkbox form-label">Mile Shot</label>
+      <br/>
+      <input type="checkbox" id="5kCheckbox" name="is5k" class="checkbox" /><label class="user-photo-checkbox form-label">5k Shot</label> 
 
-  </form>
+      <br />
+      <button id="submit-button" type="submit">Submit</button>
+
+    </form>
+  </div>
  
   <span id="admin-status">  </span>
     <img id="uploadedImage" />

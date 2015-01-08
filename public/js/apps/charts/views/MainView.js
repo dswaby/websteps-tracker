@@ -6,7 +6,7 @@ define(function(require) {
 
 
 	var MainView = Backbone.View.extend({
-    className: 'charts-main-view',
+    className: 'charts-view',
 		initialize: function () {
 			this.subviews = [];
 		},

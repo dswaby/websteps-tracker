@@ -5,7 +5,7 @@ define(function(require) {
   var RunningManView = require('./subviews/RunningManView');
 
   var MainView = Backbone.View.extend({
-    className: "dannys-unit",
+    className: "pics-view",
 
     initialize: function () {
       this.subviews = [];

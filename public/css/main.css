@@ -1,7 +1,7 @@
 @import url('../components/animate.css/animate.css');
 @import url('../components/c3/c3.css');
 @import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Open+Sans:400,800,300);
-.admin-form {
+.admin-view .admin-form {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -10,29 +10,44 @@
   border-radius: 5px;
   text-align: center;
 }
-.admin-form .page-title {
+.admin-view .admin-form label {
+  color: white;
+  display: inline-block;
+  text-align: center;
+  max-width: 200px;
+}
+.admin-view .admin-form label.user-photo-checkbox {
+  float: left;
+  text-align: left;
+}
+.admin-view .admin-form .page-title {
   font-size: 48px;
   font-weight: bold;
 }
-.admin-form .form-title {
+.admin-view .admin-form .form-title {
   font-size: 24px;
   font-weight: 300;
   padding-bottom: 30px;
 }
-.admin-form img {
+.admin-view .admin-form .form-label {
+  font-size: 24px;
+  font-weight: 500;
+  color: #fff;
+}
+.admin-view .admin-form img {
   max-height: 500px;
   max-width: 100%;
   height: auto;
   width: auto;
 }
-.admin-form .user-photo {
+.admin-view .admin-form .user-photo {
   margin-bottom: 50px;
   padding: 70px 0;
 }
-.admin-form .user-photo::-webkit-file-upload-button {
+.admin-view .admin-form .user-photo::-webkit-file-upload-button {
   visibility: hidden;
 }
-.admin-form .user-photo::before {
+.admin-view .admin-form .user-photo::before {
   content: 'Select some files';
   display: block;
   background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
@@ -47,46 +62,58 @@
   font-weight: 700;
   font-size: 11pt;
 }
-.admin-form .user-photo:hover::before {
+.admin-view .admin-form .user-photo:hover::before {
   border-color: black;
 }
-.admin-form .user-photo:active::before {
+.admin-view .admin-form .user-photo:active::before {
   background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
 }
-.admin-form input {
+.admin-view .admin-form .form-wrap {
+  max-width: 500px;
+  padding: 0 20px;
+  margin-bottom: 30px;
+  display: block;
+  height: auto;
+}
+.admin-view .admin-form .form-wrap .user-photo-text-input {
   height: 40px;
   line-height: 40px;
-  width: 74%;
   margin-top: 15px;
-  margin-left: 20px;
+  display: block;
 }
-.admin-form ::-webkit-input-placeholder {
+@media only screen and (min-width : 450px) and (max-width : 736px) {
+  .admin-view .admin-form .form-wrap .user-photo-text-input {
+    max-width: 400px;
+    width: 100%;
+  }
+}
+.admin-view .admin-form ::-webkit-input-placeholder {
   font-family: 'Open Sans', sans-serif;
   text-align: center;
   color: #666;
   font-size: 24px;
 }
-.admin-form :-moz-placeholder {
+.admin-view .admin-form :-moz-placeholder {
   /* Firefox 18- */
   font-family: 'Open Sans', sans-serif;
   text-align: center;
   color: #666;
   font-size: 24px;
 }
-.admin-form ::-moz-placeholder {
+.admin-view .admin-form ::-moz-placeholder {
   /* Firefox 19+ */
   font-family: 'Open Sans', sans-serif;
   text-align: center;
   color: #666;
   font-size: 24px;
 }
-.admin-form :-ms-input-placeholder {
+.admin-view .admin-form :-ms-input-placeholder {
   font-family: 'Open Sans', sans-serif;
   text-align: center;
   color: #666;
   font-size: 24px;
 }
-.admin-form button {
+.admin-view .admin-form button {
   height: 40px;
   line-height: 40px;
   width: 74%;
@@ -94,7 +121,7 @@
   margin-left: 20px;
   background-color: #5ECBE7;
 }
-.dannys-unit {
+.pics-view {
   position: absolute;
   left: 0;
   right: 0;
@@ -105,21 +132,21 @@
   width: 100%;
   border: 1px solid gray;
 }
-.pictures {
+.pics-view .pictures {
   max-width: 95%;
   max-height: 100%;
   overflow: auto;
 }
-.pictures .picture {
+.pics-view .pictures .picture {
   width: 150px;
   height: 150px;
   float: left;
 }
-.pictures .picture img {
+.pics-view .pictures .picture img {
   width: 145px;
   height: 120px;
 }
-#audio-toggle {
+.pics-view #audio-toggle {
   height: 50px;
   width: 150px;
   background-color: #e6e6e6;
@@ -128,13 +155,13 @@
   border-radius: 4px;
   margin: 10px;
 }
-.charts-main-view {
+.charts-view .charts-main-view {
   position: absolute;
   top: 5%;
   left: 5%;
   width: 90%;
 }
-.glucose-chart-view {
+.charts-view .glucose-chart-view {
   position: relative;
   top: 0;
   left: 0;

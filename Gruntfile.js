@@ -47,7 +47,7 @@ module.exports = function(grunt) {
         }
       },
       less: {
-        files: ['public/less/**/*.less'],
+        files: ['public/**/*.less'],
         tasks:  [ 'less', 'hashres' ],
         options: {
           spawn: false,
@@ -55,56 +55,6 @@ module.exports = function(grunt) {
         }
       }
     },
-    // glob_to_multiple: {
-    //   expand: true,
-    //   // flatten: true,
-    //   bare:true,
-    //   cwd: 'public',
-    //   src: ['coffee/**/*.coffee'],
-    //   dest: 'js/',
-    //   ext: '.js'
-    // },
-		// jshint: {
-		// 	options: {
-		// 		"asi" : false,
-		// 		"bitwise" : true,
-		// 		"boss" : false,
-		// 		"curly" : true,
-		// 		"debug": false,
-		// 		"devel": false,
-		// 		"eqeqeq": true,
-		// 		"evil": false,
-		// 		"expr": true,
-		// 		"forin": false,
-		// 		"immed": true,
-		// 		"latedef" : false,
-		// 		"laxbreak": false,
-		// 		"multistr": true,
-		// 		"newcap": true,
-		// 		"noarg": true,
-		// 		"node" : true,
-		// 		"browser": true,
-		// 		"noempty": false,
-		// 		"nonew": true,
-		// 		"onevar": false,
-		// 		"plusplus": false,
-		// 		"regexp": false,
-		// 		"strict": false,
-		// 		"sub": false,
-		// 		"trailing" : true,
-		// 		"undef": true,
-		// 		globals: {
-		// 			jQuery: true,
-		// 			Backbone: true,
-		// 			_: true,
-		// 			$: true,
-		// 			require: true,
-		// 			define: true
-		// 		}
-		// 	},
-			// js: ['public/js/**/*.js', 'source/**/*.js']
-		// },
-
 		requirejs: {
 			js: {
 				options: {
@@ -145,7 +95,7 @@ module.exports = function(grunt) {
         options: {
         },
         files: {
-          "public/css/main.css": "public/less/index.less"
+          "public/css/main.css": "public/less/global.less"
         }
       }
     }

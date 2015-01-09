@@ -10,7 +10,9 @@ define(function(require) {
 			'charts': 'charts',
 			'tasks': 'tasks',
       'pics': 'pics',
-      'admin': 'admin'
+      'admin': 'admin',
+      'admin/upload': 'adminUpload',
+      'admin/glucoselog': 'adminGlucoseLog'
 		},
 
 		home: function () {
@@ -39,6 +41,14 @@ define(function(require) {
 
     admin: function () {
       require('./../apps/admin/app').run(viewManager);
+    },
+
+    adminUpload: function () {
+      require('./../apps/admin/subapps/imageuploader/app').run(viewManager);
+    },
+
+    adminGlucoseLog: function () {
+      require('./../apps/admin/subapps/glucoselogger/app').run(viewManager);
     }
 
 	});

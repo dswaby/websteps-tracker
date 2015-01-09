@@ -1,0 +1,16 @@
+<div class="form-wrap">
+  <form id="glucoseLog" enctype="multipart/form-data" action="/api/admin/glucose" method="post">
+    <div class="form-item-wrap">
+      <label for="glucoseLevel" class="form-label" style="display:inline;text-align:left;">Blood Glucose Leve (mg)</label>
+      <input type="number" id="glucoseLevel" name="bloodGlucoseLeve" placeholder="mG" class="glucose-text-input" />
+    </div>
+    <div style="clear:both"></div>
+    <br />
+    <div class="form-item-wrap">
+      <label class="user-photo-checkbox form-label">Comments (optional)</label> 
+      <input type="text" id="glucoseComments" name="glucoseComments" />
+    </div>
+    <br />
+      <button id="submit-button" type="submit">Submit</button>
+  </form>
+</div>

@@ -1,19 +1,19 @@
-define(function(require) {
+define(function (require) {
   var Backbone = require('Backbone');
 
   var ImageUploaderView = require('./subviews/ImageUploaderView');
 
   var MainView = Backbone.View.extend({
-    className: "main-view",
-
+    className: "admin-view",
+    
     initialize: function () {
       this.subviews = [];
     },
+
     render: function () {
-      var entrySelectorView = new ImageUploaderView();
+      var imageUploaderView = new ImageUploaderView();
       this.subviews.push(imageUploaderView);
       this.$el.append(imageUploaderView.render().el);
-
       return this;
     }
   });

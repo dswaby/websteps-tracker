@@ -1,17 +1,15 @@
 define(function (require) {
   var Backbone = require('Backbone');
 
-  var EntrySelectorView = require('./subviews/EntrySelectorView');
+  var GlucoseEntryView = require('./subviews/GlucoseEntryView');
 
   var MainView = Backbone.View.extend({
-    className: "admin-view",
-
     initialize: function () {
       this.subviews = [];
     },
+
     render: function () {
-      var entrySelectorView = new EntrySelectorView();
-      this.$el.append(entrySelectorView.render().el);
+      var glucoseEntryView = new GlucoseEntryView();
 
       return this;
     }

@@ -16,6 +16,21 @@ var pictures = function (router) {
     });
   });
 
+  router.route('/api/pics/recent').get(function (req, res) {
+    var p = "./public/pics/";
+
+    var oneWeekAgo = new Date();
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+
+
+    PhotoLog.find({"dateCreated": { "$lt": oneWeekAgo.setDate(oneWeekAgo.getDate() - 7) }}).limit(5).exec(function (err, pics){
+      if (err) {
+        return res.send(err);
+      }
+      return res.json(pics);
+    });
+  });
+
   router.route('/api/pics/:id').put(function (req, res) {
     PhotoLog.findOne({ _id: req.params.id }, function(err, pic) {
       if (err) {

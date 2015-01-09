@@ -1,3 +1,4 @@
+var config = require('./config');
 var express = require('express');
 var http = require('http');
 var path = require('path');
@@ -11,7 +12,6 @@ var compression = require('compression');
 var errorHandler = require('errorhandler');
 var passport = require('passport');
 var expressSession = require('express-session');
-
 var app = express();
 
 // config
@@ -20,30 +20,25 @@ app.use(bodyParser.json());
 app.use(favicon(__dirname + '/public/favicon.ico'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
-app.set('port', process.env.PORT || 8121);
+app.set('port', config.port);
 bodyParser({limit: '100mb'});
+
 //cors middleware and body parser for 
-
-
 
 // passport config fot auth
 app.use(expressSession({
-  secret: 'keyboard cat',
+  secret: config.passportSecret,
   resave: false,
   saveUninitialized: true
 }));
 
 app.use(passport.initialize());
 app.use(passport.session());
-
-
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(methodOverride());
 
 // setup/config for mongoose connection
-var dbName='fitpicDB';
-var connectionString="mongodb://lance_armstrong:XE9DkMptkN2D7tq@ds039007.mongolab.com:39007/swaby" ||'mongodb://localhost:27017/'+dbName;
-mongoose.connect(connectionString);
+mongoose.connect(config.mongodbConnectionString);
 
 if (process.env.NODE_ENV === 'development') {
   app.use(errorHandler());

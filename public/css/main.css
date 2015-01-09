@@ -205,6 +205,9 @@
   border-radius: 4px;
   margin: 10px;
 }
+.charts-view {
+  padding: 30px;
+}
 .charts-view .charts-main-view {
   position: absolute;
   top: 5%;
@@ -218,6 +221,7 @@
   width: 100%;
   background-color: #fff;
   border-radius: 15px;
+  margin-bottom: 10px;
 }
 html {
   font-family: 'Open Sans', sans-serif;

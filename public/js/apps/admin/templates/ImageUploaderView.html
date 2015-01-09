@@ -3,18 +3,21 @@
   <div class="form-wrap">
     <form id="uploadForm" enctype="multipart/form-data" action="/api/admin/pics" method="post">
       <input type="file" id="userPhotoInput" name="userPhoto" class="user-photo" />
-      <br />
-      <label for="photoComments" class="form-label">Optional Comments</label>
-      <br/>
+        <label for="photoComments" class="form-label" style="display:inline;text-align:left;">Optional Comments</label>
       <input type="text" id="photoComments" name="optionalPhotoComments" placeholder="ex. 1 more min to go till a 7 min mile" class="user-photo-text-input" />
       <br />
-       <input type="checkbox" id="mileCheckBox" name="isMile" class="checkbox" /><label class="user-photo-checkbox form-label">Mile Shot</label>
-      <br/>
-      <input type="checkbox" id="5kCheckbox" name="is5k" class="checkbox" /><label class="user-photo-checkbox form-label">5k Shot</label> 
-
+      <div class="form-item-wrap">
+        <label class="user-photo-checkbox form-label">Mile Shot</label>
+        <input type="checkbox" id="mileCheckBox" name="isMile" class="checkbox" />
+      </div>
+      <div style="clear:both"></div>
       <br />
-      <button id="submit-button" type="submit">Submit</button>
-
+      <div class="form-item-wrap">
+        <label class="user-photo-checkbox form-label">5k Shot</label> 
+        <input type="checkbox" id="5kCheckbox" name="is5k" class="checkbox" />
+      </div>
+      <br />
+        <button id="submit-button" type="submit">Submit</button>
     </form>
   </div>
  

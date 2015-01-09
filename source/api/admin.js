@@ -20,17 +20,6 @@ var admin = function (app) {
 
     require('fs').rename(req.files.userPhoto.path, serverPath, function(error) {
     var fingerprint;
-    // var shasum = crypto.createHash('sha1');
-
-    // var s = require('fs').ReadStream(req.files.userPhoto.path);
-    // s.on('data', function(d) {
-    //   shasum.update(d);
-    // });
-
-    // s.on('end', function() {
-    //   fingerprint = shasum.digest('hex');
-    //   console.log(fingerprint)
-    // });
       if (error) {
         res.send({ error: 'Something bad happened' });
         return;

@@ -30,9 +30,11 @@
   padding-bottom: 30px;
 }
 .admin-view .admin-form .form-label {
-  font-size: 24px;
+  font-size: 36px;
+  width: 100%;
   font-weight: 500;
   color: #fff;
+  text-shadow: -3px -1px 1px rgba(150, 150, 150, 0.23);
 }
 .admin-view .admin-form img {
   max-height: 500px;
@@ -41,19 +43,22 @@
   width: auto;
 }
 .admin-view .admin-form .user-photo {
-  margin-bottom: 50px;
-  padding: 70px 0;
+  margin-bottom: 20px;
+  width: 100%;
 }
 .admin-view .admin-form .user-photo::-webkit-file-upload-button {
   visibility: hidden;
 }
 .admin-view .admin-form .user-photo::before {
-  content: 'Select some files';
+  content: 'Pictures';
+  text-align: center;
+  color: #fff;
+  font-size: 44px !important;
   display: block;
-  background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+  background: #EF3D6F;
   border: 1px solid #999;
-  border-radius: 3px;
-  padding: 20px 10px;
+  border-radius: 7px;
+  padding: 30px 10px;
   outline: none;
   white-space: nowrap;
   -webkit-user-select: none;
@@ -71,20 +76,30 @@
 .admin-view .admin-form .form-wrap {
   max-width: 500px;
   padding: 0 20px;
-  margin-bottom: 30px;
+  margin: 0 auto;
   display: block;
   height: auto;
 }
 .admin-view .admin-form .form-wrap .user-photo-text-input {
-  height: 40px;
+  margin: 0 auto;
+  height: 100px;
   line-height: 40px;
   margin-top: 15px;
   display: block;
+  width: 500px;
 }
 @media only screen and (min-width : 450px) and (max-width : 736px) {
   .admin-view .admin-form .form-wrap .user-photo-text-input {
     max-width: 400px;
     width: 100%;
+    height: 100px;
+  }
+}
+@media only screen and (max-width : 449px) {
+  .admin-view .admin-form .form-wrap .user-photo-text-input {
+    max-width: 300px;
+    width: 100%;
+    height: 100px;
   }
 }
 .admin-view .admin-form ::-webkit-input-placeholder {
@@ -116,10 +131,45 @@
 .admin-view .admin-form button {
   height: 40px;
   line-height: 40px;
-  width: 74%;
   margin-top: 15px;
-  margin-left: 20px;
-  background-color: #5ECBE7;
+  background-color: #4FB5B5;
+  color: #fff;
+  font-size: 44px !important;
+  height: 100px;
+  border-radius: 7px;
+  width: 100%;
+}
+.admin-view .admin-form .user-photo-checkbox {
+  color: white;
+  float: left;
+}
+@media only screen and (min-width : 450px) and (max-width : 736px) {
+  .admin-view .admin-form .user-photo-checkbox {
+    padding-left: 20px;
+    font-weight: 500;
+  }
+}
+@media only screen and (max-width : 449px) {
+  .admin-view .admin-form .user-photo-checkbox {
+    padding-left: 20px;
+    font-weight: 500;
+  }
+}
+.admin-view .checkbox {
+  left: 0;
+  top: 10px;
+}
+.admin-view .form-item-wrap {
+  display: block;
+}
+.admin-view input[type=checkbox] {
+  height: 50px;
+  width: 50px;
+  float: right;
+}
+.admin-view .one-hundred-percent {
+  display: block;
+  width: 100%;
 }
 .pics-view {
   position: absolute;

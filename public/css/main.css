@@ -67,6 +67,10 @@
   color: #000;
   text-align: left;
 }
+.admin-view .admin-form #uploadForm input {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
 .admin-view .admin-form .page-title {
   font-size: 48px;
   font-weight: bold;
@@ -182,7 +186,8 @@
   top: 10px;
 }
 .admin-view .form-item-wrap {
-  display: inline-block;
+  width: 100%;
+  display: block;
 }
 .admin-view input[type=checkbox] {
   height: 50px;

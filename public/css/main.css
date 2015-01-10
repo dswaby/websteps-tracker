@@ -1,6 +1,52 @@
 @import url('../components/animate.css/animate.css');
 @import url('../components/c3/c3.css');
 @import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Open+Sans:400,800,300);
+.entry-selector {
+  text-align: center;
+}
+.entry-selector .title {
+  text-shadow: 4px 4px 2px #969696;
+  color: #000;
+  font-weight: 700;
+  font-size: 64px;
+  padding-top: 25px;
+  margin-bottom: 30px;
+}
+.entry-selector .big-button {
+  max-width: 50%;
+  margin: 25px auto 50px;
+  background-color: red;
+  padding: 25px;
+  border-radius: 7px;
+}
+@media only screen and (min-width : 450px) and (max-width : 736px) {
+  .entry-selector .big-button {
+    max-width: 80%;
+  }
+}
+@media only screen and (max-width : 449px) {
+  .entry-selector .big-button {
+    max-width: 70%;
+  }
+}
+.entry-selector ul {
+  list-style-type: none;
+}
+.entry-selector li,
+.entry-selector a {
+  vertical-align: middle;
+  font-size: 48px;
+  font-weight: 500;
+  text-decoration: none;
+}
+.entry-selector li:visited,
+.entry-selector a:visited {
+  color: white;
+}
+.entry-selector li:hover,
+.entry-selector a:hover {
+  color: #e6e6e6;
+}
 .admin-view .admin-form {
   position: absolute;
   width: 100%;
@@ -18,6 +64,7 @@
 }
 .admin-view .admin-form label.user-photo-checkbox {
   float: left;
+  color: #000;
   text-align: left;
 }
 .admin-view .admin-form .page-title {
@@ -33,7 +80,7 @@
   font-size: 36px;
   width: 100%;
   font-weight: 500;
-  color: #fff;
+  color: #000;
   text-shadow: -3px -1px 1px rgba(150, 150, 150, 0.23);
 }
 .admin-view .admin-form img {
@@ -79,6 +126,8 @@
   margin: 0 auto;
   display: block;
   height: auto;
+  background-color: #fff;
+  border-radius: 7px;
 }
 .admin-view .admin-form .form-wrap .user-photo-text-input {
   margin: 0 auto;
@@ -102,32 +151,6 @@
     height: 100px;
   }
 }
-.admin-view .admin-form ::-webkit-input-placeholder {
-  font-family: 'Open Sans', sans-serif;
-  text-align: center;
-  color: #666;
-  font-size: 24px;
-}
-.admin-view .admin-form :-moz-placeholder {
-  /* Firefox 18- */
-  font-family: 'Open Sans', sans-serif;
-  text-align: center;
-  color: #666;
-  font-size: 24px;
-}
-.admin-view .admin-form ::-moz-placeholder {
-  /* Firefox 19+ */
-  font-family: 'Open Sans', sans-serif;
-  text-align: center;
-  color: #666;
-  font-size: 24px;
-}
-.admin-view .admin-form :-ms-input-placeholder {
-  font-family: 'Open Sans', sans-serif;
-  text-align: center;
-  color: #666;
-  font-size: 24px;
-}
 .admin-view .admin-form button {
   height: 40px;
   line-height: 40px;
@@ -140,7 +163,6 @@
   width: 100%;
 }
 .admin-view .admin-form .user-photo-checkbox {
-  color: white;
   float: left;
 }
 @media only screen and (min-width : 450px) and (max-width : 736px) {
@@ -160,7 +182,7 @@
   top: 10px;
 }
 .admin-view .form-item-wrap {
-  display: block;
+  display: inline-block;
 }
 .admin-view input[type=checkbox] {
   height: 50px;
@@ -170,6 +192,145 @@
 .admin-view .one-hundred-percent {
   display: block;
   width: 100%;
+}
+.glucose-form {
+  max-width: 525px;
+  margin: 0 auto;
+}
+@media only screen and (min-width : 450px) and (max-width : 736px) {
+  .glucose-form {
+    max-width: 450px;
+    width: 80%;
+  }
+}
+@media only screen and (max-width : 449px) {
+  .glucose-form {
+    max-width: 300px;
+    width: 80%;
+  }
+}
+.glucose-form form {
+  padding-top: 15px;
+}
+.glucose-form .form-wrap {
+  padding: 0 20px;
+  margin: 30px auto 0;
+  display: block;
+  height: auto;
+  background-color: #fff;
+  border-radius: 8px;
+}
+.glucose-form .form-wrap label {
+  font-size: 24px;
+  color: #666;
+  font-weight: 500;
+}
+.glucose-form .form-wrap label.glucose {
+  float: left;
+  padding-right: 10px;
+  padding-top: 45px;
+  font-size: 36px;
+}
+@media only screen and (max-width : 449px) {
+  .glucose-form .form-wrap label.glucose {
+    max-width: 150px;
+    font-size: 24px;
+  }
+}
+.glucose-form .form-wrap .form-wrap-item {
+  margin: 0 auto;
+}
+.glucose-form .form-wrap .glucose-text-input {
+  margin: 0 auto;
+  height: 80px;
+  line-height: 40px;
+  margin-top: 15px;
+  display: block;
+  width: 90%;
+}
+@media only screen and (min-width : 450px) and (max-width : 736px) {
+  .glucose-form .form-wrap .glucose-text-input {
+    max-width: 400px;
+    width: 100%;
+    height: 100px;
+  }
+}
+@media only screen and (max-width : 449px) {
+  .glucose-form .form-wrap .glucose-text-input {
+    max-width: 300px;
+    width: 100%;
+    height: 100px;
+  }
+}
+.glucose-form .form-wrap .glucose-number-input {
+  float: right;
+  height: 100px;
+  line-height: 40px;
+  margin-top: 15px;
+  display: block;
+  width: 75px;
+}
+@media only screen and (min-width : 450px) and (max-width : 736px) {
+  .glucose-form .form-wrap .glucose-number-input {
+    max-width: 200px;
+    height: 100px;
+  }
+}
+@media only screen and (max-width : 449px) {
+  .glucose-form .form-wrap .glucose-number-input {
+    max-width: 100px;
+    height: 100px;
+  }
+}
+.glucose-form button {
+  height: 40px;
+  line-height: 40px;
+  margin-top: 15px;
+  margin-bottom: 30px;
+  background-color: #4FB5B5;
+  color: #fff;
+  font-size: 44px !important;
+  height: 100px;
+  border-radius: 7px;
+  width: 100%;
+}
+::-webkit-input-placeholder {
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  color: #666;
+  font-size: 24px;
+}
+:-moz-placeholder {
+  /* Firefox 18- */
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  color: #666;
+  font-size: 24px;
+}
+::-moz-placeholder {
+  /* Firefox 19+ */
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  color: #666;
+  font-size: 24px;
+}
+:-ms-input-placeholder {
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  color: #666;
+  font-size: 24px;
+}
+.back-nav {
+  padding-top: 10px;
+  margin-left: 20px;
+}
+.back-nav a {
+  font-weight: 400;
+  color: #e6e6e6;
+  text-decoration: none;
+}
+.back-nav a.hover {
+  text-decoration: underline;
 }
 .pics-view {
   position: absolute;

@@ -10,7 +10,8 @@ define(function (require) {
 
     render: function () {
       var glucoseEntryView = new GlucoseEntryView();
-
+      this.subviews.push(glucoseEntryView);
+      this.$el.append(glucoseEntryView.render().el);
       return this;
     }
   });

@@ -5,7 +5,7 @@ define(function (require) {
   var GluscoseEntryView = Backbone.View.extend({
 
     template: require('hbs!./../../templates/GlucoseEntryView'),
-    className: 'admin-form',
+    className: 'glucose-form',
     events: function () {
       // 'click .form': 'submit'
     },

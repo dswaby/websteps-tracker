@@ -565,3 +565,39 @@ a .static-header ul.nav:visited:hover {
     font-size: 3;
   }
 }
+.hero-unit .btn-large {
+  position: absolute;
+  width: 400px;
+  height: 75px;
+  left: 0;
+  right: 0;
+  display: inline-block;
+  padding-top: 10px;
+  border: 7px solid #fff;
+  border-radius: 7px;
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0 auto;
+  text-align: center;
+}
+.hero-unit .btn-large a,
+.hero-unit .btn-large:visited {
+  text-decoration: none;
+  color: #fff;
+}
+@media only screen and (min-width : 450px) and (max-width : 736px) {
+  .hero-unit .btn-large {
+    width: 75px;
+  }
+}
+@media only screen and (max-width : 449px) {
+  .hero-unit .btn-large {
+    width: 80%;
+  }
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  height: 50px;
+  width: 100%;
+}

@@ -186,8 +186,38 @@ box-shadow: 0px 4px 77px 0px rgba(0,0,0,0.75);
     }
 
   }
-  h3 {
+.btn-large {
+    position: absolute;
+    width: 400px;
+    height: 75px;
+    left:0;
+    right:0;
+    display: inline-block;
+    padding-top: 10px;
+    border: 7px solid #fff;
+    border-radius: 7px;
+    font-size: 36px;
+    font-weight: 700;
+    margin: 0 auto;
+    text-align: center;
 
+    a, &:visited {
+      text-decoration: none;
+      color: #fff;
+    }
+    @media @mobile {
+      width: 75px;
+    }
+    @media @smallerMobile {
+      width: 80%;
+    }
   }
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  height: 50px;
+  width: 100%;
 }
 

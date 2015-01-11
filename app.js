@@ -47,9 +47,9 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(compression({
-    threshold: 512})
-  );
+  // app.use(compression({
+  //   threshold: 512})
+  // );
   app.use(errorHandler());
 	app.use(express.static(path.join(__dirname, 'public')));
 	app.use(middleware.serveMaster.production());

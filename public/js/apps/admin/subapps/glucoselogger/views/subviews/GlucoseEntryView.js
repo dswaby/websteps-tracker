@@ -6,31 +6,24 @@ define(function (require) {
 
     template: require('hbs!./../../templates/GlucoseEntryView'),
     className: 'glucose-form',
-    events: function () {
-      // 'click .form': 'submit'
+    events: {
+      'click #submit-button': 'submit'
     },
     render: function () {
-
-      var $el = this.$el;
-
-      this.$ = function (sel) {
-        return this.$el.find(sel);
-      };
       
-      $el.html(this.template());
-
-      $el.find('#submit-button').submit(function() {
-        $('#uploadForm').submit();
-      });
+      this.$el.html(this.template());
       
-      $el.find('form').on('submit', function(e) {
-          e.preventDefault();
-      });
-
-      function status(message) {
-        $el.find('#admin-status').text(message);
-      }
       return this;
+    },
+    submit: function(e) {
+      e.preventDefault();
+      $.ajax({
+        type: "POST",
+        url: "/api/admin/glucose",
+        data: { glucoseLevel: $("#glucoseLevel").val(), timeSinceEating: $("#timeSinceEating").val(), notes: $("#glucoseComments").val() }
+      }).done(function( msg ) {
+        console.log(msg)
+      });
     }
   });
 

@@ -38,7 +38,7 @@ define(function (require) {
             }
             var imageUrlOnServer = response.path;
             status('Success, file uploaded to:' + imageUrlOnServer);
-            $('#uploadedImage').attr('src', imageUrlOnServer);
+            $('#uploadedImage').attr('src', "../"+imageUrlOnServer);
           }
         });
         return false;

@@ -64,10 +64,11 @@ require('./source/api/emails')(app);
 require('./source/api/contacts')(app);
 require('./source/api/tasks')(app);
 require('./source/api/pics')(app);
-require('./source/api/admin')(app);
+require('./source/api/glucose')(app);
 
 
 app.listen(app.get('port'), function() {
   var environment = process.env.NODE_ENV || 'development';
   console.log('SPA boilerplate started: ' + app.get('port') + ' (' + environment + ')');
 });
+

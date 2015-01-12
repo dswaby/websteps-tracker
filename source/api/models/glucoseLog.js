@@ -3,8 +3,8 @@ var Schema=mongoose.Schema;
 
 var glucoseLog =  new Schema({
   dateCreated: { type: Date, default: Date.now },
-  glucoseLevel: Number,
-  timeSinceEating: Number,
+  glucoseLevel: String,
+  timeSinceEating: String,
   comments: String
 });
 

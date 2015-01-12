@@ -1,12 +1,12 @@
 var fs = require("fs"),
     path = require("path"),
     util = require("util"),
-    multipart = require('connect-multiparty'),
+    multiparty = require('connect-multiparty'),
     PhotoLog = require("./models/photoLog.js");
 
 var pictures = function (router) {
 
-  var multipartMiddleware = multipart({maxFieldsSize: 10485760, maxFileSize: 10485760 });
+  var multipartMiddleware = multiparty();
   var date = new Date();
 
   router.post('/api/pics', multipartMiddleware, function(req, res) {

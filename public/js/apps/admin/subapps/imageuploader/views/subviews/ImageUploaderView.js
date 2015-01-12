@@ -8,8 +8,8 @@ define(function (require) {
 
     template: require('hbs!./../../templates/ImageUploaderView'),
     className: 'admin-form',
-    events: function () {
-
+    events: {
+    'click #submit-button': 'submitForm'
     },
     render: function () {
 
@@ -32,6 +32,7 @@ define(function (require) {
             status('Error: ' + xhr.status);
           },
           success: function(response) {
+            console.log(response)
             if(response.error) {
               status('Opps, something bad happened');
               return;
@@ -52,6 +53,10 @@ define(function (require) {
         $el.find('#admin-status').text(message);
       }
       return this;
+    },
+    submitForm: function(e) {
+      e.preventDefault();
+      $('#uploadForm').submit();
     }
   });
 

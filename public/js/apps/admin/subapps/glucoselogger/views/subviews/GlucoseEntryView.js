@@ -17,10 +17,16 @@ define(function (require) {
     },
     submit: function(e) {
       e.preventDefault();
+      var data = { 
+        glucoseLevel: $("#glucoseLevel").val(),
+        timeSinceEating: $("#timeSinceEating").val(), 
+        notes: $("#glucoseComments").val() 
+      };
+      console.log(data)
       $.ajax({
         type: "POST",
-        url: "/api/admin/glucose",
-        data: { glucoseLevel: $("#glucoseLevel").val(), timeSinceEating: $("#timeSinceEating").val(), notes: $("#glucoseComments").val() }
+        url: "/api/glucose",
+        data: data
       }).done(function( msg ) {
         console.log(msg)
       });

@@ -1,9 +1,6 @@
 var fs = require("fs"),
     path = require("path"),
     util = require("util"),
-    crypto = require('crypto'),
-    multipart = require('connect-multiparty'),
-    PhotoLog = require("./models/photoLog"),
     GlucoseEntry = require("./models/glucoseLog");
 
 var admin = function (app) {

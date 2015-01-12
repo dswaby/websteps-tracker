@@ -100,16 +100,17 @@
       text-align: center;
       color: #fff;
       font-size: 44px !important;
+      font-weight: 100 !important;
       display: block;
       background: #EF3D6F;
-      border: 1px solid #999;
+      border: none;
       border-radius: 7px;
       padding: 30px 10px;
       outline: none;
       white-space: nowrap;
       -webkit-user-select: none;
       cursor: pointer;
-      text-shadow: 1px 1px #fff;
+      // text-shadow: 1px 1px #fff;
       font-weight: 700;
       font-size: 11pt;
     }
@@ -135,6 +136,12 @@
         // margin-left:20px;
         display: block;
         width: 500px;
+        input, select, textarea {
+          color: red;
+        }
+        textarea:focus, input:focus {
+          color: red;
+        }
 
         @media @mobile {
           max-width: 400px;
@@ -152,25 +159,36 @@
     }
     
 
-    button {
-      height: 40px;
+    .button {
+      display: inline-block;
+      height: 50px;
       line-height:40px;
-      margin-top:15px;
+      margin:50px auto 10px;
       background-color: #4FB5B5;
       color: #fff;
       font-size: 44px !important;
       height:100px;
       border-radius: 7px;
       width: 100%;
+      text-align: center;
+      .submit-label {
+        display: inline-block;
+        // position: absolute;
+        padding-top: 30px;
+
+      }
     }
     .user-photo-checkbox {
       float: left;
+      max-width: 50%;
       @media @mobile {
+        font-size: 24px;
         padding-left: 20px;
         font-weight: 500;
       }
       @media @smallerMobile {
-        padding-left: 20px;
+        font-size: 24px;
+        // padding-left: 20px;
         font-weight: 500;
       }
     }

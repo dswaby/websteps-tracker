@@ -20,7 +20,7 @@ app.use(favicon(__dirname + '/public/favicon.ico'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.set('port', config.port);
-bodyParser({limit: '100mb'});
+// bodyParser({limit: '100mb'});
 
 //cors middleware and body parser for 
 
@@ -34,8 +34,8 @@ bodyParser({limit: '100mb'});
 // app.use(passport.initialize());
 // app.use(passport.session());
 
-app.use(bodyParser.json({limit: '50mb'}));
-app.use(bodyParser.urlencoded({limit: '50mb', extended: true }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({limit: '50mb' }));
 
 app.use(methodOverride());
 // app.use(connect.limit('50mb'));

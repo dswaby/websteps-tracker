@@ -33,8 +33,9 @@ app.set('port', config.port);
 
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb'}));
+
+app.use(bodyParser.json({limit: '50mb'}));
 app.use(methodOverride());
 // app.use(connect.limit('50mb'));
 

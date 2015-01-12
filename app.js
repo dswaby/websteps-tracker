@@ -31,11 +31,11 @@ bodyParser({limit: '100mb'});
 //   saveUninitialized: true
 // }));
 
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 app.use(bodyParser.json({limit: '50mb'}));
-app.use(bodyParser.urlencoded({limit: '50mb', extended: false }));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true }));
 
 app.use(methodOverride());
 // app.use(connect.limit('50mb'));
@@ -71,4 +71,3 @@ app.listen(app.get('port'), function() {
   var environment = process.env.NODE_ENV || 'development';
   console.log('SPA boilerplate started: ' + app.get('port') + ' (' + environment + ')');
 });
- 

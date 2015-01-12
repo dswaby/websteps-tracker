@@ -17,7 +17,7 @@ var pictures = function (router) {
       res.send({error : 'not photo'});
       return;
     }
-
+    console.log(req)
     require('fs').rename(req.files.userPhoto.path, serverPath, function(error) {
     var fingerprint;
       if (error) {

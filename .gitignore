@@ -4,6 +4,7 @@ node_modules
 public/components
 *.log
 source/api/data/
+source/client/index.js
 public/pics/*
 public/build/
 fitbit-logger.sublime*

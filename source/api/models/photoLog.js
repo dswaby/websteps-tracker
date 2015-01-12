@@ -8,4 +8,4 @@ var photoLog =  new Schema({
   fingerprint: String
 });
 
-module.exports = mongoose.model('PhotoLog', photoLog);
+module.exports = mongoose.model('photo', photoLog);

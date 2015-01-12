@@ -9,8 +9,7 @@ var pictures = function (router) {
   var multipartMiddleware = multipart();
   var date = new Date();
 
-
-  router.route('/api/pics').post( multipartMiddleware, function(req, res) {
+  app.post('/api/admin/pics', multipartMiddleware, function(req, res) {
     var serverPath = './public/pics/' + date.toISOString() + req.files.userPhoto.name;
     var publicPath = './pics/' + date.toISOString() + req.files.userPhoto.name;
 

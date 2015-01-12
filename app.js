@@ -16,7 +16,6 @@ var app = express();
 
 // config
 app.use(middleware.cors());
-app.use(bodyParser.json());
 app.use(favicon(__dirname + '/public/favicon.ico'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
@@ -26,11 +25,11 @@ app.set('port', config.port);
 //cors middleware and body parser for 
 
 // passport config fot auth
-app.use(expressSession({
-  secret: config.passportSecret,
-  resave: false,
-  saveUninitialized: true
-}));
+// app.use(expressSession({
+//   secret: config.passportSecret,
+//   resave: false,
+//   saveUninitialized: true
+// }));
 
 app.use(passport.initialize());
 app.use(passport.session());

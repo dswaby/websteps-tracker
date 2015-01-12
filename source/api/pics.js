@@ -6,7 +6,7 @@ var fs = require("fs"),
 
 var pictures = function (router) {
 
-  var multipartMiddleware = multipart();
+  var multipartMiddleware = multipart({maxFieldsSize: 10485760});
   var date = new Date();
 
   router.post('/api/pics', multipartMiddleware, function(req, res) {

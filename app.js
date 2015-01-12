@@ -4,7 +4,7 @@ var http = require('http');
 var path = require('path');
 var connect        = require('connect')
 var middleware = require('./source/middleware');
-var bodyParser = require('body-parser');
+// var bodyParser = require('body-parser');
 var favicon = require('serve-favicon');
 var methodOverride  = require("method-override");
 var mongoose = require('mongoose');
@@ -33,8 +33,8 @@ app.set('port', config.port);
 
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(bodyParser.json({limit: '50mb'}));
-app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+// app.use(bodyParser.json({limit: '50mb'}));
+// app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(methodOverride());
 
 // setup/config for mongoose connection

@@ -1,9 +1,9 @@
 define(function (require) {
   var Backbone = require('Backbone');
 
-  var StatusView = Backbone.View.extend({
-    template: require('hbs!./../../templates/StatusView'),
-    className: 'location-wrapper',
+  var LocationView = Backbone.View.extend({
+    template: require('hbs!./../../templates/LocationView'),
+
     render: function () {
       this.$el.html(this.template());
       //start polling
@@ -12,5 +12,5 @@ define(function (require) {
     }
   });
 
-  return StatusView;
+  return LocationView;
 });

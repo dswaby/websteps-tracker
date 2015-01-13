@@ -7,12 +7,13 @@ define(function(require) {
 			'': 'home',
 			'inbox': 'inbox',
 			'inbox/compose': 'inboxCompose',
+      'recent': 'recent',
 			'charts': 'charts',
-			'tasks': 'tasks',
-      'pics': 'pics',
+			'status': 'status',
       'admin': 'admin',
       'admin/upload': 'adminUpload',
-      'admin/glucoselog': 'adminGlucoseLog'
+      'admin/glucoselog': 'adminGlucoseLog',
+      'admin/status': 'statusUpdater'
 		},
 
 		home: function () {
@@ -31,11 +32,11 @@ define(function(require) {
 			require('./../apps/charts/app').run(viewManager);
 		},
 
-		tasks: function () {
-			require('./../apps/tasks/app').run(viewManager);
+		status: function () {
+			require('./../apps/status/app').run(viewManager);
 		},
 
-    pics: function () {
+    recent: function () {
       require('./../apps/pics/app').run(viewManager);
     },
 
@@ -49,7 +50,11 @@ define(function(require) {
 
     adminGlucoseLog: function () {
       require('./../apps/admin/subapps/glucoselogger/app').run(viewManager);
-    }
+    },
+
+    statusUpdater: function () {
+      require('./../apps/admin/subapps/status/app').run(viewManager);
+    },
 
 	});
 

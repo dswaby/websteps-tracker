@@ -5,6 +5,7 @@ define(function (require) {
 	var FooterView = require('./FooterView');
   require("velocity");
 	var MainView = Backbone.View.extend({
+    className: "home-main-view",
 		initialize: function () {
 			this.subviews = [];
 		},

@@ -1,23 +1,38 @@
-var fs = require("fs"),
-    path = require("path"),
-    util = require("util"),
-    GlucoseEntry = require("./models/glucoseLog");
+var StatusEntry = require("./models/glucoseLog");
 
 var admin = function (app) {
+  app.post('/api/admin/status', function(req, res) {
 
-//   var glucoseLog =  new Schema({
-//   dateCreated: { type: Date, default: Date.now },
-//   glucoseLevel: Number,
-//   comments: String
-// });{ glucoseLevel: '44', timeSinceEating: '44', notes: 'notes' }
+      StatusEntry.find(function(err, status) {
+      if (err) {
+        return res.send(err);
+      }
+      if (status.length) {
+        for (prop in req.body) {
+            status[prop] = req.body[prop];
+          }
 
-  app.post('/api/admin/glucose', function(req, res) {
+          status.save(function(err) {
+            if (err) {
+              return res.send(err);
+          }
 
-      var glucoseEntry = new GlucoseEntry({
-        glucoseLevel: req.body.glucoseLevel,
-        timeSinceEating: req.body.timeSinceEating,
-        comments: req.body.notes
-      });
+          res.json({ message: 'Status Updated!' });
+
+        });
+      }
+ 
+      return res.json(status);
+    });
+
+      glucoseEntry.save(function(err, entry){
+        if(err)
+          res.send(err);
+        });
+        res.send();
+  });
+
+  app.get('/api/admin/status', function(req, res) {
 
       glucoseEntry.save(function(err, entry){
         if(err)

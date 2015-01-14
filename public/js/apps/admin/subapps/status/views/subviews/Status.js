@@ -49,7 +49,7 @@ define(function (require) {
       var intervalId = setInterval(function() {
         // if (plot.length < 1000) {
           var plotPoint = (accelerationX * accelerationX) + (accelerationY * accelerationY) + (accelerationZ * accelerationZ);
-          plot.push(plotPoint);
+          // plot.push(plotPoint);
           if (state === "low" ) {
             if (plotPoint >= config.high) {
               peaks++;

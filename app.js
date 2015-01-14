@@ -16,9 +16,6 @@ var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
-
-
-
 // config
 app.use(middleware.cors());
 app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -75,6 +72,7 @@ io.on('connection', function (socket) {
   });
 
   socket.on('steps updated', function (data) {
+    console.log('steps', data);
     socket.broadcast.emit('stepcount', {steps: data });
   });
 

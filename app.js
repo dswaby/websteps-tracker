@@ -14,33 +14,20 @@ var passport = require('passport');
 var expressSession = require('express-session');
 var app = express();
 
+
+
+
 // config
 app.use(middleware.cors());
 app.use(favicon(__dirname + '/public/favicon.ico'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.set('port', config.port);
-// bodyParser({limit: '100mb'});
 
-//cors middleware and body parser for 
-
-// passport config fot auth
-// app.use(expressSession({
-//   secret: config.passportSecret,
-//   resave: false,
-//   saveUninitialized: true
-// }));
-
-// app.use(passport.initialize());
-// app.use(passport.session());
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({limit: '50mb' }));
-
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({limit: '50mb' }));
 app.use(methodOverride());
-// app.use(connect.limit('50mb'));
 
-// setup/config for mongoose connection
 mongoose.connect(config.mongodbConnectionString);
 
 if (process.env.NODE_ENV === 'development') {
@@ -66,9 +53,18 @@ require('./source/api/tasks')(app);
 require('./source/api/pics')(app);
 require('./source/api/glucose')(app);
 
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
 
 app.listen(app.get('port'), function() {
   var environment = process.env.NODE_ENV || 'development';
   console.log('SPA boilerplate started: ' + app.get('port') + ' (' + environment + ')');
+});
+
+io.on('connection', function (socket) {
+  socket.emit('news', { hello: 'world' });
+  socket.on('my other event', function (data) {
+    console.log(data);
+  });
 });
 

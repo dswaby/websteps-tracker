@@ -92,7 +92,7 @@ if (window.DeviceMotionEvent==undefined) {
 
         if (halfStep === 2) {
           steps++;
-          // that.socket.emit('steps updated', { stepCount: steps });
+          that.socket.emit('steps updated', { stepCount: steps });
           document.getElementById("steps").innerHTML = steps;
           halfStep = 0;
         }

@@ -23,7 +23,7 @@ define(function (require) {
     },
     connectSocket: function(){
       var that = this;
-      that.socket = io.connect('http://localhost:8000');      
+      that.socket = io.connect('http://fitb.apps.swa.by:3634');      
       that.socket.on('news', function (data) {
         that.socket.emit('my other event', { my: 'data' });
       });

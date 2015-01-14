@@ -42,6 +42,7 @@ define(function (require) {
         low: 70
       };
       var runnningPeak = 700;
+      var falseStepCount = 0;
       var steps = 0;
       var halfStep = 0;
       var state = "low";
@@ -59,24 +60,36 @@ define(function (require) {
       
      
       var intervalId = setInterval(function() {
-          var plotPoint = (accelerationX * accelerationX) + (accelerationY * accelerationY) + (accelerationZ * accelerationZ);
-          if (state === "low" ) {
-            if (plotPoint >= config.high) {
+        var plotPoint = (accelerationX * accelerationX) + (accelerationY * accelerationY) + (accelerationZ * accelerationZ);
+        if (state === "low" ) {
+          if (plotPoint >= config.high) {
+            halfStep++;
+            state = "high";
+            falseStepCount = 0;
+          }
+        }
+        else if (state === "high") {
+          if (plotPoint <= config.low) {
               halfStep++;
-              state = "high";
-            }
+              state = "low";
+              falseStepCount = 0;
           }
-          else if (state === "high") {
-            if (plotPoint <= config.low) {
-                halfStep++;
-                state = "low";
-            }
+          else {
+            falseStepCount++;
           }
-          if (halfStep === 2) {
-            steps++;
-            that.socket.emit('steps updated', { stepCount: steps });
-            document.getElementById("steps").innerHTML = parseInt(steps);
-          }
+        }
+
+        if (falseStepCount ===10) {
+          halfStep = 0;
+          falseStepCount= 0;
+        }
+
+        if (halfStep === 2) {
+          steps++;
+          that.socket.emit('steps updated', { stepCount: steps });
+          document.getElementById("steps").innerHTML = steps;
+          halfStep = 0;
+        }
       }, delay);
     }
   });

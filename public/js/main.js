@@ -46,7 +46,8 @@ require.config({
     velocity: './../components/velocity/velocity',
     moment: './../components/moment/moment',
     c3: './../components/c3/c3',
-    d3: './../components/d3/d3'
+    d3: './../components/d3/d3', 
+    socketio: 'http://localhost:8000/socket.io/socket.io'
 	}
 });
 

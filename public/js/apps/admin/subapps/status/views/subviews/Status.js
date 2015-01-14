@@ -1,6 +1,6 @@
 define(function (require) {
   var Backbone = require('Backbone');
-
+  var io = require('socketio');
   var StatusView = Backbone.View.extend({
     template: require('hbs!./../../templates/StatusView'),
     className: 'location-wrapper',
@@ -10,7 +10,7 @@ define(function (require) {
     },
     render: function () {
       this.$el.html(this.template());
-
+      this.connectSocket();
       //start polling
       //update views
       return this;
@@ -21,62 +21,62 @@ define(function (require) {
       audio.src = "./../../../../../../mp3/5min.mp3";
       audio.play();
     },
+    connectSocket: function(){
+      var that = this;
+      that.socket = io.connect('http://localhost:8000');      
+      that.socket.on('news', function (data) {
+        that.socket.emit('my other event', { my: 'data' });
+      });
+    },
     startCounting: function() {
-        var interval = 0;
-        var delay = 100;
-        // var timeline = ["x"];
-        // var plot = ["points"];
-        var accelerationX = 0;  
-        var accelerationY = 0;  
-        var accelerationZ = 0;  
-        var config = {
-          high: 220,
-          low: 70
-        };
-        var runnningPeak = 700;
-        var peaks = 0;
-        var state = "low";
-        var c3rendered = false;
-        var activityLevel = null;
-
-      window.ondevicemotion = function(event) {
-         interval = event.interval;
-         accelerationX = event.accelerationIncludingGravity.x;  
-         accelerationY = event.accelerationIncludingGravity.y;  
-         accelerationZ = event.accelerationIncludingGravity.z;  
+      var that = this;
+      var interval = 0;
+      var delay = 100;
+      // var timeline = ["x"];
+      // var plot = ["points"];
+      var accelerationX = 0;  
+      var accelerationY = 0;  
+      var accelerationZ = 0;  
+      var config = {
+        high: 220,
+        low: 70
       };
+      var runnningPeak = 700;
+      var steps = 0;
+      var halfStep = 0;
+      var state = "low";
+      var c3rendered = false;
+      var activityLevel = null;
+      if (!window.ondevicemotion){
+        window.ondevicemotion = function(event) {
+           interval = event.interval;
+           accelerationX = event.accelerationIncludingGravity.x;  
+           accelerationY = event.accelerationIncludingGravity.y;  
+           accelerationZ = event.accelerationIncludingGravity.z;  
+        };
+      }
+
+      
      
       var intervalId = setInterval(function() {
-        // if (plot.length < 1000) {
           var plotPoint = (accelerationX * accelerationX) + (accelerationY * accelerationY) + (accelerationZ * accelerationZ);
-          // plot.push(plotPoint);
           if (state === "low" ) {
             if (plotPoint >= config.high) {
-              peaks++;
+              halfStep++;
               state = "high";
             }
           }
           else if (state === "high") {
             if (plotPoint <= config.low) {
-                peaks++;
+                halfStep++;
                 state = "low";
             }
           }
-          document.getElementById("steps").innerHTML = parseInt(peaks/2);
-        // }
-        // else if (!c3rendered) {
-        //   clearInterval(intervalId);
-          
-        //   var chart = c3.generate({
-        //     bindto: "#interval",
-        //     data: {
-        //       columns: [
-        //           plot
-        //       ]
-        //     }
-        //   });
-        //   c3rendered = true;
-        // }
+          if (halfStep === 2) {
+            steps++;
+            that.socket.emit('steps updated', { stepCount: steps });
+            document.getElementById("steps").innerHTML = parseInt(steps);
+          }
       }, delay);
     }
   });

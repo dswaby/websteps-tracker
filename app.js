@@ -13,6 +13,8 @@ var errorHandler = require('errorhandler');
 var passport = require('passport');
 var expressSession = require('express-session');
 var app = express();
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 
 
 
@@ -56,7 +58,7 @@ require('./source/api/glucose')(app);
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 
-app.listen(app.get('port'), function() {
+server.listen(app.get('port'), function(){
   var environment = process.env.NODE_ENV || 'development';
   console.log('SPA boilerplate started: ' + app.get('port') + ' (' + environment + ')');
 });
@@ -64,6 +66,9 @@ app.listen(app.get('port'), function() {
 io.on('connection', function (socket) {
   socket.emit('news', { hello: 'world' });
   socket.on('my other event', function (data) {
+    console.log(data);
+  });
+  socket.on('steps updated', function (data) {
     console.log(data);
   });
 });

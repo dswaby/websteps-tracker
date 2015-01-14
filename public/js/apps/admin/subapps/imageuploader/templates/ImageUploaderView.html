@@ -1,28 +1,29 @@
-  <div class="page-title">Insecure Admin Area</div>
-  <div class="form-title">Upload </div>
-  <div class="form-wrap">
-    <form id="uploadForm" enctype="multipart/form-data" action="/api/pics" method="post">
-      <input type="file" id="userPhotoInput" name="userPhoto" class="user-photo" />
-        <label for="photoComments" class="form-label" style="display:inline;text-align:left;">Optional Comments</label>
-      <input type="text" id="photoComments" name="optionalPhotoComments" placeholder="ex. 1 more min to go till a 7 min mile" class="user-photo-text-input" />
-      <br />
-      <div class="form-item-wrap">
-        <label class="user-photo-checkbox form-label">Mile Shot</label>
-        <input type="checkbox" id="mileCheckBox" name="isMile" class="checkbox" />
-      </div>
-      <div style="clear:both"></div>
-      <br />
-      <div class="form-item-wrap">
-        <label class="user-photo-checkbox form-label">5k Shot</label> 
-        <input type="checkbox" id="5kCheckbox" name="is5k" class="checkbox" />
-      </div>
-      <div style="clear:both"></div>
-      <!-- <br /> -->
-      <div class="form-item-wrap">
-        <a id="submit-button"><div class="button" id="submit-button" type="submit"><span class="submit-label">Submit</span></div></a>
-      </div>
-    </form>
-  </div>
- 
-  <span id="admin-status">  </span>
-    <img id="uploadedImage" />
+<div class="back-nav"><a href="/admin">Back</a></div>
+<div class="page-title">Insecure Admin Area</div>
+<div class="form-title">Upload </div>
+<div class="form-wrap">
+  <form id="uploadForm" enctype="multipart/form-data" action="/api/pics" method="post">
+    <input type="file" id="userPhotoInput" name="userPhoto" class="user-photo" />
+      <label for="photoComments" class="form-label" style="display:inline;text-align:left;">Optional Comments</label>
+    <input type="text" id="photoComments" name="optionalPhotoComments" placeholder="ex. 1 more min to go till a 7 min mile" class="user-photo-text-input" />
+    <br />
+    <div class="form-item-wrap">
+      <label class="user-photo-checkbox form-label">Mile Shot</label>
+      <input type="checkbox" id="mileCheckBox" name="isMile" class="checkbox" />
+    </div>
+    <div style="clear:both"></div>
+    <br />
+    <div class="form-item-wrap">
+      <label class="user-photo-checkbox form-label">5k Shot</label> 
+      <input type="checkbox" id="5kCheckbox" name="is5k" class="checkbox" />
+    </div>
+    <div style="clear:both"></div>
+    <!-- <br /> -->
+    <div class="form-item-wrap">
+      <a id="submit-button"><div class="button" id="submit-button" type="submit"><span class="submit-label">Submit</span></div></a>
+    </div>
+  </form>
+</div>
+
+<span id="admin-status">  </span>
+  <img id="uploadedImage" />

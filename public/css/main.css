@@ -354,32 +354,21 @@
 .back-nav a.hover {
   text-decoration: underline;
 }
-.pics-view {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  display: block;
-  width: 100%;
-  border: 1px solid gray;
-}
-.pics-view .pictures {
+.pics-main-view .pictures {
   max-width: 95%;
   max-height: 100%;
   overflow: auto;
 }
-.pics-view .pictures .picture {
+.pics-main-view .pictures .picture {
   width: 150px;
   height: 150px;
   float: left;
 }
-.pics-view .pictures .picture img {
+.pics-main-view .pictures .picture img {
   width: 145px;
   height: 120px;
 }
-.pics-view #audio-toggle {
+.pics-main-view #audio-toggle {
   height: 50px;
   width: 150px;
   background-color: #e6e6e6;
@@ -503,7 +492,7 @@ html {
 }
 @media only screen and (max-width : 599px) {
   .static-header {
-    height: 150px;
+    height: 115px;
   }
 }
 .static-header ul.nav {
@@ -527,16 +516,16 @@ html {
 @media only screen and (min-width : 600px) and (max-width : 1024px) {
   .static-header ul.nav li {
     height: 200px;
-    font-size: 48px;
+    font-size: 42px;
     padding-top: 50px;
   }
 }
 @media only screen and (max-width : 599px) {
   .static-header ul.nav li {
-    height: 150px;
-    font-size: 24px;
-    padding-top: 50px;
-    padding-bottom: 36px;
+    height: 115px;
+    font-size: 18px;
+    padding-top: 30px;
+    padding-bottom: 40px;
     padding-left: 0;
     min-width: 25%;
   }
@@ -547,23 +536,21 @@ html {
 .static-header ul.nav li:after {
   display: block;
   content: "|";
+  color: gray;
   cursor: initial;
   float: right;
   white-space: nowrap;
   top: -20px;
 }
-@media only screen and (min-width : 600px) and (max-width : 1024px) {
-  .static-header ul.nav li:after {
-    display: none;
-  }
-}
 @media only screen and (max-width : 599px) {
   .static-header ul.nav li:after {
-    display: none;
+    min-width: 20%;
   }
 }
-.static-header ul.nav li a:active,
 .static-header ul.nav li a:hover {
+  color: gray;
+}
+.static-header ul.nav li a:active {
   color: red;
 }
 @media only screen and (min-width : 600px) and (max-width : 1024px) {
@@ -611,16 +598,6 @@ a .static-header ul.nav:visited:hover {
   background: url('../img/Long_Distance_Running.jpg') repeat-y;
   background-size: cover;
 }
-@media only screen and (min-width : 600px) and (max-width : 1024px) {
-  .page {
-    background-size: cover;
-  }
-}
-@media only screen and (max-width : 599px) {
-  .page {
-    background-size: cover;
-  }
-}
 .app-container {
   margin-top: 200px;
   width: 100%;
@@ -633,7 +610,7 @@ a .static-header ul.nav:visited:hover {
 }
 @media only screen and (max-width : 599px) {
   .app-container {
-    margin-top: 150px;
+    margin-top: 115px;
   }
 }
 .hero-unit {

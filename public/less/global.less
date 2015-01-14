@@ -8,13 +8,9 @@
 @import url('../js/apps/charts/view.less');
 @import url('../js/apps/status/view.less');
 
-
-
-
-
 @headerHeight: 60;
 @headerHeightMobile:200;
-@headerHeightSmallerMobile:150;
+@headerHeightSmallerMobile:115;
 
 @primaryColor: #4AD5D7;
 @primaryTextColor: #fff;
@@ -72,22 +68,21 @@ html {
     list-style: none;
     margin-top:15px;
 
-    
-
     li {
       float: left;
       min-width: 24%;
       padding-top: 50px;
+
       @media @mobile {
         height: unit(@headerHeightMobile, px);
-        font-size:48px;
+        font-size:42px;
         padding-top: 50px;
       }
       @media @smallerMobile {
         height: unit(@headerHeightSmallerMobile, px);
-        font-size:24px;
-        padding-top: 50px;
-        padding-bottom: 36px;
+        font-size:18px;
+        padding-top: 30px;
+        padding-bottom: 40px;
         padding-left: 0;
         min-width: 25%;
 
@@ -99,25 +94,22 @@ html {
       }
       &:after {
         display: block;
-        // font-size: 30px;
-        // padding-top: -20px;
         content: "|";
+        color: gray;
         cursor:initial;
         float: right;
         white-space: nowrap;
         top:-20px;
-        // position: absolute;
-
-        @media @mobile {
-          display:none;
-        }
         @media @smallerMobile {
-          display:none;
+          min-width: 20%;
         }
       }
       a {
-        &:active, &:hover {
-          color:red;
+         &:hover {
+          color:gray;
+        }
+        &:active {
+          color: red;
         }
         @media @mobile {
           padding: 36px 0;
@@ -166,14 +158,6 @@ html {
   overflow-y: none;
   background: url('./../img/Long_Distance_Running.jpg') repeat-y;
   background-size: cover;
-
-  @media @mobile {
-    background-size: cover;
-  }
-  @media @smallerMobile {
-    background-size: cover;
-  }
-
 }
 
 // main container styles

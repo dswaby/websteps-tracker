@@ -1,9 +1,9 @@
 define(function(require) {
 	var Backbone = require('Backbone');
-	var TaskView = require('./TaskView');
+	var EmailView = require('./EmailView');
 
 	var InboxView = Backbone.View.extend({
-		template: require('hbs!./../../templates/TasksView'),
+		template: require('hbs!./../../templates/InboxView'),
 
 		initialize: function () {
 			this.subviews = [];
@@ -12,9 +12,9 @@ define(function(require) {
 		render: function () {
 			this.$el.html(this.template());
 
-			var mails = this.$('.tasks');
+			var mails = this.$('.mails');
 			this.collection.forEach(function (mail) {
-				var view = new TaskView({model: mail});
+				var view = new EmailView({model: mail});
 				mails.append(view.render().el);
 				this.subviews.push(view);
 			}, this);

@@ -4,7 +4,7 @@ define(function (require) {
 	var EmailView = Backbone.View.extend({
 		tagName: 'tr',
 
-		template: require('hbs!./../../templates/TaskView'),
+		template: require('hbs!./../../templates/EmailView'),
 
 		render: function () {
 			this.$el.html(this.template(this.model.toJSON()));

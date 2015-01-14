@@ -8,6 +8,7 @@ define(function (require) {
       this.$el.html(this.template());
       //start polling
       //update views
+      this.connectSocket;
       return this;
     },
     connectSocket: function(){

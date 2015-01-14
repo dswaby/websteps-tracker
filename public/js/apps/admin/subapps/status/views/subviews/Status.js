@@ -23,10 +23,14 @@ define(function (require) {
     },
     connectSocket: function(){
       var that = this;
-      that.socket = io.connect('http://fitb.apps.swa.by:80');      
+      that.socket = io.connect('http://fitb.apps.swa.by:3634/');      
       that.socket.on('news', function (data) {
         that.socket.emit('my other event', { my: 'data' });
+
       });
+      that.socket.on('user connected', function(){
+        console.log("user connected")
+      })
     },
     startCounting: function() {
       var that = this;
@@ -48,15 +52,19 @@ define(function (require) {
       var state = "low";
       var c3rendered = false;
       var activityLevel = null;
+      that.socket.emit('steps updated', { stepCount: steps });
+
+if (window.DeviceMotionEvent==undefined) {
+    } else {
+
       window.ondevicemotion = function(event) {
          interval = event.interval;
          accelerationX = event.accelerationIncludingGravity.x;  
          accelerationY = event.accelerationIncludingGravity.y;  
          accelerationZ = event.accelerationIncludingGravity.z;  
       };
+    }
 
-      
-     
       var intervalId = setInterval(function() {
         var plotPoint = (accelerationX * accelerationX) + (accelerationY * accelerationY) + (accelerationZ * accelerationZ);
         if (state === "low" ) {
@@ -84,7 +92,7 @@ define(function (require) {
 
         if (halfStep === 2) {
           steps++;
-          that.socket.emit('steps updated', { stepCount: steps });
+          // that.socket.emit('steps updated', { stepCount: steps });
           document.getElementById("steps").innerHTML = steps;
           halfStep = 0;
         }

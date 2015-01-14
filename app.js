@@ -65,15 +65,12 @@ server.listen(app.get('port'), function(){
 
 io.on('connection', function (socket) {
   socket.emit('news', { hello: 'world' });
+  socket.broadcast.emit('user connected');
   socket.on('my other event', function (data) {
     console.log(data);
   });
   socket.on('steps updated', function (data) {
     console.log(data);
   });
-});
-
-io.sockets.on('connection', function (socket) {
-  socket.broadcast.emit('user connected');
 });
 

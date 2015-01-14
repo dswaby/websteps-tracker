@@ -21,23 +21,24 @@ define(function (require) {
       audio.src = "./../../../../../../mp3/5min.mp3";
       audio.play();
     },
+
     connectSocket: function(){
       var that = this;
       that.socket = io.connect('http://fitb.apps.swa.by');      
       that.socket.on('news', function (data) {
-        that.socket.emit('my other event', { my: 'data' });
-
+        that.socket.emit('danny connected');
       });
-      that.socket.on('user connected', function(){
-        console.log("user connected")
-      })
+      that.socket.on('location', function (data) {
+        that.socket.emit('my other event', { my: 'data' });
+      });
+      that.socket.on('is danny connected', function(){
+        that.socket.emit('danny is connected' });
+      });
     },
     startCounting: function() {
       var that = this;
       var interval = 0;
       var delay = 100;
-      // var timeline = ["x"];
-      // var plot = ["points"];
       var accelerationX = 0;  
       var accelerationY = 0;  
       var accelerationZ = 0;  
@@ -50,20 +51,19 @@ define(function (require) {
       var steps = 0;
       var halfStep = 0;
       var state = "low";
-      var c3rendered = false;
-      var activityLevel = null;
+
       that.socket.emit('steps updated', { stepCount: steps });
 
-if (window.DeviceMotionEvent==undefined) {
-    } else {
+      if (window.DeviceMotionEvent==undefined) {
+      } else {
 
-      window.ondevicemotion = function(event) {
-         interval = event.interval;
-         accelerationX = event.accelerationIncludingGravity.x;  
-         accelerationY = event.accelerationIncludingGravity.y;  
-         accelerationZ = event.accelerationIncludingGravity.z;  
-      };
-    }
+        window.ondevicemotion = function(event) {
+           interval = event.interval;
+           accelerationX = event.accelerationIncludingGravity.x;  
+           accelerationY = event.accelerationIncludingGravity.y;  
+           accelerationZ = event.accelerationIncludingGravity.z;  
+        };
+      } 
 
       var intervalId = setInterval(function() {
         var plotPoint = (accelerationX * accelerationX) + (accelerationY * accelerationY) + (accelerationZ * accelerationZ);

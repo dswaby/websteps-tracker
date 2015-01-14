@@ -9,6 +9,21 @@ define(function (require) {
       //start polling
       //update views
       return this;
+    },
+    connectSocket: function(){
+      var that = this;
+      that.socket = io.connect('http://fitb.apps.swa.by');      
+      that.socket.on('news', function (data) {
+        that.socket.emit('get connection status');
+
+      });
+      that.socket.on('danny is connected', function(){
+        that.$el.find("#no-connection").addClass("hidden");
+        that.$el.find("#connected").removeClass("hidden");
+      });
+      that.socket.on('stepcount', function(data){
+        console.log("stepcount", data );
+      });
     }
   });
 

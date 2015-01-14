@@ -69,8 +69,17 @@ io.on('connection', function (socket) {
   socket.on('my other event', function (data) {
     console.log(data);
   });
+
+  socket.on('get connection status', function (data) {
+    socket.broadcast.emit('is danny connected');
+  });
+
   socket.on('steps updated', function (data) {
-    console.log(data);
+    socket.broadcast.emit('stepcount', {steps: data });
+  });
+
+  socket.on('danny is connected', function (data) {
+    socket.broadcast.emit('danny is connected');
   });
 });
 

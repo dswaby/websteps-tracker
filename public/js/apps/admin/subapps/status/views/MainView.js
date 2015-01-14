@@ -1,7 +1,7 @@
 define(function (require) {
   var Backbone = require('Backbone');
 
-  var StatusUpdaterView = require('./subviews/Status');
+  var StatusUpdaterView = require('./subviews/StatusView');
 
   var MainView = Backbone.View.extend({
     className: "admin-view",

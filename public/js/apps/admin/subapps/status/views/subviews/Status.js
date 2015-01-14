@@ -38,10 +38,9 @@ define(function (require) {
         var state = "low";
         var c3rendered = false;
         var activityLevel = null;
-      if (window.DeviceMotionEvent==undefined) {
-    } else {
+
       window.ondevicemotion = function(event) {
-        interval = event.interval;
+         interval = event.interval;
          accelerationX = event.accelerationIncludingGravity.x;  
          accelerationY = event.accelerationIncludingGravity.y;  
          accelerationZ = event.accelerationIncludingGravity.z;  
@@ -79,7 +78,6 @@ define(function (require) {
         //   c3rendered = true;
         // }
       }, delay);
-     } 
     }
   });
 

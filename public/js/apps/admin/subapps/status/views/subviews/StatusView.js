@@ -11,8 +11,6 @@ define(function (require) {
     render: function () {
       this.$el.html(this.template());
       this.connectSocket();
-      //start polling
-      //update views
       return this;
     },
     playAudio: function(){

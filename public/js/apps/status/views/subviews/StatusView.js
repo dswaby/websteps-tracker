@@ -1,5 +1,6 @@
 define(function (require) {
   var Backbone = require('Backbone');
+  var io = require('socketio');
 
   var StatusView = Backbone.View.extend({
     template: require('hbs!./../../templates/StatusView'),
@@ -19,6 +20,7 @@ define(function (require) {
 
       });
       that.socket.on('danny is connected', function(){
+        console.log("danny is connected");
         that.$el.find("#no-connection").addClass("hidden");
         that.$el.find("#connected").removeClass("hidden");
       });

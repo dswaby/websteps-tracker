@@ -5,4 +5,5 @@ public/components
 *.log
 source/api/data/
 public/pics/*
+public/build/*
 fitbit-logger.sublime*

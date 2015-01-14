@@ -32,7 +32,7 @@ define(function (require) {
         that.socket.emit('my other event', { my: 'data' });
       });
       that.socket.on('is danny connected', function(){
-        that.socket.emit('danny is connected' });
+        that.socket.emit('danny is connected');
       });
     },
     startCounting: function() {

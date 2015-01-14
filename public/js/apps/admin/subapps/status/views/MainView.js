@@ -10,8 +10,8 @@ define(function (require) {
     },
 
     render: function () {
-      var pedometerView = new StatusUpdaterView();
-      this.$el.append(pedometerView.render().el);
+      var StatusView = new StatusUpdaterView();
+      this.$el.append(StatusView.render().el);
       return this;
     }
   });

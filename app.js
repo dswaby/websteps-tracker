@@ -73,3 +73,7 @@ io.on('connection', function (socket) {
   });
 });
 
+io.sockets.on('connection', function (socket) {
+  socket.broadcast.emit('user connected');
+});
+

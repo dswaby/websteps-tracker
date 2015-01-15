@@ -19,14 +19,16 @@ module.exports = function(grunt) {
     sshexec: {
       deploy: {
         command: [
-          'cd ~/public/fitb.apps.swa.by/',
+          'cd /home/danny/public/fitb.apps.swa.by/',
           'git pull',
           'sudo npm install',
           '<%= secret.password %>',
           'bower install',
           'forever stop app.js',
           'forever start app.js'
+        ],
         options: {
+          path: '/home/danny/public/fitb.apps.swa.by/',
           host: '<%= secret.host %>',
           privateKey: grunt.file.read("id_rsa"),
           username: '<%= secret.username %>',
@@ -138,6 +140,6 @@ module.exports = function(grunt) {
 	grunt.registerTask('default', [ 'requirejs', 'hashres']);
   grunt.registerTask('dev', ['clean', 'requirejs', 'less','hashres:prod', 'express', 'watch']);
   grunt.registerTask('build', [ 'clean', 'requirejs', 'less','hashres']);
-  grunt.registerTask('deploy',['sshexec:test']);
+  grunt.registerTask('deploy',['sshexec:deploy']);
 
 };

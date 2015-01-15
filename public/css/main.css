@@ -164,11 +164,17 @@
     height: 100px;
   }
 }
-.admin-main-view .admin-form .button {
+.admin-main-view .admin-form button {
+  height: 100%;
+  width: 100%;
+  display: inline-block;
+  border: none !important;
+  background-color: transparent !important;
+}
+.admin-main-view .admin-form button .button {
   display: inline-block;
   height: 50px;
   line-height: 40px;
-  margin: 50px auto 10px;
   background-color: #4FB5B5;
   color: #fff;
   font-size: 44px !important;
@@ -177,7 +183,7 @@
   width: 100%;
   text-align: center;
 }
-.admin-main-view .admin-form .button .submit-label {
+.admin-main-view .admin-form button .button .submit-label {
   display: inline-block;
   padding-top: 30px;
 }
@@ -315,6 +321,7 @@
   height: 100px;
   border-radius: 7px;
   width: 100%;
+  border: 0 solid transparent;
 }
 ::-webkit-input-placeholder {
   font-family: 'Open Sans', sans-serif;
@@ -600,6 +607,7 @@ a .static-header ul.nav:visited:hover {
   overflow-y: none;
   background: url('../img/Long_Distance_Running.jpg') repeat-y;
   background-size: cover;
+  overflow: auto;
 }
 .app-container {
   margin-top: 200px;

@@ -2,7 +2,7 @@ define(function (require) {
   var Backbone = require('Backbone');
   var io = require('socketio');
   var StatusView = Backbone.View.extend({
-    template: require('hbs!./../../templates/StatusView'),
+    template: require('hbs!./../../templates/AdminStatusView'),
     className: 'location-wrapper',
     events: {
       'click #silent-audio': 'playAudio',
@@ -22,7 +22,9 @@ define(function (require) {
 
     connectSocket: function(){
       var that = this;
-      that.socket = io.connect('http://fitb.apps.swa.by');      
+      that.socket = io.connect('/admin');
+      // that.socket = io.connect('http://fitb.apps.swa.by');      
+
       that.socket.on('news', function (data) {
         that.socket.emit('danny connected');
       });
@@ -30,6 +32,7 @@ define(function (require) {
         that.socket.emit('my other event', { my: 'data' });
       });
       that.socket.on('is danny connected', function(){
+        console.log('is danny connected heard!');
         that.socket.emit('danny is connected');
       });
     },

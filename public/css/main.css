@@ -470,6 +470,9 @@ html {
   width: 100%;
   height: 100%;
 }
+.hidden {
+  display: none;
+}
 .static-header {
   position: fixed;
   top: 0;

@@ -15,6 +15,26 @@ module.exports = function(grunt) {
 		meta: {
 			version: '0.0.5'
 		},
+    secret: grunt.file.readJSON('secret.json'),
+    sshexec: {
+      deploy: {
+        command: [
+          'cd ~/public/fitb.apps.swa.by/',
+          'git pull',
+          'sudo npm install',
+          '<%= secret.password %>',
+          'bower install',
+          'forever stop app.js',
+          'forever start app.js'
+        options: {
+          host: '<%= secret.host %>',
+          privateKey: grunt.file.read("id_rsa"),
+          username: '<%= secret.username %>',
+          password: '<%= secret.password %>',
+          showProgress: true
+        }
+      }
+    },
     express: {
       options: {
         // Override defaults here
@@ -109,6 +129,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-ssh');
   // grunt.loadNpmTasks('grunt-contrib-coffee');
 
 
@@ -117,5 +138,6 @@ module.exports = function(grunt) {
 	grunt.registerTask('default', [ 'requirejs', 'hashres']);
   grunt.registerTask('dev', ['clean', 'requirejs', 'less','hashres:prod', 'express', 'watch']);
   grunt.registerTask('build', [ 'clean', 'requirejs', 'less','hashres']);
+  grunt.registerTask('deploy',['sshexec:test']);
 
 };

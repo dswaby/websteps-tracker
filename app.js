@@ -54,6 +54,7 @@ require('./source/api/glucose')(app);
 
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
+var admin_io =  io.of('/admin');
 
 server.listen(app.get('port'), function(){
   var environment = process.env.NODE_ENV || 'development';
@@ -68,16 +69,26 @@ io.on('connection', function (socket) {
   });
 
   socket.on('get connection status', function (data) {
-    socket.broadcast.emit('is danny connected');
+    console.log("get connection status: sending is danny connectd to /admin socket");
+    admin_io.emit('is danny connected');
   });
 
   socket.on('steps updated', function (data) {
     console.log('steps', data);
     socket.broadcast.emit('stepcount', {steps: data });
   });
+  
+});
 
-  socket.on('danny is connected', function (data) {
-    socket.broadcast.emit('danny is connected');
+admin_io.on('connection', function (socket) {
+  io.emit('danny is connected');
+  socket.on('danny is connected', function () {
+    io.emit('danny is connected');
+  });
+  socket.on('disconnect', function(){
+    io.emit('danny is disconnected');
   });
 });
+
+
 

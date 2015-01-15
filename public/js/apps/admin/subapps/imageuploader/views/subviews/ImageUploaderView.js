@@ -8,8 +8,8 @@ define(function (require) {
 
     template: require('hbs!./../../templates/ImageUploaderView'),
     className: 'admin-form',
-    events: {
-    'click #submit-button': 'submitForm'
+    events: function () {
+
     },
     render: function () {
 
@@ -21,25 +21,25 @@ define(function (require) {
       
       $el.html(this.template());
 
-      $el.find('#submit-button').submit(function() {
+      $('#submit-button').on("submit", function() {
         $('#uploadForm').submit();
       });
 
-      $el.find('#uploadForm').submit(function() {
+      $('#uploadForm').submit(function() {
         status('uploading the file ...');
+        console.log($this)
         $(this).ajaxSubmit({                                                                                                                 
           error: function(xhr) {
             status('Error: ' + xhr.status);
           },
           success: function(response) {
-            console.log(response)
             if(response.error) {
               status('Opps, something bad happened');
               return;
             }
             var imageUrlOnServer = response.path;
             status('Success, file uploaded to:' + imageUrlOnServer);
-            $('#uploadedImage').attr('src', "../"+imageUrlOnServer);
+            $('#uploadedImage').attr('src', imageUrlOnServer);
           }
         });
         return false;
@@ -53,10 +53,6 @@ define(function (require) {
         $el.find('#admin-status').text(message);
       }
       return this;
-    },
-    submitForm: function(e) {
-      e.preventDefault();
-      $('#uploadForm').submit();
     }
   });
 

@@ -8,4 +8,5 @@ public/components
 source/api/data/
 public/pics/*
 public/build/*
+public/css/
 fitbit-logger.sublime*

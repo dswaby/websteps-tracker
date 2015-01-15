@@ -8,7 +8,7 @@ define(function (require) {
     render: function () {
       var that = this;
       this.$el.html(this.template());
-      that.socket = io.connect('http://fitb.apps.swa.by/');
+      that.socket = io.connect('/');
       this._socketEvents();
       return this;
     },

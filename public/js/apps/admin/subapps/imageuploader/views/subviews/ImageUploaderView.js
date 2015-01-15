@@ -8,51 +8,66 @@ define(function (require) {
 
     template: require('hbs!./../../templates/ImageUploaderView'),
     className: 'admin-form',
-    events: function () {
 
+    events: {
+      'click button#submit-button': 'submitForm'
     },
     render: function () {
 
-      var $el = this.$el;
+      // var $el = this.$el;
 
-      this.$ = function (sel) {
-        return this.$el.find(sel);
-      };
+      // this.$ = function (sel) {
+      //   return this.$el.find(sel);
+      // };
       
-      $el.html(this.template());
+      this.$el.html(this.template());
 
-      $('#submit-button').on("submit", function() {
-        $('#uploadForm').submit();
-      });
+      // $el.find('form').on('submit', function(e) {
+      //     e.preventDefault(); // prevent native submit
+      // });
 
-      $('#uploadForm').submit(function() {
-        status('uploading the file ...');
-        console.log($this)
-        $(this).ajaxSubmit({                                                                                                                 
-          error: function(xhr) {
-            status('Error: ' + xhr.status);
-          },
-          success: function(response) {
-            if(response.error) {
-              status('Opps, something bad happened');
-              return;
-            }
-            var imageUrlOnServer = response.path;
-            status('Success, file uploaded to:' + imageUrlOnServer);
-            $('#uploadedImage').attr('src', imageUrlOnServer);
-          }
-        });
-        return false;
-      });
+      // $('#submit-button').on("submit", function() {
+      //   $('#uploadForm').submit();
+      // });
+
+      // $('#uploadForm').submit(function() {
+      //   console.log($this)
+        
+      //   return false;
+      // });
       
-      $el.find('form').on('submit', function(e) {
-          e.preventDefault(); // prevent native submit
-      });
+      
 
-      function status(message) {
-        $el.find('#admin-status').text(message);
-      }
+      
       return this;
+    },
+    submitForm: function(e) {
+      var that = this;
+      console.log(e);
+      e.preventDefault();
+      
+      function status(message) {
+        that.$el.find('#admin-status').text(message);
+      }
+
+      status('uploading the file ...');
+
+      that.$el.find('#uploadForm').ajaxSubmit({                                                                                                                 
+        error: function(xhr) {
+          status('Error: ' + xhr.status);
+        },
+        success: function(response) {
+          if(response.error) {
+            status('Opps, something bad happened');
+            return;
+          }
+          var imageUrlOnServer = response.path;
+          status('Success, file uploaded to:' + imageUrlOnServer);
+          $('#uploadedImage').attr('src', imageUrlOnServer);
+        }
+      });
+      return false;
+
     }
   });
 

@@ -16,24 +16,38 @@ module.exports = function(grunt) {
 			version: '0.0.5'
 		},
     secret: grunt.file.readJSON('secret.json'),
+    sshconfig: {
+      bonerjs: {
+        privateKey: grunt.file.read("id_rsa"),
+        host: '<%= secret.host %>',
+        username: '<%= secret.username %>',
+        password: '<%= secret.password %>',
+      }
+    },
     sshexec: {
       deploy: {
         command: [
-          'cd /home/danny/public/fitb.apps.swa.by/',
-          'git pull',
-          'sudo npm install',
-          '<%= secret.password %>',
+          'cd /home/<%= secret.username %>/public/<%= secret.host %>/',
+          'git pull origin master',
+          'echo <%= secret.password %> | sudo -S sudo npm install',
+          // 'sudo npm install',
           'bower install',
+          'grunt build',
           'forever stop app.js',
-          'forever start app.js'
-        ],
+          'export NODE_ENV=production',
+          'forever start app.js',
+          'forever list'
+        ].join(' && '),
         options: {
-          path: '/home/danny/public/fitb.apps.swa.by/',
-          host: '<%= secret.host %>',
-          privateKey: grunt.file.read("id_rsa"),
-          username: '<%= secret.username %>',
-          password: '<%= secret.password %>',
+          config: 'bonerjs',
           showProgress: true
+        }
+      },
+      test: {
+        command: 'sudo uptime',
+        options: {
+          config: 'bonerjs',
+          pty: true
         }
       }
     },
@@ -132,6 +146,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-ssh');
+  grunt.loadNpmTasks('grunt-string-replace');
   // grunt.loadNpmTasks('grunt-contrib-coffee');
 
 

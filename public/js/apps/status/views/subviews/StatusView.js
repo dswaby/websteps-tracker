@@ -27,6 +27,10 @@ define(function (require) {
       that.socket.on('stepcount', function(data){
         console.log("stepcount", data );
       });
+    },
+    startLoop: function() {
+      var that = this;
+
     }
   });
 

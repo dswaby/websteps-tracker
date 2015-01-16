@@ -4,7 +4,7 @@ define(function (require) {
   var intervalId;
   var StatusView = Backbone.View.extend({
     delay: 10,
-    falseStepLimit: 25,
+    // falseStepLimit: 25,
     template: require('hbs!./../../templates/AdminStatusView'),
     className: 'location-wrapper',
     events: {
@@ -82,33 +82,33 @@ define(function (require) {
         var plotPoint = (accelerationX * accelerationX) + (accelerationY * accelerationY) + (accelerationZ * accelerationZ);
         if (state === "low" ) {
           if (plotPoint >= config.high) {
-            halfStep++;
+            steps++;
             state = "high";
-            falseStepCount = 0;
+            // falseStepCount = 0;
           }
         }
         else if (state === "high") {
           if (plotPoint <= config.low) {
-              halfStep++;
+              steps++;
               state = "low";
               falseStepCount = 0;
           }
-          else {
-            falseStepCount++;
-          }
+          // else {
+          //   falseStepCount++;
+          // }
         }
 
-        if (falseStepCount === that.falseStepLimit) {
-          halfStep = 0;
-          falseStepCount= 0;
-        }
+        // if (falseStepCount === that.falseStepLimit) {
+        //   halfStep = 0;
+        //   falseStepCount= 0;
+        // }
 
-        if (halfStep === 2) {
-          steps++;
+        // if (halfStep === 2) {
+          // steps++;
           that.socket.emit('steps updated', { stepCount: steps });
           document.getElementById("steps").innerHTML = steps;
-          halfStep = 0;
-        }
+          // halfStep = 0;
+        // }
       }, that.delay);
     }
   });

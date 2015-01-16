@@ -4,7 +4,6 @@ define(function (require) {
   var intervalId;
   var watchid;
   var AdminStatusView = Backbone.View.extend({
-    delay: 25,
     mobile:false,
     steps: 0,
     state: {},
@@ -120,12 +119,14 @@ define(function (require) {
       var accelerationZ = 0;  
       var config = {
         high: 225,
-        low: 55
+        low: 70
       };
       var runnningPeak = 700;
       var falseStepCount = 0;
       var halfStep = 0;
       var state = "low";
+      var delay = 10;
+      var steps = 0;
 
       that.socket.emit('steps updated', { stepCount: steps });
 
@@ -145,14 +146,14 @@ define(function (require) {
 
         if (state === "low" ) {
           if (plotPoint >= config.high) {
-            that.steps++;
+            steps++;
             state = "high";
             falseStepCount = 0;
           }
         }
         else if (state === "high") {
           if (plotPoint <= config.low) {
-              that.steps++;
+              steps++;
               state = "low";
               falseStepCount = 0;
           }
@@ -167,12 +168,12 @@ define(function (require) {
         }
 
         if (halfStep === 2) {
-          that.steps++;
-          that.socket.emit('steps updated', { stepCount: that.steps });
-          document.getElementById("steps").innerHTML = that.steps;
+          steps++;
+          that.socket.emit('steps updated', { stepCount: steps });
+          document.getElementById("steps").innerHTML = steps;
           halfStep = 0;
         }
-      }, that.delay)
+      }, delay)
     }
   });
 

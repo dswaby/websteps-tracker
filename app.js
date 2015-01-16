@@ -69,7 +69,6 @@ io.on('connection', function (socket) {
   });
 
   socket.on('get connection status', function (data) {
-    console.log("get connection status: sending is danny connectd to /admin socket");
     admin_io.emit('is danny connected');
   });
   

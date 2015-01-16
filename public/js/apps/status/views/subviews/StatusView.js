@@ -48,7 +48,7 @@ define(function (require) {
         that.$el.find("#activity-detail").removeClass("hidden");
         firstPass = false;
       }
-      that.$el.find("stepcount").innerHTML = count;
+      that.$el.find("#stepcount").innerHTML = count;
     }
   });
 

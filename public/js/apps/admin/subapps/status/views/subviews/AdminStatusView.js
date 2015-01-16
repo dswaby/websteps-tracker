@@ -2,15 +2,21 @@ define(function (require) {
   var Backbone = require('Backbone');
   var io = require('socketio');
   var intervalId;
+  var wnt = {};
+    wnt.mobile = false;
+    wnt.ie = false;
+    wnt.steps = localStorage.steps;
   var StatusView = Backbone.View.extend({
     delay: 10,
+    state: {},
     // falseStepLimit: 25,
     template: require('hbs!./../../templates/AdminStatusView'),
     className: 'location-wrapper',
     events: {
       'click #silent-audio': 'playAudio',
-      'click #pedometer': 'startCounting',
-      'click #treadmill-toggle': 'toggleTreadMill'
+      'click #pedometer': 'togglePedometer',
+      'click #treadmill-toggle': 'toggleTreadMill',
+      'click #geo-location-toggle':'toggleLocation'
     },
     render: function () {
       this.$el.html(this.template());
@@ -41,12 +47,28 @@ define(function (require) {
       });
     },
     toggleTreadMill: function(){
-
+      var that = this;
+      if (that.state.treadmillOn) {
+        that.$el.find("#treadmillToggle").addClass("toggle-on");
+        that.state.treadmillOn = false;
+      }
+      else {
+        that.$el.find("#pedometer").html("toggle-off");
+        that.state.treadmillOn = true;
+        that.socket.emit('on treadmill');
+      }
     },
     togglePedometer: function() {
       var that = this;
-      if (that.trackingSteps) {
+      if (that.state.pedometerOn) {
         clearInterval(intervalId);
+        that.$el.find("#pedometer").html("start pedometer");
+        that.state.pedometerOn = false;
+      }
+      else {
+        that.startCounting();
+        that.$el.find("#pedometer").html("pause pedometer");
+        that.state.pedometerOn = true;
       }
     },
     startCounting: function() {

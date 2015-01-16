@@ -77,7 +77,7 @@ define(function (require) {
         var watchid = navigator.geolocation.watchPosition(gotPosition, errorGettingPosition, {'enableHighAccuracy':true,'timeout':10000,'maximumAge':20000});
       }
       function gotPosition(pos) {
-        that.socket.emit({ latitude: pos.coords.latitude, longitude:  pos.coords.longitude, speed: pos.coords.speed});
+        that.socket.emit('location', { latitude: pos.coords.latitude, longitude:  pos.coords.longitude, speed: pos.coords.speed});
         
       }
       function errorGettingPosition(error) {

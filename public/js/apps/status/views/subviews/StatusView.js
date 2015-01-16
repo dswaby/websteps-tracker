@@ -1,12 +1,14 @@
 define(function (require) {
   var Backbone = require('Backbone');
-  var io = require('socketio');
+  var firstPass = true;
 
   var StatusView = Backbone.View.extend({
     template: require('hbs!./../../templates/StatusView'),
     className: 'location-wrapper',
     render: function () {
       var that = this;
+      var io = require('socketio');
+
       this.$el.html(this.template());
       that.socket = io.connect('/');
       this._socketEvents();
@@ -32,12 +34,17 @@ define(function (require) {
       var that = this;
 
     },
-    renderMap: function() {
+    renderLocation: function() {
 
     },
     updateStepCount: function(count) {
       var that = this;
-      console.log(count);
+      if (firstPass) {
+        that.$el.find("#activity").removeClass("icon-checkmark").addClass("icon-cross");
+        // apply revealing transition to 
+        that.$el.find("#activity-detail").removeClass("hidden");
+        firstPass = false;
+      }
       that.$el.find("stepcount").innerHTML = count;
     }
   });

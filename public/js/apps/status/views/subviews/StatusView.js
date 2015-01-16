@@ -16,10 +16,6 @@ define(function (require) {
       var that = this;
       that.socket.emit('get connection status');
 
-            
-      // that.socket.on('news', function (data) {
-
-      // });
       that.socket.on('danny is connected', function(){
         console.log("danny is connected");
         that.$el.find("#connection").removeClass("icon-cross").addClass("icon-checkmark");
@@ -41,6 +37,7 @@ define(function (require) {
     },
     updateStepCount: function(count) {
       var that = this;
+      console.log(count);
       that.$el.find("stepcount").innerHTML = count;
     }
   });

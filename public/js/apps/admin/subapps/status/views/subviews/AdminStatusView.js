@@ -22,9 +22,9 @@ define(function (require) {
 
     connectSocket: function(){
       var that = this;
-      that.socket = io.connect('/admin');
+      that.socket = io.connect('http://fitb.apps.swa.by/admin');
       // that.socket = io.connect('http://fitb.apps.swa.by');      
-      
+
       that.socket.on('news', function (data) {
         that.socket.emit('danny connected');
       });

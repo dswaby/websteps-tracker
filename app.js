@@ -73,10 +73,7 @@ io.on('connection', function (socket) {
     admin_io.emit('is danny connected');
   });
 
-  socket.on('steps updated', function (data) {
-    console.log('steps', data);
-    socket.broadcast.emit('stepcount', data);
-  });
+  
   
 });
 
@@ -84,6 +81,10 @@ admin_io.on('connection', function (socket) {
   io.emit('danny is connected');
   socket.on('danny is connected', function () {
     io.emit('danny is connected');
+  });
+  socket.on('steps updated', function (data) {
+    console.log('steps', data);
+    io.emit('stepcount', data);
   });
   socket.on('disconnect', function(){
     io.emit('danny is disconnected');

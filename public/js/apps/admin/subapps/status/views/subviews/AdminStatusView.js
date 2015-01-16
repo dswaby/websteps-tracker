@@ -119,7 +119,7 @@ define(function (require) {
       var accelerationY = 0;  
       var accelerationZ = 0;  
       var config = {
-        high: 300,
+        high: 225,
         low: 0
       };
       var runnningPeak = 700;

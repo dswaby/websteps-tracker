@@ -3,8 +3,8 @@ define(function (require) {
   var io = require('socketio');
   var intervalId;
   var StatusView = Backbone.View.extend({
-    delay: 50,
-    falseStepLimit: 15,
+    delay: 10,
+    falseStepLimit: 25,
     template: require('hbs!./../../templates/AdminStatusView'),
     className: 'location-wrapper',
     events: {

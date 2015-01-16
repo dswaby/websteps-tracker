@@ -17,8 +17,8 @@ define(function (require) {
     events: {
       'click #silent-audio': 'playAudio',
       'click #pedometer': 'togglePedometer',
-      'click #treadmill-toggle': 'toggleTreadMill',
-      'click #geo-location-toggle':'toggleLocation'
+      'click input#treadmill-toggle': 'toggleTreadMill',
+      'click input#location-toggle':'toggleLocation'
     },
     render: function () {
       this.$el.html(this.template());
@@ -72,14 +72,20 @@ define(function (require) {
       }
     },
     trackLocation: function() {
+      var that = this;
       if (that.mobile) {
         var watchid = navigator.geolocation.watchPosition(gotPosition, errorGettingPosition, {'enableHighAccuracy':true,'timeout':10000,'maximumAge':20000});
       }
       function gotPosition(pos) {
+        that.socket.emit({ latitude: pos.coords.latitude, longitude:  pos.coords.longitude, speed: pos.coords.speed});
         
       }
+      function errorGettingPosition(error) {
+        console.log(error);
+
+      }
     },
-    toggleLocation: function(){
+    toggleLocation: function(event){
       var that = this;
       if (that.state.locationOn) {
         that.$el.find("#location").addClass("toggle-off");
@@ -113,7 +119,7 @@ define(function (require) {
       var accelerationY = 0;  
       var accelerationZ = 0;  
       var config = {
-        high: 275,
+        high: 300,
         low: 0
       };
       var runnningPeak = 700;

@@ -69,6 +69,7 @@ define(function (require) {
        || navigator.userAgent.match(/BlackBerry/i)
        ){
         that.mobile = true;
+      window.alert("mobile");
       }
     },
     trackLocation: function() {
@@ -77,6 +78,7 @@ define(function (require) {
         var watchid = navigator.geolocation.watchPosition(gotPosition, errorGettingPosition, {'enableHighAccuracy':true,'timeout':10000,'maximumAge':20000});
       }
       function gotPosition(pos) {
+        // window.alert 
         that.socket.emit('location', { latitude: pos.coords.latitude, longitude:  pos.coords.longitude, speed: pos.coords.speed});
         
       }
@@ -142,16 +144,16 @@ define(function (require) {
 
       intervalId = setInterval(function() {
         var plotPoint = (accelerationX * accelerationX) + (accelerationY * accelerationY) + (accelerationZ * accelerationZ);
-        if (that.state.locationOn) {
-          if (locationIntervalPasses === 20) {
-            // send coordinates here
-            that.socket.emit("location updated");
-            locationIntervalPasses = 0;
-          }
-          else {
-            locationIntervalPasses++;
-          }
-        }
+        // if (that.state.locationOn) {
+        //   if (locationIntervalPasses === 20) {
+        //     // send coordinates here
+        //     that.socket.emit("location updated");
+        //     locationIntervalPasses = 0;
+        //   }
+        //   else {
+        //     locationIntervalPasses++;
+        //   }
+        // }
         if (state === "low" ) {
           if (plotPoint >= config.high) {
             that.steps++;

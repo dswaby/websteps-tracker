@@ -87,7 +87,7 @@ admin_io.on('connection', function (socket) {
   });
   socket.on('location', function(data){
     // io.emit('danny is disconnected');
-    console.log(data)
+    console.log('location',data)
   });
 });
 

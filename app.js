@@ -75,7 +75,7 @@ io.on('connection', function (socket) {
 
   socket.on('steps updated', function (data) {
     console.log('steps', data);
-    socket.broadcast.emit('stepcount', {steps: data });
+    socket.broadcast.emit('stepcount', data);
   });
   
 });

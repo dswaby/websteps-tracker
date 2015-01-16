@@ -4,7 +4,7 @@ define(function (require) {
   var intervalId;
   var watchid;
   var AdminStatusView = Backbone.View.extend({
-    mobile:false,
+    // mobile:false,
     steps: 0,
     state: {},
     falseStepLimit: 25,
@@ -46,15 +46,15 @@ define(function (require) {
     },
     toggleTreadMill: function(){
       var that = this;
-      if (that.state.treadmillOn) {
-        that.$el.find("#treadmill").addClass("toggle-on");
-        that.state.treadmillOn = false;
-      }
-      else {
-        that.$el.find("#treadmill").html("toggle-off");
-        that.state.treadmillOn = true;
-        that.socket.emit('on treadmill');
-      }
+      // if (that.state.treadmillOn) {
+      //   that.$el.find("#treadmill").addClass("toggle-on");
+      //   that.state.treadmillOn = false;
+      // }
+      // else {
+      //   that.$el.find("#treadmill").html("toggle-off");
+      //   that.state.treadmillOn = true;
+      //   that.socket.emit('on treadmill');
+      // }
     },
     checkMobile: function() {
       var that = this;
@@ -71,31 +71,31 @@ define(function (require) {
     },
     trackLocation: function() {
       var that = this;
-      if (that.mobile) {
-        navigator.geolocation.getCurrentPosition(gotPosition, errorGettingPosition, {'enableHighAccuracy':true,'timeout':10000,'maximumAge':20000});
-      }
-      function gotPosition(pos) {
+      // if (that.mobile) {
+      //   navigator.geolocation.getCurrentPosition(gotPosition, errorGettingPosition, {'enableHighAccuracy':true,'timeout':10000,'maximumAge':20000});
+      // }
+      // function gotPosition(pos) {
 
-        that.socket.emit('location', { latitude: pos.coords.latitude, longitude:  pos.coords.longitude, speed: pos.coords.speed});
+      //   that.socket.emit('location', { latitude: pos.coords.latitude, longitude:  pos.coords.longitude, speed: pos.coords.speed});
         
-      }
-      function errorGettingPosition(error) {
-        console.log(error);
-        that.socket.emit('location error', {error: error}); 
-      }
+      // }
+      // function errorGettingPosition(error) {
+      //   console.log(error);
+      //   that.socket.emit('location error', {error: error}); 
+      // }
     },
     stopTracking: function() {
       // navigator.geolocation.clearWatch(watchid);
     },
     toggleLocation: function(event){
-      var that = this;
-      if (that.state.locationOn) {
-        that.state.locationOn = false;
-      }
-      else {
-        that.checkMobile();
-        that.state.locationOn = true;
-      }
+      // var that = this;
+      // if (that.state.locationOn) {
+      //   that.state.locationOn = false;
+      // }
+      // else {
+      //   that.checkMobile();
+      //   that.state.locationOn = true;
+      // }
     },
     togglePedometer: function() {
       var that = this;
@@ -125,12 +125,13 @@ define(function (require) {
       var falseStepCount = 0;
       var halfStep = 0;
       var state = "low";
-      var delay = 10;
+      var delay = 25;
       var steps = 0;
 
       that.socket.emit('steps updated', { stepCount: steps });
 
       if (window.DeviceMotionEvent==undefined) {
+
       } else {
 
         window.ondevicemotion = function(event) {

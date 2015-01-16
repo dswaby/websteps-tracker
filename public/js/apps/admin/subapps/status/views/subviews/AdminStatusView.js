@@ -61,6 +61,7 @@ define(function (require) {
       }
     },
     checkMobile: function() {
+      var that = this;
       if( navigator.userAgent.match(/Android/i)
        || navigator.userAgent.match(/webOS/i)
        || navigator.userAgent.match(/iPhone/i)

@@ -25,8 +25,10 @@ define(function (require) {
       that.socket.on('danny is disconnected', function(){
         console.log("danny is disconnected");
         that.$el.find("#connection").removeClass("icon-checkmark").addClass("icon-cross");
+        that.$el.find("#activity").removeClass("icon-checkmark").addClass("icon-cross");
       });
       that.socket.on('stepcount', function(data){
+        console.log(data)
         that.updateStepCount(data.steps);
       });
     },
@@ -39,8 +41,9 @@ define(function (require) {
     },
     updateStepCount: function(count) {
       var that = this;
+      console.log(count)
       if (firstPass) {
-        that.$el.find("#activity").removeClass("icon-checkmark").addClass("icon-cross");
+        that.$el.find("#activity").removeClass("icon-cross").addClass("icon-checkmark");
         // apply revealing transition to 
         that.$el.find("#activity-detail").removeClass("hidden");
         firstPass = false;

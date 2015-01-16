@@ -1,27 +1,39 @@
 <div class="status-wrapper">
+
   <div class="item connected">
     <span id="connection" class="icon-cross"></span>
     <span class="item-text">Connected</span>
+    <div id="connection-detail" class="item-sub-view hidden">
+      <div class="detail-item">
+        <span>Last Connected:</span><span id="stepcount"></span>
+      </div>
+    </div>
   </div>
+
   <div class="item activity">
     <span id ="activity" class="icon-cross"></span>
     <span class="item-text">Activity</span>
     <div id="activity-detail" class="item-sub-view hidden">
       <div class="detail-item">
-        <span>Steps this session:</span><span id="stepcount"></span>
+        <span>Steps since connecting:</span><span id="stepcount"></span>
       </div>
       <div class="detail-item">
-        <span>On treadmill:</span><span id="treadmill-bool"></span>
+        <span>On treadmill:</span><span id="treadmill-bool">False</span>
       </div>
-
     </div>
   </div>
-  <div class="item on-treadmill">
-    <span class="icon-cross"></span>
-    <span class="item-text">Treadmill</span>
+
+  <div class="item location">
+    <span id ="location" class="icon-cross"></span>
+    <span class="item-text">Location</span>
+    <div id="activity-detail" class="item-sub-view hidden">
+      <div class="detail-item">
+        <span>MPH:</span><span id="stepcount"></span>
+      </div>
+      <div class="detail-item map-view">
+        
+      </div>
+    </div>
   </div>
-  <div class="item running">
-    <span class="icon-cross"></span>
-    <span class="item-text">Mph</span>
-  </div>
+
 </div>

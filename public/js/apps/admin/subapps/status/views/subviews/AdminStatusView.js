@@ -1,12 +1,16 @@
 define(function (require) {
   var Backbone = require('Backbone');
   var io = require('socketio');
+  var intervalId;
   var StatusView = Backbone.View.extend({
+    delay: 50,
+    falseStepLimit: 15,
     template: require('hbs!./../../templates/AdminStatusView'),
     className: 'location-wrapper',
     events: {
       'click #silent-audio': 'playAudio',
-      'click #pedometer': 'startCounting'
+      'click #pedometer': 'startCounting',
+      'click #treadmill-toggle': 'toggleTreadMill'
     },
     render: function () {
       this.$el.html(this.template());
@@ -22,8 +26,8 @@ define(function (require) {
 
     connectSocket: function(){
       var that = this;
-      that.socket = io.connect('http://fitb.apps.swa.by/admin');
-      // that.socket = io.connect('http://fitb.apps.swa.by');      
+      that.socket = io.connect('/admin');
+      // that.socket = io.connect('http://localhost/admin');      
 
       that.socket.on('news', function (data) {
         that.socket.emit('danny connected');
@@ -36,10 +40,18 @@ define(function (require) {
         that.socket.emit('danny is connected');
       });
     },
+    toggleTreadMill: function(){
+
+    },
+    togglePedometer: function() {
+      var that = this;
+      if (that.trackingSteps) {
+        clearInterval(intervalId);
+      }
+    },
     startCounting: function() {
       var that = this;
       var interval = 0;
-      var delay = 100;
       var accelerationX = 0;  
       var accelerationY = 0;  
       var accelerationZ = 0;  
@@ -66,7 +78,7 @@ define(function (require) {
         };
       } 
 
-      var intervalId = setInterval(function() {
+      intervalId = setInterval(function() {
         var plotPoint = (accelerationX * accelerationX) + (accelerationY * accelerationY) + (accelerationZ * accelerationZ);
         if (state === "low" ) {
           if (plotPoint >= config.high) {
@@ -86,7 +98,7 @@ define(function (require) {
           }
         }
 
-        if (falseStepCount ===10) {
+        if (falseStepCount === that.falseStepLimit) {
           halfStep = 0;
           falseStepCount= 0;
         }
@@ -97,7 +109,7 @@ define(function (require) {
           document.getElementById("steps").innerHTML = steps;
           halfStep = 0;
         }
-      }, delay);
+      }, that.delay);
     }
   });
 

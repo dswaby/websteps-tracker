@@ -29,13 +29,8 @@ define(function (require) {
         that.$el.find("#activity").removeClass("icon-checkmark").addClass("icon-cross");
       });
       that.socket.on('stepcount', function(data){
-        console.log(data)
         that.updateStepCount(data.steps);
       });
-    },
-    startLoop: function() {
-      var that = this;
-
     },
     renderLocation: function() {
 

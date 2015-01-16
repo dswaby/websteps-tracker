@@ -330,40 +330,83 @@
 
     }
 }
+.admin-status-view {
+  .status-container {
+    width: 90%;
+    margin: 10px auto 0;
+    background-color: #fff;
+    border-radius: 5px;
+    .page-title {
+      font-size: 48px;
+      font-weight: 500;
+      text-align: center;
+    }
+    p {
+      font-size: 56px;
+      @media @mobile {
+        font-size: 36px;
+      }
+      @media @smallerMobile {
+        font-size: 24px;
+      }
+      .count {
+        font-size: 72px;
+      }
+    }
+    button {
+      position: absolute;
+      height: 40px;
+      line-height:40px;
+      // margin-top:15px;
+      // margin-bottom: 30px;
+      background-color: #4FB5B5;
+      color: #fff;
+      font-size: 44px !important;
+      height:100px;
+      border-radius: 7px;
+      width: 80%;
+      margin: 15px auto 30px;
+      left:10%;
 
- ::-webkit-input-placeholder {
-    font-family: 'Open Sans', sans-serif;
-    text-align:center;
-    color:#666;
-    font-size:24px;
+      border: 0 solid transparent;
+    }
   }
+}
 
-    :-moz-placeholder { /* Firefox 18- */
-      font-family: 'Open Sans', sans-serif;
-      text-align:center;
-      color:#666;
-      font-size:24px;  
-    }
+::-webkit-input-placeholder {
+  font-family: 'Open Sans', sans-serif;
+  text-align:center;
+  color:#666;
+  font-size:24px;
+}
 
-    ::-moz-placeholder {  /* Firefox 19+ */
-      font-family: 'Open Sans', sans-serif;
-      text-align:center;
-      color:#666;
-      font-size:24px;  
-    }
+:-moz-placeholder { /* Firefox 18- */
+  font-family: 'Open Sans', sans-serif;
+  text-align:center;
+  color:#666;
+  font-size:24px;  
+}
 
-    :-ms-input-placeholder {  
-      font-family: 'Open Sans', sans-serif;
-      text-align:center;
-      color:#666;
-      font-size:24px;  
-    }
+::-moz-placeholder {  /* Firefox 19+ */
+  font-family: 'Open Sans', sans-serif;
+  text-align:center;
+  color:#666;
+  font-size:24px;  
+}
+
+:-ms-input-placeholder {  
+  font-family: 'Open Sans', sans-serif;
+  text-align:center;
+  color:#666;
+  font-size:24px;  
+}
 
 .back-nav {
   padding-top: 10px;
   margin-left:20px;
   a {
     font-weight: 400;
+    font-size: 24px;
     color: #e6e6e6;
     text-decoration: none;
     &.hover {

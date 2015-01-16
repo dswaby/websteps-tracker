@@ -8,13 +8,15 @@ var bodyParser = require('body-parser');
 var favicon = require('serve-favicon');
 var methodOverride  = require("method-override");
 var mongoose = require('mongoose');
-// var compression = require('compression');
 var errorHandler = require('errorhandler');
 var passport = require('passport');
 var expressSession = require('express-session');
 var app = express();
-var server = require('http').Server(app);
+var server = require('http').createServer(app);
 var io = require('socket.io')(server);
+var admin_io =  io.of('/admin');
+var recent = {};
+var StatusSchema = require('./source/api/models/status');
 
 // config
 app.use(middleware.cors());
@@ -52,9 +54,8 @@ require('./source/api/tasks')(app);
 require('./source/api/pics')(app);
 require('./source/api/glucose')(app);
 
-var server = require('http').createServer(app);
-var io = require('socket.io')(server);
-var admin_io =  io.of('/admin');
+
+
 
 server.listen(app.get('port'), function(){
   var environment = process.env.NODE_ENV || 'development';
@@ -81,6 +82,7 @@ admin_io.on('connection', function (socket) {
   });
   socket.on('steps updated', function (data) {
     io.emit('stepcount', { steps: data.stepCount });
+    recent.stepCount = data.stepCount;
   });
   socket.on('disconnect', function(){
     io.emit('danny is disconnected');

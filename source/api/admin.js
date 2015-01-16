@@ -1,9 +1,9 @@
-var StatusEntry = require("./models/glucoseLog");
+var GlucoseEntry = require("./models/glucoseLog");
 
 var admin = function (app) {
   app.post('/api/admin/status', function(req, res) {
 
-      StatusEntry.find(function(err, status) {
+      GlucoseEntry.find(function(err, status) {
       if (err) {
         return res.send(err);
       }

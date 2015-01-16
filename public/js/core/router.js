@@ -8,12 +8,25 @@ define(function(require) {
 			'inbox': 'inbox',
 			'inbox/compose': 'inboxCompose',
       'recent': 'recent',
+      'recent/': 'recent',
+
 			'charts': 'charts',
+      'charts/': 'charts',
+
 			'status': 'status',
+      'status/': 'status',
+
       'admin': 'admin',
+      'admin/': 'admin',
       'admin/upload': 'adminUpload',
+      'admin/upload/': 'adminUpload',
+
       'admin/glucoselog': 'adminGlucoseLog',
-      'admin/status': 'statusUpdater'
+      'admin/glucoselog/': 'adminGlucoseLog',
+
+      'admin/status': 'statusUpdater',
+      'admin/status/': 'statusUpdater'
+
 		},
 
 		home: function () {

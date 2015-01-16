@@ -2,16 +2,13 @@ define(function (require) {
   var Backbone = require('Backbone');
   var io = require('socketio');
   var intervalId;
-  var wnt = {};
-    wnt.mobile = false;
-    wnt.ie = false;
-    wnt.steps = localStorage.steps;
-  var StatusView = Backbone.View.extend({
-    delay: 10,
+  var watchid;
+  var AdminStatusView = Backbone.View.extend({
+    delay: 25,
     mobile:false,
     steps: 0,
     state: {},
-    // falseStepLimit: 25,
+    falseStepLimit: 25,
     template: require('hbs!./../../templates/AdminStatusView'),
     className: 'location-wrapper',
     events: {
@@ -76,29 +73,29 @@ define(function (require) {
     trackLocation: function() {
       var that = this;
       if (that.mobile) {
-        var watchid = navigator.geolocation.watchPosition(gotPosition, errorGettingPosition, {'enableHighAccuracy':true,'timeout':10000,'maximumAge':20000});
+        navigator.geolocation.getCurrentPosition(gotPosition, errorGettingPosition, {'enableHighAccuracy':true,'timeout':10000,'maximumAge':20000});
       }
       function gotPosition(pos) {
-        // window.alert 
+
         that.socket.emit('location', { latitude: pos.coords.latitude, longitude:  pos.coords.longitude, speed: pos.coords.speed});
         
       }
       function errorGettingPosition(error) {
         console.log(error);
-
+        that.socket.emit('location error', {error: error}); 
       }
+    },
+    stopTracking: function() {
+      // navigator.geolocation.clearWatch(watchid);
     },
     toggleLocation: function(event){
       var that = this;
       if (that.state.locationOn) {
-        that.$el.find("#location").addClass("toggle-off");
         that.state.locationOn = false;
       }
       else {
-        that.$el.find("#location").html("toggle-on");
         that.checkMobile();
-        that.trackLocation();
-        that.state.treadmillOn = true;
+        that.state.locationOn = true;
       }
     },
     togglePedometer: function() {
@@ -126,8 +123,8 @@ define(function (require) {
         low: 0
       };
       var runnningPeak = 700;
-      // var falseStepCount = 0;
-      // var halfStep = 0;
+      var falseStepCount = 0;
+      var halfStep = 0;
       var state = "low";
 
       that.socket.emit('steps updated', { stepCount: steps });
@@ -145,48 +142,39 @@ define(function (require) {
 
       intervalId = setInterval(function() {
         var plotPoint = (accelerationX * accelerationX) + (accelerationY * accelerationY) + (accelerationZ * accelerationZ);
-        // if (that.state.locationOn) {
-        //   if (locationIntervalPasses === 20) {
-        //     // send coordinates here
-        //     that.socket.emit("location updated");
-        //     locationIntervalPasses = 0;
-        //   }
-        //   else {
-        //     locationIntervalPasses++;
-        //   }
-        // }
+
         if (state === "low" ) {
           if (plotPoint >= config.high) {
             that.steps++;
             state = "high";
-            // falseStepCount = 0;
+            falseStepCount = 0;
           }
         }
         else if (state === "high") {
           if (plotPoint <= config.low) {
               that.steps++;
               state = "low";
-              // falseStepCount = 0;
+              falseStepCount = 0;
           }
-          // else {
-          //   falseStepCount++;
-          // }
+          else {
+            falseStepCount++;
+          }
         }
 
-        // if (falseStepCount === that.falseStepLimit) {
-        //   halfStep = 0;
-        //   falseStepCount= 0;
-        // }
+        if (falseStepCount === that.falseStepLimit) {
+          halfStep = 0;
+          falseStepCount= 0;
+        }
 
-        // if (halfStep === 2) {
-          // steps++;
+        if (halfStep === 2) {
+          steps++;
           that.socket.emit('steps updated', { stepCount: that.steps });
           document.getElementById("steps").innerHTML = that.steps;
-          // halfStep = 0;
-        // }
+          halfStep = 0;
+        }
       }, that.delay);
     }
   });
 
-  return StatusView;
+  return AdminStatusView;
 });

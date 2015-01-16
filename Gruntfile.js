@@ -28,6 +28,7 @@ module.exports = function(grunt) {
       deploy: {
         command: [
           'cd /home/<%= secret.username %>/public/<%= secret.host %>/',
+          'git stash',
           'git pull origin master',
           'echo <%= secret.password %> | sudo -S sudo npm install',
           // 'sudo npm install',

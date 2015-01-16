@@ -8,6 +8,7 @@ define(function (require) {
     wnt.steps = localStorage.steps;
   var StatusView = Backbone.View.extend({
     delay: 10,
+    steps: 0,
     state: {},
     // falseStepLimit: 25,
     template: require('hbs!./../../templates/AdminStatusView'),
@@ -82,9 +83,8 @@ define(function (require) {
         low: 70
       };
       var runnningPeak = 700;
-      var falseStepCount = 0;
-      var steps = 0;
-      var halfStep = 0;
+      // var falseStepCount = 0;
+      // var halfStep = 0;
       var state = "low";
 
       that.socket.emit('steps updated', { stepCount: steps });
@@ -104,16 +104,16 @@ define(function (require) {
         var plotPoint = (accelerationX * accelerationX) + (accelerationY * accelerationY) + (accelerationZ * accelerationZ);
         if (state === "low" ) {
           if (plotPoint >= config.high) {
-            steps++;
+            that.steps++;
             state = "high";
             // falseStepCount = 0;
           }
         }
         else if (state === "high") {
           if (plotPoint <= config.low) {
-              steps++;
+              that.steps++;
               state = "low";
-              falseStepCount = 0;
+              // falseStepCount = 0;
           }
           // else {
           //   falseStepCount++;
@@ -127,8 +127,8 @@ define(function (require) {
 
         // if (halfStep === 2) {
           // steps++;
-          that.socket.emit('steps updated', { stepCount: steps });
-          document.getElementById("steps").innerHTML = steps;
+          that.socket.emit('steps updated', { stepCount: that.steps });
+          document.getElementById("steps").innerHTML = that.steps;
           // halfStep = 0;
         // }
       }, that.delay);

@@ -167,12 +167,12 @@ define(function (require) {
         }
 
         if (halfStep === 2) {
-          steps++;
+          that.steps++;
           that.socket.emit('steps updated', { stepCount: that.steps });
           document.getElementById("steps").innerHTML = that.steps;
           halfStep = 0;
         }
-      }, that.delay);
+      }, that.delay)
     }
   });
 

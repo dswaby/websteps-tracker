@@ -72,8 +72,6 @@ io.on('connection', function (socket) {
     console.log("get connection status: sending is danny connectd to /admin socket");
     admin_io.emit('is danny connected');
   });
-
-  
   
 });
 
@@ -83,8 +81,7 @@ admin_io.on('connection', function (socket) {
     io.emit('danny is connected');
   });
   socket.on('steps updated', function (data) {
-    console.log('steps', data);
-    io.emit('stepcount', data);
+    io.emit('stepcount', { steps: data.stepCount });
   });
   socket.on('disconnect', function(){
     io.emit('danny is disconnected');

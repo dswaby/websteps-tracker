@@ -120,7 +120,7 @@ define(function (require) {
       var accelerationZ = 0;  
       var config = {
         high: 225,
-        low: 0
+        low: 55
       };
       var runnningPeak = 700;
       var falseStepCount = 0;

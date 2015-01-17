@@ -53,12 +53,20 @@ define(function (require) {
     },
     initializeMap: function(latitude, longitude) {
       var that = this;
+      var myLatLong = new google.maps.LatLng(latitude, longitude);
       var mapOptions = {
         zoom: 14,
-        center: new google.maps.LatLng(latitude, longitude),
+        center: myLatLong,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
+
       that.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+      that.marker = new google.maps.Marker({
+        position: myLatlng,
+        map: that.map,
+        title: 'Dannys Location!'
+      });
     },
     panMap: function(latitude, longitude) {
       var that = this;

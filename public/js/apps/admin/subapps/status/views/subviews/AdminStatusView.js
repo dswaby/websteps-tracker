@@ -121,9 +121,9 @@ define(function (require) {
       var accelerationY = 0;  
       var accelerationZ = 0;
       var config = {
-        high: 250,
+        high: 275,
         low: 50,
-        falseStepPassLimit: 60,
+        falseStepPassLimit: 50,
         delay: 50,
         locationUpdatePasses: 80
       };

@@ -5,7 +5,10 @@ define(function (require) {
   var StatusView = Backbone.View.extend({
     template: require('hbs!./../../templates/StatusView'),
     className: 'location-wrapper',
-    firstLocationPass: true,
+    locationObj: {
+      firstLocationPass: true,
+      coordinates:[]
+    },
     render: function () {
       var that = this;
       var io = require('socketio');
@@ -24,6 +27,7 @@ define(function (require) {
         console.log("danny is connected");
         that.$el.find("#connection").removeClass("icon-cross").addClass("icon-checkmark");
       });
+      
       that.socket.on('danny is disconnected', function(){
         console.log("danny is disconnected");
         that.$el.find("#connection").removeClass("icon-checkmark").addClass("icon-cross");
@@ -31,22 +35,28 @@ define(function (require) {
         that.$el.find("#activity").removeClass("icon-checkmark").addClass("icon-cross");
         that.$el.find("#location-detail").addClass("hidden");
         that.$el.find("#location").removeClass("icon-checkmark").addClass("icon-cross");
-
       });
+
       that.socket.on('stepcount', function (data){
         that.updateStepCount(data.steps);
       });
-      that.socket.on('location', function (data){
-        
 
-        if (that.firstLocationPass) {
+      that.socket.on('location', function (data){
+        if (that.locationObj.firstLocationPass) {
           that.$el.find("#location").removeClass("icon-cross").addClass("icon-checkmark");
           that.$el.find("#location-detail").removeClass("hidden");
           that.initializeMap(data.latitude, data.longitude);
-          that.firstLocationPass = false;
+          that.locationObj.firstLocationPass = false;
         }
-
         else {
+          var travelPath = new google.maps.Polyline({
+            path: that.locationObj.coordinates,
+            strokeColor: '#FF0000',
+            strokeOpacity: 1.0,
+            strokeWeight: 2
+          });
+
+          travelPath.setMap(that.map);
           that.panMap(data.latitude, data.longitude);
         }
       });
@@ -59,6 +69,7 @@ define(function (require) {
         center: myLatLong,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
+      that.coordinates.push(myLatLong);
 
       that.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
@@ -75,7 +86,6 @@ define(function (require) {
     },
     updateStepCount: function(count) {
       var that = this;
-      console.log(count);
       if (firstPass) {
         that.$el.find("#activity").removeClass("icon-cross").addClass("icon-checkmark");
         // apply revealing transition to 

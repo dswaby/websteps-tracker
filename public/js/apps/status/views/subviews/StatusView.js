@@ -30,6 +30,7 @@ define(function (require) {
         that.$el.find("#activity-detail").addClass("hidden");
         that.$el.find("#activity").removeClass("icon-checkmark").addClass("icon-cross");
         that.$el.find("#location-detail").addClass("hidden");
+        that.$el.find("#location").removeClass("icon-checkmark").addClass("icon-cross");
 
       });
       that.socket.on('stepcount', function (data){
@@ -53,7 +54,7 @@ define(function (require) {
     initializeMap: function(latitude, longitude) {
       var that = this;
       var mapOptions = {
-        zoom: 8,
+        zoom: 14,
         center: new google.maps.LatLng(latitude, longitude),
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };

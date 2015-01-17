@@ -95,6 +95,7 @@ define(function (require) {
       }
       else {
         that.state.locationOn = true;
+        that.updateLocation();
       }
     },
     togglePedometer: function() {

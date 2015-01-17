@@ -31,6 +31,9 @@ define(function (require) {
       that.socket.on('stepcount', function(data){
         that.updateStepCount(data.steps);
       });
+      that.socket.on('location', function(data){
+        console.log('latitude: %s, longitude: %s', data.latitude, data.longitude);
+      });
     },
     renderLocation: function() {
 

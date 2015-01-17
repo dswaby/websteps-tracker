@@ -87,9 +87,11 @@ admin_io.on('connection', function (socket) {
   socket.on('disconnect', function(){
     io.emit('danny is disconnected');
   });
+  socket.on('location error', function (data) {
+    console.log("location error", data.error);
+  })
   socket.on('location', function(data){
-    // io.emit('danny is disconnected');
-    console.log('location',data)
+    io.emit('location', {latitude: data.latitude, longitude: data.longitude});
   });
 });
 

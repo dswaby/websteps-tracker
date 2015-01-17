@@ -8,6 +8,7 @@ define(function (require) {
     steps: 0,
     state: {},
     falseStepLimit: 20,
+    locationPassLimit: 16,
     template: require('hbs!./../../templates/AdminStatusView'),
     className: 'location-wrapper',
     events: {
@@ -72,33 +73,32 @@ define(function (require) {
         console.log("browser not supported");
       }
     },
-    trackLocation: function() {
+    updateLocation: function() {
       var that = this;
-      // if (that.mobile) {
-      //   navigator.geolocation.getCurrentPosition(gotPosition, errorGettingPosition, {'enableHighAccuracy':true,'timeout':10000,'maximumAge':20000});
-      // }
-      // function gotPosition(pos) {
+      if (that.mobile) {
+        navigator.geolocation.getCurrentPosition(gotPosition, errorGettingPosition, {'enableHighAccuracy':true,'timeout':10000,'maximumAge':20000});
+      }
+      function gotPosition(pos) {
 
-      //   that.socket.emit('location', { latitude: pos.coords.latitude, longitude:  pos.coords.longitude, speed: pos.coords.speed});
+        that.socket.emit('location', { latitude: pos.coords.latitude, longitude:  pos.coords.longitude});
         
-      // }
-      // function errorGettingPosition(error) {
-      //   console.log(error);
-      //   that.socket.emit('location error', {error: error}); 
-      // }
+      }
+      function errorGettingPosition(error) {
+        console.log(error);
+        that.socket.emit('location error', {error: error}); 
+      }
     },
     stopTracking: function() {
       // navigator.geolocation.clearWatch(watchid);
     },
     toggleLocation: function(event){
-      // var that = this;
-      // if (that.state.locationOn) {
-      //   that.state.locationOn = false;
-      // }
-      // else {
-      //   that.checkMobile();
-      //   that.state.locationOn = true;
-      // }
+      var that = this;
+      if (that.state.locationOn) {
+        that.state.locationOn = false;
+      }
+      else {
+        that.state.locationOn = true;
+      }
     },
     togglePedometer: function() {
       var that = this;
@@ -148,6 +148,11 @@ define(function (require) {
       } 
         intervalId = setInterval(function() {
           var plotPoint = (accelerationX * accelerationX) + (accelerationY * accelerationY) + (accelerationZ * accelerationZ);
+          //send latitude and longitude
+          if (that.locationOn && locationIntervalPasses === that.locationPassLimit) {
+            that.updateLocation();
+            locationIntervalPasses = 0;
+          }
 
           if (stepState === "low" ) {
             if (plotPoint >= config.high) {

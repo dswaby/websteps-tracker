@@ -696,6 +696,9 @@
 .main-status-view .status-wrapper .item .item-sub-view .detail-item span {
   font-size: inherit;
 }
+.main-status-view .status-wrapper .item .item-sub-view .detail-item.map-canvas {
+  min-height: 300px;
+}
 .main-status-view .status-wrapper .item .item-sub-view.hidden {
   display: none;
 }

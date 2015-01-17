@@ -7,7 +7,6 @@ define(function (require) {
     mobile:false,
     steps: 0,
     state: {},
-    falseStepLimit: 20,
     locationPassLimit: 16,
     template: require('hbs!./../../templates/AdminStatusView'),
     className: 'location-wrapper',
@@ -121,16 +120,17 @@ define(function (require) {
       var locationIntervalPasses = 0;
       var accelerationX = 0;  
       var accelerationY = 0;  
-      var accelerationZ = 0;  
+      var accelerationZ = 0;
       var config = {
         high: 250,
-        low: 50
+        low: 50,
+        falseStepPassLimit: 10,
+        delay: 50
       };
       var runnningPeak = 700;
-      var falseStepCount = 0;
+      var falseStepTracker = 0;
       var halfStep = 0;
       var stepState = "low";
-      var delay = 50;
 
       that.socket.emit('steps updated', { stepCount: that.steps });
 
@@ -147,29 +147,48 @@ define(function (require) {
       } 
         intervalId = setInterval(function() {
           var plotPoint = (accelerationX * accelerationX) + (accelerationY * accelerationY) + (accelerationZ * accelerationZ);
+          
+          if (stepState === "low" ) {
+            if (plotPoint >= config.high) {
+              if (falseStepTracker < config.falseStepPassLimit) {
+                that.steps++;
+                stepState = "high";
+                that.socket.emit('steps updated', { stepCount: that.steps });
+                document.getElementById("steps").innerHTML = that.steps;
+                falseStepTracker = 0;
+              }
+              else {
+                stepState = "high";
+                falseStepTracker = 0;
+              }
+            }
+            else {
+              falseStepTracker++;
+            }
+          }
+          else if (stepState === "high") {
+            if (plotPoint <= config.low) {
+              if (falseStepTracker < config.falseStepPassLimit) {
+                that.steps++;
+                stepState = "low";
+                that.socket.emit('steps updated', { stepCount: that.steps });
+                document.getElementById("steps").innerHTML = that.steps;
+                falseStepTracker = 0;
+              } else {
+                stepState = "low";
+                falseStepTracker = 0;
+              }
+            }
+            else {
+              falseStepTracker++;
+            }
+          }
           //send latitude and longitude
           if (that.locationOn && locationIntervalPasses === that.locationPassLimit) {
             that.updateLocation();
             locationIntervalPasses = 0;
           }
-
-          if (stepState === "low" ) {
-            if (plotPoint >= config.high) {
-              that.steps++;
-              stepState = "high";
-              that.socket.emit('steps updated', { stepCount: that.steps });
-              document.getElementById("steps").innerHTML = that.steps;
-            }
-          }
-          else if (stepState === "high") {
-            if (plotPoint <= config.low) {
-              that.steps++;
-              stepState = "low";
-              that.socket.emit('steps updated', { stepCount: that.steps });
-              document.getElementById("steps").innerHTML = that.steps;
-            }
-          }
-        }, delay)
+        }, config.delay)
     }
   });
 

@@ -27,7 +27,7 @@ define(function (require) {
         console.log("danny is connected");
         that.$el.find("#connection").removeClass("icon-cross").addClass("icon-checkmark");
       });
-      
+
       that.socket.on('danny is disconnected', function(){
         console.log("danny is disconnected");
         that.$el.find("#connection").removeClass("icon-checkmark").addClass("icon-cross");
@@ -49,6 +49,9 @@ define(function (require) {
           that.locationObj.firstLocationPass = false;
         }
         else {
+          var myLatLong = new google.maps.LatLng(latitude, longitude);
+          that.locationObj.coordinates.push(myLatLong);
+
           var travelPath = new google.maps.Polyline({
             path: that.locationObj.coordinates,
             strokeColor: '#FF0000',

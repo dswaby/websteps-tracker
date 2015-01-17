@@ -42,6 +42,7 @@ define(function (require) {
       });
 
       that.socket.on('location', function (data){
+        console.log("location recieved")
         if (that.locationObj.firstLocationPass) {
           that.$el.find("#location").removeClass("icon-cross").addClass("icon-checkmark");
           that.$el.find("#location-detail").removeClass("hidden");

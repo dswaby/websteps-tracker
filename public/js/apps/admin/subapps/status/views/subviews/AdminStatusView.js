@@ -127,7 +127,7 @@ define(function (require) {
       var runnningPeak = 700;
       var falseStepCount = 0;
       var halfStep = 0;
-      that.stepState = "low";
+      var stepState = "low";
       var delay = 50;
       var steps = 0;
 
@@ -150,34 +150,21 @@ define(function (require) {
         intervalId = setInterval(function() {
           var plotPoint = (accelerationX * accelerationX) + (accelerationY * accelerationY) + (accelerationZ * accelerationZ);
 
-          if (that.stepState === "low" ) {
+          if (stepState === "low" ) {
             if (plotPoint >= config.high) {
               steps++;
-              that.stepState = "high";
-              falseStepCount = 0;
+              stepState = "high";
+              that.socket.emit('steps updated', { stepCount: steps });
+              document.getElementById("steps").innerHTML = steps;
             }
           }
-          else if (that.stepState === "high") {
+          else if (stepState === "high") {
             if (plotPoint <= config.low) {
-                steps++;
-                that.stepState = "low";
-                falseStepCount = 0;
+              steps++;
+              stepState = "low";
+              that.socket.emit('steps updated', { stepCount: steps });
+              document.getElementById("steps").innerHTML = steps;
             }
-            else {
-              falseStepCount++;
-            }
-          }
-
-          if (falseStepCount === that.falseStepLimit) {
-            halfStep = 0;
-            falseStepCount = 0;
-          }
-
-          if (halfStep === 2) {
-            steps++;
-            that.socket.emit('steps updated', { stepCount: steps });
-            document.getElementById("steps").innerHTML = steps;
-            halfStep = 0;
           }
         }, delay)
       }

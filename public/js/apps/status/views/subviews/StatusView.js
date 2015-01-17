@@ -42,7 +42,6 @@ define(function (require) {
       });
 
       that.socket.on('location', function (data){
-        console.log("location recieved")
         if (that.locationObj.firstLocationPass) {
           that.$el.find("#location").removeClass("icon-cross").addClass("icon-checkmark");
           that.$el.find("#location-detail").removeClass("hidden");
@@ -63,6 +62,15 @@ define(function (require) {
           travelPath.setMap(that.map);
           that.panMap(data.latitude, data.longitude);
         }
+      });
+
+      that.socket.on('on treadmill', function (data){
+        console.log("treadmill")
+        that.$el.find("#treadmill-bool").html("True");
+      });
+
+      that.socket.on('not on treadmill', function (data){
+        that.$el.find("#treadmill-bool").html("False");
       });
     },
     initializeMap: function(latitude, longitude) {

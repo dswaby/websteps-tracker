@@ -46,15 +46,14 @@ define(function (require) {
     },
     toggleTreadMill: function(){
       var that = this;
-      // if (that.state.treadmillOn) {
-      //   that.$el.find("#treadmill").addClass("toggle-on");
-      //   that.state.treadmillOn = false;
-      // }
-      // else {
-      //   that.$el.find("#treadmill").html("toggle-off");
-      //   that.state.treadmillOn = true;
-      //   that.socket.emit('on treadmill');
-      // }
+      if (that.state.treadmillOn) {
+        that.state.treadmillOn = false;
+        that.socket.emit('not on treadmill');
+      }
+      else {
+        that.state.treadmillOn = true;
+        that.socket.emit('on treadmill');
+      }
     },
     checkMobile: function() {
       var that = this;
@@ -123,7 +122,8 @@ define(function (require) {
       var config = {
         high: 275,
         low: 50,
-        falseStepPassLimit: 50,
+        falseStepMin: 6,
+        falsStepMax: 50,
         delay: 50,
         locationUpdatePasses: 80
       };
@@ -149,8 +149,8 @@ define(function (require) {
           var plotPoint = (accelerationX * accelerationX) + (accelerationY * accelerationY) + (accelerationZ * accelerationZ);
           
           if (stepState === "low" ) {
-            if (plotPoint >= config.high) {
-              if (falseStepTracker < config.falseStepPassLimit) {
+            if (plotPoint >= config.high && falseStepTracker > config.falseStepMin) {
+              if (falseStepTracker < config.falsStepMax) {
                 that.steps++;
                 stepState = "high";
                 that.socket.emit('steps updated', { stepCount: that.steps });
@@ -166,8 +166,8 @@ define(function (require) {
             }
           }
           else if (stepState === "high") {
-            if (plotPoint <= config.low) {
-              if (falseStepTracker < config.falseStepPassLimit) {
+            if (plotPoint <= config.low && falseStepTracker > config.falseStepMin) {
+              if (falseStepTracker < config.falsStepMax) {
                 that.steps++;
                 stepState = "low";
                 that.socket.emit('steps updated', { stepCount: that.steps });

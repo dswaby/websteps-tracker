@@ -40,7 +40,7 @@ define(function (require) {
 
         if (that.firstLocationPass) {
           that.$el.find("#location").removeClass("icon-cross").addClass("icon-checkmark");
-          that.$el.find("#activity-detail").removeClass("hidden");
+          that.$el.find("#location-detail").removeClass("hidden");
           that.initializeMap(data.latitude, data.longitude);
           that.firstLocationPass = false;
         }

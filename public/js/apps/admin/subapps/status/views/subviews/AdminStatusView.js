@@ -1,6 +1,6 @@
 define(function (require) {
   var Backbone = require('Backbone');
-  var io = require('socketio');
+  
   var intervalId;
   var watchid;
   var AdminStatusView = Backbone.View.extend({
@@ -22,6 +22,7 @@ define(function (require) {
     },
     _socketEvents: function(){
       var that = this;
+      var io = require('socketio');
       that.socket = io.connect('/admin');
       that.socket.on('news', function (data) {
         that.socket.emit('danny connected');

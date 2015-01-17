@@ -132,9 +132,8 @@ define(function (require) {
       var halfStep = 0;
       var stepState = "low";
       var delay = 50;
-      var steps = 0;
 
-      that.socket.emit('steps updated', { stepCount: steps });
+      that.socket.emit('steps updated', { stepCount: that.steps });
 
       if (window.DeviceMotionEvent==undefined) {
 
@@ -152,18 +151,18 @@ define(function (require) {
 
           if (stepState === "low" ) {
             if (plotPoint >= config.high) {
-              steps++;
+              that.steps++;
               stepState = "high";
-              that.socket.emit('steps updated', { stepCount: steps });
-              document.getElementById("steps").innerHTML = steps;
+              that.socket.emit('steps updated', { stepCount: that.steps });
+              document.getElementById("steps").innerHTML = that.steps;
             }
           }
           else if (stepState === "high") {
             if (plotPoint <= config.low) {
-              steps++;
+              that.steps++;
               stepState = "low";
-              that.socket.emit('steps updated', { stepCount: steps });
-              document.getElementById("steps").innerHTML = steps;
+              that.socket.emit('steps updated', { stepCount: that.steps });
+              document.getElementById("steps").innerHTML = that.steps;
             }
           }
         }, delay)

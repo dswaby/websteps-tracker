@@ -90,8 +90,9 @@ admin_io.on('connection', function (socket) {
   socket.on('location error', function (data) {
     console.log("location error", data.error);
   })
-  socket.on('location', function(data){
-    io.emit('location', {latitude: data.latitude, longitude: data.longitude});
+  socket.on('location', function (data){
+    console.log('latitude: %s, longitude: %s', data.latitude, data.longitude);
+    io.emit('location', { latitude: data.latitude, longitude: data.longitude });
   });
 });
 

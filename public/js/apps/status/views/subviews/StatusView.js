@@ -33,7 +33,8 @@ define(function (require) {
       });
       that.socket.on('location', function (data){
         that.$el.find("#location").removeClass("icon-cross").addClass("icon-checkmark");
-        console.log('latitude: %s, longitude: %s', data.latitude, data.longitude);
+        that.$el.find("#map-view").html('<iframe width="300" height="170" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q='+data.latitude+','+data.longitude)+'&hl=es;z=14&amp;output=embed"></iframe>');
+        // console.log('latitude: %s, longitude: %s', data.latitude, data.longitude);
       });
     },
     renderLocation: function() {

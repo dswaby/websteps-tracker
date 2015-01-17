@@ -75,25 +75,26 @@ define(function (require) {
     },
     updateLocation: function() {
       var that = this;
-      if (that.mobile) {
-        var geo = navigator.geolocation.getCurrentPosition(gotPosition, errorGettingPosition, {'enableHighAccuracy':true,'timeout':10000,'maximumAge':20000});
-      }
-      function gotPosition(pos) {
+      var geoOptions = {
+        'enableHighAccuracy':true,
+        'timeout':10000,
+        'maximumAge':20000
+      };
 
+      function gotPosition(pos) {
         that.socket.emit('location', { latitude: pos.coords.latitude, longitude:  pos.coords.longitude});
-        
       }
       function errorGettingPosition(error) {
-        console.log(error);
         that.socket.emit('location error', {error: error}); 
       }
+      navigator.geolocation.getCurrentPosition(gotPosition, errorGettingPosition, geoOptions);
     },
-    toggleLocation: function(event){
+    toggleLocation: function (event) {
       var that = this;
       if (that.state.locationOn) {
         that.state.locationOn = false;
       }
-      else {
+      else if (that.mobile) {
         that.state.locationOn = true;
         that.updateLocation();
       }

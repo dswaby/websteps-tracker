@@ -102,16 +102,19 @@ define(function (require) {
     },
     togglePedometer: function() {
       var that = this;
-      if (that.state.pedometerOn) {
-        clearInterval(intervalId);
-        that.$el.find("#pedometer").html("start pedometer");
-        that.state.pedometerOn = false;
-      }
-      else {
-        that.startPedometer();
-        that.$el.find("#pedometer").html("pause pedometer");
-        that.state.pedometerOn = true;
-      }
+        if (that.state.pedometerOn) {
+          clearInterval(intervalId);
+          that.$el.find("#pedometer").html("start pedometer");
+          that.state.pedometerOn = false;
+        }
+        else if (that.mobile === true) {
+          that.startPedometer();
+          that.$el.find("#pedometer").html("pause pedometer");
+          that.state.pedometerOn = true;
+        }
+        else {
+          that.$el.find("#pedometer").html("API unsupported");
+        }
     },
     startPedometer: function() {
       var that = this;
@@ -121,8 +124,8 @@ define(function (require) {
       var accelerationY = 0;  
       var accelerationZ = 0;  
       var config = {
-        high: 225,
-        low: 70
+        high: 250,
+        low: 50
       };
       var runnningPeak = 700;
       var falseStepCount = 0;
@@ -144,9 +147,6 @@ define(function (require) {
            accelerationZ = event.accelerationIncludingGravity.z;  
         };
       } 
-      if (that.mobile === true) {
-
-
         intervalId = setInterval(function() {
           var plotPoint = (accelerationX * accelerationX) + (accelerationY * accelerationY) + (accelerationZ * accelerationZ);
 
@@ -167,7 +167,6 @@ define(function (require) {
             }
           }
         }, delay)
-      }
     }
   });
 

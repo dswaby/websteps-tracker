@@ -10,29 +10,19 @@ define(function (require) {
     template: require('hbs!./../../templates/AdminStatusView'),
     className: 'location-wrapper',
     events: {
-      'click #silent-audio': 'playAudio',
       'click #pedometer': 'togglePedometer',
       'click input#treadmill-toggle': 'toggleTreadMill',
       'click input#location-toggle':'toggleLocation'
     },
     render: function () {
       this.$el.html(this.template());
-      this.connectSocket();
-      this.checkMobile();
+      this._socketEvents();
+      this._checkMobile();
       return this;
     },
-    playAudio: function(){
-      var audio = new Audio();
-      $(this.$el).append(audio);
-      audio.src = "./../../../../../../mp3/5min.mp3";
-      audio.play();
-    },
-
-    connectSocket: function(){
+    _socketEvents: function(){
       var that = this;
       that.socket = io.connect('/admin');
-      // that.socket = io.connect('http://localhost/admin');      
-
       that.socket.on('news', function (data) {
         that.socket.emit('danny connected');
       });
@@ -44,18 +34,7 @@ define(function (require) {
         that.socket.emit('danny is connected');
       });
     },
-    toggleTreadMill: function(){
-      var that = this;
-      if (that.state.treadmillOn) {
-        that.state.treadmillOn = false;
-        that.socket.emit('not on treadmill');
-      }
-      else {
-        that.state.treadmillOn = true;
-        that.socket.emit('on treadmill');
-      }
-    },
-    checkMobile: function() {
+    _checkMobile: function() {
       var that = this;
       if( navigator.userAgent.match(/Android/i)
        || navigator.userAgent.match(/webOS/i)
@@ -68,6 +47,17 @@ define(function (require) {
       }
       else {
         console.log("browser not supported");
+      }
+    },
+    toggleTreadMill: function(){
+      var that = this;
+      if (that.state.treadmillOn) {
+        that.state.treadmillOn = false;
+        that.socket.emit('not on treadmill');
+      }
+      else {
+        that.state.treadmillOn = true;
+        that.socket.emit('on treadmill');
       }
     },
     updateLocation: function() {

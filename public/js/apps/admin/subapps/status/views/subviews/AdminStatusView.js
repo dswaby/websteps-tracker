@@ -7,7 +7,6 @@ define(function (require) {
     mobile:false,
     steps: 0,
     state: {},
-    locationPassLimit: 16,
     template: require('hbs!./../../templates/AdminStatusView'),
     className: 'location-wrapper',
     events: {
@@ -124,8 +123,9 @@ define(function (require) {
       var config = {
         high: 250,
         low: 50,
-        falseStepPassLimit: 10,
-        delay: 50
+        falseStepPassLimit: 60,
+        delay: 50,
+        locationUpdatePasses: 80
       };
       var runnningPeak = 700;
       var falseStepTracker = 0;
@@ -184,7 +184,7 @@ define(function (require) {
             }
           }
           //send latitude and longitude
-          if (that.locationOn && locationIntervalPasses === that.locationPassLimit) {
+          if (that.locationOn && locationIntervalPasses === config.locationUpdatePasses) {
             that.updateLocation();
             locationIntervalPasses = 0;
           } 

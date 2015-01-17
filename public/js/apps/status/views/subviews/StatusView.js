@@ -1,10 +1,10 @@
-define(function (require) {
+define(['async!http://maps.google.com/maps/api/js?sensor=false'], function (require) {
   var Backbone = require('Backbone');
   var firstPass = true;
-
   var StatusView = Backbone.View.extend({
     template: require('hbs!./../../templates/StatusView'),
     className: 'location-wrapper',
+    firstLocationPass: true,
     render: function () {
       var that = this;
       var io = require('socketio');
@@ -16,6 +16,7 @@ define(function (require) {
     },
     _socketEvents: function(){
       var that = this;
+      var firstPass = true;
       that.socket.emit('get connection status');
 
       that.socket.on('danny is connected', function(){
@@ -34,15 +35,37 @@ define(function (require) {
         that.updateStepCount(data.steps);
       });
       that.socket.on('location', function (data){
-        var embedString = '<iframe width="300" height="170" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q='+data.latitude+','+data.longitude+'&hl=es;z=14&amp;output=embed"></iframe>';
-        that.$el.find("#location").removeClass("icon-cross").addClass("icon-checkmark");
-        that.$el.find("#activity-detail").removeClass("hidden");
-        that.$el.find("#map-view").html(embedString);
+        
+
+        if (that.firstLocationPass) {
+          that.$el.find("#location").removeClass("icon-cross").addClass("icon-checkmark");
+          that.$el.find("#activity-detail").removeClass("hidden");
+          that.initializeMap(data.latitude, data.longitude);
+          that.firstLocationPass = false;
+        }
+
+        else {
+          that.panMap(data.latitude, data.longitude);
+        }
+        // var embedString = '<iframe width="300" height="170" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q='+data.latitude+','+data.longitude+'&hl=es;z=14&amp;output=embed"></iframe>';
+        
+        // that.$el.find("#map-view").html(embedString);
         // console.log('latitude: %s, longitude: %s', data.latitude, data.longitude);
       });
     },
-    renderLocation: function() {
-
+    initializeMap: function(latitude, longitude) {
+      var that = this;
+      var mapOptions = {
+        zoom: 8,
+        center: new google.maps.LatLng(latitude, longitude),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      that.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+    },
+    panMap: function(latitude, longitude) {
+      var that = this;
+      var newGeo = new google.maps.LatLng(latitude, longitude);
+      that.map.panTo(newGeo);
     },
     updateStepCount: function(count) {
       var that = this;

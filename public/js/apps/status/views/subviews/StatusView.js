@@ -32,8 +32,9 @@ define(function (require) {
         that.updateStepCount(data.steps);
       });
       that.socket.on('location', function (data){
+        var embedString = '<iframe width="300" height="170" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q='+data.latitude+','+data.longitude)+'&hl=es;z=14&amp;output=embed"></iframe>';
         that.$el.find("#location").removeClass("icon-cross").addClass("icon-checkmark");
-        that.$el.find("#map-view").html('<iframe width="300" height="170" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q='+data.latitude+','+data.longitude)+'&hl=es;z=14&amp;output=embed"></iframe>');
+        that.$el.find("#map-view").html(embedString);
         // console.log('latitude: %s, longitude: %s', data.latitude, data.longitude);
       });
     },

@@ -72,7 +72,7 @@ define(function (require) {
         center: myLatLong,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
-      that.coordinates.push(myLatLong);
+      that.locationObj.coordinates.push(myLatLong);
 
       that.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 

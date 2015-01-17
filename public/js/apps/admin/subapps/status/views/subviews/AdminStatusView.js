@@ -122,7 +122,7 @@ define(function (require) {
       var config = {
         high: 275,
         low: 50,
-        falseStepMin: 6,
+        falseStepMin: 10,
         falsStepMax: 50,
         delay: 50,
         locationUpdatePasses: 80

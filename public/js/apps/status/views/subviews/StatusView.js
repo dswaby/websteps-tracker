@@ -63,7 +63,7 @@ define(function (require) {
       that.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
       that.marker = new google.maps.Marker({
-        position: myLatlng,
+        position: myLatLong,
         map: that.map,
         title: 'Dannys Location!'
       });

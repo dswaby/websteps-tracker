@@ -158,7 +158,6 @@ define(function (require) {
                 falseStepTracker = 0;
               }
               else {
-                stepState = "high";
                 falseStepTracker = 0;
               }
             }
@@ -175,7 +174,6 @@ define(function (require) {
                 document.getElementById("steps").innerHTML = that.steps;
                 falseStepTracker = 0;
               } else {
-                stepState = "low";
                 falseStepTracker = 0;
               }
             }

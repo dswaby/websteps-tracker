@@ -50,7 +50,7 @@ define(function (require) {
           that.locationObj.firstLocationPass = false;
         }
         else {
-          var myLatLong = new google.maps.LatLng(latitude, longitude);
+          var myLatLong = new google.maps.LatLng(data.latitude, data.longitude);
           that.locationObj.coordinates.push(myLatLong);
 
           var travelPath = new google.maps.Polyline({

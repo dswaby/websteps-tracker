@@ -4,10 +4,10 @@ define(function (require) {
   var intervalId;
   var watchid;
   var AdminStatusView = Backbone.View.extend({
-    // mobile:false,
+    mobile:false,
     steps: 0,
     state: {},
-    falseStepLimit: 25,
+    falseStepLimit: 20,
     template: require('hbs!./../../templates/AdminStatusView'),
     className: 'location-wrapper',
     events: {
@@ -19,6 +19,7 @@ define(function (require) {
     render: function () {
       this.$el.html(this.template());
       this.connectSocket();
+      this.checkMobile();
       return this;
     },
     playAudio: function(){
@@ -66,7 +67,9 @@ define(function (require) {
        || navigator.userAgent.match(/BlackBerry/i)
        ){
         that.mobile = true;
-      window.alert("mobile");
+      }
+      else {
+        console.log("browser not supported");
       }
     },
     trackLocation: function() {
@@ -124,8 +127,8 @@ define(function (require) {
       var runnningPeak = 700;
       var falseStepCount = 0;
       var halfStep = 0;
-      var state = "low";
-      var delay = 25;
+      that.stepState = "low";
+      var delay = 50;
       var steps = 0;
 
       that.socket.emit('steps updated', { stepCount: steps });
@@ -141,40 +144,43 @@ define(function (require) {
            accelerationZ = event.accelerationIncludingGravity.z;  
         };
       } 
+      if (that.mobile === true) {
 
-      intervalId = setInterval(function() {
-        var plotPoint = (accelerationX * accelerationX) + (accelerationY * accelerationY) + (accelerationZ * accelerationZ);
 
-        if (state === "low" ) {
-          if (plotPoint >= config.high) {
-            steps++;
-            state = "high";
+        intervalId = setInterval(function() {
+          var plotPoint = (accelerationX * accelerationX) + (accelerationY * accelerationY) + (accelerationZ * accelerationZ);
+
+          if (that.stepState === "low" ) {
+            if (plotPoint >= config.high) {
+              steps++;
+              that.stepState = "high";
+              falseStepCount = 0;
+            }
+          }
+          else if (that.stepState === "high") {
+            if (plotPoint <= config.low) {
+                steps++;
+                that.stepState = "low";
+                falseStepCount = 0;
+            }
+            else {
+              falseStepCount++;
+            }
+          }
+
+          if (falseStepCount === that.falseStepLimit) {
+            halfStep = 0;
             falseStepCount = 0;
           }
-        }
-        else if (state === "high") {
-          if (plotPoint <= config.low) {
-              steps++;
-              state = "low";
-              falseStepCount = 0;
-          }
-          else {
-            falseStepCount++;
-          }
-        }
 
-        if (falseStepCount === that.falseStepLimit) {
-          halfStep = 0;
-          falseStepCount= 0;
-        }
-
-        if (halfStep === 2) {
-          steps++;
-          that.socket.emit('steps updated', { stepCount: steps });
-          document.getElementById("steps").innerHTML = steps;
-          halfStep = 0;
-        }
-      }, delay)
+          if (halfStep === 2) {
+            steps++;
+            that.socket.emit('steps updated', { stepCount: steps });
+            document.getElementById("steps").innerHTML = steps;
+            halfStep = 0;
+          }
+        }, delay)
+      }
     }
   });
 

@@ -37,6 +37,7 @@ define(function (require) {
     },
     updateStepCount: function(count) {
       var that = this;
+      console.log(count);
       if (firstPass) {
         that.$el.find("#activity").removeClass("icon-cross").addClass("icon-checkmark");
         // apply revealing transition to 

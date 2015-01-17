@@ -187,6 +187,9 @@ define(function (require) {
           if (that.locationOn && locationIntervalPasses === that.locationPassLimit) {
             that.updateLocation();
             locationIntervalPasses = 0;
+          } 
+          else {
+            locationIntervalPasses++;
           }
         }, config.delay)
     }

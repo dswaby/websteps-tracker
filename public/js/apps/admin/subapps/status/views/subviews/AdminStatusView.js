@@ -76,7 +76,7 @@ define(function (require) {
     updateLocation: function() {
       var that = this;
       if (that.mobile) {
-        navigator.geolocation.getCurrentPosition(gotPosition, errorGettingPosition, {'enableHighAccuracy':true,'timeout':10000,'maximumAge':20000});
+        var geo = navigator.geolocation.getCurrentPosition(gotPosition, errorGettingPosition, {'enableHighAccuracy':true,'timeout':10000,'maximumAge':20000});
       }
       function gotPosition(pos) {
 

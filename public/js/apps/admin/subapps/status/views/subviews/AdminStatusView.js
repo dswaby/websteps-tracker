@@ -182,7 +182,7 @@ define(function (require) {
             }
           }
           //send latitude and longitude
-          if (that.locationOn && locationIntervalPasses === config.locationUpdatePasses) {
+          if (that.state.locationOn && locationIntervalPasses === config.locationUpdatePasses) {
             that.updateLocation();
             locationIntervalPasses = 0;
           } 

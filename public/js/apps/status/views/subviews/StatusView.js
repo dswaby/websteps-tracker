@@ -28,10 +28,11 @@ define(function (require) {
         that.$el.find("#activity-detail").addClass("hidden");
         that.$el.find("#activity").removeClass("icon-checkmark").addClass("icon-cross");
       });
-      that.socket.on('stepcount', function(data){
+      that.socket.on('stepcount', function (data){
         that.updateStepCount(data.steps);
       });
-      that.socket.on('location', function(data){
+      that.socket.on('location', function (data){
+        that.$el.find("#location").removeClass("icon-cross").addClass("icon-checkmark");
         console.log('latitude: %s, longitude: %s', data.latitude, data.longitude);
       });
     },

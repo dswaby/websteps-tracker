@@ -88,9 +88,6 @@ define(function (require) {
         that.socket.emit('location error', {error: error}); 
       }
     },
-    stopTracking: function() {
-      // navigator.geolocation.clearWatch(watchid);
-    },
     toggleLocation: function(event){
       var that = this;
       if (that.state.locationOn) {

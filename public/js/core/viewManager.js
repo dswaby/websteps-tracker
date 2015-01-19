@@ -36,6 +36,7 @@ define(function (require) {
 				});
 
 				view.remove();
+        view.unbind();
 			}
 		}
 

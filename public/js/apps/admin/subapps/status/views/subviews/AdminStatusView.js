@@ -75,7 +75,7 @@ define(function (require) {
         if (that.firstPassLoc) {
           $.ajax({
             type: "POST",
-            url: "http://fitb.apps.swa.by/api/",
+            url: "http://fitb.apps.swa.by/api/path",
             data: { lat: pos.coords.latitude, lng:  pos.coords.longitude }
           })
           .done(function( data ) {

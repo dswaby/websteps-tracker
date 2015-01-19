@@ -14,6 +14,16 @@ var path = function (router) {
       });
     res.send( path );
   });
+
+  router.route('/api/path/:id').get(function(req, res) {
+    MapPath.findOne({ _id: req.params.id}, function(err, path) {
+      if (err) {
+        return res.send(err);
+      }
+   
+      res.json(path);
+    });
+  });
 };
 
 

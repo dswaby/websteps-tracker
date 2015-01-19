@@ -45,23 +45,31 @@ define(function (require) {
         if (that.locationObj.firstLocationPass) {
           that.$el.find("#location").removeClass("icon-cross").addClass("icon-checkmark");
           that.$el.find("#location-detail").removeClass("hidden");
-          that.initializeMap(data.lat, data.lng);
-          that.locationObj.firstLocationPass = false;
+
+          $.ajax({
+            type: "GET",
+            url: "http://fitb.apps.swa.by/api/path/" + data.id
+          })
+          .done(function (path) {
+              that.initializeMap(path.coordinates[0].lat, path.coordinates[0].lng);
+              for (var i = 0; i < path.coordinates.length; i++) {
+                var myLatLong = new google.maps.LatLng(path.coordinates[i].lat, path.coordinates[i].lng);
+                that.locationObj.coordinates.push(myLatLong);
+              }
+            that.locationObj.firstLocationPass = false;
+            that.updatePath(data.lat, data.lng);
+          })
+          .fail(function (error) {
+            console.log(error);
+          });
+          
         }
         else {
           var myLatLong = new google.maps.LatLng(data.lat, data.lng);
           that.locationObj.coordinates.push(myLatLong);
-
-          var travelPath = new google.maps.Polyline({
-            path: that.locationObj.coordinates,
-            strokeColor: '#FF0000',
-            strokeOpacity: 1.0,
-            strokeWeight: 2
-          });
-
-          travelPath.setMap(that.map);
-          that.panMap(data.lat, data.lng);
+          that.updatePath(data.lat, data.lng);
         }
+
       });
 
       that.socket.on('on treadmill', function (data){
@@ -72,6 +80,18 @@ define(function (require) {
       that.socket.on('not on treadmill', function (data){
         that.$el.find("#treadmill-bool").html("False");
       });
+    },
+    updatePath: function(lat, lng){
+      var that = this;
+      var travelPath = new google.maps.Polyline({
+        path: that.locationObj.coordinates,
+        strokeColor: '#FF0000',
+        strokeOpacity: 1.0,
+        strokeWeight: 2
+      });
+
+      travelPath.setMap(that.map);
+      that.panMap(lat, lng);
     },
     initializeMap: function(latitude, longitude) {
       var that = this;
@@ -88,7 +108,7 @@ define(function (require) {
       that.marker = new google.maps.Marker({
         position: myLatLong,
         map: that.map,
-        title: 'Dannys Location!'
+        title: 'Starting Point!'
       });
     },
     panMap: function(latitude, longitude) {

@@ -2,7 +2,7 @@ define(function(require) {
 	var Backbone = require('Backbone');
 
 	var ButtonsView = require('./subviews/ButtonsView');
-	var InboxView = require('./subviews/InboxView');
+	var FitbitStatsView = require('./subviews/FitbitStatsView');
 
 	var MainView = Backbone.View.extend({
 		initialize: function () {
@@ -14,9 +14,9 @@ define(function(require) {
 			this.$el.append(buttonsView.render().el);
 			this.subviews.push(buttonsView);
 
-			var inboxView = new InboxView({collection: this.collection});
-			this.$el.append(inboxView.render().el);
-			this.subviews.push(inboxView);
+			var fbStatView = new FitbitStatsView({collection: this.collection});
+			this.$el.append(fbStatView.render().el);
+			this.subviews.push(fbStatsView);
 
 			return this;
 		}

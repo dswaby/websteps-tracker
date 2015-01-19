@@ -1,8 +1,8 @@
 define(function(require) {
 	var Backbone = require('Backbone');
 
-	var ButtonsView = Backbone.View.extend({
-		template: require('hbs!./../../templates/ButtonsView'),
+	var TrackedRunView = Backbone.View.extend({
+		template: require('hbs!./../../templates/TrackedRunView'),
 
 		render: function () {
 			this.$el.html(this.template());
@@ -10,5 +10,5 @@ define(function(require) {
 		}
 	});
 
-	return ButtonsView;
+	return TrackedRunView;
 });

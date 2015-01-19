@@ -1,10 +1,10 @@
 define(function (require) {
 	var Backbone = require('Backbone');
 
-	var EmailView = Backbone.View.extend({
+	var FitbitStatView = Backbone.View.extend({
 		tagName: 'tr',
 
-		template: require('hbs!./../../templates/EmailView'),
+		template: require('hbs!./../../templates/FitbitStatView'),
 
 		render: function () {
 			this.$el.html(this.template(this.model.toJSON()));
@@ -12,5 +12,5 @@ define(function (require) {
 		}
 	});
 
-	return EmailView;
+	return FitbitStatView;
 });

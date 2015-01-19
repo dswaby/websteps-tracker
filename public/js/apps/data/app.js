@@ -1,13 +1,13 @@
 define(function (require) {
-	var EmailsCollection = require('./collections/EmailsCollection');
+	var FitbitStatsCollection = require('./collections/FitbitStatsCollection');
 	var MainView = require('./views/MainView');
 
 	return {
 		run: function(viewManager) {
-			var emailsCollection = new EmailsCollection();
-			emailsCollection.fetch({
-				success: function (emailsCollection) {
-					var view = new MainView({collection: emailsCollection});
+			var fitbitStatsCollection = new FitbitStatsCollection();
+			fitbitStatsCollection.fetch({
+				success: function (fitbitStatsCollection) {
+					var view = new MainView({collection: fitbitStatsCollection});
 					viewManager.show(view);
 				}
 			});

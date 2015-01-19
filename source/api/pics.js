@@ -2,7 +2,7 @@ var fs = require("fs"),
     path = require("path"),
     util = require("util"),
     multiparty = require('connect-multiparty'),
-    PhotoLog = require("./models/photoLog.js");
+    PhotoLog = require("./models/photoLog");
 
 var pictures = function (router) {
 
@@ -87,7 +87,7 @@ var pictures = function (router) {
     });
   });
 
-  router.route('/pics/:id').get(function(req, res) {
+  router.route('/api/pics/:id').get(function(req, res) {
     PhotoLog.findOne({ _id: req.params.id}, function(err, pic) {
       if (err) {
         return res.send(err);
@@ -97,7 +97,7 @@ var pictures = function (router) {
     });
   });
 
-  router.route('/pics/:id').delete(function(req, res) {
+  router.route('/api/pics/:id').delete(function(req, res) {
     PhotoLog.remove({
       _id: req.params.id
     }, function(err, pic) {

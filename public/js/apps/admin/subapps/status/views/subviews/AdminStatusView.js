@@ -5,8 +5,10 @@ define(function (require) {
   var watchid;
   var AdminStatusView = Backbone.View.extend({
     mobile:false,
+    locationId: '',
     steps: 0,
     state: {},
+    firstPassLoc: true,
     template: require('hbs!./../../templates/AdminStatusView'),
     className: 'location-wrapper',
     events: {
@@ -70,7 +72,25 @@ define(function (require) {
       };
 
       function gotPosition(pos) {
-        that.socket.emit('location', { latitude: pos.coords.latitude, longitude:  pos.coords.longitude});
+        if (that.firstPassLoc) {
+          $.ajax({
+            type: "POST",
+            url: "http://fitb.apps.swa.by/api/",
+            data: { lat: pos.coords.latitude, lng:  pos.coords.longitude }
+          })
+          .done(function( data ) {
+            that.locationId = data._id;
+            that.socket.emit('location update', { lat: pos.coords.latitude, lng:  pos.coords.longitude, id: that.locationId });
+            that.firstPassLoc = false;
+          })
+          .fail(function (error) {
+            console.log(error);
+            window.alert("failure");
+          });
+        }
+        else {
+          that.socket.emit('location update', { lat: pos.coords.latitude, lng:  pos.coords.longitude, id: that.locationId });
+        }
       }
       function errorGettingPosition(error) {
         that.socket.emit('location error', {error: error}); 

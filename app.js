@@ -14,8 +14,6 @@ var expressSession = require('express-session');
 var app = express();
 var server = require('http').createServer(app);
 
-var StatusSchema = require('./source/api/models/status');
-
 // config
 app.use(middleware.cors());
 app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -23,8 +21,8 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.set('port', config.port);
 
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({limit: '50mb' }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({limit: '50mb' }));
 app.use(methodOverride());
 
 mongoose.connect(config.mongodbConnectionString);
@@ -51,9 +49,11 @@ require('./source/api/contacts')(app);
 require('./source/api/tasks')(app);
 require('./source/api/pics')(app);
 require('./source/api/glucose')(app);
+require('./source/api/path')(app);
 
-// socket.io event handlers
-require('./source/sockets')(server);
+
+// handlers for socket.io events
+require('./source/api/sockets')(server);
 
 
 server.listen(app.get('port'), function(){

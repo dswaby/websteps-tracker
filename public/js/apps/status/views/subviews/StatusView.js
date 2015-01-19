@@ -45,11 +45,11 @@ define(function (require) {
         if (that.locationObj.firstLocationPass) {
           that.$el.find("#location").removeClass("icon-cross").addClass("icon-checkmark");
           that.$el.find("#location-detail").removeClass("hidden");
-          that.initializeMap(data.latitude, data.longitude);
+          that.initializeMap(data.lat, data.lng);
           that.locationObj.firstLocationPass = false;
         }
         else {
-          var myLatLong = new google.maps.LatLng(data.latitude, data.longitude);
+          var myLatLong = new google.maps.LatLng(data.lat, data.lng);
           that.locationObj.coordinates.push(myLatLong);
 
           var travelPath = new google.maps.Polyline({
@@ -60,7 +60,7 @@ define(function (require) {
           });
 
           travelPath.setMap(that.map);
-          that.panMap(data.latitude, data.longitude);
+          that.panMap(data.lat, data.lng);
         }
       });
 

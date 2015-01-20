@@ -26,25 +26,24 @@ function SocketEvents(server) {
     socket.on('disconnect', function(){
       io.emit('danny is disconnected');
     });
+
     socket.on('location error', function (data) {
       console.log("location error", data.error);
     });
-    socket.on('location', function (data){
-      // data.lat, data.lng
-      io.emit('location', { lat: data.lat, lng: data.lng });
-    });
 
     // add point to existing mapPath document
+    // data { _id, lat, lng }
     socket.on('location update', function (data) {
-      // data._id, data.lat, data.lng
       io.emit('location', { lat: data.lat, lng: data.lng, id: data.id });
       MapPath.findOne({ _id: data.id }, function(err, mapPath) {
         if (err) {
           console.log(err);
           return;
         }
+        
         mapPath.coordinates.push({ lat: data.lat, lng: data.lng });
-       // save the mapPath
+        mapPath.endedAt = Date.now;
+
         mapPath.save(function(err) {
           if (err) {
             console.log(err);

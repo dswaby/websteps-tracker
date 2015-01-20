@@ -4,26 +4,22 @@ var admin = function (app) {
   app.post('/api/admin/status', function(req, res) {
 
       GlucoseEntry.find(function(err, status) {
-      if (err) {
-        return res.send(err);
-      }
-      if (status.length) {
-        for (prop in req.body) {
+        if (err) {
+          return res.send(err);
+        }
+        if (status.length) {
+          for (prop in req.body) {
             status[prop] = req.body[prop];
           }
-
           status.save(function(err) {
             if (err) {
               return res.send(err);
-          }
-
-          res.json({ message: 'Status Updated!' });
-
-        });
-      }
- 
-      return res.json(status);
-    });
+            }
+            res.json({ message: 'Status Updated!' });
+          });
+        }
+        return res.json(status);
+      });
 
       glucoseEntry.save(function(err, entry){
         if(err)

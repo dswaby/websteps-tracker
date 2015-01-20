@@ -18,7 +18,6 @@ var pictures = function (router) {
       return;
     }
     require('fs').rename(req.files.userPhoto.path, serverPath, function(error) {
-    var fingerprint;
       if (error) {
         res.send({ error: 'Something bad happened' });
         return;
@@ -41,7 +40,6 @@ var pictures = function (router) {
   });
 
   router.route('/api/pics').get(function (req, res) {
-    var p = "./public/pics/";
     PhotoLog.find(function(err, pics) {
       if (err) {
         return res.send(err);

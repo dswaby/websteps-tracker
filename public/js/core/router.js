@@ -5,8 +5,8 @@ define(function(require) {
 	var Router = Backbone.Router.extend({
 		routes: {
 			'': 'home',
-			'inbox': 'inbox',
-			'inbox/compose': 'inboxCompose',
+			'data': 'data',
+			'data/': 'data',
       'recent': 'recent',
       'recent/': 'recent',
 
@@ -33,13 +33,9 @@ define(function(require) {
 			require('./../apps/home/app').run(viewManager);
 		},
 
-		inbox: function () {
-			require('./../apps/inbox/app').run(viewManager);
-		},
-
-		inboxCompose: function () {
-			require('./../apps/inbox/subapps/compose/app').run(viewManager);
-		},
+    data: function () {
+      require('./../apps/data/app').run(viewManager);
+    },
 
 		charts: function () {
 			require('./../apps/charts/app').run(viewManager);
@@ -67,7 +63,7 @@ define(function(require) {
 
     statusUpdater: function () {
       require('./../apps/admin/subapps/status/app').run(viewManager);
-    },
+    }
 
 	});
 

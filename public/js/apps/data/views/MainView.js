@@ -10,11 +10,11 @@ define(function(require) {
 		},
 
 		render: function () {
-			var trackedRunsView = new TrackedRunsView();
+			var trackedRunsView = new TrackedRunsView({collection: this.trackedRuns});
 			this.$el.append(trackedRunsView.render().el);
 			this.subviews.push(trackedRunsView);
 
-			var fbStatView = new FitbitStatsView({collection: this.collection});
+			var fbStatView = new FitbitStatsView({collection: this.fbStatsCollection});
 			this.$el.append(fbStatView.render().el);
 			this.subviews.push(fbStatsView);
 

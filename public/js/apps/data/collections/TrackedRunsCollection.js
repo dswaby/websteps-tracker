@@ -1,9 +1,9 @@
 define(function (require) {
   var Backbone = require('Backbone');
-  var FitbitStat = require('./../models/FitbitStat');
+  var TrackedRun = require('./../models/TrackedRun');
 
   var TrackedRunsCollection = Backbone.Collection.extend({
-    model: FitbitStat,
+    model: TrackedRun,
 
     url: '/api/path'
   });

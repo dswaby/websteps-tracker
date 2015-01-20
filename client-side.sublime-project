@@ -1,0 +1,11 @@
+{
+	"folders":
+	[
+		{
+			"follow_symlinks": true,
+			"path": ".",
+      "folder_exclude_patterns": ["public/build", "public/css", "public/pics", "public/mp3", "public/data", "source", "test","tools", "node_modules"],
+      "file_exclude_patterns": ["id_rsa", ".jshintrc"]
+		}
+	]
+}

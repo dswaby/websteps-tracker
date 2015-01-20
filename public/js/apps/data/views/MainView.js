@@ -1,7 +1,7 @@
 define(function(require) {
 	var Backbone = require('Backbone');
 
-	var ButtonsView = require('./subviews/ButtonsView');
+	var TrackedRunsView = require('./subviews/TrackedRunsView');
 	var FitbitStatsView = require('./subviews/FitbitStatsView');
 
 	var MainView = Backbone.View.extend({
@@ -10,9 +10,9 @@ define(function(require) {
 		},
 
 		render: function () {
-			var buttonsView = new ButtonsView();
-			this.$el.append(buttonsView.render().el);
-			this.subviews.push(buttonsView);
+			var trackedRunsView = new TrackedRunsView();
+			this.$el.append(trackedRunsView.render().el);
+			this.subviews.push(trackedRunsView);
 
 			var fbStatView = new FitbitStatsView({collection: this.collection});
 			this.$el.append(fbStatView.render().el);

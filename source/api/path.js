@@ -24,6 +24,15 @@ var path = function (router) {
       res.json(path);
     });
   });
+
+  router.route('/api/path').get(function (req, res) {
+    MapPath.find(function(err, paths) {
+      if (err) {
+        return res.send(err);
+      }
+      return res.json(paths);
+    });
+  });
 };
 
 

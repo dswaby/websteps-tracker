@@ -132,7 +132,7 @@ define(function (require) {
       var accelerationZ = 0;
       var config = {
         high: 300,
-        low: 30,
+        low: 80,
         falseStepMin: 3,
         falsStepMax: 50,
         delay: 25,

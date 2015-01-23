@@ -133,10 +133,10 @@ define(function (require) {
       var config = {
         high: 300,
         low: 30,
-        falseStepMin: 7,
+        falseStepMin: 3,
         falsStepMax: 50,
-        delay: 50,
-        locationUpdatePasses: 80
+        delay: 25,
+        locationUpdatePasses: 160
       };
       var runnningPeak = 700;
       var falseStepTracker = 0;
@@ -193,12 +193,14 @@ define(function (require) {
             }
           }
           //send latitude and longitude
-          if (that.state.locationOn && locationIntervalPasses === config.locationUpdatePasses) {
-            that.updateLocation();
-            locationIntervalPasses = 0;
-          } 
-          else {
-            locationIntervalPasses++;
+          if (that.state.locationOn) {
+            if (locationIntervalPasses === config.locationUpdatePasses) {
+              that.updateLocation();
+              locationIntervalPasses = 0;
+            } 
+            else {
+              locationIntervalPasses++;
+            }
           }
         }, config.delay)
     }

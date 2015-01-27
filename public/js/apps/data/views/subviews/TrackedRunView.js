@@ -19,6 +19,7 @@ define(function (require) {
       var that = this;
       var coord = this.model.get("coordinates");
       that.pathCoordinates = [];
+      console.log(coord)
       for (var x = 0; x < coord.length; x++) {
         // console.log("inner for", this);
         var latLong = new google.maps.LatLng(coord[x].lat, coord[x].lng);

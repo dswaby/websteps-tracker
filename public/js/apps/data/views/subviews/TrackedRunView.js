@@ -19,7 +19,7 @@ define(function (require) {
     createTravelPath: function() {
       var that = this;
       this.pathCoordinates = [];
-      for (var x = 0; x < this.model.get("coordinates"); x++) {
+      for (var x = 0; x < this.model.coordinates.length); x++) {
         console.log("inner for", this);
         // var latLong = new google.maps.LatLng(latitude, longitude);
       }

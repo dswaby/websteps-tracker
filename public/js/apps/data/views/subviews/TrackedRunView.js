@@ -9,7 +9,7 @@ define(function (require) {
 
     render: function () {
       this.$el.html(this.template(this.model.toJSON()));
-      google.maps.event.addDomListener(window, 'load', this.createTravelPath());
+      var mapIntervalId = window.setTimeout(this.createTravelPath, 500);
       // this.createTravelPath();
       return this;
     },
@@ -44,6 +44,7 @@ define(function (require) {
         that.pathCoordinates.push(latLong);
       };
       that.centerLatLng = that.pathCoordinates[Math.ceil(that.pathCoordinates/2)];
+      console.log(that.centerLatLng)
       this.initializeMap();
 
     }

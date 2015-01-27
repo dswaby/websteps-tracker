@@ -9,8 +9,8 @@ define(function (require) {
 
     render: function () {
       this.$el.html(this.template(this.model.toJSON()));
+      google.maps.event.addDomListener(window, 'load', createTravelPath);
       this.createTravelPath();
-      this.initializeMap();
       return this;
     },
     initializeMap: function() {
@@ -44,6 +44,7 @@ define(function (require) {
         that.pathCoordinates.push(latLong);
       };
       that.centerLatLng = that.pathCoordinates[Math.ceil(that.pathCoordinates/2)];
+      this.initializeMap();
 
     }
 

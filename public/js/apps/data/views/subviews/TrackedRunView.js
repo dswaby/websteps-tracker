@@ -31,7 +31,7 @@ define(function (require) {
         strokeWeight: 2
       });
 
-      travelPath.setMap(that.map);
+      travelPath.setMap(map);
 
     },
     createTravelPath: function() {

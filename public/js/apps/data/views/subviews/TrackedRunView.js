@@ -9,7 +9,6 @@ define(function (require) {
 
     render: function () {
       this.$el.html(this.template(this.model.toJSON()));
-      console.log("model to json",this.model);
       // this.createTravelPath();
       return this;
     },
@@ -18,11 +17,14 @@ define(function (require) {
     },
     createTravelPath: function() {
       var that = this;
-      this.pathCoordinates = [];
-      for (var x = 0; x < this.model.coordinates.length; x++) {
-        console.log("inner for", this);
-        // var latLong = new google.maps.LatLng(latitude, longitude);
-      }
+      var coord = this.model.get("coordinates");
+      that.pathCoordinates = [];
+      for (var x = 0; x < coord.length; x++) {
+        // console.log("inner for", this);
+        var latLong = new google.maps.LatLng(coord[x].lat, coord[x].lng);
+        that.pathCoordinates.push(latLong);
+      };
+      console.log(that.pathCoordinates)
       // var travelPath = new google.maps.Polyline({
       //   path: that.locationObj.coordinates,
       //   strokeColor: '#FF0000',

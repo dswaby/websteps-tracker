@@ -9,7 +9,8 @@ define(function (require) {
 
     render: function () {
       this.$el.html(this.template(this.model.toJSON()));
-      var mapIntervalId = window.setTimeout(this.createTravelPath, 500);
+      // var mapIntervalId = window.setTimeout(this.createTravelPath, 500);
+      this.createTravelPath();
       // this.createTravelPath();
       return this;
     },
@@ -37,7 +38,6 @@ define(function (require) {
       console.log("createTravelPath")
       var that = this;
       var coord = this.model.get("coordinates");
-      var centerIndex = 
       that.pathCoordinates = [];
       for (var x = 0; x < coord.length; x++) {
         var latLong = new google.maps.LatLng(coord[x].lat, coord[x].lng);

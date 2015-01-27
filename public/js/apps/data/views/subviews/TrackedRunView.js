@@ -43,7 +43,7 @@ define(function (require) {
         var latLong = new google.maps.LatLng(coord[x].lat, coord[x].lng);
         that.pathCoordinates.push(latLong);
       };
-      that.centerLatLng = that.pathCoordinates[Math.ceil(that.pathCoordinates/2)];
+      that.centerLatLng = that.pathCoordinates[Math.ceil(that.pathCoordinates.length/2)];
       console.log(that.centerLatLng)
       this.initializeMap();
 

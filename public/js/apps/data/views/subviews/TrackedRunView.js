@@ -8,9 +8,9 @@ define(function (require) {
     template: require('hbs!./../../templates/TrackedRunView'),
 
     render: function () {
-      this.$el.html(this.template(this.model.toJSON()));
+      // this.$el.html(this.template(this.model.toJSON()));
       // var mapIntervalId = window.setTimeout(this.createTravelPath, 500);
-      var timeOt = setTimeout(this.createTravelPath(), 900);
+      this.createTravelPath();
       // this.createTravelPath();
       return this;
     },

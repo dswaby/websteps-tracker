@@ -9,8 +9,8 @@ define(function (require) {
 
     render: function () {
       this.$el.html(this.template(this.model.toJSON()));
-      console.log("model to json",this.model.toJSON());
-      this.createTravelPath();
+      console.log("model to json",this.model);
+      // this.createTravelPath();
       return this;
     },
     initializeMap: function() {

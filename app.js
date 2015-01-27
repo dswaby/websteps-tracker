@@ -2,7 +2,7 @@ var config = require('./config');
 var express = require('express');
 var http = require('http');
 var path = require('path');
-var connect        = require('connect')
+var connect = require('connect')
 var middleware = require('./source/middleware');
 var bodyParser = require('body-parser');
 var favicon = require('serve-favicon');
@@ -14,7 +14,6 @@ var expressSession = require('express-session');
 var app = express();
 var server = require('http').createServer(app);
 
-// config
 app.use(middleware.cors());
 app.use(favicon(__dirname + '/public/favicon.ico'));
 app.set('views', __dirname + '/views');
@@ -27,34 +26,23 @@ app.use(methodOverride());
 
 mongoose.connect(config.mongodbConnectionString);
 
+app.use(errorHandler());
+app.use(express.static(path.join(__dirname, 'public')));
+
+if (process.env.NODE_ENV === 'production') {
+	app.use(middleware.serveMaster.production());
+};
 if (process.env.NODE_ENV === 'development') {
-  app.use(errorHandler());
-  app.use(express.static(path.join(__dirname, 'public')));
   app.use(middleware.serveMaster.development());
 }
 
-if (process.env.NODE_ENV === 'production') {
-  // app.use(compression({
-  //   threshold: 512})
-  // );
-  app.use(errorHandler());
-	app.use(express.static(path.join(__dirname, 'public')));
-	app.use(middleware.serveMaster.production());
-};
-
 // endpoinds
 require('./source/api/auth')(app);
-require('./source/api/emails')(app);
-require('./source/api/contacts')(app);
-require('./source/api/tasks')(app);
 require('./source/api/pics')(app);
 require('./source/api/glucose')(app);
 require('./source/api/path')(app);
-
-
 // handlers for socket.io events
 require('./source/api/sockets')(server);
-
 
 server.listen(app.get('port'), function(){
   var environment = process.env.NODE_ENV || 'development';

@@ -1,13 +1,14 @@
 define(function (require) {
 	var FitbitStatsCollection = require('./collections/FitbitStatsCollection');
   var TrackedRunsCollection = require('./collections/TrackedRunsCollection');
+  var LoadingView = require('./../../common/loader/views/LoaderView');
 	var MainView = require('./views/MainView');
 
 	return {
 		run: function(viewManager) {
       // display loading view here
-      // var view = new LoadingView();
-      // viewManager.show(view);
+      var loader = new LoadingView();
+      viewManager.show(loader);
 			var trackedRunsCollection = new TrackedRunsCollection();
 			trackedRunsCollection.fetch({
 				success: function (trackedRunsCol) {

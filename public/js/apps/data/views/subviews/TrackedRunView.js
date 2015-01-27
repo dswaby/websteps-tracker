@@ -9,8 +9,8 @@ define(function (require) {
 
     render: function () {
       this.$el.html(this.template(this.model.toJSON()));
-      google.maps.event.addDomListener(window, 'load', createTravelPath);
-      this.createTravelPath();
+      google.maps.event.addDomListener(window, 'load', this.createTravelPath);
+      // this.createTravelPath();
       return this;
     },
     initializeMap: function() {
@@ -31,7 +31,6 @@ define(function (require) {
       });
 
       travelPath.setMap(that.map);
-
 
     },
     createTravelPath: function() {

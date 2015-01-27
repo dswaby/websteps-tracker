@@ -21,7 +21,7 @@ define(function (require) {
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
 
-      var map = new google.maps.Map(this.$el.find('map-canvas'), mapOptions);
+      var map = new google.maps.Map(this.$el.find('.map-canvas'), mapOptions);
 
       var travelPath = new google.maps.Polyline({
         path: that.pathCoordinates,

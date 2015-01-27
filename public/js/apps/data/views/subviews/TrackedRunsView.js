@@ -4,11 +4,13 @@ define(function(require) {
 	var TrackedRunsView = Backbone.View.extend({
     className: "tracked-runs-view",
 		template: require('hbs!./../../templates/TrackedRunsView'),
+    initialize: function () {
+      this.subviews = [];
+    },
 		render: function () {
       this.$el.html(this.template());
 
       var runs = this.$('.runs');
-      console.log(this.trackedRuns);
       this.collection.forEach(function (run) {
         var view = new TrackedRunView({model: run});
         runs.append(view.render().el);

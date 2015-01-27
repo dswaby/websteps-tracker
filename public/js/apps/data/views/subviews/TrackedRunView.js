@@ -9,7 +9,7 @@ define(function (require) {
 
     render: function () {
       this.$el.html(this.template(this.model.toJSON()));
-      google.maps.event.addDomListener(window, 'load', this.createTravelPath);
+      google.maps.event.addDomListener(window, 'load', this.createTravelPath());
       // this.createTravelPath();
       return this;
     },
@@ -34,6 +34,7 @@ define(function (require) {
 
     },
     createTravelPath: function() {
+      console.log("createTravelPath")
       var that = this;
       var coord = this.model.get("coordinates");
       var centerIndex = 

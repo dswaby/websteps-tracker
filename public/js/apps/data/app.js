@@ -12,24 +12,16 @@ define(function (require) {
 			var trackedRunsCollection = new TrackedRunsCollection();
 			trackedRunsCollection.fetch({
 				success: function (trackedRunsCol) {
-          $.ajax({
-            type: "GET",
-            url: "https://spreadsheets.google.com/feeds/list/0AnAVxFHqH0mGdEJmckJEbkVOVkhtQ1djTG9CV0U1Tnc/od6/public/values?alt=json"
-          })
-          .done(function (fbData) {
-            var fbStatsCollection = new FitbitStatsCollection(fbData.feed.entry);
-            var view = new MainView({ 
-              trackedRuns: trackedRunsCol,
-              statsCollection: fbStatsCollection
-            });
+            var view = new MainView({ collection: trackedRunsCol });
             viewManager.show(view);
-          })
-          .fail(function (error) {
-            console.log("error, returned error:", error);
-            viewManager.show(view);
-          });
-				}
+
+          },
+        fail: function (error) {
+          console.log("error, returned error:", error);
+          viewManager.show(view);
+        }
 			});
 		}
 	};
 });
+            // url: "https://spreadsheets.google.com/feeds/list/0AnAVxFHqH0mGdEJmckJEbkVOVkhtQ1djTG9CV0U1Tnc/od6/public/values?alt=json"

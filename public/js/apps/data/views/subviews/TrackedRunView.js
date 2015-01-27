@@ -10,19 +10,18 @@ define(function (require) {
     render: function () {
       this.$el.html(this.template(this.model.toJSON()));
       this.createTravelPath();
+      this.initializeMap();
       return this;
     },
     initializeMap: function() {
       var that = this;
-      
-
       var mapOptions = {
         zoom: 15,
         center: that.centerLatLng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
 
-      var map = new google.maps.Map(this.$el.find('map-canvas')), mapOptions);
+      var map = new google.maps.Map(this.$el.find('map-canvas'), mapOptions);
 
       var travelPath = new google.maps.Polyline({
         path: that.pathCoordinates,
@@ -45,6 +44,7 @@ define(function (require) {
         that.pathCoordinates.push(latLong);
       };
       that.centerLatLng = that.pathCoordinates[math.ceil(that.pathCoordinates/2)];
+
     }
 
   });

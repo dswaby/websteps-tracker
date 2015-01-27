@@ -13,46 +13,41 @@ define(function (require) {
       return this;
     },
     initializeMap: function() {
+      var that = this;
+      
+
+      var mapOptions = {
+        zoom: 15,
+        center: that.centerLatLng,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+
+      var map = new google.maps.Map(this.$el.find('map-canvas')), mapOptions);
+
+      var travelPath = new google.maps.Polyline({
+        path: that.pathCoordinates,
+        strokeColor: '#FF0000',
+        strokeOpacity: 1.0,
+        strokeWeight: 2
+      });
+
+      travelPath.setMap(that.map);
+
 
     },
     createTravelPath: function() {
       var that = this;
       var coord = this.model.get("coordinates");
+      var centerIndex = 
       that.pathCoordinates = [];
-      console.log(coord)
       for (var x = 0; x < coord.length; x++) {
-        // console.log("inner for", this);
         var latLong = new google.maps.LatLng(coord[x].lat, coord[x].lng);
         that.pathCoordinates.push(latLong);
       };
-      console.log(that.pathCoordinates)
-      // var travelPath = new google.maps.Polyline({
-      //   path: that.locationObj.coordinates,
-      //   strokeColor: '#FF0000',
-      //   strokeOpacity: 1.0,
-      //   strokeWeight: 2
-      // });
-
-      // travelPath.setMap(that.map);
+      that.centerLatLng = that.pathCoordinates[math.ceil(that.pathCoordinates/2)];
     }
 
   });
 
   return TrackedRunView;
 });
-
-// var myLatLong = new google.maps.LatLng(latitude, longitude);
-//       var mapOptions = {
-//         zoom: 17,
-//         center: myLatLong,
-//         mapTypeId: google.maps.MapTypeId.ROADMAP
-//       };
-//       that.locationObj.coordinates.push(myLatLong);
-
-//       that.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-
-//       that.marker = new google.maps.Marker({
-//         position: myLatLong,
-//         map: that.map,
-//         title: 'Starting Point!'
-//       });

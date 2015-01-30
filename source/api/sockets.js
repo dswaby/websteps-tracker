@@ -2,7 +2,16 @@ function SocketEvents(server) {
   var io = require('socket.io')(server);
   var admin_io =  io.of('/admin');
   var MapPath = require("./models/mapPath");
+  var nodemailer = require('nodemailer');
 
+  // create reusable transporter object using SMTP transport
+  var transporter = nodemailer.createTransport({
+      service: 'Gmail',
+      auth: {
+          user: 'ping@swa.by',
+          pass: 'q4TY)x[sMq9(Zkk}vh3R7eDEVyKHU;44/KE6WJN7V&W'
+      }
+  });
 
   // ('/') global namespace event handlers
   io.on('connection', function (socket) {
@@ -11,6 +20,23 @@ function SocketEvents(server) {
 
     socket.on('get connection status', function (data) {
       admin_io.emit('is danny connected');
+    });
+
+    socket.on('status ping', function (data) {
+      var mailOptions = {
+          from: 'Zing Pingman ✔ <ping@swa.by>', // sender address
+          to: 'danny@swa.by', // list of receivers
+          subject: 'fitb.apps.swa.by ping', // Subject line
+          text: 'Youve been pinged!' // plaintext body
+      };
+      // send mail with defined transport object
+      transporter.sendMail(mailOptions, function(error, info){
+          if(error){
+              console.log(error);
+          }else{
+              console.log('Message sent: ' + info.response);
+          }
+      });
     });
   });
 

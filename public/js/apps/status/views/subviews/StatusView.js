@@ -4,6 +4,9 @@ define(function (require) {
   require('async!http://maps.google.com/maps/api/js?sensor=false');
   var StatusView = Backbone.View.extend({
     template: require('hbs!./../../templates/StatusView'),
+    events: {
+      'click #pedometer': 'togglePedometer'
+    },
     className: 'location-wrapper',
     locationObj: {
       firstLocationPass: true,
@@ -26,10 +29,12 @@ define(function (require) {
       that.socket.on('danny is connected', function(){
         console.log("danny is connected");
         that.$el.find("#connection").removeClass("icon-cross").addClass("icon-checkmark");
+        that.$el.find("#ping-button").removeClass("active").addClass("disabled");
       });
 
       that.socket.on('danny is disconnected', function(){
         console.log("danny is disconnected");
+        that.$el.find("#ping-button").removeClass("disabled").addClass("active");
         that.$el.find("#connection").removeClass("icon-checkmark").addClass("icon-cross");
         that.$el.find("#activity-detail").addClass("hidden");
         that.$el.find("#activity").removeClass("icon-checkmark").addClass("icon-cross");
@@ -125,6 +130,12 @@ define(function (require) {
         firstPass = false;
       }
       that.$el.find("#stepcount").html(count);
+    },
+    pingStatus: function(e) {
+      var that = this;
+      e.preventDefault();
+      e.stopPropagation();
+      that.socket.emit('status ping');
     }
   });
 

@@ -5,7 +5,7 @@ define(function (require) {
   var StatusView = Backbone.View.extend({
     template: require('hbs!./../../templates/StatusView'),
     events: {
-      'click #pedometer': 'togglePedometer'
+      'click #ping-button': 'pingStatus'
     },
     className: 'location-wrapper',
     locationObj: {
@@ -136,6 +136,9 @@ define(function (require) {
       e.preventDefault();
       e.stopPropagation();
       that.socket.emit('status ping');
+      that.$el.find("#ping-button").removeClass("active").addClass("disabled");
+
+
     }
   });
 

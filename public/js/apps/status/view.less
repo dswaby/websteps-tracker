@@ -87,6 +87,24 @@
           display: none;
         }
       }
+
+
     }
+    #ping-button {
+        width: 150px;
+        height: 55px;
+        background-color: green;
+        border-radius: 7px;
+        border: 1px solid gray;
+        &.active {
+          display: block;
+          &:hover {
+            background-color: blue;
+          }
+        }
+        &.disabled {
+          display: none;
+        }
+      }
   }
 }

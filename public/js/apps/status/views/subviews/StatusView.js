@@ -136,7 +136,7 @@ define(function (require) {
       e.preventDefault();
       e.stopPropagation();
       that.socket.emit('status ping');
-      that.$el.find("#ping-button").removeClass("active").addClass("disabled");
+      that.$el.find("#ping-button").removeClass("active").addClass("pinged");
 
 
     }

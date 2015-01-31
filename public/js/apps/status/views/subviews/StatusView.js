@@ -5,13 +5,21 @@ define(function (require) {
   var StatusView = Backbone.View.extend({
     template: require('hbs!./../../templates/StatusView'),
     events: {
-      'click #ping-button': 'pingStatus'
+      'click #ping-button': 'pingForStatus'
     },
     className: 'location-wrapper',
     locationObj: {
       firstLocationPass: true,
       coordinates:[]
     },
+    checkPing: function () {
+      if(typeof(Storage) !== "undefined") {
+        var pingStorage = localStorage.getItem("pingtime");
+        if (pingStorage && (Date.now() - pingStorage.getMilliseconds()) > 30000000) {
+          that.$el.find("#ping-button").removeClass("active").addClass("pinged");
+        }
+      }
+    }
     render: function () {
       var that = this;
       var io = require('socketio');
@@ -131,14 +139,15 @@ define(function (require) {
       }
       that.$el.find("#stepcount").html(count);
     },
-    pingStatus: function(e) {
+    pingForStatus: function(e) {
       var that = this;
       e.preventDefault();
       e.stopPropagation();
       that.socket.emit('status ping');
       that.$el.find("#ping-button").removeClass("active").addClass("pinged");
-
-
+      if(typeof(Storage) !== "undefined") {
+        localStorage.setItem("pingtime", Date.now());
+      }
     }
   });
 

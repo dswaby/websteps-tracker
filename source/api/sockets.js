@@ -21,23 +21,6 @@ function SocketEvents(server) {
     socket.on('get connection status', function (data) {
       admin_io.emit('is danny connected');
     });
-
-    socket.on('status ping', function (data) {
-      var mailOptions = {
-          from: 'Zing Pingman ✔ <ping@swa.by>', // sender address
-          to: 'danny@swa.by', // list of receivers
-          subject: 'fitb.apps.swa.by ping', // Subject line
-          text: 'Youve been pinged!' // plaintext body
-      };
-      // send mail with defined transport object
-      transporter.sendMail(mailOptions, function(error, info){
-          if(error){
-              console.log(error);
-          }else{
-              console.log('Message sent: ' + info.response);
-          }
-      });
-    });
   });
 
   // '/admin' namespace event handlers 

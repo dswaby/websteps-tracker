@@ -19,7 +19,7 @@ define(function (require) {
           that.$el.find("#ping-button").removeClass("active").addClass("pinged");
         }
       }
-    }
+    },
     render: function () {
       var that = this;
       var io = require('socketio');
@@ -143,7 +143,16 @@ define(function (require) {
       var that = this;
       e.preventDefault();
       e.stopPropagation();
-      that.socket.emit('status ping');
+      $.ajax({
+        type: "POST",
+        url: "http://localhost:8000/api/ping"
+      })
+      .done(function (data) {
+        console.log("success")
+      })
+      .fail(function (error) {
+        console.log(error);
+      });
       that.$el.find("#ping-button").removeClass("active").addClass("pinged");
       if(typeof(Storage) !== "undefined") {
         localStorage.setItem("pingtime", Date.now());

@@ -145,7 +145,8 @@ define(function (require) {
       e.stopPropagation();
       $.ajax({
         type: "POST",
-        url: "http://localhost:8000/api/ping"
+        url: "http://fitb.apps.swa.by/api/ping",
+        data: ""
       })
       .done(function (data) {
         console.log("success")

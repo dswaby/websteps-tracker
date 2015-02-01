@@ -8,6 +8,7 @@ define(function (require) {
     locationId: '',
     steps: 0,
     state: {},
+    treadmill: false,
     firstPassLoc: true,
     template: require('hbs!./../../templates/AdminStatusView'),
     className: 'location-wrapper',
@@ -54,12 +55,12 @@ define(function (require) {
     },
     toggleTreadMill: function(){
       var that = this;
-      if (that.state.treadmillOn) {
-        that.state.treadmillOn = false;
+      if (that.treadmill) {
+        that.treadmill = false;
         that.socket.emit('not on treadmill');
       }
       else {
-        that.state.treadmillOn = true;
+        that.treadmill = true;
         that.socket.emit('on treadmill');
       }
     },
@@ -193,7 +194,7 @@ define(function (require) {
             }
           }
           //send latitude and longitude
-          if (that.state.locationOn) {
+          if (that.state.locationOn && !that.treadmill) {
             if (locationIntervalPasses === config.locationUpdatePasses) {
               that.updateLocation();
               locationIntervalPasses = 0;
@@ -201,7 +202,10 @@ define(function (require) {
             else {
               locationIntervalPasses++;
             }
-          }
+          } 
+          // else if (that.state.locationOn && that.treadmill && !that.locationId) {
+          //   that.updateLocation();
+          // }
         }, config.delay)
     }
   });

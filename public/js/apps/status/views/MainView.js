@@ -3,7 +3,7 @@ define(function(require) {
 
   var StatusView = require('./subviews/StatusView');
   var LocationView = require('./subviews/LocationView');
-
+  var StatusModel = require('./../models/status');
   var MainView = Backbone.View.extend({
     className: 'main-status-view',
     initialize: function () {
@@ -11,7 +11,8 @@ define(function(require) {
     },
 
     render: function () {
-      var statusView = new StatusView({collection: this.collection});
+      var status = new StatusModel();
+      var statusView = new StatusView({model: status});
       this.$el.append(statusView.render().el);
       this.subviews.push(statusView);
       var locationView = new LocationView();

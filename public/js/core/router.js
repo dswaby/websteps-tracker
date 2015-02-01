@@ -6,26 +6,20 @@ define(function(require) {
 		routes: {
 			'': 'home',
 			'data': 'data',
-			'data/': 'data',
+      'data/': 'data',
+
       'recent': 'recent',
-      'recent/': 'recent',
 
 			'charts': 'charts',
-      'charts/': 'charts',
 
 			'status': 'status',
-      'status/': 'status',
 
       'admin': 'admin',
-      'admin/': 'admin',
       'admin/upload': 'adminUpload',
-      'admin/upload/': 'adminUpload',
 
       'admin/glucoselog': 'adminGlucoseLog',
-      'admin/glucoselog/': 'adminGlucoseLog',
 
       'admin/status': 'statusUpdater',
-      'admin/status/': 'statusUpdater'
 
 		},
 

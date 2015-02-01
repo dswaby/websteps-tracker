@@ -8,10 +8,6 @@ define(function (require) {
       'click #ping-button': 'pingForStatus'
     },
     className: 'location-wrapper',
-    locationObj: {
-      firstLocationPass: true,
-      coordinates:[]
-    },
     checkPing: function () {
       if(typeof(Storage) !== "undefined") {
         var pingStorage = localStorage.getItem("pingtime");
@@ -23,7 +19,7 @@ define(function (require) {
     render: function () {
       var that = this;
       var io = require('socketio');
-
+      console.log(this.model)
       this.$el.html(this.template());
       that.socket = io.connect('/');
       this._socketEvents();
@@ -33,71 +29,68 @@ define(function (require) {
       var that = this;
       var firstPass = true;
       that.socket.emit('get connection status');
+      that.socket.on(
+        'danny is connected', function(){
+          that.$el.find("#connection").removeClass("icon-cross").addClass("icon-checkmark");
+          that.$el.find("#ping-button").removeClass("active").addClass("disabled");
+        },
 
-      that.socket.on('danny is connected', function(){
-        console.log("danny is connected");
-        that.$el.find("#connection").removeClass("icon-cross").addClass("icon-checkmark");
-        that.$el.find("#ping-button").removeClass("active").addClass("disabled");
-      });
+        'danny is disconnected', function(){
+          that.$el.find("#ping-button").removeClass("disabled").addClass("active");
+          that.$el.find("#connection").removeClass("icon-checkmark").addClass("icon-cross");
+          that.$el.find("#activity-detail").addClass("hidden");
+          that.$el.find("#activity").removeClass("icon-checkmark").addClass("icon-cross");
+          that.$el.find("#location-detail").addClass("hidden");
+          that.$el.find("#location").removeClass("icon-checkmark").addClass("icon-cross");
+        },
 
-      that.socket.on('danny is disconnected', function(){
-        console.log("danny is disconnected");
-        that.$el.find("#ping-button").removeClass("disabled").addClass("active");
-        that.$el.find("#connection").removeClass("icon-checkmark").addClass("icon-cross");
-        that.$el.find("#activity-detail").addClass("hidden");
-        that.$el.find("#activity").removeClass("icon-checkmark").addClass("icon-cross");
-        that.$el.find("#location-detail").addClass("hidden");
-        that.$el.find("#location").removeClass("icon-checkmark").addClass("icon-cross");
-      });
+        'stepcount', function (data){
+          that.updateStepCount(data.steps);
+        },
 
-      that.socket.on('stepcount', function (data){
-        that.updateStepCount(data.steps);
-      });
+        'location', function (data){
+          if (that.model.locationObj.firstLocationPass) {
+            that.$el.find("#location").removeClass("icon-cross").addClass("icon-checkmark");
+            that.$el.find("#location-detail").removeClass("hidden");
 
-      that.socket.on('location', function (data){
-        if (that.locationObj.firstLocationPass) {
-          that.$el.find("#location").removeClass("icon-cross").addClass("icon-checkmark");
-          that.$el.find("#location-detail").removeClass("hidden");
-
-          $.ajax({
-            type: "GET",
-            url: "http://fitb.apps.swa.by/api/path/" + data.id
-          })
-          .done(function (path) {
-              that.initializeMap(path.coordinates[0].lat, path.coordinates[0].lng);
-              for (var i = 0; i < path.coordinates.length; i++) {
-                var myLatLong = new google.maps.LatLng(path.coordinates[i].lat, path.coordinates[i].lng);
-                that.locationObj.coordinates.push(myLatLong);
-              }
-            that.locationObj.firstLocationPass = false;
+            $.ajax({
+              type: "GET",
+              url: "http://fitb.apps.swa.by/api/path/" + data.id
+            })
+            .done(function (path) {
+                that.initializeMap(path.coordinates[0].lat, path.coordinates[0].lng);
+                for (var i = 0; i < path.coordinates.length; i++) {
+                  var myLatLong = new google.maps.LatLng(path.coordinates[i].lat, path.coordinates[i].lng);
+                  that.model.locationObj.coordinates.push(myLatLong);
+                }
+              that.model.locationObj.firstLocationPass = false;
+              that.updatePath(data.lat, data.lng);
+            })
+            .fail(function (error) {
+              console.log(error);
+            });
+            
+          }
+          else {
+            var myLatLong = new google.maps.LatLng(data.lat, data.lng);
+            that.model.locationObj.coordinates.push(myLatLong);
             that.updatePath(data.lat, data.lng);
-          })
-          .fail(function (error) {
-            console.log(error);
-          });
-          
+          }
+        },
+
+        'on treadmill', function (data){
+          that.$el.find("#treadmill-bool").html("True");
+        },
+
+        'not on treadmill', function (data){
+          that.$el.find("#treadmill-bool").html("False");
         }
-        else {
-          var myLatLong = new google.maps.LatLng(data.lat, data.lng);
-          that.locationObj.coordinates.push(myLatLong);
-          that.updatePath(data.lat, data.lng);
-        }
-
-      });
-
-      that.socket.on('on treadmill', function (data){
-        console.log("treadmill")
-        that.$el.find("#treadmill-bool").html("True");
-      });
-
-      that.socket.on('not on treadmill', function (data){
-        that.$el.find("#treadmill-bool").html("False");
-      });
+      );
     },
     updatePath: function(lat, lng){
       var that = this;
       var travelPath = new google.maps.Polyline({
-        path: that.locationObj.coordinates,
+        path: that.model.locationObj.coordinates,
         strokeColor: '#FF0000',
         strokeOpacity: 1.0,
         strokeWeight: 2
@@ -106,6 +99,7 @@ define(function (require) {
       travelPath.setMap(that.map);
       that.panMap(lat, lng);
     },
+
     initializeMap: function(latitude, longitude) {
       var that = this;
       var myLatLong = new google.maps.LatLng(latitude, longitude);
@@ -114,7 +108,7 @@ define(function (require) {
         center: myLatLong,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
-      that.locationObj.coordinates.push(myLatLong);
+      that.model.locationObj.coordinates.push(myLatLong);
 
       that.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
@@ -124,21 +118,24 @@ define(function (require) {
         title: 'Starting Point!'
       });
     },
+
     panMap: function(latitude, longitude) {
       var that = this;
       var newGeo = new google.maps.LatLng(latitude, longitude);
       that.map.panTo(newGeo);
     },
+
     updateStepCount: function(count) {
       var that = this;
       if (firstPass) {
         that.$el.find("#activity").removeClass("icon-cross").addClass("icon-checkmark");
-        // apply revealing transition to 
+        // TODO apply revealing transition to 
         that.$el.find("#activity-detail").removeClass("hidden");
         firstPass = false;
       }
       that.$el.find("#stepcount").html(count);
     },
+
     pingForStatus: function(e) {
       var that = this;
       e.preventDefault();
@@ -149,12 +146,12 @@ define(function (require) {
         data: ""
       })
       .done(function (data) {
-        console.log("success")
+        that.$el.find("#ping-button").removeClass("active").addClass("pinged");
       })
       .fail(function (error) {
         console.log(error);
       });
-      that.$el.find("#ping-button").removeClass("active").addClass("pinged");
+      
       if(typeof(Storage) !== "undefined") {
         localStorage.setItem("pingtime", Date.now());
       }

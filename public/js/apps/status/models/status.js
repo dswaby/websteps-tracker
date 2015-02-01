@@ -3,12 +3,10 @@ define(function(require) {
 
   var Status = Backbone.Model.extend({
     defaults: {
-      mobile:false,
-      locationId: '',
-      steps: 0,
-      state: {},
-      firstPassLoc: true,
-      treadmill: false
+      locationObj: {
+        firstLocationPass: true,
+        coordinates:[]
+      }
     }
   });
 

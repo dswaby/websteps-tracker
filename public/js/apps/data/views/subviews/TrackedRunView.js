@@ -10,7 +10,7 @@ define(function (require) {
     render: function () {
       this.$el.html(this.template(this.model.toJSON()));
       // var mapIntervalId = window.setTimeout(this.createTravelPath, 500);
-      this.createTravelPath();
+      // this.createTravelPath();
       // this.createTravelPath();
       return this;
     },

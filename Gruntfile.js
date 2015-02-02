@@ -170,6 +170,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('default', [ 'requirejs', 'hashres']);
   grunt.registerTask('dev', ['clean', 'requirejs', 'less','hashres:prod', 'express', 'watch']);
   grunt.registerTask('build', [ 'clean', 'requirejs', 'less','hashres']);
+  grunt.registerTask('deploycommit',['gitcommit','sshexec:deploy']);
   grunt.registerTask('deploy',['gitcommit','sshexec:deploy']);
 
 

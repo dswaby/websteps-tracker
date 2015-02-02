@@ -49,7 +49,7 @@ define(function (require) {
         });
       
         $.when(fetchingRuns, fetchingPics).done(function(){
-          var view = new MainView({ collection: trackedRunsCol, model: " bl", runsCollection: that.runsCollection, picsCollection: that.picturesCollection });
+          var view = new MainView({ runsCollection: that.runsCollection, picsCollection: that.picturesCollection });
           viewManager.show(view);
         });
       };

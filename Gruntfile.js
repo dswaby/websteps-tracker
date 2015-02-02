@@ -12,6 +12,20 @@ function createFileSha(filenane) {
 
 module.exports = function(grunt) {
 	grunt.initConfig({
+    gitcommit: {
+      your_target: {
+        options: {
+          message: 'Deploy Commit',
+          cwd: "."
+        },
+        files: [
+          {
+            src: ["public/js/*","source/api/*","source/middleware/*","less/*", "Gruntfile.js"],
+            expand: true
+          }
+        ]
+      }
+    },
 		meta: {
 			version: '0.0.5'
 		},
@@ -147,7 +161,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-ssh');
-  grunt.loadNpmTasks('grunt-string-replace');
+  grunt.loadNpmTasks('grunt-git');
   // grunt.loadNpmTasks('grunt-contrib-coffee');
 
 
@@ -156,6 +170,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('default', [ 'requirejs', 'hashres']);
   grunt.registerTask('dev', ['clean', 'requirejs', 'less','hashres:prod', 'express', 'watch']);
   grunt.registerTask('build', [ 'clean', 'requirejs', 'less','hashres']);
-  grunt.registerTask('deploy',['sshexec:deploy']);
+  grunt.registerTask('deploy',['gitcommit','sshexec:deploy']);
+
 
 };

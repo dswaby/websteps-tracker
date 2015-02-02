@@ -3,6 +3,7 @@ define(function (require) {
   var TrackedRunsCollection = require('./collections/TrackedRunsCollection');
   var LoadingView = require('./../../common/loader/views/LoaderView');
 	var MainView = require('./views/MainView');
+  
 
 	return {
 		run: function(viewManager) {
@@ -39,7 +40,13 @@ define(function (require) {
         return defer.promise();
       };
 
-      function load() {
+      function getFitbitStats() {
+        //
+            // url: "https://spreadsheets.google.com/feeds/list/0AnAVxFHqH0mGdEJmckJEbkVOVkhtQ1djTG9CV0U1Tnc/od6/public/values?alt=json"
+        
+      }
+
+      // function load() {
         var fetchingRuns = getRuns().done(function (runs){
             that.runsCollection = runs;
         });
@@ -49,12 +56,14 @@ define(function (require) {
         });
       
         $.when(fetchingRuns, fetchingPics).done(function(){
-          var view = new MainView({ runsCollection: that.runsCollection, picsCollection: that.picturesCollection });
+          var model = new Backbone.Model({
+            runs: that.runsCollection, pics: that.picturesCollection
+          });
+          var view = new MainView({ model: model });
           viewManager.show(view);
         });
-      };
-      load();
+      // };
+      // load();
 		}
 	};
 });
-            // url: "https://spreadsheets.google.com/feeds/list/0AnAVxFHqH0mGdEJmckJEbkVOVkhtQ1djTG9CV0U1Tnc/od6/public/values?alt=json"

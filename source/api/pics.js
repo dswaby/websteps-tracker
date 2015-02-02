@@ -33,7 +33,7 @@ var pictures = function (router) {
       });
 
       res.send({
-        path: publicPath
+        path: './.'+ publicPath
       });
 
     });

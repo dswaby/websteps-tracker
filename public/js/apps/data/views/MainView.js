@@ -6,6 +6,7 @@ define(function(require) {
 	var MainView = Backbone.View.extend({
 		initialize: function () {
 			this.subviews = [];
+      console.log(this)
 		},
 
 		render: function () {

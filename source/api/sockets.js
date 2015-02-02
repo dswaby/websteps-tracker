@@ -3,6 +3,9 @@ function SocketEvents(server) {
   var admin_io =  io.of('/admin');
   var MapPath = require("./models/mapPath");
   var nodemailer = require('nodemailer');
+  var  DIAMETER_IN_MILES = 2 * 3963.190;
+
+  function distance(a,b,c,d,e,z){with(Math)return z=PI/360,e*atan2(sqrt(z=pow(sin((c-a)*z),2)+cos(a*z*2)*cos(c*z*2)*pow(sin((d-b)*z),2)),sqrt(1-z))}, 
 
   // create reusable transporter object using SMTP transport
   var transporter = nodemailer.createTransport({
@@ -35,7 +38,6 @@ function SocketEvents(server) {
     socket.on('disconnect', function(){
       io.emit('danny is disconnected');
     });
-
     socket.on('location error', function (data) {
       console.log("location error", data.error);
     });
@@ -49,6 +51,12 @@ function SocketEvents(server) {
           console.log(err);
           return;
         }
+
+        var last = mapPath.coordinates[mapPath.coordinates.length - 1];
+        console.log(last)
+        var miles = distance(last.lat, last.lng, data.lat, data.lng,  DIAMETER_IN_MILES);
+        console.log(miles);
+
         
         mapPath.coordinates.push({ lat: data.lat, lng: data.lng });
         mapPath.endedAt = Date.now;
@@ -62,8 +70,6 @@ function SocketEvents(server) {
         });
       });
     });
-
-
   });
 
 }

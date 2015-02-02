@@ -2,7 +2,7 @@ define(function (require) {
   var Backbone = require('Backbone');
 
   var ImageUploaderView = require('./subviews/ImageUploaderView');
-
+  var PhotoLogModel = require('./../models/PhotoLog');
   var MainView = Backbone.View.extend({
     className: "admin-main-view",
     
@@ -11,7 +11,8 @@ define(function (require) {
     },
 
     render: function () {
-      var imageUploaderView = new ImageUploaderView();
+      var emptyModel = new PhotoLogModel();
+      var imageUploaderView = new ImageUploaderView({model: emptyModel});
       this.subviews.push(imageUploaderView);
       this.$el.append(imageUploaderView.render().el);
       return this;

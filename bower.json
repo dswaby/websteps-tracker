@@ -14,9 +14,11 @@
     "typeahead.js": "~0.10.5",
     "moment": "~2.8.4",
     "socket.io-client": "~1.2.1",
-    "requirejs-plugins": "~1.0.3"
+    "requirejs-plugins": "~1.0.3",
+    "backbone-model-file-upload": "*"
   },
   "resolutions": {
-    "underscore": ">=1.5.0"
+    "underscore": ">=1.5.0",
+    "jquery": "~2.1.1"
   }
 }

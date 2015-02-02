@@ -19,6 +19,11 @@ require.config({
 			exports: 'Backbone'
 		},
 
+    bbFileUpload: {
+      deps: ['jQuery', 'Underscore', 'backbone'],
+      exports: 'Backbone'
+    },
+
 		'Handlebars': {
 			deps: ['handlebars'],
 			exports: 'Handlebars'
@@ -34,7 +39,7 @@ require.config({
 	},
 
 	paths: {
-		jQuery: './../components/jquery/jquery',
+		jQuery: './../components/jquery/dist/jquery',
 		Underscore: './../components/underscore/underscore',
 		underscore: './../components/require-handlebars-plugin/hbs/underscore',
 		Backbone: './../components/backbone/backbone',
@@ -48,8 +53,10 @@ require.config({
     c3: './../components/c3/c3',
     d3: './../components/d3/d3', 
     socketio: 'http://fitb.apps.swa.by:3634/socket.io/socket.io',
-    async: './../components/requirejs-plugins/src/async'
+    async: './../components/requirejs-plugins/src/async',
+    bbFileUpload: './../components/backbone-mobile-file-upload'
     // socketio: 'http://localhost:8000/socket.io/socket.io'
+
 
 	}
 });

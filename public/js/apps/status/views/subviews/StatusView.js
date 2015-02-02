@@ -19,7 +19,6 @@ define(function (require) {
     render: function () {
       var that = this;
       var io = require('socketio');
-      console.log(this.model)
       this.$el.html(this.template());
       that.socket = io.connect('/');
       this._socketEvents();

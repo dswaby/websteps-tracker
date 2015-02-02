@@ -52,14 +52,18 @@ function SocketEvents(server) {
           return;
         }
 
+        var neow = Date.now();
+
         var last = mapPath.coordinates[mapPath.coordinates.length - 1];
         console.log(last)
         var miles = distance(last.lat, last.lng, data.lat, data.lng,  DIAMETER_IN_MILES);
         console.log(miles);
 
+
+
         
         mapPath.coordinates.push({ lat: data.lat, lng: data.lng });
-        mapPath.endedAt = Date.now;
+        mapPath.endedAt = neow;
 
         mapPath.save(function(err) {
           if (err) {

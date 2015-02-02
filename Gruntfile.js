@@ -20,10 +20,18 @@ module.exports = function(grunt) {
         },
         files: [
           {
-            src: ["public/js/*","source/api/*","source/middleware/*","less/*", "Gruntfile.js"],
+            src: ["public/js/*","source/api/*","source/middleware/*","less/*", "Gruntfile.js", "app.js"],
             expand: true
           }
         ]
+      }
+    },
+    gitpush: {
+      your_target: {
+        options: {
+          cwd: ".",
+          remote: "origin"
+        }
       }
     },
 		meta: {
@@ -170,8 +178,8 @@ module.exports = function(grunt) {
 	grunt.registerTask('default', [ 'requirejs', 'hashres']);
   grunt.registerTask('dev', ['clean', 'requirejs', 'less','hashres:prod', 'express', 'watch']);
   grunt.registerTask('build', [ 'clean', 'requirejs', 'less','hashres']);
-  grunt.registerTask('deploycommit',['gitcommit','sshexec:deploy']);
-  grunt.registerTask('deploy',['gitcommit','sshexec:deploy']);
+  grunt.registerTask('deploycommit',['gitcommit','gitpush','sshexec:deploy']);
+  grunt.registerTask('deploy',['sshexec:deploy']);
 
 
 };

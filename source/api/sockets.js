@@ -5,7 +5,7 @@ function SocketEvents(server) {
   var nodemailer = require('nodemailer');
   var  DIAMETER_IN_MILES = 2 * 3963.190;
 
-  function distance(a,b,c,d,e,z){with(Math)return z=PI/360,e*atan2(sqrt(z=pow(sin((c-a)*z),2)+cos(a*z*2)*cos(c*z*2)*pow(sin((d-b)*z),2)),sqrt(1-z))}, 
+  function distance(a,b,c,d,e,z){with(Math)return z=PI/360,e*atan2(sqrt(z=pow(sin((c-a)*z),2)+cos(a*z*2)*cos(c*z*2)*pow(sin((d-b)*z),2)),sqrt(1-z))}; 
 
   // create reusable transporter object using SMTP transport
   var transporter = nodemailer.createTransport({

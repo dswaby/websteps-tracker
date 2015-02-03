@@ -52,25 +52,26 @@ function SocketEvents(server) {
           return;
         }
 
-        var neow = Date.now();
+        var ahora = Date.now();
 
         var last = mapPath.coordinates[mapPath.coordinates.length - 1];
-        console.log(last)
+
         var miles = distance(last.lat, last.lng, data.lat, data.lng,  DIAMETER_IN_MILES);
 
         if (miles > 0.00378788) {
           // only add coordinate if it is more than twenty feet
           mapPath.coordinates.push({ lat: data.lat, lng: data.lng });
+          mapPath.distance += miles;
         };
         
-        mapPath.endedAt = neow;
+        mapPath.endedAt = ahora;
 
         mapPath.save(function(err) {
           if (err) {
             console.log(err);
             return;
           }
-          console.log("map path document " + data.id + " successfully updated");
+          // console.log("map path document " + data.id + " successfully updated");
         });
       });
     });

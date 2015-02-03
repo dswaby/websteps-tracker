@@ -8,6 +8,10 @@ define(function (require) {
       'click #ping-button': 'pingForStatus'
     },
     className: 'location-wrapper',
+    locationObj: {
+      firstLocationPass: true,
+      coordinates:[]
+    },
     checkPing: function () {
       if(typeof(Storage) !== "undefined") {
         var pingStorage = localStorage.getItem("pingtime");
@@ -48,7 +52,7 @@ define(function (require) {
         });
 
         that.socket.on('location', function (data){
-          if (that.model.locationObj.firstLocationPass) {
+          if (that.locationObj.firstLocationPass) {
             that.$el.find("#location").removeClass("icon-cross").addClass("icon-checkmark");
             that.$el.find("#location-detail").removeClass("hidden");
 
@@ -60,9 +64,9 @@ define(function (require) {
                 that.initializeMap(path.coordinates[0].lat, path.coordinates[0].lng);
                 for (var i = 0; i < path.coordinates.length; i++) {
                   var myLatLong = new google.maps.LatLng(path.coordinates[i].lat, path.coordinates[i].lng);
-                  that.model.locationObj.coordinates.push(myLatLong);
+                  that.locationObj.coordinates.push(myLatLong);
                 }
-              that.model.locationObj.firstLocationPass = false;
+              that.locationObj.firstLocationPass = false;
               that.updatePath(data.lat, data.lng);
             })
             .fail(function (error) {
@@ -72,7 +76,7 @@ define(function (require) {
           }
           else {
             var myLatLong = new google.maps.LatLng(data.lat, data.lng);
-            that.model.locationObj.coordinates.push(myLatLong);
+            that.locationObj.coordinates.push(myLatLong);
             that.updatePath(data.lat, data.lng);
           }
         });
@@ -84,7 +88,6 @@ define(function (require) {
         that.socket.on('not on treadmill', function (data){
           that.$el.find("#treadmill-bool").html("False");
         });
-      // );
     },
     updatePath: function(lat, lng){
       var that = this;

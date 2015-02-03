@@ -31,7 +31,7 @@ module.exports = function(grunt) {
         options: {
           cwd: ".",
           remote: "origin",
-          upstream: "master"
+          upstream: true
         }
       }
     },

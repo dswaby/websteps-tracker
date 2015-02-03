@@ -1,12 +1,13 @@
 define(function(require) {
 	var Backbone = require('Backbone');
 	var viewManager = require('./viewManager');
-
+  if (Backbone.history) {
+    console.log("Backbone.history.fragment:", Backbone.history.fragment)
+  }
 	var Router = Backbone.Router.extend({
 		routes: {
 			'': 'home',
 			'data': 'data',
-      'data/': 'data',
 
       'recent': 'recent',
 

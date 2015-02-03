@@ -30,7 +30,8 @@ module.exports = function(grunt) {
       your_target: {
         options: {
           cwd: ".",
-          remote: "origin"
+          remote: "origin",
+          upstream: "master"
         }
       }
     },

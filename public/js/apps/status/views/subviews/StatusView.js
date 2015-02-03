@@ -32,7 +32,7 @@ define(function (require) {
       that.socket.on('danny is connected', function(){
         that.$el.find("#connection").removeClass("icon-cross").addClass("icon-checkmark");
         that.$el.find("#ping-button").removeClass("active").addClass("disabled");
-      });,
+      });
 
       that.socket.on('danny is disconnected', function(){
         that.$el.find("#ping-button").removeClass("disabled").addClass("active");

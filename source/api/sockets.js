@@ -59,9 +59,9 @@ function SocketEvents(server) {
         var miles = distance(last.lat, last.lng, data.lat, data.lng,  DIAMETER_IN_MILES);
 
         if (miles > 0.00378788) {
-          // only add coordinate if it is 
+          // only add coordinate if it is more than twenty feet
           mapPath.coordinates.push({ lat: data.lat, lng: data.lng });
-        }
+        };
         
         mapPath.endedAt = neow;
 

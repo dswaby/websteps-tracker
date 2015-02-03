@@ -28,26 +28,26 @@ define(function (require) {
       var that = this;
       var firstPass = true;
       that.socket.emit('get connection status');
-      that.socket.on(
-        'danny is connected', function(){
-          that.$el.find("#connection").removeClass("icon-cross").addClass("icon-checkmark");
-          that.$el.find("#ping-button").removeClass("active").addClass("disabled");
-        },
+      // that.socket.on(
+      that.socket.on('danny is connected', function(){
+        that.$el.find("#connection").removeClass("icon-cross").addClass("icon-checkmark");
+        that.$el.find("#ping-button").removeClass("active").addClass("disabled");
+      });,
 
-        'danny is disconnected', function(){
-          that.$el.find("#ping-button").removeClass("disabled").addClass("active");
-          that.$el.find("#connection").removeClass("icon-checkmark").addClass("icon-cross");
-          that.$el.find("#activity-detail").addClass("hidden");
-          that.$el.find("#activity").removeClass("icon-checkmark").addClass("icon-cross");
-          that.$el.find("#location-detail").addClass("hidden");
-          that.$el.find("#location").removeClass("icon-checkmark").addClass("icon-cross");
-        },
+      that.socket.on('danny is disconnected', function(){
+        that.$el.find("#ping-button").removeClass("disabled").addClass("active");
+        that.$el.find("#connection").removeClass("icon-checkmark").addClass("icon-cross");
+        that.$el.find("#activity-detail").addClass("hidden");
+        that.$el.find("#activity").removeClass("icon-checkmark").addClass("icon-cross");
+        that.$el.find("#location-detail").addClass("hidden");
+        that.$el.find("#location").removeClass("icon-checkmark").addClass("icon-cross");
+      });
 
-        'stepcount', function (data){
+        that.socket.on('stepcount', function (data){
           that.updateStepCount(data.steps);
-        },
+        });
 
-        'location', function (data){
+        that.socket.on('location', function (data){
           if (that.model.locationObj.firstLocationPass) {
             that.$el.find("#location").removeClass("icon-cross").addClass("icon-checkmark");
             that.$el.find("#location-detail").removeClass("hidden");
@@ -75,16 +75,16 @@ define(function (require) {
             that.model.locationObj.coordinates.push(myLatLong);
             that.updatePath(data.lat, data.lng);
           }
-        },
+        });
 
-        'on treadmill', function (data){
+        that.socket.on('on treadmill', function (data){
           that.$el.find("#treadmill-bool").html("True");
-        },
+        });
 
-        'not on treadmill', function (data){
+        that.socket.on('not on treadmill', function (data){
           that.$el.find("#treadmill-bool").html("False");
-        }
-      );
+        });
+      // );
     },
     updatePath: function(lat, lng){
       var that = this;

@@ -22,7 +22,7 @@ var ping = function(app) {
             pass: 'q4TY)x[sMq9(Zkk}vh3R7eDEVyKHU;44/KE6WJN7V&W'
         }
     });
-    console.log(req)
+    // console.log(req)
     
     var mailOptions = {
       from: 'Zing Pingman ✔ <ping@swa.by>', // sender address

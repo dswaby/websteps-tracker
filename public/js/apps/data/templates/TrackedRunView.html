@@ -1,4 +1,13 @@
 <div class="map-view">
-  <h1>Run on {{formatDate beganAt }}</h1>
+  <h1>Run on </h1>
   <div id="map-canvas"></div>
 </div>
+
+<td></td>
+<td>{{formatDate beganAt}}</td>
+{{#if distance}}
+<td>{{distance}} miles</td>
+{{else}}
+<td></td>
+{{/if}}
+<td>{{mph}} mph</td>

@@ -4,7 +4,7 @@ define(function (require) {
 
   var TrackedRunView = Backbone.View.extend({
 
-
+    tagName: 'tr',
     template: require('hbs!./../../templates/TrackedRunView'),
 
     render: function () {

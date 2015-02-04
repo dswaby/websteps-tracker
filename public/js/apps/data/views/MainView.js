@@ -4,9 +4,11 @@ define(function(require) {
 	var TrackedRunsView = require('./subviews/TrackedRunsView');
 
 	var MainView = Backbone.View.extend({
+    className: 'main-data-view',
 		initialize: function () {
 			this.subviews = [];
 		},
+
 
 		render: function () {
 			var trackedRunsView = new TrackedRunsView({collection: this.model.get("runs")});

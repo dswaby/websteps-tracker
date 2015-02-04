@@ -62,8 +62,6 @@ define(function (require) {
           var view = new MainView({ model: model });
           viewManager.show(view);
         });
-      // };
-      // load();
 		}
 	};
 });

@@ -2,7 +2,12 @@ require.config({
 	hbs: {
 		templateExtension: 'html',
 		disableI18n: true,
-    helpers: true
+    helpers: true,
+    helperPathCallback:       // Callback to determine the path to look for helpers
+      function (name) {       // ('/templates/helpers/'+name by default)
+        // console.log(name)
+        return  'template/helpers/' +name;
+      },
 	},
 
 	shim: {

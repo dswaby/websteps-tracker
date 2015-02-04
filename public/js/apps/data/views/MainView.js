@@ -9,7 +9,6 @@ define(function(require) {
 			this.subviews = [];
 		},
 
-
 		render: function () {
 			var trackedRunsView = new TrackedRunsView({collection: this.model.get("runs")});
 			this.$el.append(trackedRunsView.render().el);

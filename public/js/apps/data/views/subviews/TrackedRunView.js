@@ -3,9 +3,10 @@ define(function (require) {
   require('async!http://maps.google.com/maps/api/js?sensor=false');
 
   var TrackedRunView = Backbone.View.extend({
-
+    className: 'tracked-run-item-view',
     tagName: 'tr',
     template: require('hbs!./../../templates/TrackedRunView'),
+
 
     render: function () {
       this.$el.html(this.template(this.model.toJSON()));

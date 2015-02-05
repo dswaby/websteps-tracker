@@ -1,18 +1,24 @@
 .pics-main-view {
-  .pictures {
-    max-width: 100%;
-    max-height: 100%;
-    overflow: auto;
-    .picture {
-      width:25%;
-      height: auto;
-      float: left;
-      img {
-        width:99%;
-        height: 99%;
+    .pictures {
+      max-width: 100%;
+      max-height: 100%;
+      overflow: auto;
+      .picture {
+        width:25%;
+        @media @mobile {
+          width:33%;
+        }
+        @media @smallerMobile {
+          width:50%;
+        }
+        height: auto;
+        float: left;
+        img {
+          width:99%;
+          height: 99%;
+        }
       }
     }
-  }
 }
 
 

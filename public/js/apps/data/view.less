@@ -20,6 +20,12 @@
       overflow: auto;
       .picture {
         width:25%;
+        @media @mobile {
+          width:33%;
+        }
+        @media @smallerMobile {
+          width:50%;
+        }
         height: auto;
         float: left;
         img {

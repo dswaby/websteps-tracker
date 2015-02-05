@@ -10,3 +10,4 @@ public/pics/*
 public/build/*
 public/css/*
 fitbit-logger.sublime*
+source/client/index.js

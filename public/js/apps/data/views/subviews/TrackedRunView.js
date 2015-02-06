@@ -8,7 +8,7 @@ define(function (require) {
     template: require('hbs!./../../templates/TrackedRunView'),
     events: {
       'click a':'showMap'
-    }
+    },
 
     render: function () {
       this.$el.html(this.template(this.model.toJSON()));

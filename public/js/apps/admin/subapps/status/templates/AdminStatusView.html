@@ -1,35 +1,37 @@
 <div class="back-nav"><a href="/admin">Back</a></div>
-<div class="toggle-title">Location</div>
-<div class="locationswitch">
-    <input type="checkbox" name="locationswitch" class="locationswitch-checkbox" id="location-toggle">
-    <label class="locationswitch-label" for="location-toggle">
-        <span class="locationswitch-inner"></span>
-        <span class="locationswitch-switch"></span>
-    </label>
-</div>
-<div class="toggle-title">Treadmill</div>
-<div class="treadmillswitch">
-    <input type="checkbox" name="treadmillswitch" class="treadmillswitch-checkbox" id="treadmill-toggle">
-    <label class="treadmillswitch-label" for="treadmill-toggle">
-        <span class="treadmillswitch-inner"></span>
-        <span class="treadmillswitch-switch"></span>
-    </label>
-</div>
-<div class="toggle-title">Pedometer</div>
-<div class="pedometer-toggle-switch">
-    <input type="checkbox" name="pedometer-toggle-switch" class="pedometer-toggle-switch-checkbox" id="pedometer-toggle">
-    <label class="pedometer-toggle-switch-label" for="pedometer-toggle">
-        <span class="pedometer-toggle-switch-inner"></span>
-        <span class="pedometer-toggle-switch-switch"></span>
-    </label>
-</div>
-<div class="section-title">Pedometer</div>
+  <div class="toggles" id="toggle-section">
+    <div class="toggle-title">Location</div>
+    <div class="locationswitch">
+        <input type="checkbox" name="locationswitch" class="locationswitch-checkbox" id="location-toggle">
+        <label class="locationswitch-label" for="location-toggle">
+            <span class="locationswitch-inner"></span>
+            <span class="locationswitch-switch"></span>
+        </label>
+    </div>
+    <div class="toggle-title">Treadmill</div>
+    <div class="treadmillswitch">
+        <input type="checkbox" name="treadmillswitch" class="treadmillswitch-checkbox" id="treadmill-toggle">
+        <label class="treadmillswitch-label" for="treadmill-toggle">
+            <span class="treadmillswitch-inner"></span>
+            <span class="treadmillswitch-switch"></span>
+        </label>
+    </div>
+    <div class="toggle-title">Pedometer</div>
+    <div class="pedometer-toggle">
+        <input type="checkbox" name="pedometer-toggle" class="pedometer-toggle-checkbox" id="pedometer-toggle">
+        <label class="pedometer-toggle-label" for="pedometer-toggle">
+            <span class="pedometer-toggle-inner"></span>
+            <span class="pedometer-toggle-switch"></span>
+        </label>
+    </div>
+  </div>
 
-<div class="status-container">
-  <p>count: <span id="steps" class="count"></span></p>
-  <br />
-  <!-- <button id="silent-audio">Play</div> -->
-  <br />
-  <button id="pedometer">start pedometer</div>
 
+<div id="step-counter">
+    <span class="section-title">Count</span>
+  <div class="status-container">
+    <p><span id="steps" class="count"></span></p>
+  </div>
 </div>
+
+  <button id="pedometer" class="start-button">start pedometer</button>

@@ -306,248 +306,263 @@
     }
 }
 .admin-status-view {
-    .locationswitch {
-        position: relative;
-        padding-left: 20px;
-        width: 90px;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
+    .admin-status-updater-view {
+      position: absolute;
+      width: 80%;
+      left:10%;
+      background-color: #e6e6e6;
+      margin-top:15px;
+      border-radius: 20px;
     }
-    .locationswitch-checkbox {
-        display: none;
-    }
-    .locationswitch-label {
-        display: block;
-        overflow: hidden;
-        cursor: pointer;
-        border: 2px solid #666666;
-        border-radius: 5px;
-    }
-    .locationswitch-inner {
-        display: block;
-        width: 200%;
-        margin-left: -100%;
-        -moz-transition: margin 0.3s ease-in 0s;
-        -webkit-transition: margin 0.3s ease-in 0s;
-        -o-transition: margin 0.3s ease-in 0s;
-        transition: margin 0.3s ease-in 0s;
-    }
-    .locationswitch-inner:before, .locationswitch-inner:after {
-        display: block;
-        float: left;
-        width: 50%;
-        height: 30px;
-        padding: 0;
-        line-height: 30px;
-        font-size: 16px;
-        color: white;
-        font-family: Trebuchet, Arial, sans-serif;
-        font-weight: bold;
-        -moz-box-sizing: border-box;
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box;
-    }
-    .locationswitch-inner:before {
-        content: "ON";
-        padding-left: 10px;
-        background-color: #6194FD;
-        color: #FFFFFF;
-    }
-    .locationswitch-inner:after {
-        content: "OFF";
-        padding-right: 10px;
-        background-color: #F8F8F8;
-        color: #666666;
-        text-align: right;
-    }
-    .locationswitch-switch {
-        display: block;
-        width: 35px;
-        margin: 0px;
-        background: #FFFFFF;
-        border: 2px solid #666666;
-        border-radius: 5px;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 51px;
-        -moz-transition: all 0.3s ease-in 0s;
-        -webkit-transition: all 0.3s ease-in 0s;
-        -o-transition: all 0.3s ease-in 0s;
-        transition: all 0.3s ease-in 0s;
-        background-image: -moz-linear-gradient(center top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
-        background-image: -webkit-linear-gradient(center top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
-        background-image: -o-linear-gradient(center top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
-        background-image: linear-gradient(center top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
-    }
-    .locationswitch-checkbox:checked + .locationswitch-label .locationswitch-inner {
-        margin-left: 0;
-    }
-    .locationswitch-checkbox:checked + .locationswitch-label .locationswitch-switch {
-        right: 0px;
-    }
-    .pedometer-toggle {
-        position: relative;
-        padding-left: 20px;
-        width: 90px;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-    }
-    .pedometer-toggle-checkbox {
-        display: none;
-    }
-    .pedometer-toggle-label {
-        display: block;
-        overflow: hidden;
-        cursor: pointer;
-        border: 2px solid #666666;
-        border-radius: 5px;
-    }
-    .pedometer-toggle-inner {
-        display: block;
-        width: 200%;
-        margin-left: -100%;
-        -moz-transition: margin 0.3s ease-in 0s;
-        -webkit-transition: margin 0.3s ease-in 0s;
-        -o-transition: margin 0.3s ease-in 0s;
-        transition: margin 0.3s ease-in 0s;
-    }
-    .pedometer-toggle-inner:before, .pedometer-toggle-inner:after {
-        display: block;
-        float: left;
-        width: 50%;
-        height: 30px;
-        padding: 0;
-        line-height: 30px;
-        font-size: 16px;
-        color: white;
-        font-family: Trebuchet, Arial, sans-serif;
-        font-weight: bold;
-        -moz-box-sizing: border-box;
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box;
-    }
-    .pedometer-toggle-inner:before {
-        content: "ON";
-        padding-left: 10px;
-        background-color: #6194FD;
-        color: #FFFFFF;
-    }
-    .pedometer-toggle-inner:after {
-        content: "OFF";
-        padding-right: 10px;
-        background-color: #F8F8F8;
-        color: #666666;
-        text-align: right;
-    }
-    .pedometer-toggle-switch {
-        display: block;
-        width: 35px;
-        margin: 0px;
-        background: #FFFFFF;
-        border: 2px solid #666666;
-        border-radius: 5px;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 51px;
-        -moz-transition: all 0.3s ease-in 0s;
-        -webkit-transition: all 0.3s ease-in 0s;
-        -o-transition: all 0.3s ease-in 0s;
-        transition: all 0.3s ease-in 0s;
-        background-image: -moz-linear-gradient(center top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
-        background-image: -webkit-linear-gradient(center top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
-        background-image: -o-linear-gradient(center top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
-        background-image: linear-gradient(center top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
-    }
-    .pedometer-toggle-checkbox:checked + .pedometer-toggle-label .pedometer-toggle-inner {
-        margin-left: 0;
-    }
-    .pedometer-toggle-checkbox:checked + .pedometer-toggle-label .pedometer-toggle-switch {
-        right: 0px;
-    }
-    .treadmillswitch {
-        position: relative;
-        padding-left: 20px;
-        width: 90px;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-    }
-    .treadmillswitch-checkbox {
-        display: none;
-    }
-    .treadmillswitch-label {
-        display: block;
-        overflow: hidden;
-        cursor: pointer;
-        border: 2px solid #666666;
-        border-radius: 5px;
-    }
-    .treadmillswitch-inner {
-        display: block;
-        width: 200%;
-        margin-left: -100%;
-        -moz-transition: margin 0.3s ease-in 0s;
-        -webkit-transition: margin 0.3s ease-in 0s;
-        -o-transition: margin 0.3s ease-in 0s;
-        transition: margin 0.3s ease-in 0s;
-    }
-    .treadmillswitch-inner:before, .treadmillswitch-inner:after {
-        display: block;
-        float: left;
-        width: 50%;
-        height: 30px;
-        padding: 0;
-        line-height: 30px;
-        font-size: 16px;
-        color: white;
-        font-family: Trebuchet, Arial, sans-serif;
-        font-weight: bold;
-        -moz-box-sizing: border-box;
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box;
-    }
-    .treadmillswitch-inner:before {
-        content: "ON";
-        padding-left: 10px;
-        background-color: #6194FD;
-        color: #FFFFFF;
-    }
-    .treadmillswitch-inner:after {
-        content: "OFF";
-        padding-right: 10px;
-        background-color: #F8F8F8;
-        color: #666666;
-        text-align: right;
-    }
-    .treadmillswitch-switch {
-        display: block;
-        width: 35px;
-        margin: 0px;
-        background: #FFFFFF;
-        border: 2px solid #666666;
-        border-radius: 5px;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 51px;
-        -moz-transition: all 0.3s ease-in 0s;
-        -webkit-transition: all 0.3s ease-in 0s;
-        -o-transition: all 0.3s ease-in 0s;
-        transition: all 0.3s ease-in 0s;
-        background-image: -moz-linear-gradient(center top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
-        background-image: -webkit-linear-gradient(center top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
-        background-image: -o-linear-gradient(center top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
-        background-image: linear-gradient(center top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
-    }
-    .treadmillswitch-checkbox:checked + .treadmillswitch-label .treadmillswitch-inner {
-        margin-left: 0;
-    }
-    .treadmillswitch-checkbox:checked + .treadmillswitch-label .treadmillswitch-switch {
-        right: 0px;
+    .toggles {
+      width: 70%;
+      margin:0 auto;
+      overflow: hidden;
+      height: 200px;
+
+      .locationswitch {
+          position: relative;
+          padding-left: 20px;
+          width: 90px;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+      }
+      .locationswitch-checkbox {
+          display: none;
+      }
+      .locationswitch-label {
+          display: block;
+          overflow: hidden;
+          cursor: pointer;
+          border: 2px solid #666666;
+          border-radius: 5px;
+      }
+      .locationswitch-inner {
+          display: block;
+          width: 200%;
+          margin-left: -100%;
+          -moz-transition: margin 0.3s ease-in 0s;
+          -webkit-transition: margin 0.3s ease-in 0s;
+          -o-transition: margin 0.3s ease-in 0s;
+          transition: margin 0.3s ease-in 0s;
+      }
+      .locationswitch-inner:before, .locationswitch-inner:after {
+          display: block;
+          float: left;
+          width: 50%;
+          height: 30px;
+          padding: 0;
+          line-height: 30px;
+          font-size: 16px;
+          color: white;
+          font-family: Trebuchet, Arial, sans-serif;
+          font-weight: bold;
+          -moz-box-sizing: border-box;
+          -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+      }
+      .locationswitch-inner:before {
+          content: "ON";
+          padding-left: 10px;
+          background-color: #6194FD;
+          color: #FFFFFF;
+      }
+      .locationswitch-inner:after {
+          content: "OFF";
+          padding-right: 10px;
+          background-color: #F8F8F8;
+          color: #666666;
+          text-align: right;
+      }
+      .locationswitch-switch {
+          display: block;
+          width: 35px;
+          margin: 0px;
+          background: #FFFFFF;
+          border: 2px solid #666666;
+          border-radius: 5px;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: 51px;
+          -moz-transition: all 0.3s ease-in 0s;
+          -webkit-transition: all 0.3s ease-in 0s;
+          -o-transition: all 0.3s ease-in 0s;
+          transition: all 0.3s ease-in 0s;
+          background-image: -moz-linear-gradient(center top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+          background-image: -webkit-linear-gradient(center top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+          background-image: -o-linear-gradient(center top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+          background-image: linear-gradient(center top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+      }
+      .locationswitch-checkbox:checked + .locationswitch-label .locationswitch-inner {
+          margin-left: 0;
+      }
+      .locationswitch-checkbox:checked + .locationswitch-label .locationswitch-switch {
+          right: 0px;
+      }
+      .pedometer-toggle {
+          position: relative;
+          padding-left: 20px;
+          width: 90px;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+      }
+      .pedometer-toggle-checkbox {
+          display: none;
+      }
+      .pedometer-toggle-label {
+          display: block;
+          overflow: hidden;
+          cursor: pointer;
+          border: 2px solid #666666;
+          border-radius: 5px;
+      }
+      .pedometer-toggle-inner {
+          display: block;
+          width: 200%;
+          margin-left: -100%;
+          -moz-transition: margin 0.3s ease-in 0s;
+          -webkit-transition: margin 0.3s ease-in 0s;
+          -o-transition: margin 0.3s ease-in 0s;
+          transition: margin 0.3s ease-in 0s;
+      }
+      .pedometer-toggle-inner:before, .pedometer-toggle-inner:after {
+          display: block;
+          float: left;
+          width: 50%;
+          height: 30px;
+          padding: 0;
+          line-height: 30px;
+          font-size: 16px;
+          color: white;
+          font-family: Trebuchet, Arial, sans-serif;
+          font-weight: bold;
+          -moz-box-sizing: border-box;
+          -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+      }
+      .pedometer-toggle-inner:before {
+          content: "ON";
+          padding-left: 10px;
+          background-color: #6194FD;
+          color: #FFFFFF;
+      }
+      .pedometer-toggle-inner:after {
+          content: "OFF";
+          padding-right: 10px;
+          background-color: #F8F8F8;
+          color: #666666;
+          text-align: right;
+      }
+      .pedometer-toggle-switch {
+          display: block;
+          width: 35px;
+          margin: 0px;
+          background: #FFFFFF;
+          border: 2px solid #666666;
+          border-radius: 5px;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: 51px;
+          -moz-transition: all 0.3s ease-in 0s;
+          -webkit-transition: all 0.3s ease-in 0s;
+          -o-transition: all 0.3s ease-in 0s;
+          transition: all 0.3s ease-in 0s;
+          background-image: -moz-linear-gradient(center top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+          background-image: -webkit-linear-gradient(center top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+          background-image: -o-linear-gradient(center top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+          background-image: linear-gradient(center top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+      }
+      .pedometer-toggle-checkbox:checked + .pedometer-toggle-label .pedometer-toggle-inner {
+          margin-left: 0;
+      }
+      .pedometer-toggle-checkbox:checked + .pedometer-toggle-label .pedometer-toggle-switch {
+          right: 0px;
+      }
+      .treadmillswitch {
+          position: relative;
+          padding-left: 20px;
+          width: 90px;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+      }
+      .treadmillswitch-checkbox {
+          display: none;
+      }
+      .treadmillswitch-label {
+          display: block;
+          overflow: hidden;
+          cursor: pointer;
+          border: 2px solid #666666;
+          border-radius: 5px;
+      }
+      .treadmillswitch-inner {
+          display: block;
+          width: 200%;
+          margin-left: -100%;
+          -moz-transition: margin 0.3s ease-in 0s;
+          -webkit-transition: margin 0.3s ease-in 0s;
+          -o-transition: margin 0.3s ease-in 0s;
+          transition: margin 0.3s ease-in 0s;
+      }
+      .treadmillswitch-inner:before, .treadmillswitch-inner:after {
+          display: block;
+          float: left;
+          width: 50%;
+          height: 30px;
+          padding: 0;
+          line-height: 30px;
+          font-size: 16px;
+          color: white;
+          font-family: Trebuchet, Arial, sans-serif;
+          font-weight: bold;
+          -moz-box-sizing: border-box;
+          -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+      }
+      .treadmillswitch-inner:before {
+          content: "ON";
+          padding-left: 10px;
+          background-color: #6194FD;
+          color: #FFFFFF;
+      }
+      .treadmillswitch-inner:after {
+          content: "OFF";
+          padding-right: 10px;
+          background-color: #F8F8F8;
+          color: #666666;
+          text-align: right;
+      }
+      .treadmillswitch-switch {
+          display: block;
+          width: 35px;
+          margin: 0px;
+          background: #FFFFFF;
+          border: 2px solid #666666;
+          border-radius: 5px;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: 51px;
+          -moz-transition: all 0.3s ease-in 0s;
+          -webkit-transition: all 0.3s ease-in 0s;
+          -o-transition: all 0.3s ease-in 0s;
+          transition: all 0.3s ease-in 0s;
+          background-image: -moz-linear-gradient(center top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+          background-image: -webkit-linear-gradient(center top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+          background-image: -o-linear-gradient(center top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+          background-image: linear-gradient(center top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+      }
+      .treadmillswitch-checkbox:checked + .treadmillswitch-label .treadmillswitch-inner {
+          margin-left: 0;
+      }
+      .treadmillswitch-checkbox:checked + .treadmillswitch-label .treadmillswitch-switch {
+          right: 0px;
+      }
     }
     .section-title {
         font-size: 48px;
@@ -559,11 +574,19 @@
       font-weight: 500;
       padding-left:20px;
     }
+    #step-counter{
+      overflow: hidden;
+      height: 0;
+      width: 90%;
+      margin: 10px auto;
+    }
     .status-container {
-        width: 90%;
-        margin: 10px auto 0;
-        background-color: #fff;
+        width: 100%;
+        margin: 0 auto;
+        background-color: #000;
         border-radius: 5px;
+        color: #fff;
+        height: 200px;
         
         p {
             font-size: 56px;
@@ -578,22 +601,22 @@
                 text-align: center;
             }
         }
-        button {
-            position: absolute;
-            height: 40px;
-            line-height: 40px;
-            // margin-top:15px;
-            // margin-bottom: 30px;
-            background-color: #4FB5B5;
-            color: #fff;
-            font-size: 44px !important;
-            height: 100px;
-            border-radius: 7px;
-            width: 80%;
-            margin: 15px auto 30px;
-            left: 10%;
-            border: 0 solid transparent;
-        }
+    }
+    .start-button {
+      position: absolute;
+      height: 40px;
+      line-height: 40px;
+      // margin-top:15px;
+      // margin-bottom: 30px;
+      background-color: #4FB5B5;
+      color: #fff;
+      font-size: 44px !important;
+      height: 100px;
+      border-radius: 7px;
+      width: 80%;
+      margin: 15px auto 30px;
+      left: 10%;
+      border: 0 solid transparent;
     }
 }
 ::-webkit-input-placeholder {
@@ -630,7 +653,7 @@
     a {
         font-weight: 400;
         font-size: 24px;
-        color: #e6e6e6;
+        color: #666;
         text-decoration: none;
         &.hover {
             text-decoration: underline;

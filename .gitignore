@@ -9,6 +9,5 @@ source/api/data/
 public/pics/*
 public/build/*
 public/css/*
-public/css/
 fitbit-logger.sublime*
 source/client/index.js

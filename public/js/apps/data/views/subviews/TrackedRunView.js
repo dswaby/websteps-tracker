@@ -53,7 +53,7 @@ define(function (require) {
     showMap: function(e){
       var that = this;
       e.preventDefault();
-      console.log("route clicked, model:", that.model;);
+      console.log("route clicked, model:", that.model);
     }
 
   });

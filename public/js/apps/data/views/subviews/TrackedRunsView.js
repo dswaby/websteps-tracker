@@ -4,6 +4,9 @@ define(function(require) {
 	var TrackedRunsView = Backbone.View.extend({
     className: "trackedrun-collection-view",
 		template: require('hbs!./../../templates/TrackedRunsView'),
+    events:{
+      'click #all-tracked-routes':'showAllMaps'
+    },
     initialize: function () {
       this.subviews = [];
     },
@@ -30,7 +33,11 @@ define(function(require) {
       }
 
       return this;
-		}
+		},
+    showAllMaps: function(e){
+      e.preventDefault();
+      console.log("view all clicked");
+    }
 	});
 
 	return TrackedRunsView;

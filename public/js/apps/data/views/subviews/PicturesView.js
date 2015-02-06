@@ -5,15 +5,15 @@ define(function(require) {
   var PicturesView = Backbone.View.extend({
     template: require('hbs!./../../templates/PicturesView'),
     className: "pics-collection-view",
+    events: {
+      
+    },
     initialize: function () {
       this.subviews = [];
     },
-
     render: function () {
       this.$el.html(this.template());
-
       var pictures = this.$('.pictures');
-
       this.collection.forEach(function (picture) {
         var view = new PictureView({model: picture});
         pictures.append(view.render().el);

@@ -7,12 +7,9 @@ define(function(require) {
 			'': 'home',
 			'data': 'data',
       'data/': 'data',
-
-
+      'data/routes':'maproutes',
       'recent': 'recent',
-
 			'charts': 'charts',
-
 			'status': 'status',
 
       'admin': 'admin',
@@ -20,7 +17,7 @@ define(function(require) {
 
       'admin/glucoselog': 'adminGlucoseLog',
 
-      'admin/status': 'statusUpdater',
+      'admin/status': 'statusUpdater'
 
 		},
 
@@ -30,6 +27,10 @@ define(function(require) {
 
     data: function () {
       require('./../apps/data/app').run(viewManager);
+    },
+
+    maproutes: function () {
+      require('./../apps/data/subapps/routes/app').run(viewManager);
     },
 
 		charts: function () {

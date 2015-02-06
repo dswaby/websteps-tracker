@@ -6,7 +6,9 @@ define(function (require) {
     className: 'tracked-run-item-view',
     tagName: 'tr',
     template: require('hbs!./../../templates/TrackedRunView'),
-
+    events: {
+      'click a':'showMap'
+    }
 
     render: function () {
       this.$el.html(this.template(this.model.toJSON()));
@@ -47,6 +49,11 @@ define(function (require) {
       console.log(that.centerLatLng)
       this.initializeMap();
 
+    },
+    showMap: function(e){
+      var that = this;
+      e.preventDefault();
+      console.log("route clicked, model:", that.model;);
     }
 
   });

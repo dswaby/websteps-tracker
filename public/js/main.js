@@ -24,7 +24,7 @@ require.config({
 			exports: 'Backbone'
 		},
 
-    bbFileUpload: {
+    backboneFileUpload: {
       deps: ['jQuery', 'Underscore', 'backbone'],
       exports: 'Backbone'
     },
@@ -59,7 +59,8 @@ require.config({
     d3: './../components/d3/d3', 
     socketio: 'http://fitb.apps.swa.by:3634/socket.io/socket.io',
     async: './../components/requirejs-plugins/src/async',
-    bbFileUpload: './../components/backbone-mobile-file-upload',
+    backboneFileUpload: './../components/backbone-mobile-file-upload',
+    backboneModal: './../components/backbone-modal/backbone-modal'
     // socketio: 'http://localhost:8000/socket.io/socket.io'
 
 

@@ -13,12 +13,22 @@ define(function(require) {
     },
     render: function () {
       this.$el.html(this.template());
+
       var pictures = this.$('.pictures');
-      this.collection.forEach(function (picture) {
-        var view = new PictureView({model: picture});
+      var count;
+      if (this.collection.length > 12) {
+        count = 12;
+      }
+      else {
+        count = this.collection.length;
+      }
+
+      for (var i = 0; i < count; i++) {
+        index = this.collection.length - (i + 1);
+        var view = new PictureView({model: this.collection.at(index)});
         pictures.append(view.render().el);
         this.subviews.push(view);
-      }, this);
+      }
 
       return this;
     }

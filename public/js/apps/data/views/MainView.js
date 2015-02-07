@@ -6,17 +6,23 @@ define(function(require) {
 
 	var MainView = Backbone.View.extend({
     className: 'main-data-view',
+    template: require('hbs!./../templates/MainView'),
+    // template: 
 		initialize: function () {
 			this.subviews = [];
 		},
 
 		render: function () {
+      this.$el.html(this.template());
+      var $routesSection = this.$('#map-routes-section');
+      var $picsSection = this.$('#pics-section');
+
 			var trackedRunsView = new TrackedRunsView({collection: this.model.get("runs")});
-			this.$el.append(trackedRunsView.render().el);
+			$routesSection.append(trackedRunsView.render().el);
 			this.subviews.push(trackedRunsView);
 
       var picsCollectionView = new PicsCollectionView({collection: this.model.get("pics")});
-      this.$el.append(picsCollectionView.render().el);
+      $picsSection.append(picsCollectionView.render().el);
       this.subviews.push(picsCollectionView);
 			return this;
 		}

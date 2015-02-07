@@ -1,7 +1,7 @@
 define(function(require) {
 	var Backbone = require('Backbone');
 
-	var TrackedRunsView = require('./../../../views/subviews/TrackedRunsView');
+	var TrackedRunsView = require('./subviews/TrackedRunsView');
 
 	var MainView = Backbone.View.extend({
     className: 'main-data-view',

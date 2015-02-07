@@ -12,22 +12,13 @@ define(function(require) {
     },
 		render: function () {
       this.$el.html(this.template());
-      var runs = this.$('.runs');
-      
-      var count;
-      if (this.collection.length > 10) {
-        count = 10;
-      }
-      else {
-        count = this.collection.length;
-      }
 
-      for (var i = 0; i < count; i++) {
-        index = this.collection.length - (i + 1);
-        var view = new TrackedRunView({model: this.collection.at(index)});
+      var runs = this.$('.runs');
+      this.collection.forEach(function (run) {
+        var view = new TrackedRunView({model: run});
         runs.append(view.render().el);
         this.subviews.push(view);
-      }
+      }, this);
 
       return this;
 		},

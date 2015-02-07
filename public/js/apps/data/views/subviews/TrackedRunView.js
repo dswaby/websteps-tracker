@@ -17,43 +17,42 @@ define(function (require) {
       // this.createTravelPath();
       return this;
     },
-    initializeMap: function() {
-      var that = this;
-      var mapOptions = {
-        zoom: 15,
-        center: that.centerLatLng,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      };
+    // initializeMap: function() {
+    //   var that = this;
+    //   var mapOptions = {
+    //     zoom: 15,
+    //     center: that.centerLatLng,
+    //     mapTypeId: google.maps.MapTypeId.ROADMAP
+    //   };
 
-      var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+    //   var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-      var travelPath = new google.maps.Polyline({
-        path: that.pathCoordinates,
-        strokeColor: '#FF0000',
-        strokeOpacity: 1.0,
-        strokeWeight: 2
-      });
+    //   var travelPath = new google.maps.Polyline({
+    //     path: that.pathCoordinates,
+    //     strokeColor: '#FF0000',
+    //     strokeOpacity: 1.0,
+    //     strokeWeight: 2
+    //   });
 
-      travelPath.setMap(map);
+    //   travelPath.setMap(map);
 
-    },
-    createTravelPath: function() {
-      var that = this;
-      var coord = this.model.get("coordinates");
-      that.pathCoordinates = [];
-      for (var x = 0; x < coord.length; x++) {
-        var latLong = new google.maps.LatLng(coord[x].lat, coord[x].lng);
-        that.pathCoordinates.push(latLong);
-      };
-      that.centerLatLng = that.pathCoordinates[0];
-      console.log(that.centerLatLng)
-      this.initializeMap();
+    // },
+    // createTravelPath: function() {
+    //   var that = this;
+    //   var coord = this.model.get("coordinates");
+    //   that.pathCoordinates = [];
+    //   for (var x = 0; x < coord.length; x++) {
+    //     var latLong = new google.maps.LatLng(coord[x].lat, coord[x].lng);
+    //     that.pathCoordinates.push(latLong);
+    //   };
+    //   that.centerLatLng = that.pathCoordinates[0];
+    //   console.log(that.centerLatLng)
+    //   this.initializeMap();
 
-    },
+    // },
     showMap: function(e){
       var that = this;
       e.preventDefault();
-      console.log("route clicked, model:", that.model);
     }
 
   });

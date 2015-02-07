@@ -5,7 +5,6 @@ require.config({
     helpers: true,
     helperPathCallback:       // Callback to determine the path to look for helpers
       function (name) {       // ('/templates/helpers/'+name by default)
-        // console.log(name)
         return  'template/helpers/' +name;
       },
 	},
@@ -24,10 +23,10 @@ require.config({
 			exports: 'Backbone'
 		},
 
-    backboneFileUpload: {
-      deps: ['jQuery', 'Underscore', 'backbone'],
-      exports: 'Backbone'
-    },
+    // backboneFileUpload: {
+    //   deps: ['jQuery', 'Underscore', 'backbone'],
+    //   exports: 'Backbone'
+    // },
 
 		'Handlebars': {
 			deps: ['handlebars'],
@@ -59,8 +58,8 @@ require.config({
     d3: './../components/d3/d3', 
     socketio: 'http://fitb.apps.swa.by:3634/socket.io/socket.io',
     async: './../components/requirejs-plugins/src/async',
-    backboneFileUpload: './../components/backbone-mobile-file-upload',
-    backboneModal: './../components/backbone-modal/backbone-modal'
+    backboneFileUpload: './../components/backbone-mobile-file-upload'
+    // backboneModal: './../js/common/backbone.modal'
     // socketio: 'http://localhost:8000/socket.io/socket.io'
 
 

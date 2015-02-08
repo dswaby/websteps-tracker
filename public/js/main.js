@@ -71,6 +71,8 @@ require(['core/router', 'core/client', 'Backbone'], function (Router, client, Ba
 		root: '/'
 	};
 
+  Backbone.Extensions = {};
+
 	window.Router = new Router();
 	client.setup(window, app);
 

@@ -5,7 +5,7 @@ define(function (require) {
 		template: require('hbs!./../templates/HeaderView'),
     tagName: 'header',
 		render: function () {
-			this.$el.html(this.template({subtitle: 'Welcome to fitb.swa.by, a proof of concept fitness tracking and logging webapp'}));
+			this.$el.html(this.template({title: 'Welcome', subtitle: 'This is a proof of concept pedometer and fitness tracking/real-time communications app built using web technologies'}));
 			return this;
 		}
 	});

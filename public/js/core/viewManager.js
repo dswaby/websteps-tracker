@@ -47,6 +47,23 @@ define(function (require) {
 			currentView.render();
 		}
 
+    function transitionIn (callback) {
+
+      var that = this;
+
+      var animateIn = function () {
+        that.$el.addClass('is-visible');
+        that.$el.one('transitionend', function () {
+          if (_.isFunction(callback)) {
+            callback();
+          }
+        });
+      };
+
+      _.delay(animateIn, 20);
+
+    }
+
 		return {
 			show: showView
 		};

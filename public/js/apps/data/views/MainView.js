@@ -8,6 +8,11 @@ define(function(require) {
     className: 'main-data-view',
     template: require('hbs!./../templates/MainView'),
     // template: 
+    events: {
+      'click #trails': 'scrollTrails',
+      'click #uploads': 'scrollUploads',
+      'click #glucose': 'scrollGlucose'
+    },
 		initialize: function () {
 			this.subviews = [];
 		},
@@ -25,7 +30,16 @@ define(function(require) {
       $picsSection.append(picsCollectionView.render().el);
       this.subviews.push(picsCollectionView);
 			return this;
-		}
+		},
+    scrollTrails: function(){
+
+    },
+    scrollUploads: function(){
+
+    },
+    scrollGlucose: function() {
+      
+    }
 	});
 
 	return MainView;

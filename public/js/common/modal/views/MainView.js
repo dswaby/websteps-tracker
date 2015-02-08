@@ -9,10 +9,10 @@ define(function(require) {
     
     className: 'modal-view',
 
-    viewContainer: "#modal",
+    el: "#modal",
 
-    initialize: function () {
-      this.subviews = [];
+    initialize: function() {
+      
     },
     
     hideModal: function(){
@@ -77,7 +77,51 @@ define(function(require) {
       } else {
         return this[option];
       }
-    }
+    },
+    delegateModalEvents: function() {
+      var cancelEl, key, match, selector, trigger, _results;
+      this.active = true;
+      cancelEl = this.getOption('cancelEl');
+      if (cancelEl) {
+        this.$el.on('click', cancelEl, this.triggerCancel);
+      }
+      _results = [];
+      for (key in this.views) {
+        if (_.isString(key) && key !== 'length') {
+          match = key.match(/^(\S+)\s*(.*)$/);
+          trigger = match[1];
+          selector = match[2];
+          _results.push(this.$el.on(trigger, selector, this.views[key], this.triggerView));
+        } else {
+          _results.push(void 0);
+        }
+      }
+      return _results;
+    },
+    undelegateModalEvents: function() {
+      var cancelEl, key, match, selector, submitEl, trigger, _results;
+      this.active = false;
+      submitEl = this.getOption('submitEl');
+      if (submitEl) {
+        this.$el.off('click', submitEl, this.triggerSubmit);
+      }
+      if (cancelEl) {
+        this.$el.off('click', cancelEl, this.triggerCancel);
+      }
+      _results = [];
+      for (key in this.views) {
+        if (_.isString(key) && key !== 'length') {
+          match = key.match(/^(\S+)\s*(.*)$/);
+          trigger = match[1];
+          selector = match[2];
+          _results.push(this.$el.off(trigger, selector, this.views[key], this.triggerView));
+        } else {
+          _results.push(void 0);
+        }
+      }
+      return _results;
+    },
+
   });
 
   return ModalView;

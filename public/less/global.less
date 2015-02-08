@@ -4,15 +4,15 @@
 @import url('../components/backbone-modal/backbone.modal.css');
 
 // view imports
-// @import url('./modal.less');
-// @import url('./modal.theme.less');
+@import url('./modal.less');
+@import url('./modal.theme.less');
 @import url('../js/apps/admin/view.less');
 @import url('../js/apps/data/view.less');
 @import url('../js/apps/pics/view.less');
 @import url('../js/apps/charts/view.less');
 @import url('../js/apps/status/view.less');
 @import url('../js/common/loader/view.less');
-@import url('../js/common/modal/view.less');
+// @import url('../js/common/modal/view.less');
 
 
 
@@ -117,20 +117,7 @@ html {
   }
 
  #modal {
-  background: white;
 
-  position: fixed;
-  width: 50%;
-  top: 50%;
-  left: 50%;
-  margin: -25% 0 0 -25%;
-
-  /* Embiggen */
-  transform: scale(1.5); /* prefix me */
-
-  /* Hidden */
-  opacity: 0;
-  pointer-events: none;
 }
 
 

@@ -373,6 +373,7 @@
       Modal.prototype.triggerCancel = function(e) {
         if (e != null) {
           e.preventDefault();
+          e.stopPropagation();
         }
         if (this.beforeCancel) {
           if (this.beforeCancel() === false) {

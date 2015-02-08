@@ -1,6 +1,7 @@
 define(function(require) {
 	var Backbone = require('Backbone');
   var TrackedRunView = require('./TrackedRunView');
+  
 	var TrackedRunsView = Backbone.View.extend({
     className: "trackedrun-collection-view",
 		template: require('hbs!./../../templates/TrackedRunsView'),

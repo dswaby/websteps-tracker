@@ -74,7 +74,7 @@ define(function (require) {
       var halfStep = 0;
       var stepState = "low";
 
-      if (window.ondevicemotion==undefined) {
+      if (window.DeviceMotionEvent==undefined) {
         return false;
       } else {
 

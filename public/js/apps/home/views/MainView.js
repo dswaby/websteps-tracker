@@ -9,7 +9,12 @@ define(function (require) {
 		},
 
 		render: function () {
-			var headerView = new HeaderView();
+      model = this.model
+
+      if (!model) {
+        model = new Backbone.Model({title: '', subtitle: ''});
+      };
+			var headerView = new HeaderView({model: model});
 			this.subviews.push(headerView);
 			this.$el.append(headerView.render().el);
 

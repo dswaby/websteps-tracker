@@ -1,10 +1,10 @@
-define(function(require) {
-  var MainView = require('./views/MainView');
-
-  return {
-    run: function (viewManager) {
-      var view = new MainView();
-      viewManager.show(view);
-    }
-  };
-});
+<div id="step-container">
+  <div class="jumbotron step-count-container">
+    <div id="steps" class="big-text"></div>
+  </div>
+<button class="btn btn-primary btn-lg btn-block">Start Pedometer</button>
+</div>
+<div id="unsupported" class="jumbotron hidden">
+  <h2>Browser unsupported</h2>
+  <p>only modern mobile browsers support the ondevicemotion API</p>
+</div>

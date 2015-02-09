@@ -110,23 +110,23 @@ define(function (require) {
     },
     togglePedometer: function() {
       var that = this;
-        if (that.state.pedometerOn) {
-          clearInterval(intervalId);
-          that.$el.find("#pedometer").html("start pedometer");
-          that.state.pedometerOn = false;
-          that.$el.find("#toggle-section").animate({'height':'250px'}, 450);
-          that.$el.find("#step-counter").animate({'height':'0'}, 450);
-        }
-        else if (that.mobile === true) {
-          that.startPedometer();
-          that.$el.find("#pedometer").html("pause pedometer");
-          that.state.pedometerOn = true;
-          that.$el.find("#toggle-section").animate({'height':'0'}, 450);
-          that.$el.find("#step-counter").animate({'height':'250px'}, 450);
-        }
-        else {
-          that.$el.find("#pedometer").html("API unsupported");
-        }
+      if (that.state.pedometerOn) {
+        clearInterval(intervalId);
+        that.$el.find("#pedometer").html("start pedometer");
+        that.state.pedometerOn = false;
+        that.$el.find("#toggle-section").animate({'height':'250px'}, 450);
+        that.$el.find("#step-counter").animate({'height':'0'}, 450);
+      }
+      else if (that.mobile === true) {
+        that.startPedometer();
+        that.$el.find("#pedometer").html("pause pedometer");
+        that.state.pedometerOn = true;
+        that.$el.find("#toggle-section").animate({'height':'0'}, 450);
+        that.$el.find("#step-counter").animate({'height':'250px'}, 450);
+      }
+      else {
+        that.$el.find("#pedometer").html("API unsupported");
+      }
     },
     startPedometer: function() {
       var that = this;

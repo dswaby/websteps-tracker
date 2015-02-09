@@ -6,9 +6,6 @@ define(function (require) {
 
   var MainView = Backbone.View.extend({
     className: "admin-status-view",
-    
-    initialize: function () {
-    },
 
     render: function () {
       var status = new StatusModel();

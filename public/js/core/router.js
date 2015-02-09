@@ -4,13 +4,16 @@ define(function(require) {
 
 	var Router = Backbone.Router.extend({
 		routes: {
-			'': 'home',
-			// 'data': 'data',
+			'': 'welcome',
+      'home/': 'home',
+      'home/demo/': 'demo',
+
       'data/': 'data',
       'data/routes/':'maproutes',
       'recent/': 'data',
 			'charts/': 'charts',
 			'status/': 'status',
+      'demo/':'',
 
       'admin/': 'admin',
       'admin/upload/': 'adminUpload',
@@ -21,12 +24,20 @@ define(function(require) {
 
 		},
 
+    welcome: function () {
+      require('./../apps/home/welcome').run(viewManager);
+    },
+
 		home: function () {
 			require('./../apps/home/app').run(viewManager);
 		},
 
     data: function () {
       require('./../apps/data/app').run(viewManager);
+    },
+
+    demo: function () {
+      require('./../apps/home/subapps/demo/app').run(viewManager);
     },
 
     maproutes: function () {

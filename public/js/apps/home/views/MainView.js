@@ -2,7 +2,6 @@ define(function (require) {
 	var Backbone = require('Backbone');
 
 	var HeaderView = require('./HeaderView');
-  require("velocity");
 	var MainView = Backbone.View.extend({
     className: "home-main-view",
 		initialize: function () {

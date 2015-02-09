@@ -56,11 +56,11 @@ require.config({
     moment: './../components/moment/moment',
     c3: './../components/c3/c3',
     d3: './../components/d3/d3', 
-    socketio: 'http://fitb.apps.swa.by:3634/socket.io/socket.io',
     async: './../components/requirejs-plugins/src/async',
     backboneFileUpload: './../components/backbone-mobile-file-upload',
-    backboneModal: './../js/common/backbone.modal'
-    // socketio: 'http://localhost:8000/socket.io/socket.io'
+    backboneModal: './../js/common/backbone.modal',
+    // socketio: 'http://fitb.apps.swa.by:3634/socket.io/socket.io'
+    socketio: 'http://localhost:8000/socket.io/socket.io'
 
 
 	}

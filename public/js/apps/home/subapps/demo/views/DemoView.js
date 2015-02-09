@@ -42,16 +42,17 @@ define(function (require) {
       var that = this;
         if (that.state.pedometerOn) {
           clearInterval(intervalId);
-          that.$el.find("#pedometer").html("start pedometer");
+          that.$el.find("#pedometer-toggle").html("start pedometer");
           that.state.pedometerOn = false;
         }
         else if (that.mobile === true) {
           that.startPedometer();
-          that.$el.find("#pedometer").html("pause pedometer");
+          that.$el.find("#pedometer-toggle").html("pause pedometer");
           that.state.pedometerOn = true;
         }
         else {
-          that.$el.find("#pedometer").html("API unsupported");
+          
+          // this should  not have been reached
         }
     },
 

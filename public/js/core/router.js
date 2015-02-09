@@ -10,14 +10,14 @@ define(function(require) {
       'data/routes/':'maproutes',
       'recent/': 'data',
 			'charts/': 'charts',
-			'status': 'status',
+			'status/': 'status',
 
-      'admin': 'admin',
-      'admin/upload': 'adminUpload',
+      'admin/': 'admin',
+      'admin/upload/': 'adminUpload',
 
-      'admin/glucoselog': 'adminGlucoseLog',
+      'admin/glucoselog/': 'adminGlucoseLog',
 
-      'admin/status': 'statusUpdater'
+      'admin/status/': 'statusUpdater'
 
 		},
 

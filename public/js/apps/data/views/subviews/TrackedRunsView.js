@@ -31,11 +31,7 @@ define(function(require) {
       }
 
       return this;
-		},
-    showAllMaps: function(e){
-      e.preventDefault();
-      console.log("view all clicked");
-    }
+		}
 	});
 
 	return TrackedRunsView;

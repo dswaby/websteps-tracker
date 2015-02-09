@@ -148,6 +148,12 @@ html {
     max-width: 100%;
     font-family: 'Open Sans', sans-serif;
     list-style: none;
+    a {
+      text-decoration: none;
+      &:hover, &:active, &:visited {
+        text-decoration: none;
+      }
+    }
     .title {
       text-align: left;
       font-size: 42px;
@@ -160,6 +166,9 @@ html {
       @media @smallerMobile {
         font-size:30px;
         padding-left: 12px;
+      }
+      &:hover {
+        text-decoration: none !important;
       }
     }
     &:hover {

@@ -1,11 +1,17 @@
 <div class="jumbotron">
     <div>
+    {{#if showWelcome}}
+    <div id="welcome-notification" class="alert alert-warning" role="alert">
+      <div class="top-right dismiss"><a id="dismissal"><span class="icon-cross"></span></a></div>
+      This is a proof of concept personal fitness tracking app I built for fun, due to the current restrictions in mobile web browsers (mainly backgrounding) this is in no way a practical way for tracking fitness data. 
+    </div>
+    {{/if}}
         <h1>{{title}}</h1>
         <p>{{subtitle}}</p>
     </div>
     <p>
     </p>
-    <button class="btn btn-primary btn-lg btn-block pink-alt" data-transition="bounce-in"> <a href="/data/">Recorded Data</a></button>
-    <button class="btn btn-primary btn-lg btn-block pink-alt" data-transition="bounce-in"> <a href="/home/about/">How it works</a></button>
+    <button class="btn btn-primary btn-lg btn-block pink-alt" data-transition="bounce-in"> <a href="/data/">View Recorded Data</a></button>
     <button class="btn btn-primary btn-lg btn-block pink-alt" data-transition="bounce-in"> <a href="/home/demo/">Try it out</a></button>
+    <button class="btn btn-primary btn-lg btn-block pink-alt" data-transition="bounce-in"> <a href="/home/about/">How it works</a></button>
 </div>

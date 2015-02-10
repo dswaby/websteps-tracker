@@ -39,11 +39,15 @@
     position: absolute;
     height:100%;
     width: 100%;
+    left: 0;
+    background-color: #fff;
     &.second {
       top: 100%;
+      background-color: #77CF22;
     }
     &.third {
       top: 200%;
+      background-color: #fff;
     }
   }
   .trackedrun-collection-view {
@@ -71,12 +75,22 @@
   .pics-collection-view {
     width: 85%;
     margin-left:7.5%;
+    @media @mobile {
+      width:90%;
+      margin-left:5%;
+    }
+    @media @smallerMobile {
+      width:100%;
+      margin-left:0;
+    }
     .title-box {
       width: 100%;
-
-      span {
-        text-align: center;
-      }
+      color: #fff;
+      text-align: center;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      font-size: 36px;
+      font-weight: 300;
     }
     .pictures {
       max-width: 100%;
@@ -91,8 +105,8 @@
           height: 175px;
         }
         @media @smallerMobile {
-          width:50%;
-          height: 160px;
+          width:33%;
+          height: 80px;
         }
         float: left;
         img {

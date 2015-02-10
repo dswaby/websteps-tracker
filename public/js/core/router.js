@@ -4,10 +4,8 @@ define(function(require) {
 
 	var Router = Backbone.Router.extend({
 		routes: {
-			'': 'welcome',
-      'home/': 'home',
+			'': 'home',
       'home/demo/': 'demo',
-
       'data/': 'data',
       'data/routes/':'maproutes',
       'recent/': 'data',
@@ -23,10 +21,6 @@ define(function(require) {
       'admin/status/': 'statusUpdater'
 
 		},
-
-    welcome: function () {
-      require('./../apps/home/welcome').run(viewManager);
-    },
 
 		home: function () {
 			require('./../apps/home/app').run(viewManager);

@@ -5,7 +5,8 @@ var mapPathSchema =  new Schema({
   beganAt: { type: Date, default: Date.now },
   endedAt: Date,
   coordinates: [{ lat: Number, lng: Number }],
-  distance: { type: Number, default: 0 }
+  distance: { type: Number, default: 0 },
+  steps: { type: Number, default: 0 }
 });
 
 module.exports = mongoose.model('MapPath', mapPathSchema);

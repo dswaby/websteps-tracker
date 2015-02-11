@@ -77,7 +77,7 @@ define(function (require) {
           $.ajax({
             type: "POST",
             url: "http://navsteps.apps.swa.by/api/path",
-            data: { lat: pos.coords.latitude, lng:  pos.coords.longitude }
+            data: { lat: pos.coords.latitude, lng:  pos.coords.longitude, steps: that.steps }
           })
           .done(function( data ) {
             that.locationId = data._id;

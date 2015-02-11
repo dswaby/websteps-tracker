@@ -63,6 +63,9 @@ function SocketEvents(server) {
           mapPath.coordinates.push({ lat: data.lat, lng: data.lng });
           mapPath.distance += miles;
         };
+        if (data.steps) {
+          mapPath.steps = data.steps;
+        }
         
         mapPath.endedAt = ahora;
 

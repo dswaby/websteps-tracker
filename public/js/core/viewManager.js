@@ -4,7 +4,8 @@ define(function (require) {
 
 	var viewManager = (function () {
 		var currentView;
-		var transitionType = $('#app').data('transition');
+		var transitionOutType = $('#app').data('transition-out');
+    var transitionInType = $('#app').data('transition-in');
 
 		function showView(view) {
 			disposeView(currentView, function () {
@@ -17,7 +18,7 @@ define(function (require) {
 				return callback();
 			}
 
-			return applyTransition(view.$el, transitionType, function () {
+			return applyTransition(view.$el, transitionOutType, function () {
 				_disposeView(view);
 				return callback();
 			});
@@ -41,28 +42,16 @@ define(function (require) {
 		}
 
 		function render(view) {
+      console.log(view)
 			currentView = view;
-
 			$("#app").html(currentView.el);
+      currentView.$el.addClass("primary-view");
 			currentView.render();
+      transition.apply(currentView.$el, transitionInType, function() {
+        console.log("done");
+      });
+      currentView.$el.addClass("is-visible");
 		}
-
-    function transitionIn (callback) {
-
-      var that = this;
-
-      var animateIn = function () {
-        that.$el.addClass('is-visible');
-        that.$el.one('transitionend', function () {
-          if (_.isFunction(callback)) {
-            callback();
-          }
-        });
-      };
-
-      _.delay(animateIn, 20);
-
-    }
 
 		return {
 			show: showView

@@ -232,7 +232,15 @@ html {
 // main container styles
 .app-container {
   width:100%;
+  height: 100%;
   left:0;
+  margin-top:unit(@headerHeight, px);
+  @media @mobile {
+    margin-top: unit(@headerHeightMobile, px);
+  }
+  @media @smallerMobile {
+    margin-top: unit(@headerHeightSmallerMobile, px);
+  }
 
 }
 
@@ -294,23 +302,7 @@ html {
   }
 }
 
-.primary-view {
+.hidden {
   opacity: 0;
-  width: 100%;
-  height: 100%;
-  // position: absolute;
-  left:0;
-  top:0;
-  margin-top:unit(@headerHeight, px);
-  @media @mobile {
-    margin-top: unit(@headerHeightMobile, px);
-  }
-  @media @smallerMobile {
-    margin-top: unit(@headerHeightSmallerMobile, px);
-  }
-
-  &.is-visible {
-    opacity: 1;
-  }
 }
 

@@ -45,12 +45,12 @@ define(function (require) {
       console.log(view)
 			currentView = view;
 			$("#app").html(currentView.el);
-      currentView.$el.addClass("primary-view");
+      currentView.$el.addClass("hidden");
 			currentView.render();
       transition.apply(currentView.$el, transitionInType, function() {
         console.log("done");
       });
-      currentView.$el.addClass("is-visible");
+      currentView.$el.removeClass("hidden");
 		}
 
 		return {

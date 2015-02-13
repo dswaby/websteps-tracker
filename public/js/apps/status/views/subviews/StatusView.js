@@ -58,7 +58,7 @@ define(function (require) {
 
             $.ajax({
               type: "GET",
-              url: "http://navsteps.apps.swa.by/api/path/" + data.id
+              url: "http://websteps.apps.swa.by/api/path/" + data.id
             })
             .done(function (path) {
                 that.initializeMap(path.coordinates[0].lat, path.coordinates[0].lng);
@@ -144,7 +144,7 @@ define(function (require) {
       e.stopPropagation();
       $.ajax({
         type: "POST",
-        url: "http://navsteps.apps.swa.by/api/ping",
+        url: "http://websteps.apps.swa.by/api/ping",
         data: ""
       })
       .done(function (data) {

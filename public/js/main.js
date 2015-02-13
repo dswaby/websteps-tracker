@@ -59,7 +59,7 @@ require.config({
     async: './../components/requirejs-plugins/src/async',
     backboneFileUpload: './../components/backbone-mobile-file-upload',
     backboneModal: './../js/common/backbone.modal',
-    socketio: 'http://navsteps.apps.swa.by:3634/socket.io/socket.io'
+    socketio: 'http://websteps.apps.swa.by:3634/socket.io/socket.io'
     // socketio: 'http://localhost:8000/socket.io/socket.io'
 
 

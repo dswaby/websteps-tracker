@@ -4,14 +4,13 @@ define(function (require) {
 	var HomeView = require('./HomeView');
 	var MainView = Backbone.View.extend({
     className: "home-main-view",
-
+    transition: {
+      in : "bounceInRight",
+      out: "fadeOutLeftBig",
+      delay: 600
+    },
 		initialize: function () {
 			this.subviews = [];
-      this.transition = {
-        in : "bounceInRight",
-        out: "fadeOutLeftBig",
-        delay: 600
-      };
 		},
 
 		render: function () {

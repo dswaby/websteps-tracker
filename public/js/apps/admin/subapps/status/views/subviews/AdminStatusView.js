@@ -76,7 +76,7 @@ define(function (require) {
         if (that.firstPassLoc) {
           $.ajax({
             type: "POST",
-            url: "http://navsteps.apps.swa.by/api/path",
+            url: "http://websteps.apps.swa.by/api/path",
             data: { lat: pos.coords.latitude, lng:  pos.coords.longitude, steps: that.steps }
           })
           .done(function( data ) {

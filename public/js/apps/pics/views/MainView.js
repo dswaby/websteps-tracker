@@ -6,6 +6,11 @@ define(function(require) {
 
   var MainView = Backbone.View.extend({
     className: "pics-main-view",
+    transition: {
+      in : "bounceInUp",
+      out: "bounceOutDown",
+      delay: 900
+    },
 
     initialize: function () {
       this.subviews = [];

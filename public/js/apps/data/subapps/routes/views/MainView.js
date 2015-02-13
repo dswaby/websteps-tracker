@@ -7,7 +7,13 @@ define(function(require) {
     className: 'main-data-view',
 		initialize: function () {
 			this.subviews = [];
+      
 		},
+    transition: {
+      in : "bounceInRight",
+      out: "bounceOutLeft",
+      delay: 450
+    },
 
 		render: function () {
 			var trackedRunsView = new TrackedRunsView({collection: this.collection});

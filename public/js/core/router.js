@@ -5,6 +5,7 @@ define(function(require) {
 	var Router = Backbone.Router.extend({
 		routes: {
 			'': 'home',
+      'home/': 'home',
       'home/demo/': 'demo',
       'data/': 'data',
       'data/routes/':'maproutes',

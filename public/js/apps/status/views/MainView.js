@@ -8,6 +8,11 @@ define(function(require) {
     className: 'main-status-view',
     initialize: function () {
       this.subviews = [];
+      this.transition = {
+        in : "flipInY",
+        out: "flipOutY",
+        delay: 600
+      };
     },
 
     render: function () {

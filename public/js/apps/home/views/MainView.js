@@ -1,11 +1,17 @@
 define(function (require) {
 	var Backbone = require('Backbone');
 
-	var HeaderView = require('./HeaderView');
+	var HomeView = require('./HomeView');
 	var MainView = Backbone.View.extend({
     className: "home-main-view",
+
 		initialize: function () {
 			this.subviews = [];
+      this.transition = {
+        in : "flipInX",
+        out: "flipOutX",
+        delay: 600
+      };
 		},
 
 		render: function () {
@@ -14,9 +20,9 @@ define(function (require) {
       if (!model) {
         model = new Backbone.Model({title: '', subtitle: ''});
       };
-			var headerView = new HeaderView({model: model});
-			this.subviews.push(headerView);
-			this.$el.append(headerView.render().el);
+			var homeView = new HomeView({model: model});
+			this.subviews.push(homeView);
+			this.$el.append(homeView.render().el);
 
 			return this;
 		}

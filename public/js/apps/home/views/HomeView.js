@@ -2,9 +2,9 @@ define(function (require) {
 	var Backbone = require('Backbone');
   var util = require('./../../../common/utils');
   // require('velocity');
-	var HeaderView = Backbone.View.extend({
-		template: require('hbs!./../templates/HeaderView'),
-    tagName: 'header',
+	var HomeView = Backbone.View.extend({
+		template: require('hbs!./../templates/HomeView'),
+    className: "home-view",
     events: {
       'click a#dismissal': 'dismissAlert'
     },
@@ -32,5 +32,5 @@ define(function (require) {
     }
 	});
 
-	return HeaderView;
+	return HomeView;
 });

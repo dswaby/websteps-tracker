@@ -9,9 +9,9 @@ define(function (require) {
     },
 
     render: function () {
-      var headerView = new HeaderView();
-      this.subviews.push(headerView);
-      this.$el.append(headerView.render().el);
+      var homeView = new HomeView();
+      this.subviews.push(homeView);
+      this.$el.append(homeView.render().el);
 
       return this;
     }

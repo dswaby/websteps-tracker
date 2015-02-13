@@ -1,7 +1,16 @@
 .home-main-view {
-  max-width: 600px;
+  // max-width: 600px;
   // width: 
-  margin: 10px auto 0;
+  // margin: 10px auto 0;
+  margin-top: unit(@headerHeight + 15, px);
+ 
+  @media @mobile {
+    margin-top: unit(@headerHeightMobile + 15, px);
+  }
+
+  @media @smallerMobile {
+    margin-top: unit(@headerHeightSmallerMobile + 15, px);
+  }
   .top-right {
     display: inline-block;
     width: 20px;
@@ -16,6 +25,10 @@
 
     }
   }
+}
+
+.home-view {
+  margin-top:15px;
 }
 
 #step-container {

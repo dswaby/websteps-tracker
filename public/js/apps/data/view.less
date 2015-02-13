@@ -1,14 +1,24 @@
 .main-data-view {
   height: 100%;
   width: 100%;
+  position: absolute;
+  top: unit(@headerHeight, px);
+ 
+  @media @mobile {
+    top: unit(@headerHeightMobile, px);
+  }
+
+  @media @smallerMobile {
+    top: unit(@headerHeightSmallerMobile, px);
+  }
   .section-nav {
     z-index: 5000;
     height:50px;
     width: 75%;
-    position: fixed;
+    position: relative;
     left: 50%;
     margin: 10px 0 0 -37.5%;
-    top: @headerHeight;
+    top: 0;
     background: rgba(0,0,0,0.32);
 // @headerHeightMobile:50;
 // @headerHeightSmallerMobile:40;

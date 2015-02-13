@@ -373,7 +373,7 @@ var MainView = Backbone.View.extend({
 	},
 
 	render: function () {
-		var headerView = new HeaderView();
+		var headerView = new HomeView();
 		this.subviews.push(headerView);
 		this.$el.append(headerView.render().el);
 
@@ -394,8 +394,8 @@ var MainView = Backbone.View.extend({
 View is loading template through `!hbs` plugin and uses that in `render()` function.
 
 ```js
-var HeaderView = Backbone.View.extend({
-	template: require('hbs!./../templates/HeaderView'),
+var HomeView = Backbone.View.extend({
+	template: require('hbs!./../templates/HomeView'),
 
 	render: function () {
 		this.$el.html(this.template({title: 'Backbone SPA boilerplate'}));

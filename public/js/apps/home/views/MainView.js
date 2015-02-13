@@ -8,8 +8,8 @@ define(function (require) {
 		initialize: function () {
 			this.subviews = [];
       this.transition = {
-        in : "flipInX",
-        out: "flipOutX",
+        in : "bounceInRight",
+        out: "fadeOutLeftBig",
         delay: 600
       };
 		},

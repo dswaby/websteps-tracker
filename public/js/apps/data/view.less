@@ -54,16 +54,19 @@
     // top:0;
     left: 0;
     background-color: #fff;
+    color: #fff;
+    background-color: #4ad5d7;
     &.second {
       top: 100%;
       background-color: #77CF22;
     }
     &.third {
       top: 200%;
-      background-color: #fff;
+      background-color: @primaryTextHoverColor;
     }
   }
   .trackedrun-collection-view {
+
     .backbutton {
       display: none;
       float: left;
@@ -75,7 +78,8 @@
     max-width: 750px;
     margin:4px auto 0;
     // margin-top:80px;
-    background-color: #fff;
+      color: #fff;
+    background-color: #4ad5d7;
     border-radius: 3px;
     .title {
       padding-left: 40px;
@@ -84,6 +88,18 @@
       font-weight: bold;
       text-transform: uppercase;
     }
+    .tracked-run-item-view {
+      a {
+        color: #fff;
+
+      }
+
+    }
+    tr:hover {
+        a {
+          color: #4ad5d7;
+        }
+      }
   }
   .pics-collection-view {
     width: 85%;

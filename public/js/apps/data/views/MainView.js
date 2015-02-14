@@ -27,9 +27,9 @@ define(function(require) {
 		},
     calculateScrollTops: function() {
       var that = this;
-      // that.header = $(document).find("#header"); 
+      that.trailTop = $(document).find("#header").height(); 
 
-      that.trailTop = document.getElementById("routes-page").parentNode.parentNode.offsetTop;
+      // that.trailTop = document.getElementById("routes-page").parentNode.parentNode.offsetTop;
       that.uploadsTop = - ($(window).height() - that.trailTop);
       that.glucoseTop = - $(window).height() + that.trailTop - $(window).height();
     },
@@ -47,6 +47,8 @@ define(function(require) {
       var picsCollectionView = new PicsCollectionView({collection: this.model.get("pics")});
       $picsSection.append(picsCollectionView.render().el);
       this.subviews.push(picsCollectionView);
+
+      // calculate scroll targets and ready prepare for resize
       this.calculateScrollTops();
       this.handleResize();
 			return this;

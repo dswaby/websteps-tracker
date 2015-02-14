@@ -23,8 +23,8 @@
 @headerHeightMobile:50;
 @headerHeightSmallerMobile:40;
 
-@primaryColor: #4AD5D7;
-@primaryTextColor: #fff;
+@primaryColor: #fff;
+@primaryTextColor: #F54786;
 @primaryTextHoverColor: #F54786;
 @smallerMobile: ~"only screen and (max-width : 599px)";
 @mobile: ~"only screen and (min-width : 600px) and (max-width : 1024px)";
@@ -168,7 +168,7 @@ html {
       text-align: left;
       font-size: 42px;
       padding-left: 30px;
-      color: #fff;
+      color: @primaryTextColor;
       @media @mobile {
         font-size:34px;
         padding-left: 24px;
@@ -190,9 +190,11 @@ html {
       padding-right: 4px;
       padding-top: 4px;
       font-size: 24px;
-      color: #fff;
-      &.hover {
-        color: @primaryTextHoverColor;
+      a {
+        color: @primaryTextColor;
+        &.hover {
+          color: @primaryTextHoverColor;
+        }
       }
 
     }

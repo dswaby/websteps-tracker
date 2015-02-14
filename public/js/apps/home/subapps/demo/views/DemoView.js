@@ -1,6 +1,6 @@
 define(function (require) {
   var Backbone = require('Backbone');
-  
+  require('async!http://maps.google.com/maps/api/js?sensor=false');
   var intervalId;
   var watchid;
   var DemoView = Backbone.View.extend({
@@ -9,6 +9,10 @@ define(function (require) {
     state: {},
     treadmill: false,
     firstPassLoc: true,
+    locationObj: {
+      firstLocationPass: true,
+      coordinates:[]
+    },
     template: require('hbs!./../templates/DemoView'),
     className: 'demo-view',
     events: {
@@ -37,6 +41,44 @@ define(function (require) {
         // that.$el.html("<div class='unsupported'>Browser is not supported</div>");
         console.log("browser not supported");
       }
+    },
+    initializeMap: function(latitude, longitude) {
+      var that = this;
+      var myLatLong = new google.maps.LatLng(latitude, longitude);
+      var mapOptions = {
+        zoom: 17,
+        center: myLatLong,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      that.locationObj.coordinates.push(myLatLong);
+
+      that.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+      that.marker = new google.maps.Marker({
+        position: myLatLong,
+        map: that.map,
+        title: 'Starting Point!'
+      });
+    },
+    panMap: function(latitude, longitude) {
+      var that = this;
+      var newGeo = new google.maps.LatLng(latitude, longitude);
+      that.map.panTo(newGeo);
+    },
+    updatePath: function(lat, lng){
+      var that = this;
+      var travelPath = new google.maps.Polyline({
+        path: that.locationObj.coordinates,
+        strokeColor: '#FF0000',
+        strokeOpacity: 1.0,
+        strokeWeight: 2
+      });
+
+      travelPath.setMap(that.map);
+      that.panMap(lat, lng);
+    },
+    updateRoutePath: function(lat,lng) {
+
     },
     togglePedometer: function() {
       var that = this;
@@ -118,6 +160,15 @@ define(function (require) {
             falseStepTracker++;
           }
         }
+        if (that.state.locationOn && !that.treadmill) {
+          if (locationIntervalPasses === config.locationUpdatePasses) {
+            that.updateRoutePath();
+            locationIntervalPasses = 0;
+          } 
+          else {
+            locationIntervalPasses++;
+          }
+        } 
       }, config.delay)
     }
   });

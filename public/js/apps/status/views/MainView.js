@@ -6,13 +6,13 @@ define(function(require) {
   var StatusModel = require('./../models/status');
   var MainView = Backbone.View.extend({
     className: 'main-status-view',
+    transition: {
+      in : "flipInY",
+      out: "flipOutY",
+      delay: 600
+    },
     initialize: function () {
       this.subviews = [];
-      this.transition = {
-        in : "flipInY",
-        out: "flipOutY",
-        delay: 600
-      };
     },
 
     render: function () {

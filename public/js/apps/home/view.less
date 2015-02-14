@@ -2,10 +2,37 @@
   // max-width: 600px;
   // width: 
   // margin: 10px auto 0;
+  .container {
+    max-width: 768px !important;
+    .jumbotron {
+      .welcome-title {
+         width: 100%;
+         h1 {
+          color: #8C6F3E !important;
+          text-align: center;
+          margin-top: 0 !important;
+         }
+        }
+    }
+  }
+  
+  .welcome-pic 
+  {
+    shape-outside: circle(40%);
+    margin-right: 18px;
+    // background-color: #FCF8E3;
+    background:url("/img/square.png") no-repeat;
+    width: 100px;
+    height: 110px;
+    margin-top: 5px;
+    float: left;
+    overflow: hidden;
+    padding-bottom: 30px;
+  }
   padding-top: unit(15, px);
-  height: 100%;
+    height: 100%;
   background-color: @primaryTextHoverColor;
- 
+    overflow: auto;
   @media @mobile {
     padding-top: unit(15, px);
   }
@@ -18,6 +45,16 @@
       background-color: @primaryTextHoverColor !important;
       h1, p {
         color: #fff !important;
+      }
+      p {
+        font-size: 22px;
+        @media @mobile {
+          font-size: 18px;
+        }
+
+        @media @smallerMobile {
+          font-size: 16px;
+        }
       }
       .btn-primary {
         border-color: #fff !important;
@@ -47,7 +84,7 @@
 }
 
 .home-view {
-  margin-top:15px;
+  // margin-top:15px;
 }
 
 #step-container {
@@ -79,4 +116,13 @@
   bottom: 0;
   height: 50px;
   width: 100%;
+}
+
+#map-routes-section{
+  height: 70%;
+overflow: auto;
+}
+
+#welcome-notification {
+  min-height: 200px;
 }

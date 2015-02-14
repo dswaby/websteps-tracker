@@ -27,6 +27,8 @@ define(function(require) {
 		},
     calculateScrollTops: function() {
       var that = this;
+      // that.header = $(document).find("#header"); 
+
       that.trailTop = document.getElementById("routes-page").parentNode.parentNode.offsetTop;
       that.uploadsTop = - ($(window).height() - that.trailTop);
       that.glucoseTop = - $(window).height() + that.trailTop - $(window).height();
@@ -91,13 +93,13 @@ define(function(require) {
         that.calculateScrollTops();
         switch (that.section) { 
           case "trails": //Statements executed when the result of expression matches value1 
-            that.$el.animate({top: that.trailTop}, 500);
+            that.$el.css({top: that.trailTop});
             break; 
           case "uploads":
-            that.$el.animate({top: that.uploadsTop}, 500);
+            that.$el.css({top: that.uploadsTop});
             break;
           case "glucose":
-            that.$el.animate({top: that.glucoseTop}, 500);
+            that.$el.css({top: that.glucoseTop});
             break; //Statements executed the result of expression matches value2 [break;] ... case valueN: //Statements executed when the result of expression matches valueN [break;] 
           default: 
             console.log("error")

@@ -4,7 +4,12 @@
       {{#if showWelcome}}
       <div id="welcome-notification" class="alert alert-warning" role="alert">
         <div class="top-right dismiss"><a id="dismissal"><span class="icon-cross"></span></a></div>
-        This is a proof of concept personal fitness tracking app I built for fun, due to the current restrictions in mobile web browsers (mainly backgrounding) this is in no way a practical way for tracking fitness data. 
+
+      <div class="welcome-title"><h1>Welcome</h1></div>
+      <div class="welcome-pic"></div>
+
+        <span class="intro">Thanks for checking out this app. As an FYI, this is a proof-of-concept personal fitness tracking app I built for fun. Due to browser restrictions as well as MUCH better alternatives, this would in no way be a practical solution for tracking fitness. This is just a demo of what is possible using modern web apis.</span>
+
       </div>
       {{/if}}
           <h1>{{title}}</h1>
@@ -12,7 +17,7 @@
       </div>
       <p>
       </p>
-      <button class="btn btn-primary btn-lg btn-block pink-alt" data-transition="bounce-in"> <a href="/data/">View Recorded Data</a></button>
+      <button class="btn btn-primary btn-lg btn-block pink-alt" data-transition="bounce-in"> <a href="/data/">View Data Tracked Tracked Using This App</a></button>
       <button class="btn btn-primary btn-lg btn-block pink-alt" data-transition="bounce-in"> <a href="/home/demo/">Try it out</a></button>
       <button class="btn btn-primary btn-lg btn-block pink-alt" data-transition="bounce-in"> <a href="/home/about/">How it works</a></button>
   </div>

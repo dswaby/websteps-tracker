@@ -26,14 +26,11 @@ define(function (require) {
       };
 
       var fetchingPics = getPics().done(function (pics){
-        that.picturesCollection = pics;
+        this.collection = pics;
       });
 
       $.when(fetchingPics).done(function(){
-        var model = new Backbone.Model({
-            runs: that.runsCollection, pics: that.picturesCollection
-        });
-        var view = new MainView({ model: model });
+        var view = new MainView({ collection: this.collection });
         viewManager.show(view);
       });
 		}

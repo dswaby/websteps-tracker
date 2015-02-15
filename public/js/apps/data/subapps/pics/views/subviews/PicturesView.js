@@ -1,32 +1,27 @@
 define(function(require) {
-	var Backbone = require('Backbone');
-  var TrackedRunView = require('./TrackedRunView');
-	var TrackedRunsView = Backbone.View.extend({
-    className: "trackedrun-collection-view",
-		template: require('hbs!./../../templates/TrackedRunsView'),
-    events:{
-      'click #all-tracked-routes':'showAllMaps'
-    },
+  var Backbone = require('Backbone');
+  var PictureView = require('./PictureView');
+
+  var PicturesView = Backbone.View.extend({
+    template: require('hbs!./../../templates/PicturesView'),
+    className: "pics-collection-view",
     initialize: function () {
       this.subviews = [];
     },
-		render: function () {
+    render: function () {
       this.$el.html(this.template());
 
-      var runs = this.$('.runs');
-      this.collection.forEach(function (run) {
-        var view = new TrackedRunView({model: run});
-        runs.append(view.render().el);
+      var pictures = this.$('.pictures');
+      
+      this.collection.forEach(function (picture) {
+        var view = new PictureView({model: picture});
+        pictures.append(view.render().el);
         this.subviews.push(view);
       }, this);
 
       return this;
-		},
-    showAllMaps: function(e){
-      e.preventDefault();
-      console.log("view all clicked");
     }
-	});
+  });
 
-	return TrackedRunsView;
+  return PicturesView;
 });

@@ -1,5 +1,5 @@
 define(function (require) {
-  var PictureCollection = require('./../../collections/PictureCollection');
+  var PicturesCollection = require('./../../collections/PicturesCollection');
   var LoadingView = require('./../../../../common/loader/views/LoaderView');
 	var MainView = require('./views/MainView');
   
@@ -12,7 +12,7 @@ define(function (require) {
       viewManager.show(loader);
 			
       function getPics() {
-        var picCollection = new PictureCollection();
+        var picCollection = new PicturesCollection();
         var defer = $.Deferred();
           picCollection.fetch({
             success: function(data){
@@ -25,15 +25,17 @@ define(function (require) {
         return defer.promise();
       };
 
-      // function load() {
-        var fetchingRuns = getRuns().done(function (runs){
-            that.picsCollection = runs;
+      var fetchingPics = getPics().done(function (pics){
+        that.picturesCollection = pics;
+      });
+
+      $.when(fetchingPics).done(function(){
+        var model = new Backbone.Model({
+            runs: that.runsCollection, pics: that.picturesCollection
         });
-      
-        $.when(fetchingRuns).done(function(){
-          var view = new MainView({ collection: that.picsCollection });
-          viewManager.show(view);
-        });
+        var view = new MainView({ model: model });
+        viewManager.show(view);
+      });
 		}
 	};
 });

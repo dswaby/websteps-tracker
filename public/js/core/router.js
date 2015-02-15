@@ -9,6 +9,7 @@ define(function(require) {
       'home/demo/': 'demo',
       'data/': 'data',
       'data/routes/':'maproutes',
+      'data/pics/':'pics',
       'recent/': 'data',
 			'charts/': 'charts',
 			'status/': 'status',
@@ -37,6 +38,10 @@ define(function(require) {
 
     maproutes: function () {
       require('./../apps/data/subapps/routes/app').run(viewManager);
+    },
+
+    pics: function () {
+      require('./../apps/data/subapps/pics/app').run(viewManager);
     },
 
 		charts: function () {

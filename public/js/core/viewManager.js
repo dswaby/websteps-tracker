@@ -45,10 +45,13 @@ define(function (require) {
 			}
 
 			function _disposeView(view) {
+        // removes any nested views
 				view.subviews && view.subviews.forEach(function (subview) {
 					_disposeView(subview);
 				});
-
+        if (view.onClose) {
+          view.onClose();
+        }
 				view.remove();
         view.unbind();
 			}

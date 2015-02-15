@@ -138,6 +138,10 @@ define(function (require) {
       that.$el.find("#stepcount").html(count);
     },
 
+    onClose: function(){
+      console.log("onClose called!")
+    },
+
     pingForStatus: function(e) {
       var that = this;
       e.preventDefault();

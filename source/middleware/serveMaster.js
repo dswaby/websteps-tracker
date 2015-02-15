@@ -7,13 +7,23 @@ function skipMaster (req) {
 	});
 }
 
+function skipToAdmin (req) {
+  return _.any(['/admin'], function (url) {
+    return req.url.substr(0, url.length) === url;
+  });
+}
+
 function hander(title, mainJs, mainCss) {
 	return function (req, res, next) {
 		if (skipMaster(req)) {
 			return next();
 		}
-
-		res.render('master', { title: title, mainJs: mainJs, mainCss: mainCss});
+    if (skipToAdmin(req)) {
+      res.render('admin', { title: title, mainJs: mainJs, mainCss: mainCss});
+    }
+    else {
+      res.render('master', { title: title, mainJs: mainJs, mainCss: mainCss});
+    }
 	};
 }
 

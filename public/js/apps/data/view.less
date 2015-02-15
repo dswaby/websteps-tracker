@@ -46,6 +46,14 @@
     }
   }
   }
+  .page-back-button {
+    width: 85%;
+    margin: 0 auto;
+    padding-top: 5px;
+    a {
+      color: #fff;
+    }
+  }
   .page-section {
     display: block;
     position: absolute;
@@ -66,7 +74,13 @@
     }
   }
   .trackedrun-collection-view {
-    
+    height: 60%;
+    // overflow: auto;
+    .scrollable {
+      max-height: 100%;
+      overflow: auto;
+      // margin-bottom: 75px;
+    }
     .backbutton {
       display: none;
       float: left;
@@ -82,9 +96,19 @@
     background-color: #4ad5d7;
     border-radius: 3px;
     .title {
-      padding-left: 40px;
+      // padding-left: 40px;
+      display: block;
+      width: 100%;
       padding-top: 20px;
+      text-align: center;
       font-size: 36px;
+      @media @mobile {
+        font-size: 24px;
+      }
+      @media @smallerMobile {
+        padding-top: 0;
+        font-size: 24px;
+      }
       font-weight: bold;
       text-transform: uppercase;
     }
@@ -100,6 +124,24 @@
           color: #4ad5d7;
         }
       }
+    .view-more {
+      position: relative;
+      // bottom:20%;
+      // left:20%;
+    }
+    .page-below {
+      position: absolute;
+      // padding-top: 20px;
+      top:85%;
+      left: 0;
+      width: 100%;
+      .centered-icon {
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-size: 50px !important;
+      }
+    }
   }
   .pics-collection-view {
     width: 85%;
@@ -147,6 +189,19 @@
           width:99%;
           height: 99%;
         }
+      }
+    }
+    .page-below {
+      position: absolute;
+      top:85%;
+      left:0;
+      // padding-top: 20px;
+      width: 100%;
+      .centered-icon {
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-size: 50px !important;
       }
     }
   }

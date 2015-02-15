@@ -4,10 +4,10 @@ define(function(require) {
 
   var PicturesView = Backbone.View.extend({
     template: require('hbs!./../../templates/PicturesView'),
-    className: "pics-collection-view",
     events: {
-      
+      "click #js-glucose-view":"triggerBelow"
     },
+    className: "pics-collection-view",
     initialize: function () {
       this.subviews = [];
     },
@@ -31,6 +31,11 @@ define(function(require) {
       }
 
       return this;
+    },
+    triggerBelow: function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      this.trigger("below");
     }
   });
 

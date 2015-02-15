@@ -1,7 +1,7 @@
 define(function(require) {
 	var Backbone = require('Backbone');
 
-	var TrackedRunsView = require('./subviews/TrackedRunsView');
+	var PicturesView = require('./subviews/PicturesView');
 
 	var MainView = Backbone.View.extend({
     className: 'main-data-view',
@@ -16,9 +16,9 @@ define(function(require) {
     },
 
 		render: function () {
-			var trackedRunsView = new TrackedRunsView({collection: this.collection});
-			this.$el.append(trackedRunsView.render().el);
-			this.subviews.push(trackedRunsView);
+			var picturesView = new PicturesView({collection: this.collection});
+			this.$el.append(picturesView.render().el);
+			this.subviews.push(picturesView);
 		}
 	});
 

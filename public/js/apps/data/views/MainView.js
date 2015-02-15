@@ -9,27 +9,29 @@ define(function(require) {
 	var MainView = Backbone.View.extend({
     className: 'main-data-view',
     template: require('hbs!./../templates/MainView'),
+    
+    // template: 
+    events: {
+      'click .js-trails': 'scrollTrails',
+      'click .js-uploads': 'scrollUploads',
+      'click .js-glucose': 'scrollGlucose'
+    },
     transition: {
       in : "bounceInUp",
       out: "bounceOutLeft",
       delay: 450
-    }, 
-    // template: 
-    events: {
-      'click #trails': 'scrollTrails',
-      'click #uploads': 'scrollUploads',
-      'click #glucose': 'scrollGlucose'
     },
 		initialize: function () {
       var that = this;
 			this.subviews = [];
       this.section = "trails";
 		},
+    onClose: function() {
+      this.stopListening();
+    },
     calculateScrollTops: function() {
       var that = this;
       that.trailTop = $(document).find("#header").height(); 
-
-      // that.trailTop = document.getElementById("routes-page").parentNode.parentNode.offsetTop;
       that.uploadsTop = - ($(window).height() - that.trailTop);
       that.glucoseTop = - $(window).height() + that.trailTop - $(window).height();
     },
@@ -43,10 +45,18 @@ define(function(require) {
 			var trackedRunsView = new TrackedRunsView({collection: this.model.get("runs")});
 			$routesSection.append(trackedRunsView.render().el);
 			this.subviews.push(trackedRunsView);
+      this.listenTo(trackedRunsView, "below", function() {
+        this.$el.animate({top: this.uploadsTop}, 500);
+        this.section = "uploads";
+      });
 
       var picsCollectionView = new PicsCollectionView({collection: this.model.get("pics")});
       $picsSection.append(picsCollectionView.render().el);
       this.subviews.push(picsCollectionView);
+      this.listenTo(picsCollectionView, "below", function() {
+        this.$el.animate({top: this.glucoseTop}, 500);
+        this.section = "glucose";
+      });
 
       // calculate scroll targets and ready prepare for resize
       this.calculateScrollTops();

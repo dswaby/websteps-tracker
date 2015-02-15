@@ -70,7 +70,6 @@ require(['core/router', 'core/client', 'Backbone'], function (Router, client, Ba
 	var app = {
 		root: '/'
 	};
-  window.app = app;
 
   Backbone.Extensions = {};
   Backbone.Entities = {};

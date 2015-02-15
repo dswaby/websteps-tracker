@@ -6,7 +6,8 @@ define(function(require) {
     className: "trackedrun-collection-view",
 		template: require('hbs!./../../templates/TrackedRunsView'),
     events:{
-      'click #all-tracked-routes':'showAllMaps'
+      'click #all-tracked-routes':'showAllMaps',
+      'click #js-below-view': 'triggerMainBelow'
     },
     initialize: function () {
       this.subviews = [];
@@ -31,7 +32,12 @@ define(function(require) {
       }
 
       return this;
-		}
+		},
+    triggerMainBelow: function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      this.trigger("below");
+    }
 	});
 
 	return TrackedRunsView;

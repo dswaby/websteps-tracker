@@ -141,6 +141,23 @@
         width: 100%;
         text-align: center;
         font-size: 50px !important;
+        cursor: pointer;
+// width: 20px;
+// height: 20px;
+// -webkit-transform: rotate(45deg);
+// -ms-transform: rotate(45deg);
+// transform: rotate(45deg);
+// border-bottom: 4px solid #4D4D4D;
+// border-right: 4px solid #4D4D4D;
+// position: absolute;
+// top: -60px;
+// right: 40px;
+-webkit-animation: opener .5s ease-in-out alternate infinite;
+-webkit-animation: opener .5s ease-in-out alternate infinite;
+cursor: pointer;
+opacity: 0.5;
+-webkit-transition: opacity .2s ease-in-out, transform .5s ease-in-out .2s;
+transition: opacity .2s ease-in-out, transform .5s ease-in-out .2s;
       }
     }
   }
@@ -169,7 +186,7 @@
     .pictures {
       max-width: 100%;
       // margin-left:5%;
-      height: 600px;
+      height: 540px;
       overflow: auto;
       @media @mobile {
         height: 525px;

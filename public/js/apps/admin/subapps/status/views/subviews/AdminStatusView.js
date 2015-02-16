@@ -36,6 +36,9 @@ define(function (require) {
       that.socket.on('is danny connected', function(){
         console.log('is danny connected heard!');
         that.socket.emit('danny is connected');
+        if (that.locationId) {
+          that.socket.emit('location update', { id: that.locationId });
+        }
       });
     },
     _checkMobile: function() {

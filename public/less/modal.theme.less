@@ -1,10 +1,35 @@
 .bbm-wrapper {
   background: rgba(0, 0, 0, 0.75);
-  -webkit-transition: background-color 0.3s; }
+  -webkit-transition: background-color 0.3s; 
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
 
 .bbm-modal {
-  background: white;
-  box-shadow: 0 0px 6px rgba(0, 0, 0, 0.6), 0 1px 2px rgba(0, 0, 0, 0.9); }
+  // background: white;
+  // box-shadow: 0 0px 6px rgba(0, 0, 0, 0.6), 0 1px 2px rgba(0, 0, 0, 0.9); 
+  .image-modal {
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    img {
+      margin: 0 auto;
+      height: auto;
+      width: 100%;
+    }
+    .dismiss-icon {
+      background-color: #fff;
+      border-radius:75%; 
+      box-shadow: 0 0px 6px rgba(0, 0, 0, 0.6), 0 1px 2px rgba(0, 0, 0, 0.9); 
+      position: absolute;
+      top:-10px;
+      right:-10px;
+      padding: 20px;
+      font-size: 32px;
+    }
+  }
+}
 
 /* BLOCKS */
 .bbm-modal__topbar,

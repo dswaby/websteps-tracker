@@ -52,6 +52,7 @@ define(function (require) {
           that.updateStepCount(data.steps);
           if (data.treadmill && !that.onTreadmill) {
             that.$el.find("#treadmill-bool").html("True");
+            that.onTreadmill = true;
           }
           elsd if (!data.treadmill && that.onTreadmill) {
             that.$el.find("#treadmill-bool").html("False");

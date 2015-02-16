@@ -169,7 +169,7 @@ define(function (require) {
               if (falseStepTracker < config.falsStepMax) {
                 that.steps++;
                 stepState = "high";
-                that.socket.emit('steps updated', { stepCount: that.steps });
+                that.socket.emit('steps updated', { stepCount: that.steps, onTreadmill: that.treadmill });
                 document.getElementById("steps").innerHTML = that.steps;
                 falseStepTracker = 0;
               }
@@ -186,7 +186,7 @@ define(function (require) {
               if (falseStepTracker < config.falsStepMax) {
                 that.steps++;
                 stepState = "low";
-                that.socket.emit('steps updated', { stepCount: that.steps });
+                that.socket.emit('steps updated', { stepCount: that.steps, onTreadmill: that.treadmill });
                 document.getElementById("steps").innerHTML = that.steps;
                 falseStepTracker = 0;
               } else {

@@ -76,7 +76,9 @@ define(function (require) {
                   that.locationObj.coordinates.push(myLatLong);
                 }
               that.locationObj.firstLocationPass = false;
-              that.updatePath(data.lat, data.lng);
+              if (data.lat && data.lng) {
+                that.updatePath(data.lat, data.lng);
+              }
             })
             .fail(function (error) {
               console.log(error);

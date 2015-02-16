@@ -33,7 +33,7 @@ function SocketEvents(server) {
       io.emit('danny is connected');
     });
     socket.on('steps updated', function (data) {
-      io.emit('stepcount', { steps: data.stepCount });
+      io.emit('stepcount', { steps: data.stepCount, treadmill: data.onTreadmill });
     });
     socket.on('disconnect', function(){
       io.emit('danny is disconnected');

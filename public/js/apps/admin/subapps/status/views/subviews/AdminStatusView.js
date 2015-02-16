@@ -148,7 +148,7 @@ define(function (require) {
       var halfStep = 0;
       var stepState = "low";
 
-      that.socket.emit('steps updated', { stepCount: that.steps });
+      that.socket.emit('steps updated', { stepCount: that.steps, onTreadmill: that.treadmill });
 
       if (window.DeviceMotionEvent==undefined) {
 

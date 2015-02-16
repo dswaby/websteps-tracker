@@ -12,6 +12,7 @@ define(function (require) {
       firstLocationPass: true,
       coordinates:[]
     },
+    onTreadmill: false,
     checkPing: function () {
       if(typeof(Storage) !== "undefined") {
         var pingStorage = localStorage.getItem("pingtime");
@@ -49,6 +50,12 @@ define(function (require) {
 
         that.socket.on('stepcount', function (data){
           that.updateStepCount(data.steps);
+          if (data.treadmill && !that.onTreadmill) {
+            that.$el.find("#treadmill-bool").html("True");
+          }
+          elsd if (!data.treadmill && that.onTreadmill) {
+            that.$el.find("#treadmill-bool").html("False");
+          }
         });
 
         that.socket.on('location', function (data){
@@ -81,13 +88,13 @@ define(function (require) {
           }
         });
 
-        that.socket.on('on treadmill', function (data){
-          that.$el.find("#treadmill-bool").html("True");
-        });
+        // that.socket.on('on treadmill', function (data){
+        //   that.$el.find("#treadmill-bool").html("True");
+        // });
 
-        that.socket.on('not on treadmill', function (data){
-          that.$el.find("#treadmill-bool").html("False");
-        });
+        // that.socket.on('not on treadmill', function (data){
+        //   that.$el.find("#treadmill-bool").html("False");
+        // });
     },
     updatePath: function(lat, lng){
       var that = this;

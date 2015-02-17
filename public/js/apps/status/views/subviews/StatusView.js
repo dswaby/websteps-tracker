@@ -17,7 +17,7 @@ define(function (require) {
       if(typeof(Storage) !== "undefined") {
         var pingStorage = localStorage.getItem("pingtime");
         if (pingStorage && (Date.now() - pingStorage.getMilliseconds()) > 30000000) {
-          this.$el.find("#ping-button").removeClass("active").addClass("pinged");
+          this.$el("#ping-button").removeClass("active").addClass("pinged");
         }
       }
     },
@@ -33,35 +33,35 @@ define(function (require) {
       this.socket.emit('get connection status');
       // this.socket.on(
       this.socket.on('danny is connected', function(){
-        this.$el.find("#connection").removeClass("icon-cross").addClass("icon-checkmark");
-        this.$el.find("#ping-button").removeClass("active").addClass("disabled");
+        this.$el("#connection").removeClass("icon-cross").addClass("icon-checkmark");
+        this.$el("#ping-button").removeClass("active").addClass("disabled");
       });
 
       this.socket.on('danny is disconnected', function(){
-        this.$el.find("#ping-button").removeClass("disabled").addClass("active");
-        this.$el.find("#connection").removeClass("icon-checkmark").addClass("icon-cross");
-        this.$el.find("#activity-detail").addClass("hidden");
-        this.$el.find("#activity").removeClass("icon-checkmark").addClass("icon-cross");
-        this.$el.find("#location-detail").addClass("hidden");
-        this.$el.find("#location").removeClass("icon-checkmark").addClass("icon-cross");
+        this.$el("#ping-button").removeClass("disabled").addClass("active");
+        this.$el("#connection").removeClass("icon-checkmark").addClass("icon-cross");
+        this.$el("#activity-detail").addClass("hidden");
+        this.$el("#activity").removeClass("icon-checkmark").addClass("icon-cross");
+        this.$el("#location-detail").addClass("hidden");
+        this.$el("#location").removeClass("icon-checkmark").addClass("icon-cross");
       });
 
         this.socket.on('stepcount', function (data){
           this.updateStepCount(data.steps);
           if (data.treadmill && !this.onTreadmill) {
-            this.$el.find("#treadmill-bool").html("True");
+            this.$el("#treadmill-bool").html("True");
             this.onTreadmill = true;
           }
           else if (!data.treadmill && this.onTreadmill) {
-            this.$el.find("#treadmill-bool").html("False");
+            this.$el("#treadmill-bool").html("False");
             this.onTreadmill = false;
           }
         });
 
         this.socket.on('location', function (data){
           if (this.locationObj.firstLocationPass) {
-            this.$el.find("#location").removeClass("icon-cross").addClass("icon-checkmark");
-            this.$el.find("#location-detail").removeClass("hidden");
+            this.$el("#location").removeClass("icon-cross").addClass("icon-checkmark");
+            this.$el("#location-detail").removeClass("hidden");
 
             $.ajax({
               type: "GET",
@@ -91,11 +91,11 @@ define(function (require) {
         });
 
         // this.socket.on('on treadmill', function (data){
-        //   this.$el.find("#treadmill-bool").html("True");
+        //   this.$el("#treadmill-bool").html("True");
         // });
 
         // this.socket.on('not on treadmill', function (data){
-        //   this.$el.find("#treadmill-bool").html("False");
+        //   this.$el("#treadmill-bool").html("False");
         // });
     },
     updatePath: function(lat, lng){
@@ -135,12 +135,12 @@ define(function (require) {
 
     updateStepCount: function(count) {
       if (firstPass) {
-        this.$el.find("#activity").removeClass("icon-cross").addClass("icon-checkmark");
+        this.$el("#activity").removeClass("icon-cross").addClass("icon-checkmark");
         // TODO apply revealing transition to 
-        this.$el.find("#activity-detail").removeClass("hidden");
+        this.$el("#activity-detail").removeClass("hidden");
         firstPass = false;
       }
-      this.$el.find("#stepcount").html(count);
+      this.$el("#stepcount").html(count);
     },
 
     onClose: function(){
@@ -157,7 +157,7 @@ define(function (require) {
         data: ""
       })
       .done(function (data) {
-        this.$el.find("#ping-button").removeClass("active").addClass("pinged");
+        this.$el("#ping-button").removeClass("active").addClass("pinged");
       })
       .fail(function (error) {
         console.log(error);

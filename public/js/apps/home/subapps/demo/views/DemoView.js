@@ -18,6 +18,11 @@ define(function (require) {
     events: {
       'click #pedometer-toggle': 'togglePedometer',
     },
+    transition: {
+      in: "rotateIn",
+      out: "rotateOut",
+      delay: 300
+    },
     render: function () {
       this.$el.html(this.template());
       this._checkMobile();
@@ -41,6 +46,9 @@ define(function (require) {
         // that.$el.html("<div class='unsupported'>Browser is not supported</div>");
         console.log("browser not supported");
       }
+    },
+    onClose: function() {
+      clearInterval(intervalId);
     },
     initializeMap: function(latitude, longitude) {
       var that = this;

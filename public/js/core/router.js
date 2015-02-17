@@ -14,14 +14,10 @@ define(function(require) {
 			'charts/': 'charts',
 			'status/': 'status',
       'demo/':'',
-
       'admin/': 'admin',
       'admin/upload/': 'adminUpload',
-
       'admin/glucoselog/': 'adminGlucoseLog',
-
       'admin/status/': 'statusUpdater'
-
 		},
 
 		home: function () {

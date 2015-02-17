@@ -23,11 +23,6 @@ define(function (require) {
       this._checkMobile();
       return this;
     },
-    onClose: function() {
-      var that = this;
-      that.socket.disconnect();
-      console.log("disconnected")
-    },
     _socketEvents: function(){
       var that = this;
       var io = require('socketio');
@@ -136,6 +131,11 @@ define(function (require) {
         that.$el.find("#pedometer").html("API unsupported");
       }
     },
+    onClose: function() {
+      var that = this;
+      that.socket.disconnect();
+      console.log("disconnected")
+    },
     startPedometer: function() {
       var that = this;
       var interval = 0;
@@ -219,7 +219,7 @@ define(function (require) {
           //   that.updateLocation();
           // }
         }, config.delay)
-    }
+      }
   });
 
   return AdminStatusView;

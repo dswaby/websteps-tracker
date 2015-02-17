@@ -17,67 +17,65 @@ define(function (require) {
       if(typeof(Storage) !== "undefined") {
         var pingStorage = localStorage.getItem("pingtime");
         if (pingStorage && (Date.now() - pingStorage.getMilliseconds()) > 30000000) {
-          that.$el.find("#ping-button").removeClass("active").addClass("pinged");
+          this.$el.find("#ping-button").removeClass("active").addClass("pinged");
         }
       }
     },
     render: function () {
-      var that = this;
       var io = require('socketio');
       this.$el.html(this.template());
-      that.socket = io.connect('/');
+      this.socket = io.connect('/');
       this._socketEvents();
       return this;
     },
     _socketEvents: function(){
-      var that = this;
       var firstPass = true;
-      that.socket.emit('get connection status');
-      // that.socket.on(
-      that.socket.on('danny is connected', function(){
-        that.$el.find("#connection").removeClass("icon-cross").addClass("icon-checkmark");
-        that.$el.find("#ping-button").removeClass("active").addClass("disabled");
+      this.socket.emit('get connection status');
+      // this.socket.on(
+      this.socket.on('danny is connected', function(){
+        this.$el.find("#connection").removeClass("icon-cross").addClass("icon-checkmark");
+        this.$el.find("#ping-button").removeClass("active").addClass("disabled");
       });
 
-      that.socket.on('danny is disconnected', function(){
-        that.$el.find("#ping-button").removeClass("disabled").addClass("active");
-        that.$el.find("#connection").removeClass("icon-checkmark").addClass("icon-cross");
-        that.$el.find("#activity-detail").addClass("hidden");
-        that.$el.find("#activity").removeClass("icon-checkmark").addClass("icon-cross");
-        that.$el.find("#location-detail").addClass("hidden");
-        that.$el.find("#location").removeClass("icon-checkmark").addClass("icon-cross");
+      this.socket.on('danny is disconnected', function(){
+        this.$el.find("#ping-button").removeClass("disabled").addClass("active");
+        this.$el.find("#connection").removeClass("icon-checkmark").addClass("icon-cross");
+        this.$el.find("#activity-detail").addClass("hidden");
+        this.$el.find("#activity").removeClass("icon-checkmark").addClass("icon-cross");
+        this.$el.find("#location-detail").addClass("hidden");
+        this.$el.find("#location").removeClass("icon-checkmark").addClass("icon-cross");
       });
 
         that.socket.on('stepcount', function (data){
           that.updateStepCount(data.steps);
-          if (data.treadmill && !that.onTreadmill) {
-            that.$el.find("#treadmill-bool").html("True");
-            that.onTreadmill = true;
+          if (data.treadmill && !this.onTreadmill) {
+            this.$el.find("#treadmill-bool").html("True");
+            this.onTreadmill = true;
           }
-          else if (!data.treadmill && that.onTreadmill) {
-            that.$el.find("#treadmill-bool").html("False");
-            that.onTreadmill = false;
+          else if (!data.treadmill && this.onTreadmill) {
+            this.$el.find("#treadmill-bool").html("False");
+            this.onTreadmill = false;
           }
         });
 
-        that.socket.on('location', function (data){
-          if (that.locationObj.firstLocationPass) {
-            that.$el.find("#location").removeClass("icon-cross").addClass("icon-checkmark");
-            that.$el.find("#location-detail").removeClass("hidden");
+        this.socket.on('location', function (data){
+          if (this.locationObj.firstLocationPass) {
+            this.$el.find("#location").removeClass("icon-cross").addClass("icon-checkmark");
+            this.$el.find("#location-detail").removeClass("hidden");
 
             $.ajax({
               type: "GET",
               url: "http://websteps.apps.swa.by/api/path/" + data.id
             })
             .done(function (path) {
-                that.initializeMap(path.coordinates[0].lat, path.coordinates[0].lng);
+                this.initializeMap(path.coordinates[0].lat, path.coordinates[0].lng);
                 for (var i = 0; i < path.coordinates.length; i++) {
                   var myLatLong = new google.maps.LatLng(path.coordinates[i].lat, path.coordinates[i].lng);
-                  that.locationObj.coordinates.push(myLatLong);
+                  this.locationObj.coordinates.push(myLatLong);
                 }
-              that.locationObj.firstLocationPass = false;
+              this.locationObj.firstLocationPass = false;
               if (data.lat && data.lng) {
-                that.updatePath(data.lat, data.lng);
+                this.updatePath(data.lat, data.lng);
               }
             })
             .fail(function (error) {
@@ -87,76 +85,70 @@ define(function (require) {
           }
           else {
             var myLatLong = new google.maps.LatLng(data.lat, data.lng);
-            that.locationObj.coordinates.push(myLatLong);
-            that.updatePath(data.lat, data.lng);
+            this.locationObj.coordinates.push(myLatLong);
+            this.updatePath(data.lat, data.lng);
           }
         });
 
-        // that.socket.on('on treadmill', function (data){
-        //   that.$el.find("#treadmill-bool").html("True");
+        // this.socket.on('on treadmill', function (data){
+        //   this.$el.find("#treadmill-bool").html("True");
         // });
 
-        // that.socket.on('not on treadmill', function (data){
-        //   that.$el.find("#treadmill-bool").html("False");
+        // this.socket.on('not on treadmill', function (data){
+        //   this.$el.find("#treadmill-bool").html("False");
         // });
     },
     updatePath: function(lat, lng){
-      var that = this;
       var travelPath = new google.maps.Polyline({
-        path: that.locationObj.coordinates,
+        path: this.locationObj.coordinates,
         strokeColor: '#FF0000',
         strokeOpacity: 1.0,
         strokeWeight: 2
       });
 
-      travelPath.setMap(that.map);
-      that.panMap(lat, lng);
+      travelPath.setMap(this.map);
+      this.panMap(lat, lng);
     },
 
     initializeMap: function(latitude, longitude) {
-      var that = this;
       var myLatLong = new google.maps.LatLng(latitude, longitude);
       var mapOptions = {
         zoom: 17,
         center: myLatLong,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
-      that.locationObj.coordinates.push(myLatLong);
+      this.locationObj.coordinates.push(myLatLong);
 
-      that.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+      this.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-      that.marker = new google.maps.Marker({
+      this.marker = new google.maps.Marker({
         position: myLatLong,
-        map: that.map,
+        map: this.map,
         title: 'Starting Point!'
       });
     },
 
     panMap: function(latitude, longitude) {
-      var that = this;
       var newGeo = new google.maps.LatLng(latitude, longitude);
-      that.map.panTo(newGeo);
+      this.map.panTo(newGeo);
     },
 
     updateStepCount: function(count) {
-      var that = this;
       if (firstPass) {
-        that.$el.find("#activity").removeClass("icon-cross").addClass("icon-checkmark");
+        this.$el.find("#activity").removeClass("icon-cross").addClass("icon-checkmark");
         // TODO apply revealing transition to 
-        that.$el.find("#activity-detail").removeClass("hidden");
+        this.$el.find("#activity-detail").removeClass("hidden");
         firstPass = false;
       }
-      that.$el.find("#stepcount").html(count);
+      this.$el.find("#stepcount").html(count);
     },
 
     onClose: function(){
-      var that = this;
-      that.socket.disconnect();
+      this.socket.disconnect();
       console.log("disconnected!")
     },
 
     pingForStatus: function(e) {
-      var that = this;
       e.preventDefault();
       e.stopPropagation();
       $.ajax({
@@ -165,7 +157,7 @@ define(function (require) {
         data: ""
       })
       .done(function (data) {
-        that.$el.find("#ping-button").removeClass("active").addClass("pinged");
+        this.$el.find("#ping-button").removeClass("active").addClass("pinged");
       })
       .fail(function (error) {
         console.log(error);

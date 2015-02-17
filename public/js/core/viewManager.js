@@ -32,9 +32,11 @@ define(function (require) {
         transitionOutType = view.transition.out || defaults.transitionOut;
       }
 			return applyTransition(view.$el, transitionOutType, function () {
-				_disposeView(view);
-				return callback();
-			}, delay);
+        view.$el.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+          _disposeView(view);
+          return callback();
+        });
+			});
 
 			function applyTransition(el, name, callback, delay) {
 				if (!name) {
@@ -49,7 +51,8 @@ define(function (require) {
 				view.subviews && view.subviews.forEach(function (subview) {
 					_disposeView(subview);
 				});
-        if (view.onClose) {
+        // optional method for custom cleanup
+        if (typeof view.onClose == 'function') {
           view.onClose();
         }
 				view.remove();
@@ -68,11 +71,9 @@ define(function (require) {
         currentView.$el.addClass("hidden");
         currentView.render();
         transition.apply(currentView.$el, transitionInType, function() {
-          console.log("done");
           currentView.$el.removeClass("hidden");
         });
       }
-
 		}
 
 		return {

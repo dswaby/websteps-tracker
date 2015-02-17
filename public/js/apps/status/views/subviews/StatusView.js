@@ -31,7 +31,6 @@ define(function (require) {
     },
     _socketEvents: function(){
       var that = this;
-      var firstPass = true;
       that.socket.emit('get connection status');
       // that.socket.on(
       that.socket.on('danny is connected', function(){
@@ -46,19 +45,21 @@ define(function (require) {
         that.$el.find("#activity").removeClass("icon-checkmark").addClass("icon-cross");
         that.$el.find("#location-detail").addClass("hidden");
         that.$el.find("#location").removeClass("icon-checkmark").addClass("icon-cross");
+        firstPass = true;
+        that.locationObj.firstLocationPass = true;
       });
 
-        that.socket.on('stepcount', function (data){
-          that.updateStepCount(data.steps);
-          if (data.treadmill && !that.onTreadmill) {
-            that.$el.find("#treadmill-bool").html("True");
-            that.onTreadmill = true;
-          }
-          else if (!data.treadmill && that.onTreadmill) {
-            that.$el.find("#treadmill-bool").html("False");
-            that.onTreadmill = false;
-          }
-        });
+      that.socket.on('stepcount', function (data){
+        that.updateStepCount(data.steps);
+        if (data.treadmill && !that.onTreadmill) {
+          that.$el.find("#treadmill-bool").html("True");
+          that.onTreadmill = true;
+        }
+        else if (!data.treadmill && that.onTreadmill) {
+          that.$el.find("#treadmill-bool").html("False");
+          that.onTreadmill = false;
+        }
+      });
 
         that.socket.on('location', function (data){
           if (that.locationObj.firstLocationPass) {

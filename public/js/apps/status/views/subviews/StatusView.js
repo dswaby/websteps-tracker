@@ -150,7 +150,9 @@ define(function (require) {
     },
 
     onClose: function(){
-      console.log("onClose called!")
+      var that = this;
+      that.socket.disconnect();
+      console.log("disconnected!")
     },
 
     pingForStatus: function(e) {

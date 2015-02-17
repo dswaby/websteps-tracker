@@ -23,6 +23,11 @@ define(function (require) {
       this._checkMobile();
       return this;
     },
+    onClose: function() {
+      var that = this;
+      that.socket.disconnect();
+      console.log("disconnected")
+    },
     _socketEvents: function(){
       var that = this;
       var io = require('socketio');

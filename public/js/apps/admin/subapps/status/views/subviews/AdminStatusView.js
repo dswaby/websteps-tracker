@@ -28,7 +28,10 @@ define(function (require) {
       var io = require('socketio');
       that.socket = io.connect('/admin');
       that.socket.on('news', function (data) {
-        that.socket.emit('danny connected');
+        that.socket.emit('danny is connected');
+        if (that.locationId) {
+          that.socket.emit('location update', { id: that.locationId });
+        }
       });
       that.socket.on('location', function (data) {
         that.socket.emit('my other event', { my: 'data' });

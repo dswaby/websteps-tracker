@@ -46,8 +46,8 @@ define(function (require) {
         this.$el.find("#location").removeClass("icon-checkmark").addClass("icon-cross");
       });
 
-        that.socket.on('stepcount', function (data){
-          that.updateStepCount(data.steps);
+        this.socket.on('stepcount', function (data){
+          this.updateStepCount(data.steps);
           if (data.treadmill && !this.onTreadmill) {
             this.$el.find("#treadmill-bool").html("True");
             this.onTreadmill = true;

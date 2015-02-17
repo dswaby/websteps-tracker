@@ -28,6 +28,7 @@ function SocketEvents(server) {
 
   // '/admin' namespace event handlers 
   admin_io.on('connection', function (socket) {
+    socket.emit('news');
     io.emit('danny is connected');
     socket.on('danny is connected', function () {
       io.emit('danny is connected');

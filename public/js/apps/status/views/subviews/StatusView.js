@@ -35,11 +35,11 @@ define(function (require) {
       // that.socket.on(
       that.socket.on('danny is connected', function(){
         that.$el.find("#connection").removeClass("icon-cross").addClass("icon-checkmark");
-        that.$el.find("#ping-button").removeClass("active").addClass("disabled");
+        // that.$el.find("#ping-button").removeClass("active").addClass("disabled");
       });
 
       that.socket.on('danny is disconnected', function(){
-        that.$el.find("#ping-button").removeClass("disabled").addClass("active");
+        // that.$el.find("#ping-button").removeClass("disabled").addClass("active");
         that.$el.find("#connection").removeClass("icon-checkmark").addClass("icon-cross");
         that.$el.find("#activity-detail").addClass("hidden");
         that.$el.find("#activity").removeClass("icon-checkmark").addClass("icon-cross");

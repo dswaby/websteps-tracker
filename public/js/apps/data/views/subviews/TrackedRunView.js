@@ -1,6 +1,5 @@
 define(function (require) {
   var Backbone = require('Backbone');
-  require('async!http://maps.google.com/maps/api/js?sensor=false');
   var MapModal = require('./MapModal');
   var TrackedRunView = Backbone.View.extend({
     className: 'tracked-run-item-view',
@@ -20,7 +19,7 @@ define(function (require) {
       e.stopPropagation();
       var that = this;
 
-      var mapModal = new MapModal({});
+      var mapModal = new MapModal({model: this.model});
       $('#modal').html(mapModal.render().el);
     }
 

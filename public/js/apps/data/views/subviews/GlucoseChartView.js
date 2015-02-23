@@ -12,12 +12,11 @@ define(function (require) {
       };
       
       $el.html(this.template());
-      var $chartEl = this.$('#glucose-chart');
       require(['d3', 'c3'], function(d3, c3) {
         c3.generate({
           bindto: '#glucose-chart',
           data: {
-            url: './../glucose.csv'
+            url: './glucose.csv'
           }
         });
       });

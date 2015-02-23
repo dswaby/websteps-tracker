@@ -58,6 +58,10 @@ define(function(require) {
         this.section = "glucose";
       });
 
+      var glucoseView = new GlucoseChartView();
+      $glucoseSection.append(glucoseView.render().el);
+      this.subviews.push(glucoseView);
+
       // calculate scroll targets and ready prepare for resize
       this.calculateScrollTops();
       this.handleResize();

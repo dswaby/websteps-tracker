@@ -17,8 +17,6 @@ define(function (require) {
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
 
-      that.locationObj.coordinates.push(myLatLong);
-
       that.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
       that.travelPath = new google.maps.Polyline({
         path: that.locationObj.coordinates,

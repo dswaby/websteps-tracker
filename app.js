@@ -1,7 +1,6 @@
 var config = require('./config');
 var express = require('express');
 var http = require('http');
-var https = require('https');
 var path = require('path');
 var connect = require('connect')
 var middleware = require('./source/middleware');
@@ -10,7 +9,7 @@ var favicon = require('serve-favicon');
 var methodOverride  = require("method-override");
 var mongoose = require('mongoose');
 var errorHandler = require('errorhandler');
-var passport = require('passport');
+// var passport = require('passport');
 var expressSession = require('express-session');
 var app = express();
 var server = require('http').createServer(app);

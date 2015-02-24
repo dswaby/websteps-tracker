@@ -37,11 +37,11 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // endpoinds
-require('./source/api/auth')(app);
+// require('./source/api/auth')(app);
 require('./source/api/pics')(app);
 require('./source/api/glucose')(app);
 require('./source/api/path')(app);
-require('./source/api/contacts')(app);
+// require('./source/api/contacts')(app);
 require('./source/api/ping')(app);
 // handlers for socket.io events
 require('./source/api/sockets')(server);

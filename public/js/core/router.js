@@ -11,7 +11,6 @@ define(function(require) {
       'data/pics/':'pics',
       'data/*': 'data',
       'recent/': 'data',
-			'charts/': 'charts',
 			'status/': 'status',
       'demo/':'',
       'admin/': 'admin',
@@ -39,10 +38,6 @@ define(function(require) {
     pics: function () {
       require('./../apps/data/subapps/pics/app').run(viewManager);
     },
-
-		charts: function () {
-			require('./../apps/charts/app').run(viewManager);
-		},
 
 		status: function () {
 			require('./../apps/status/app').run(viewManager);

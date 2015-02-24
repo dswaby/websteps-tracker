@@ -40,9 +40,7 @@ define(function (require) {
         return defer.promise();
       };
 
-      function getFitbitStats() {
-        //
-            // url: "https://spreadsheets.google.com/feeds/list/0AnAVxFHqH0mGdEJmckJEbkVOVkhtQ1djTG9CV0U1Tnc/od6/public/values?alt=json"
+      function getGlucosetStats() {
         
       }
 

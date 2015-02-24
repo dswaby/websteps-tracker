@@ -12,7 +12,7 @@ define(function (require) {
       var that = this;
       var myLatLong = new google.maps.LatLng(latitude, longitude);
       var mapOptions = {
-        zoom: 10,
+        zoom: 12,
         center: myLatLong,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };

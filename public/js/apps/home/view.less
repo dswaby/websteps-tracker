@@ -37,7 +37,8 @@
   padding-top: unit(15, px);
     height: 100%;
   background-color: @primaryTextHoverColor;
-    overflow: auto;
+    overflow-y: scroll; /* has to be scroll, not auto */
+  -webkit-overflow-scrolling: touch;
   @media @mobile {
     padding-top: unit(15, px);
   }

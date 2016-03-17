@@ -27,8 +27,7 @@ define( function( require ) {
 
       getRuns().done( function( runs ) {
         var model = new Backbone.Model( {
-          runs: that.runsCollection,
-          pics: that.picturesCollection
+          runs: that.runsCollection
         } );
         var view = new MainView( { model: model } );
         viewManager.show( view );

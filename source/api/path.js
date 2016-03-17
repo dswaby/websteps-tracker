@@ -19,7 +19,6 @@ var path = function (router) {
       if (err) {
         return res.send(err);
       }
-   
       res.json(path);
     });
   });

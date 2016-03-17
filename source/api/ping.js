@@ -2,12 +2,6 @@ var MapPath = require("./models/mapPath");
 var nodemailer = require('nodemailer');
 
 var ping = function(app) {
-
-
-  // create reusable transporter object using SMTP transport
-
-
-    // ('/') global namespace event handlers
   app.post('/api/ping', function(req, res) {
     if (req.connection) {
       console.log(req.connection);

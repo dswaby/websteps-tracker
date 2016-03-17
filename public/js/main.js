@@ -1,12 +1,12 @@
-require.config({
+require.config( {
 	hbs: {
 		templateExtension: 'html',
 		disableI18n: true,
-    helpers: true,
-    helperPathCallback:       // Callback to determine the path to look for helpers
-      function (name) {       // ('/templates/helpers/'+name by default)
-        return  'template/helpers/' +name;
-      },
+		helpers: true,
+		helperPathCallback: // Callback to determine the path to look for helpers
+			function( name ) { // ('/templates/helpers/'+name by default)
+			return 'template/helpers/' + name;
+		},
 	},
 
 	shim: {
@@ -19,27 +19,21 @@ require.config({
 		},
 
 		'Backbone': {
-			deps: ['Underscore', 'jQuery'],
+			deps: [ 'Underscore', 'jQuery' ],
 			exports: 'Backbone'
 		},
-
-    // backboneFileUpload: {
-    //   deps: ['jQuery', 'Underscore', 'backbone'],
-    //   exports: 'Backbone'
-    // },
-
 		'Handlebars': {
-			deps: ['handlebars'],
+			deps: [ 'handlebars' ],
 			exports: 'Handlebars'
 		},
 
 		'ApplicationRouter': {
-			deps: ['jQuery', 'Underscore', 'Backbone']
+			deps: [ 'jQuery', 'Underscore', 'Backbone' ]
 		},
 
-    'jQueryForm': {
-      deps: ['jQuery']
-    }
+		'jQueryForm': {
+			deps: [ 'jQuery' ]
+		}
 	},
 
 	paths: {
@@ -49,33 +43,31 @@ require.config({
 		Backbone: './../components/backbone/backbone',
 		handlebars: './../components/require-handlebars-plugin/Handlebars',
 		hbs: './../components/require-handlebars-plugin/hbs',
-		i18nprecompile : './../components/require-handlebars-plugin/hbs/i18nprecompile',
-		json2 : './../components/require-handlebars-plugin/hbs/json2',
-    jQueryForm: './../components/jquery-form/jquery.form',
-    velocity: './../components/velocity/velocity',
-    moment: './../components/moment/moment',
-    c3: './../components/c3/c3',
-    d3: './../components/d3/d3', 
-    async: './../components/requirejs-plugins/src/async',
-    backboneFileUpload: './../components/backbone-mobile-file-upload',
-    backboneModal: './../js/common/backbone.modal',
-    socketio: 'http://websteps.apps.swa.by:3634/socket.io/socket.io'
-    // socketio: 'http://localhost:8000/socket.io/socket.io'
-
-
+		i18nprecompile: './../components/require-handlebars-plugin/hbs/i18nprecompile',
+		json2: './../components/require-handlebars-plugin/hbs/json2',
+		jQueryForm: './../components/jquery-form/jquery.form',
+		velocity: './../components/velocity/velocity',
+		moment: './../components/moment/moment',
+		c3: './../components/c3/c3',
+		d3: './../components/d3/d3',
+		async: './../components/requirejs-plugins/src/async',
+		backboneFileUpload: './../components/backbone-mobile-file-upload',
+		backboneModal: './../js/common/backbone.modal',
+		socketio: 'http://websteps.apps.swa.by:3634/socket.io/socket.io'
+			// socketio: 'http://localhost:8000/socket.io/socket.io'
 	}
-});
+} );
 
-require(['core/router', 'core/client', 'Backbone'], function (Router, client, Backbone) {
+require( [ 'core/router', 'core/client', 'Backbone' ], function( Router, client, Backbone ) {
 	var app = {
 		root: '/'
 	};
 
-  Backbone.Extensions = {};
-  Backbone.Entities = {};
+	Backbone.Extensions = {};
+	Backbone.Entities = {};
 
 	window.Router = new Router();
-	client.setup(window, app);
+	client.setup( window, app );
 
-	Backbone.history.start({ pushState: true });
-});
+	Backbone.history.start( { pushState: true } );
+} );

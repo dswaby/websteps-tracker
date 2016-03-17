@@ -1,135 +1,135 @@
 .home-main-view {
-  // max-width: 600px;
-  // width: 
-  // margin: 10px auto 0;
-  .container {
-    max-width: 768px !important;
-    .jumbotron {
-      .welcome-title {
-         width: 100%;
-         h1 {
-          color: #8C6F3E !important;
-          text-align: center;
-          margin-top: 0 !important;
-         }
+    // max-width: 600px;
+    // width: 
+    // margin: 10px auto 0;
+    .container {
+        max-width: 768px !important;
+        .jumbotron {
+            .welcome-title {
+                width: 100%;
+                h1 {
+                    color: #8C6F3E !important;
+                    text-align: center;
+                    margin-top: 0 !important;
+                }
+            }
+        }
+        .icon {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
     }
-    .icon {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
+    .welcome-pic {
+        shape-outside: circle(40%);
+        margin-right: 18px;
+        // background-color: #FCF8E3;
+        background: url("/img/square.png") no-repeat;
+        width: 100px;
+        height: 110px;
+        margin-top: 5px;
+        float: left;
+        overflow: hidden;
+        padding-bottom: 30px;
     }
-  }
-  
-  .welcome-pic 
-  {
-    shape-outside: circle(40%);
-    margin-right: 18px;
-    // background-color: #FCF8E3;
-    background:url("/img/square.png") no-repeat;
-    width: 100px;
-    height: 110px;
-    margin-top: 5px;
-    float: left;
-    overflow: hidden;
-    padding-bottom: 30px;
-  }
-  padding-top: unit(15, px);
+    padding-top: unit(15,
+    px);
     height: 100%;
-  background-color: @primaryTextHoverColor;
-    overflow-y: scroll; /* has to be scroll, not auto */
-  -webkit-overflow-scrolling: touch;
-  @media @mobile {
-    padding-top: unit(15, px);
-  }
-
-  @media @smallerMobile {
-    padding-top: unit(15, px);
-  }
-  .container {
-    .jumbotron {
-      background-color: @primaryTextHoverColor !important;
-      h1, p {
-        color: #fff !important;
-      }
-      p {
-        font-size: 22px;
-        @media @mobile {
-          font-size: 18px;
+    background-color: @primaryTextHoverColor;
+    overflow-y: scroll;
+    /* has to be scroll, not auto */
+    -webkit-overflow-scrolling: touch;
+    @media @mobile {
+        padding-top: unit(15, px);
+    }
+    @media @smallerMobile {
+        padding-top: unit(15, px);
+    }
+    .container {
+        .jumbotron {
+            background-color: @primaryTextHoverColor !important;
+            h1,
+            p {
+                color: #fff !important;
+            }
+            p {
+                font-size: 22px;
+                @media @mobile {
+                    font-size: 18px;
+                }
+                @media @smallerMobile {
+                    font-size: 16px;
+                }
+            }
+            .btn-primary {
+                border-color: #fff !important;
+            }
+            .pink-alt {
+                background-color: @primaryTextHoverColor !important;
+                a {
+                    color: #fff !important;
+                }
+            }
         }
-
-        @media @smallerMobile {
-          font-size: 16px;
-        }
-      }
-      .btn-primary {
-        border-color: #fff !important;
-      }
-      .pink-alt {
-        background-color: @primaryTextHoverColor !important;
+    }
+    .top-right {
+        display: inline-block;
+        width: 20px;
+        padding-left: 10px;
+        float: right;
         a {
-          color:#fff !important;
+            cursor: pointer;
+            text-decoration: none;
+            &:hover,
+            &:visited,
+            &:active {
+                text-decoration: none;
+            }
         }
-      }
     }
-  }
-  .top-right {
-    display: inline-block;
-    width: 20px;
-    padding-left: 10px;
-    float: right;
-    a {
-    cursor: pointer;
-    text-decoration: none;
-    &:hover, &:visited, &:active {
-      text-decoration: none;
-    }
-
-    }
-  }
 }
 
 .home-view {
-  // margin-top:15px;
+    // margin-top:15px;
 }
 
 #step-container {
     width: 80%;
     max-width: 300px;
     margin: 71px auto 0;
-
-  .step-count-container {
-    height: 300px !important;
-    width: 100%;
-    max-width: 300px;
-    background-color: #EC2772 !important;
-    margin-top:10px;
-    .big-text {
-      font-size: 72px;
-      color: #fff !important;
+    .step-count-container {
+        height: 300px !important;
+        width: 100%;
+        max-width: 300px;
+        background-color: #EC2772 !important;
+        margin-top: 10px;
+        .big-text {
+            font-size: 72px;
+            color: #fff !important;
+        }
+        .pedometer-toggle-button {}
     }
-    .pedometer-toggle-button {
-      
-    }
-  }
 }
+
 #unsupported {
-  margin: 100px auto !important;
-  max-width: 420px !important;
-  border-radius: 5px ; 
+    margin: 100px auto !important;
+    max-width: 420px !important;
+    border-radius: 5px;
 }
 
 .footer {
-  position: absolute;
-  bottom: 0;
-  height: 50px;
-  width: 100%;
+    position: absolute;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
 }
 
-#map-routes-section{
-  height: 90%;
+#map-routes-section {
+    height: 90%;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 #welcome-notification {
-  min-height: 200px;
+    min-height: 200px;
 }

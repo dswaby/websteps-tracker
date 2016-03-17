@@ -4,17 +4,20 @@ function SocketEvents(server) {
   var MapPath = require("./models/mapPath");
   var nodemailer = require('nodemailer');
   var  DIAMETER_IN_MILES = 2 * 3963.190;
-
+  var mailerPass = process.env.ENV_MAILER_PASS || null;
   function distance(a,b,c,d,e,z){with(Math)return z=PI/360,e*atan2(sqrt(z=pow(sin((c-a)*z),2)+cos(a*z*2)*cos(c*z*2)*pow(sin((d-b)*z),2)),sqrt(1-z))}; 
-
+  var transporter;
   // create reusable transporter object using SMTP transport
-  var transporter = nodemailer.createTransport({
-      service: 'Gmail',
-      auth: {
-          user: 'ping@swa.by',
-          pass: 'q4TY)x[sMq9(Zkk}vh3R7eDEVyKHU;44/KE6WJN7V&W'
-      }
-  });
+  if (mailerPass) {
+    transporter = nodemailer.createTransport({
+        service: 'Gmail',
+        auth: {
+            user: 'ping@swa.by',
+            pass: mailerPass
+        }
+    });
+  }
+
 
   // ('/') global namespace event handlers
   io.on('connection', function (socket) {
@@ -56,7 +59,6 @@ function SocketEvents(server) {
         var ahora = Date.now();
 
         var last = mapPath.coordinates[mapPath.coordinates.length - 1];
-
         var miles = distance(last.lat, last.lng, data.lat, data.lng,  DIAMETER_IN_MILES);
 
         if (miles > 0.00378788) {
@@ -68,7 +70,7 @@ function SocketEvents(server) {
           mapPath.steps = data.steps;
         }
         
-        mapPath.endedAt = ahora;
+        mapPath.last = ahora;
 
         mapPath.save(function(err) {
           if (err) {

@@ -59,6 +59,7 @@ module.exports = function(grunt) {
           'grunt build',
           'forever stop app.js',
           'export NODE_ENV=production',
+          'export ENV_MAILER_PASS=<%= secret.mailerPass %>',
           'forever start app.js',
           'forever list'
         ].join(' && '),

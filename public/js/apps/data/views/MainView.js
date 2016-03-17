@@ -2,8 +2,8 @@ define(function(require) {
 	var Backbone = require('Backbone');
 
 	var TrackedRunsView = require('./subviews/TrackedRunsView');
-  var PicsCollectionView = require('./subviews/PicturesView');
-  var GlucoseChartView = require('./subviews/GlucoseChartView');
+  // var PicsCollectionView = require('./subviews/PicturesView');
+  // var GlucoseChartView = require('./subviews/GlucoseChartView');
 
 
 	var MainView = Backbone.View.extend({
@@ -50,44 +50,44 @@ define(function(require) {
         this.section = "uploads";
       });
 
-      var picsCollectionView = new PicsCollectionView({collection: this.model.get("pics")});
-      $picsSection.append(picsCollectionView.render().el);
-      this.subviews.push(picsCollectionView);
-      this.listenTo(picsCollectionView, "below", function() {
-        this.$el.animate({top: this.glucoseTop}, 500);
-        this.section = "glucose";
-      });
+      // var picsCollectionView = new PicsCollectionView({collection: this.model.get("pics")});
+      // $picsSection.append(picsCollectionView.render().el);
+      // this.subviews.push(picsCollectionView);
+      // this.listenTo(picsCollectionView, "below", function() {
+      //   this.$el.animate({top: this.glucoseTop}, 500);
+      //   this.section = "glucose";
+      // });
 
-      var glucoseView = new GlucoseChartView();
-      $glucoseSection.append(glucoseView.render().el);
-      this.subviews.push(glucoseView);
+      // var glucoseView = new GlucoseChartView();
+      // $glucoseSection.append(glucoseView.render().el);
+      // this.subviews.push(glucoseView);
 
       // calculate scroll targets and ready prepare for resize
-      this.calculateScrollTops();
-      this.handleResize();
+      // this.calculateScrollTops();
+      // this.handleResize();
 			return this;
 		},
-    scrollTrails: function(e){
-      e.preventDefault();
-      e.stopPropagation();
-      var that = this;
-      this.$el.animate({top: that.trailTop}, 500);
-      that.section = "trails";
-    },
-    scrollUploads: function(e){
-      e.preventDefault();
-      e.stopPropagation();
-      var that = this;
-      this.$el.animate({top: that.uploadsTop}, 500);
-      that.section = "uploads";
-    },
-    scrollGlucose: function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      var that = this;
-      this.$el.animate({top: that.glucoseTop}, 500);
-      that.section = "glucose";
-    },
+    // scrollTrails: function(e){
+    //   e.preventDefault();
+    //   e.stopPropagation();
+    //   var that = this;
+    //   this.$el.animate({top: that.trailTop}, 500);
+    //   that.section = "trails";
+    // },
+    // scrollUploads: function(e){
+    //   e.preventDefault();
+    //   e.stopPropagation();
+    //   var that = this;
+    //   this.$el.animate({top: that.uploadsTop}, 500);
+    //   that.section = "uploads";
+    // },
+    // scrollGlucose: function(e) {
+    //   e.preventDefault();
+    //   e.stopPropagation();
+    //   var that = this;
+    //   this.$el.animate({top: that.glucoseTop}, 500);
+    //   that.section = "glucose";
+    // },
     handleResize: function() {
       var that = this;
       window.addEventListener("resize", resizeThrottler, false);

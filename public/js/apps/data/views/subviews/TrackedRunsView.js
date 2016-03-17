@@ -17,10 +17,10 @@ define(function(require) {
       var runs = this.$('.runs');
       
       var count;
-      if (this.collection.length > 10) {
+      if (this.collection && this.collection.length && this.collection.length > 10) {
         count = 10;
       }
-      else {
+      else if (this.collection && this.collection.length) {
         count = this.collection.length;
       }
 

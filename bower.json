@@ -16,7 +16,8 @@
     "socket.io-client": "~1.2.1",
     "requirejs-plugins": "~1.0.3",
     "backbone-model-file-upload": "*",
-    "bootstrap": "~3.3.2"
+    "bootstrap": "~3.3.2",
+    "backbone-modal": "^1.1.5"
   },
   "resolutions": {
     "underscore": ">=1.5.0",

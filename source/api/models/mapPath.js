@@ -3,7 +3,7 @@ var Schema=mongoose.Schema;
 
 var mapPathSchema =  new Schema({
   beganAt: { type: Date, default: Date.now },
-  endedAt: Date,
+  last: Date,
   coordinates: [{ lat: Number, lng: Number }],
   distance: { type: Number, default: 0 },
   steps: { type: Number, default: 0 }

@@ -23,7 +23,7 @@ define( function( require ) {
       this.$el.html( this.template() );
 
       var $routesSection = this.$( '#map-routes-section' );
-      var trackedRunsView = new TrackedRunsView( { collection: this.model.get( "runs" ) } );
+      var trackedRunsView = new TrackedRunsView( { collection: this.collection } );
 
       $routesSection.append( trackedRunsView.render().el );
       this.subviews.push( trackedRunsView );

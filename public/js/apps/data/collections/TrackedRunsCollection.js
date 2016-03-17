@@ -4,7 +4,6 @@ define(function (require) {
 
   var TrackedRunsCollection = Backbone.Collection.extend({
     model: TrackedRun,
-
     url: '/api/path'
   });
 

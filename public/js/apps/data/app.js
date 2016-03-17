@@ -7,7 +7,6 @@ define( function( require ) {
   return {
     run: function( viewManager ) {
       var that = this;
-      // display loading view here
       var loader = new LoadingView();
       viewManager.show( loader );
 
@@ -25,14 +24,15 @@ define( function( require ) {
         return defer.promise();
       };
 
-      getRuns().done( function( runs ) {
-        var model = new Backbone.Model( {
-          runs: that.runsCollection
-        } );
-        var view = new MainView( { model: model } );
-        viewManager.show( view );
-      } );
-
+      var fetchingRuns = getRuns;
+      
+      $.when(fetchingRuns).done(function(runs){
+        var runsFormatted = runs.forEach(function( run ) {
+          console.log(run)
+        } )
+        var view = new MainView({ collection: runs });
+        viewManager.show(view);
+      });
     }
   };
 } );

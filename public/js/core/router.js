@@ -8,14 +8,10 @@ define(function(require) {
       'home/': 'home',
       'home/demo/': 'demo',
       'data/routes/':'maproutes',
-      'data/pics/':'pics',
-      'data/*': 'data',
+      'data/': 'mapRoutes',
       'recent/': 'data',
 			'status/': 'status',
-      'demo/':'',
       'admin/': 'admin',
-      'admin/upload/': 'adminUpload',
-      'admin/glucoselog/': 'adminGlucoseLog',
       'admin/status/': 'statusUpdater'
 		},
 
@@ -35,10 +31,6 @@ define(function(require) {
       require('./../apps/data/subapps/routes/app').run(viewManager);
     },
 
-    pics: function () {
-      require('./../apps/data/subapps/pics/app').run(viewManager);
-    },
-
 		status: function () {
 			require('./../apps/status/app').run(viewManager);
 		},
@@ -49,14 +41,6 @@ define(function(require) {
 
     admin: function () {
       require('./../apps/admin/app').run(viewManager);
-    },
-
-    adminUpload: function () {
-      require('./../apps/admin/subapps/imageuploader/app').run(viewManager);
-    },
-
-    adminGlucoseLog: function () {
-      require('./../apps/admin/subapps/glucoselogger/app').run(viewManager);
     },
 
     statusUpdater: function () {

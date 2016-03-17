@@ -24,7 +24,6 @@ var path = function (router) {
   });
 
   router.route('/api/path').get(function (req, res) {
-    console.log(req)
     MapPath.find(function(err, paths) {
       if (err) {
         return res.send(err);

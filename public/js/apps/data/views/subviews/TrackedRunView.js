@@ -17,8 +17,6 @@ define(function (require) {
     showMap: function(e){
       e.preventDefault();
       e.stopPropagation();
-      var that = this;
-
       var mapModal = new MapModal({model: this.model});
       $('#modal').html(mapModal.render().el);
     }

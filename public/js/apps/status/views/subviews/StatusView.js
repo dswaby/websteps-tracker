@@ -149,29 +149,7 @@ define( function( require ) {
     onClose: function() {
       var that = this;
       that.socket.disconnect();
-      console.log( "disconnected!" )
-    },
-
-    // pingForStatus: function( e ) {
-    //   var that = this;
-    //   e.preventDefault();
-    //   e.stopPropagation();
-    //   $.ajax( {
-    //       type: "POST",
-    //       url: "http://websteps.apps.swa.by/api/ping",
-    //       data: ""
-    //     } )
-    //     .done( function( data ) {
-    //       that.$el.find( "#ping-button" ).removeClass( "active" ).addClass( "pinged" );
-    //     } )
-    //     .fail( function( error ) {
-    //       console.log( error );
-    //     } );
-
-    //   if ( typeof( Storage ) !== "undefined" ) {
-    //     localStorage.setItem( "pingtime", Date.now() );
-    //   }
-    // }
+    }
   } );
 
   return StatusView;

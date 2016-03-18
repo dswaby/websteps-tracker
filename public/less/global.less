@@ -2,7 +2,6 @@
 @import url('../components/animate.css/animate.css');
 @import url('../components/c3/c3.css');
 @import url('../components/backbone-modal/backbone.modal.css');
-
 // view imports
 @import url('./modal.less');
 @import url('./modal.theme.less');
@@ -12,305 +11,278 @@
 @import url('../js/apps/status/view.less');
 @import url('../js/apps/home/view.less');
 @import url('../js/common/loader/view.less');
-
 // @import url('../js/common/modal/view.less');
 @import url('../components/bootstrap/less/bootstrap.less');
-
-
-
 @headerHeight: 60;
-@headerHeightMobile:50;
-@headerHeightSmallerMobile:40;
-
+@headerHeightMobile: 50;
+@headerHeightSmallerMobile: 40;
 @primaryColor: #fff;
 @primaryTextColor: #F54786;
 @primaryTextHoverColor: #F54786;
 @smallerMobile: ~"only screen and (max-width : 599px)";
 @mobile: ~"only screen and (min-width : 600px) and (max-width : 1024px)";
-
 @import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Open+Sans:400,800,300);
-
 @font-face {
-  font-family: 'icomoon';
-  src:url('./../fonts/icomoon.eot?outsf1');
-  src:url('./../fonts/icomoon.eot?#iefixoutsf1') format('embedded-opentype'),
-    url('./../fonts/icomoon.woff?outsf1') format('woff'),
-    url('./../fonts/icomoon.ttf?outsf1') format('truetype'),
-    url('./../fonts/icomoon.svg?outsf1#icomoon') format('svg');
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'icomoon';
+    src: url('./../fonts/icomoon.eot?outsf1');
+    src: url('./../fonts/icomoon.eot?#iefixoutsf1') format('embedded-opentype'), url('./../fonts/icomoon.woff?outsf1') format('woff'), url('./../fonts/icomoon.ttf?outsf1') format('truetype'), url('./../fonts/icomoon.svg?outsf1#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
 
-[class^="icon-"], [class*=" icon-"] {
-  font-family: 'icomoon';
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+[class^="icon-"],
+[class*=" icon-"] {
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
-
 
 .icon-broadcast:before {
-  content: "\f048";
-  &.hover {
-    color: @primaryTextHoverColor !important;
-  }
+    content: "\f048";
+    &.hover {
+        color: @primaryTextHoverColor !important;
+    }
 }
 
-
-
 .dismiss {
-  .icon-cross:before {
-    content: "\ea0f";
-    // color: red;
-    color: #333333;
-  }
+    .icon-cross:before {
+        content: "\ea0f";
+        // color: red;
+        color: #333333;
+    }
 }
 
 .icon-checkmark:before {
-  content: "\f03a";
+    content: "\f03a";
 }
 
 .icon-globe:before {
-  content: "\f0b6";
+    content: "\f0b6";
 }
 
 .icon-location:before {
-  content: "\e947";
+    content: "\e947";
 }
 
 .icon-location2:before {
-  content: "\e948";
+    content: "\e948";
 }
 
 .icon-sphere:before {
-  content: "\e9c9";
+    content: "\e9c9";
 }
 
 .icon-cross:before {
-  content: "\ea0f";
+    content: "\ea0f";
 }
 
 .icon-circle-down:before {
-  content: "\ea43";
-  color: #dfdfdf !important;
-  font-size: 50px !important;
+    content: "\ea43";
+    color: #dfdfdf !important;
+    font-size: 50px !important;
 }
 
 .icon-github4:before {
-  content: "\eab4";
+    content: "\eab4";
 }
 
 .icon-world:before {
-  content: "\e600";
+    content: "\e600";
 }
 
-
-
-
-
 html {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 200;
-  @media @smallerMobile {
-    min-width: 300px;
-  }
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 200;
+    @media @smallerMobile {
+        min-width: 300px;
+    }
 }
 
 .body {
-  width:100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 .hidden {
-  display: none;
+    display: none;
 }
+
 //header styles
 .static-header {
-  position:fixed;
-
-  top:0;
-  width:100%;
-  left:0;
-  right:0;
-  margin:auto;
-  height: unit(@headerHeight, px);
-  background-color: @primaryColor;
-  overflow: hidden;
-  z-index:1000;
-  -webkit-box-shadow:0px 4px 9px 0px rgba(0,0,0,0.25);
-  -moz-box-shadow:0px 4px 9px 0px rgba(0,0,0,0.25);
-  box-shadow:0px 4px 9px 0px rgba(0,0,0,0.25);
-  @media @mobile {
-    height: unit(@headerHeightMobile, px);
-  }
-
-  @media @smallerMobile {
-    height: unit(@headerHeightSmallerMobile, px);
-  }
-
-  .nav{
-    position: absolute;
-    display: inline-block;
-    height: 100%;
+    position: fixed;
+    top: 0;
     width: 100%;
-    // max-height: unit(@headerHeight, px);
-    max-width: 100%;
-    font-family: 'Open Sans', sans-serif;
-    list-style: none;
-    a {
-      text-decoration: none;
-      &:hover, &:active, &:visited {
-        text-decoration: none;
-      }
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: unit(@headerHeight, px);
+    background-color: @primaryColor;
+    overflow: hidden;
+    z-index: 1000;
+    -webkit-box-shadow: 0px 4px 9px 0px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 4px 9px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 9px 0px rgba(0, 0, 0, 0.25);
+    @media @mobile {
+        height: unit(@headerHeightMobile, px);
     }
-    .title {
-      text-align: left;
-      font-size: 42px;
-      padding-left: 30px;
-      color: @primaryTextColor;
-      @media @mobile {
-        font-size:34px;
-        padding-left: 24px;
-      }
-      @media @smallerMobile {
-        font-size:30px;
-        padding-left: 12px;
-      }
-      &:hover {
-        text-decoration: none !important;
-      }
+    @media @smallerMobile {
+        height: unit(@headerHeightSmallerMobile, px);
     }
-    &:hover {
-      color: @primaryTextHoverColor;
-      cursor:pointer;
-    }
-    .status-nav-link {
-      float: right;
-      padding-right: 4px;
-      padding-top: 4px;
-      font-size: 24px;
-      a {
-        color: @primaryTextColor;
-        &.hover {
-          color: @primaryTextHoverColor;
+    .nav {
+        position: absolute;
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        // max-height: unit(@headerHeight, px);
+        max-width: 100%;
+        font-family: 'Open Sans', sans-serif;
+        list-style: none;
+        a {
+            text-decoration: none;
+            &:hover,
+            &:active,
+            &:visited {
+                text-decoration: none;
+            }
         }
-      }
-
+        .title {
+            text-align: left;
+            font-size: 42px;
+            padding-left: 30px;
+            color: @primaryTextColor;
+            @media @mobile {
+                font-size: 34px;
+                padding-left: 24px;
+            }
+            @media @smallerMobile {
+                font-size: 30px;
+                padding-left: 12px;
+            }
+            &:hover {
+                text-decoration: none !important;
+            }
+        }
+        &:hover {
+            color: @primaryTextHoverColor;
+            cursor: pointer;
+        }
+        .status-nav-link {
+            float: right;
+            padding-right: 4px;
+            padding-top: 4px;
+            font-size: 24px;
+            a {
+                color: @primaryTextColor;
+                &.hover {
+                    color: @primaryTextHoverColor;
+                }
+            }
+        }
     }
-  }
 }
 
 #page {
-  position: absolute;
-  left:0;
-  width:100%;
-  height:100%;
-  overflow-x: none;
-  overflow-y: none;
-  // background: url('./../img/Long_Distance_Running.jpg') repeat-y;
-  background-color: #fff;
-  background-size: cover;
-  overflow: hidden;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: none;
+    overflow-y: none;
+    // background: url('./../img/Long_Distance_Running.jpg') repeat-y;
+    background-color: #fff;
+    background-size: cover;
+    overflow: hidden;
 }
+
 .dialogIsOpen #page {
     /* Blur and de-color */
     -webkit-filter: blur(5px) grayscale(50%);
     /* Recede */
     -webkit-transform: scale(0.9);
-  }
-
- #modal {
-
 }
 
+#modal {}
 
-#page, #modal {
-  
-  transition: all 0.4s ease; /* prefix me */
-
+#page,
+#modal {
+    transition: all 0.4s ease;
+    /* prefix me */
 }
 
 // main container styles
 .app-container {
-  width:100%;
-  height: 100%;
-  left:0;
-  margin-top:unit(@headerHeight, px);
-  @media @mobile {
-    margin-top: unit(@headerHeightMobile, px);
-  }
-  @media @smallerMobile {
-    margin-top: unit(@headerHeightSmallerMobile, px);
-  }
-
+    background-color: #f54786;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    margin-top: unit(@headerHeight, px);
+    @media @mobile {
+        margin-top: unit(@headerHeightMobile, px);
+    }
+    @media @smallerMobile {
+        margin-top: unit(@headerHeightSmallerMobile, px);
+    }
 }
 
-
 .hero-unit {
-  position: relative;
-  width: 95%;
-  left: 2.5%;
-
-  h1 {
-    font-size: 56px;
-    color: white;
-    text-shadow: -2px -2px 8px rgba(150, 150, 150, 1);
-    @media @mobile {
-      font-size: 56px;
-    }
-    @media @smallerMobile {
-      font-size: 3;
-    }
-
-  }
-
-  h3 {
-    font-size: 36px;
-  }
-.btn-large {
     position: relative;
-    width: 55%;
-    height: 50px;
-    left:0;
-    right:0;
-    display: block;
-    padding-top: 50px;
-    border: 7px solid #fff;
-    border-radius: 7px;
-    font-size: 24px;
-    font-weight: 700;
-    margin: 10px auto;
-    text-align: center;
-    background-color: #EF3D6F;
-
-    a, &:visited {
-      text-decoration: none;
-      color: #fff;
+    width: 95%;
+    left: 2.5%;
+    h1 {
+        font-size: 56px;
+        color: white;
+        text-shadow: -2px -2px 8px rgba(150, 150, 150, 1);
+        @media @mobile {
+            font-size: 56px;
+        }
+        @media @smallerMobile {
+            font-size: 3;
+        }
     }
-    @media @mobile {
-      width: 55%;
-      margin: 75px auto 0;
-
+    h3 {
+        font-size: 36px;
     }
-    @media @smallerMobile {
-      width: 80%;
-      margin: 15px auto 0;
-      // font-size: 36px;
-      height: 75px;
-      padding-top: 25px;
-
+    .btn-large {
+        position: relative;
+        width: 55%;
+        height: 50px;
+        left: 0;
+        right: 0;
+        display: block;
+        padding-top: 50px;
+        border: 7px solid #fff;
+        border-radius: 7px;
+        font-size: 24px;
+        font-weight: 700;
+        margin: 10px auto;
+        text-align: center;
+        background-color: #EF3D6F;
+        a,
+        &:visited {
+            text-decoration: none;
+            color: #fff;
+        }
+        @media @mobile {
+            width: 55%;
+            margin: 75px auto 0;
+        }
+        @media @smallerMobile {
+            width: 80%;
+            margin: 15px auto 0;
+            // font-size: 36px;
+            height: 75px;
+            padding-top: 25px;
+        }
     }
-  }
 }
 
 .hidden {
-  opacity: 0;
+    opacity: 0;
 }
-

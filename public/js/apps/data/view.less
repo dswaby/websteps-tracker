@@ -2,12 +2,12 @@
     height: 100%;
     width: 100%;
     position: absolute;
-    top: unit(@headerHeight, px);
+    top: 55px;
     @media @mobile {
-        top: unit(@headerHeightMobile, px);
+        top: 45px;
     }
     @media @smallerMobile {
-        top: unit(@headerHeightSmallerMobile, px);
+        top: 35px;
     }
     .section-nav {
         z-index: 5000;
@@ -45,15 +45,7 @@
             }
         }
     }
-    .page-back-button {
-        width: 85%;
-        // max-width: 750px;
-        margin: 0 auto;
-        padding-top: 5px;
-        a {
-            color: #fff;
-        }
-    }
+    
     .page-section {
         display: block;
         position: absolute;
@@ -76,6 +68,11 @@
     .tracked-routes-wrapper {
         height: 100%;
         width: 100%;
+        padding: 0 30px;
+
+        @media @smallerMobile {
+            padding: 0;
+        }
         overflow-y: scroll;
         /* has to be scroll, not auto */
         -webkit-overflow-scrolling: touch;
@@ -242,3 +239,17 @@
         overflow: auto;
     }
 }
+
+.table {
+    margin-bottom: 100px !important;
+}
+
+.page-back-button {
+        width: 95%;
+        // max-width: 750px;
+        margin: 0 auto;
+        padding-top: 25px;
+        a {
+            color: #fff;
+        }
+    }

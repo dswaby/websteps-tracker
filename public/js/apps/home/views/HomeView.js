@@ -6,7 +6,8 @@ define(function (require) {
 		template: require('hbs!./../templates/HomeView'),
     className: "home-view",
     events: {
-      'click a#dismissal': 'dismissAlert'
+      'click a#dismissal': 'dismissAlert',
+      'click a#more': 'scrollMore'
     },
     initialize: function() {
       var that = this;
@@ -29,6 +30,14 @@ define(function (require) {
       e.stopPropagation();
       that.$el.find("#welcome-notification").fadeOut();
       localStorage.setItem("dismissed", true);
+    },
+    scrollMore: function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var about = $(".about-section").offset().top;
+      $(".home-main-view").animate({
+        scrollTop: about
+    }, 2000);
     }
 	});
 

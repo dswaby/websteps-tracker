@@ -4,14 +4,12 @@
     -webkit-overflow-scrolling: touch;
     display: inline-block;
     height: 100%;
+    widows: 100%;
     .container {
+        width: 100%;
         min-height: 50%;
         .jumbotron {
-            img {
-                @media @mobile {
-                        // margin-bottom: 30px;
-                    }
-            }
+            img {}
             .row {
                 @media @smallerMobile {
                     margin-top: 30px;
@@ -19,40 +17,19 @@
             }
             p {
                 a {
-                    color:#fff;
+                    color: #fff;
                     font-weight: 700;
                     margin-top: 20px;
                     padding-left: 20px;
                 }
             }
             padding-bottom: 0 !important;
-            .welcome-title {
-                width: 100%;
-                h1 {
-
-                    color: #8C6F3E !important;
-                    text-align: center;
-                    margin-top: 0 !important;
-                }
-            }
         }
         .icon {
             display: block;
             margin-left: auto;
             margin-right: auto;
         }
-    }
-    .welcome-pic {
-        shape-outside: circle(40%);
-        margin-right: 18px;
-        // background-color: #FCF8E3;
-        background: url("/img/square.png") no-repeat;
-        width: 100px;
-        height: 110px;
-        margin-top: 5px;
-        float: left;
-        overflow: hidden;
-        padding-bottom: 30px;
     }
     .container {
         .jumbotron {
@@ -134,7 +111,8 @@
 }
 
 #unsupported {
-    h2, p {
+    h2,
+    p {
         padding: 20px;
     }
     margin: 100px auto !important;
@@ -176,22 +154,55 @@
         padding-top: unit(@headerHeightSmallerMobile, px);
     }
     width: 100%;
-    height: 100%;
+    height: 75%;
     padding: 30px;
     background-color: #fff;
     top: 100%;
     left: 0;
 }
 
+.notice {
+    margin-bottom: 40px;
+    margin-top: 40px;
+    text-align: center;
+    font-weight: 700;
+    h2 {
+        color: #666;
+    }
+}
 .about-inner {
     margin-top: 45px;
-}
-.notice {
-    text-align: center;
-    color: #000;
-    font-weight: 700;
-    font-size: 18px;
+
+    max-width: 600px;
+    margin: auto;
 }
 .about-inner p {
     color: #888888;
+}
+
+.welcome-title {
+    width: 100%;
+    h1 {
+        color: #8C6F3E !important;
+        text-align: center;
+        margin-top: 0 !important;
+    }
+}
+
+.welcome-pic {
+    shape-outside: circle(40%);
+    margin-right: 18px;
+    // background-color: #FCF8E3;
+    background: url("/img/square.png") no-repeat;
+    width: 100px;
+    height: 110px;
+    margin-top: 5px;
+    float: left;
+    overflow: hidden;
+    padding-bottom: 30px;
+}
+
+#welcome-notification {
+    max-width: 600px;
+    margin: auto;
 }

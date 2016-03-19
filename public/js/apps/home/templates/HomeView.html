@@ -1,16 +1,5 @@
 <div class="container">
     <div class="jumbotron">
-        {{#if showWelcome}}
-        <div id="welcome-notification" class="alert alert-warning" role="alert">
-            <div class="top-right dismiss"><a id="dismissal"><span class="icon-cross"></span></a></div>
-            <div class="welcome-title">
-                <h1>Welcome</h1></div>
-
-            <div class="welcome-pic"></div>
-            <span class="intro">Hey there, thanks for checking out my web app. As an FYI, this is a proof-of-concept personal fitness tracking app I built for fun. Due to browser restrictions as well as significantly better solutions already, this would in no way be a practical solution for tracking fitness. This was built mainly as an exercise to familiarize myself with some modern web apis and new technologies.</span>
-          </div>
-        </div>
-        {{/if}}
         <img class="icon" src="/img/icon-art.png" height="100px" />
         <h1>{{title}}</h1>
         <p>{{subtitle}} <a id="more" href="">Learn more</a> </p>
@@ -27,7 +16,15 @@
 </div>
  <div class="about-section">
     <div class="about-inner">
-        <div class="notice">For demonstration purposes only.</div> 
+        <div class="notice"><h2>FOR DEMONSTRATION PURPOSES ONLY</h2></div> 
+        <div id="welcome-notification" class="alert alert-warning" role="alert">
+            <div class="top-right dismiss"><a id="dismissal"><span class="icon-cross"></span></a></div>
+            <div class="welcome-title">
+                <h1>Welcome</h1></div>
+
+            <div class="welcome-pic"></div>
+            <span class="intro">Hey there, thanks for checking out my project.This is a proof-of-concept personal fitness tracking app I built for fun. Due to browser restrictions mainly the inability of backgrounding as well as there being a ton of significantly better solutions already. This would in no way be a practical solution for tracking fitness.</span>
+          </div>
         <h4>What does it do?</h4>
         <p>It allows a user to count their steps and track/share there location in realtime.</p>
          <h4>Want to play around with it?</h4> 
@@ -37,6 +34,8 @@
         <p>For fun I guess, I love learning new technologies and wanted to play around with some I were unfamiliar with</p>
         <h4>How did I make it?</h4>
         <p>The code is freely available <a href="https://github.com/dswaby/websteps-tracker">on github</a>. Feel free to check it out or make it your own.</p>
+        </div>
+
     </div>
 </div>
 

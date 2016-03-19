@@ -6,13 +6,30 @@
     height: 100%;
     .container {
         min-height: 50%;
-
-
         .jumbotron {
+            img {
+                @media @mobile {
+                        // margin-bottom: 30px;
+                    }
+            }
+            .row {
+                @media @smallerMobile {
+                    margin-top: 30px;
+                }
+            }
+            p {
+                a {
+                    color:#fff;
+                    font-weight: 700;
+                    margin-top: 20px;
+                    padding-left: 20px;
+                }
+            }
             padding-bottom: 0 !important;
             .welcome-title {
                 width: 100%;
                 h1 {
+
                     color: #8C6F3E !important;
                     text-align: center;
                     margin-top: 0 !important;
@@ -37,13 +54,12 @@
         overflow: hidden;
         padding-bottom: 30px;
     }
-    
     .container {
         .jumbotron {
             background-color: @primaryTextHoverColor !important;
             h1,
             p {
-                color: #fff !important;
+                color: #fff;
             }
             p {
                 font-size: 22px;
@@ -54,7 +70,6 @@
                     font-size: 16px;
                 }
             }
-            
         }
     }
     .top-right {
@@ -77,26 +92,27 @@
 .home-view {
     background-color: @primaryTextHoverColor;
     height: 200%;
-    h1, p {
-        margin:auto;
+    h1,
+    p {
+        margin: auto;
         color: #fff;
         padding: 15px;
-        
     }
     h1 {
         padding: 20px;
-
         text-align: center;
     }
     .btn-primary {
-                border-color: #fff !important;
-            }
-            .pink-alt {
-                background-color: @primaryTextHoverColor !important;
-                a {
-                    color: #fff !important;
-                }
-            }
+        max-width: 300px;
+        margin: auto;
+        border-color: #fff !important;
+    }
+    .pink-alt {
+        background-color: @primaryTextHoverColor !important;
+        a {
+            color: #fff !important;
+        }
+    }
 }
 
 #step-container {
@@ -118,6 +134,9 @@
 }
 
 #unsupported {
+    h2, p {
+        padding: 20px;
+    }
     margin: 100px auto !important;
     max-width: 420px !important;
     border-radius: 5px;
@@ -163,6 +182,16 @@
     top: 100%;
     left: 0;
 }
+
 .about-inner {
-    margin-top: 75px;
+    margin-top: 45px;
+}
+.notice {
+    text-align: center;
+    color: #000;
+    font-weight: 700;
+    font-size: 18px;
+}
+.about-inner p {
+    color: #888888;
 }

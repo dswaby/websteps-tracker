@@ -4,7 +4,7 @@ define(function (require) {
 
   var TrackedRunsCollection = Backbone.Collection.extend({
     model: TrackedRun,
-    url: 'http://websteps.apps.swa.by/api/path'
+    url: '/api/path'
   });
 
   return TrackedRunsCollection;

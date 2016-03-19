@@ -1,9 +1,7 @@
 .main-status-view {
   height: 100%;
   background-color: #fff;
-  //status view
   .status-wrapper {
-    // position: absolute;
     padding-top: 70px;
     width:450px;
     @media @smallerMobile {
@@ -15,6 +13,10 @@
     height: 350px;
     margin: 0 auto;
     .item {
+      h1 {
+        text-align: center;
+        color: #888 !important;
+      }
       display: block;
       float: left;
       width: 100%;
@@ -77,4 +79,7 @@
         }
       }
   }
+}
+#status-text {
+  display: inline-block;
 }

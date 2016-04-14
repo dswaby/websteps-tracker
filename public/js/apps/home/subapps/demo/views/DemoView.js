@@ -1,5 +1,18 @@
 define(function (require) {
   var Backbone = require('Backbone');
+  require('../../../../../common/ResponsiveVoice');
+  var responsiveVoiceReady = false;
+  var responsiveInt = setInterval(ensureReady, 300)
+
+  var ensureReady = function(){
+    if (window.speechSynthesis.getVoices().length) {
+      responsiveVoiceReady = true;
+      clearInterval(responsiveInt)
+    }
+  }
+
+
+  window.speechSynthesis.getVoices().length
   require('async!http://maps.google.com/maps/api/js?sensor=false');
   var intervalId;
   var watchid;
@@ -44,6 +57,9 @@ define(function (require) {
         that.$el.find("#unsupported").removeClass("hidden");
         that.unbind();
         // that.$el.html("<div class='unsupported'>Browser is not supported</div>");
+        if (responsiveVoiceReady) {
+          responsiveVoice.speak("browser not supported")
+        }
         console.log("browser not supported");
       }
     },
@@ -158,6 +174,9 @@ define(function (require) {
           if (plotPoint <= config.low && falseStepTracker > config.falseStepMin) {
             if (falseStepTracker < config.falsStepMax) {
               that.steps++;
+              if (responsiveVoiceReady) {
+                responsiveVoice.speak(steps)
+              }
               stepState = "low";
               document.getElementById("steps").innerHTML = that.steps;
             } else {
